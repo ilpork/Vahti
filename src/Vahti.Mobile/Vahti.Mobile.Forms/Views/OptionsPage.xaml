@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:effects="clr-namespace:Vahti.Mobile.Forms.Effects"
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
+             xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
+             xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"   
+             x:Class="Vahti.Mobile.Forms.Views.OptionsPage"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Resources>
+        <converter:IsEmptyStringConverter x:Key="IsEmptyStringConverter"/>
+        <Style x:Key="OptionsLabelStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>            
+        </Style>
+    </ContentPage.Resources>    
+    <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundColor}" EndColor="{DynamicResource ThemeBackgroundLightColor}"  Spacing="20" Padding="24">
+        <StackLayout Orientation="Vertical">
+            <Label Text="{i18n:Translate Options_ColorThemeLabel}" Style="{DynamicResource OptionsLabelStyle}" />
+            <Picker x:Name="colorThemePicker" ItemsSource="{Binding ColorThemes}" SelectedIndex="{Binding ColorThemesSelectedIndex}" TextColor="{DynamicResource ThemeTextColor}">
+                <Picker.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="#222222"/>
+                    </OnPlatform>
+                </Picker.BackgroundColor>
+                <Picker.Effects>
+                    <effects:LineColorEffect Color="{StaticResource ThemeTextColor}"/>
+                </Picker.Effects>
+            </Picker>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">
+            <Label Text="{i18n:Translate Options_CloudDatabaseUrlLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
+            <StackLayout Orientation="Vertical" Spacing="0">                
+                <Entry Text="{Binding DatabaseUrl}" FontSize="Medium" TextColor="{DynamicResource ThemeTextColor}">
+                    <Entry.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="#222222"/>
+                        </OnPlatform>
+                    </Entry.BackgroundColor>
+                    <Entry.Effects>
+                        <effects:LineColorEffect Color="{StaticResource ThemeTextColor}"/>
+                    </Entry.Effects>
+                </Entry>
+                <Label Text="{i18n:Translate Options_CloudDatabaseUrlMissingLabel}" FontSize="Small" TextColor="Red" IsVisible="{Binding DatabaseUrl, Converter={StaticResource IsEmptyStringConverter}}"/>
+            </StackLayout>                                
+            <Label Text="{i18n:Translate Options_CloudDatabaseSecretLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="entryDatabaseSecret" Text="{Binding DatabaseSecret}" FontSize="Medium" TextColor="{DynamicResource ThemeTextColor}" Grid.Column="0">
+                    <Entry.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="#222222"/>
+                        </OnPlatform>
+                    </Entry.BackgroundColor>
+                    <Entry.Effects>
+                        <effects:LineColorEffect Color="{StaticResource ThemeTextColor}"/>
+                    </Entry.Effects>
+                </Entry>
+                <Label x:Name="labelEye" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="{StaticResource ThemeTextColor}" Grid.Column="1" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EyeLabel_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>            
+        </StackLayout>
+    </custom:GradientColorStackLayout>    
+</ContentPage>

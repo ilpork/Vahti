@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:n="clr-namespace:System;assembly=netstandard"
+             x:Class="Vahti.Mobile.Forms.App">
+    <Application.Resources>
+        <Color x:Key="NavigationPrimary">#2196F3</Color>
+        <Color x:Key="ThemeBackgroundColor">#222222</Color>
+        <Color x:Key="ThemeBackgroundLightColor">#777777</Color>
+        <Color x:Key="ThemeLocationHeaderColor">#333333</Color>
+        <Color x:Key="ThemeListItemBackgroundColor">#777777</Color>
+        <Color x:Key="ThemeTabHeaderBackgroundColor">#777777</Color>
+        <Color x:Key="ThemeUnselectedTabTextColor">#777777</Color>
+        <Color x:Key="ThemeTextColor">#FFFFFF</Color>
+        <Color x:Key="ThemeShellBackgroundColor">#2d2d2d</Color>
+        <Color x:Key="ThemeSwitchThumbOnColor">#fdfdfd</Color>
+        <Color x:Key="ThemeSwitchThumbColor">#dfdfdf</Color>
+        
+        <Color x:Key="GrayThemeDark">#262626</Color>
+        <Color x:Key="GrayThemeLight">#292929</Color>
+        <Color x:Key="GrayThemeLocationHeaderColor">#333333</Color>
+        <Color x:Key="GrayThemeListItemBackground">#353535</Color>
+        <Color x:Key="GrayThemeTabHeaderBackgroundColor">#2d2d2d</Color>
+        <Color x:Key="GrayThemeUnselectedTabTextColor">#9d9d9d</Color>
+        <Color x:Key="GrayThemeTextColor">#ffffff</Color>
+        <Color x:Key="GrayThemeShellBackgroundColor">#292929</Color>
+        <Color x:Key="GrayThemeSwitchThumbOnColor">#fdfdfd</Color>
+        <Color x:Key="GrayThemeSwitchThumbColor">#cfcfcf</Color>
+        
+        <Color x:Key="GreenThemeDark">#006000</Color>
+        <Color x:Key="GreenThemeLight">#006500</Color>
+        <Color x:Key="GreenThemeLocationHeaderColor">#007200</Color>
+        <Color x:Key="GreenThemeListItemBackground">#007500</Color>
+        <Color x:Key="GreenThemeTabHeaderBackgroundColor">#007200</Color>
+        <Color x:Key="GreenThemeUnselectedTabTextColor">#a0a0a0</Color>
+        <Color x:Key="GreenThemeTextColor">#ffffff</Color>
+        <Color x:Key="GreenThemeShellBackgroundColor">#006000</Color>
+        <Color x:Key="GreenThemeSwitchThumbOnColor">#fdfdfd</Color>
+        <Color x:Key="GreenThemeSwitchThumbColor">#dddddd</Color>
+        
+        <Color x:Key="LightThemeDark">#fafafa</Color>
+        <Color x:Key="LightThemeLight">#fafafa</Color>
+        <Color x:Key="LightThemeLocationHeaderColor">#efefef</Color>
+        <Color x:Key="LightThemeListItemBackground">#ffffff</Color>
+        <Color x:Key="LightThemeTabHeaderBackgroundColor">#e5e5e5</Color>
+        <Color x:Key="LightThemeUnselectedTabTextColor">#777777</Color>
+        <Color x:Key="LightThemeTextColor">#222222</Color>
+        <Color x:Key="LightThemeShellBackgroundColor">#ffffff</Color>
+        <Color x:Key="LightThemeSwitchThumbOnColor">#9866f4</Color>
+        <Color x:Key="LightThemeSwitchThumbColor">#ffffff</Color>
+        
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+                <On Platform="Android" Value="FontAwesomeBrands.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome5Free-Regular" />
+                <!--<On Platform="UWP" Value="/Assets/FontAwesome5rands.otf#Font Awesome 5 Brands" />-->
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String"  x:Key="FontAwesomeSolid">
+                <On Platform="Android" Value="FontAwesomeSolid.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome5Free-Solid" />
+                <!--<On Platform="UWP" Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />-->
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+                <On Platform="Android" Value="FontAwesomeRegular.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome5Free-Regular" />
+                <!--<On Platform="UWP" Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />-->
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="WeatherIconsRegular">
+                <On Platform="Android" Value="WeatherIconsRegular.ttf#Regular" />
+                <On Platform="iOS" Value="WeatherIcons-Regular" />
+                <!--<On Platform="UWP" Value="/Assets/FontAwesome5rands.otf#Font Awesome 5 Brands" />-->
+            </OnPlatform>
+        </ResourceDictionary>
+        <n:Boolean x:Key="True">True</n:Boolean>
+        <n:Boolean x:Key="False">False</n:Boolean>
+    </Application.Resources>
+</Application>

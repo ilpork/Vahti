@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
+             xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
+             x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Resources>
+        <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+    </ContentPage.Resources>    
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshGraphCommand}" CommandParameter="{StaticResource False}" />
+    </ContentPage.Behaviors>    
+    <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundLightColor}" EndColor="{DynamicResource ThemeBackgroundColor}" Margin="0,0,0,0" Padding="16,12,16,12">
+
+        <RefreshView
+             Command="{Binding RefreshGraphCommand}"
+             CommandParameter="{StaticResource True}"
+             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            >
+            <CollectionView                        
+            ItemsSource="{Binding PlotModels}"
+                 
+            VerticalOptions="EndAndExpand">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <oxy:PlotView Model="{Binding .}" Margin="0" HeightRequest="250" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </custom:GradientColorStackLayout>
+</ContentPage>

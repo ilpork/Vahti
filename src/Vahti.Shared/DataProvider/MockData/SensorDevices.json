@@ -1,0 +1,38 @@
+[
+  {
+    "Address": "F0:AA:5D:71:49:A0",
+    "Id": "ruuviMower",
+    "Location": "Mower",
+    "SensorDeviceTypeId": "RuuviTag",
+    "CalculatedMeasurements": [
+      {
+        "id": "lastCharged",
+        "Class": "lastCharged",
+        "Name": "Last charged",
+        "Operator": 1,
+        "Sensor": "accelerationY",
+        "Type": 1,
+        "Unit": "s",
+        "Value": "-0.1"
+      }
+    ]
+  },
+  {
+    "Address": "DA:A0:AA:AB:6B:9F",
+    "Id": "ruuviLivingRoom",
+    "Location": "Living room",
+    "SensorDeviceTypeId": "RuuviTag"
+  },
+  {
+    "Address": "F3:D5:6D:2D:D0:E1",
+    "Id": "ruuviBedroom",
+    "Location": "Bedroom",
+    "SensorDeviceTypeId": "RuuviTag"
+  },
+    {
+      "Address": "23",
+      "Id": "dhtGarage",
+      "Location": "Garage",
+      "SensorDeviceTypeId": "DHT22"
+    } 
+]

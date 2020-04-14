@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>  
+  <!-- Base theme applied no matter what API -->
+  <style name="MainTheme.Dark" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">#2196F3</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">#1976D2</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">#555555</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    <item name="android:colorPressedHighlight">@color/listViewSelectedGray</item>    
+  </style>
+  <style name="MainTheme.Light" parent="Theme.AppCompat.Light">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">#2196F3</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">#1976D2</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">#555555</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    <item name="android:colorPressedHighlight">@color/listViewSelectedGray</item>
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#555555</item>
+  </style>
+  <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+  <style name="GrayTheme" parent="MainTheme.Dark">
+    <item name="android:colorLongPressedHighlight">@color/listViewSelectedGray</item>
+    <item name="android:colorFocusedHighlight">@color/listViewSelectedGray</item>
+    <item name="android:colorActivatedHighlight">@color/listViewSelectedGray</item>
+    <item name="android:activatedBackgroundIndicator">@color/listViewSelectedGray</item>
+    <item name="colorPrimaryDark">#2d2d2d</item>
+    <item name="android:navigationBarColor">#2d2d2d</item>
+  </style>
+  <style name="GreenTheme" parent="MainTheme.Dark">
+    <item name="android:colorLongPressedHighlight">@color/listViewSelectedGreen</item>
+    <item name="android:colorFocusedHighlight">@color/listViewSelectedGreen</item>
+    <item name="android:colorActivatedHighlight">@color/listViewSelectedGreen</item>
+    <item name="android:activatedBackgroundIndicator">@color/listViewSelectedGreen</item>
+    <item name="colorPrimaryDark">#006500</item>
+    <item name="android:navigationBarColor">#006500</item>
+  </style>
+  <style name="LightTheme" parent="MainTheme.Light">
+    <item name="android:colorLongPressedHighlight">@color/listViewSelectedLight</item>
+    <item name="android:colorFocusedHighlight">@color/listViewSelectedLight</item>
+    <item name="android:colorActivatedHighlight">@color/listViewSelectedLight</item>
+    <item name="android:activatedBackgroundIndicator">@color/listViewSelectedLight</item>
+    <item name="android:textColor">#222222</item>
+    <item name="colorPrimaryDark">#006500</item>
+  </style>
+  <style name="WidgetBackground">
+    <item name="android:background">#992d2d2d</item>
+  </style>    
+  <style name="Widget"/>
+  <style name="Widget.Header">      
+    <item name="android:layout_width">0dp</item>      
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">10dip</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">14sp</item>    
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+    <style name="Widget.Value">      
+    <item name="android:layout_width">0dp</item>      
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">14dip</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">22sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@android:color/white</item>
+  </style>  
+</resources>

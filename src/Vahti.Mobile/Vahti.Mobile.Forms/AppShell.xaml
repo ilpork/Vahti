@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:local="clr-namespace:Vahti.Mobile.Forms.Views"
+       xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"       
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       Title="Vahti"       
+       x:Class="Vahti.Mobile.Forms.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{DynamicResource ThemeShellBackgroundColor}" />
+                <Setter Property="Shell.ForegroundColor" Value="{DynamicResource ThemeTextColor}" />
+                <Setter Property="Shell.TitleColor" Value="{DynamicResource ThemeTextColor}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource ThemeBackgroundColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.FlyoutBackgroundColor" Value="#888888"/>                        
+            </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="200" BackgroundColor="{DynamicResource ThemeBackgroundLightColor}">            
+            <Label Text="Vahti"
+                   TextColor="{DynamicResource ThemeTextColor}"
+                   FontSize="48"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem 
+        FlyoutIcon="ic_menu_list.png" 
+                Title="{i18n:Translate App_TabSummaryTitle}" 
+                Style="{StaticResource BaseStyle}">
+        <ShellContent Route="summary"
+                      ContentTemplate="{DataTemplate local:LocationListPage}" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutIcon="ic_menu_settings.png"
+                Title="{i18n:Translate Options_Title}">
+        <ShellContent Route="options"
+                      ContentTemplate="{DataTemplate local:OptionsPage}" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutIcon="ic_menu_info.png"
+                Title="{i18n:Translate About_Title}">
+        <ShellContent Route="about"
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+</Shell>

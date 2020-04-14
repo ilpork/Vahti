@@ -1,0 +1,182 @@
+﻿{
+  "mqttConfiguration": {
+    "mqttServerEnabled": true
+  },
+  "dataBrokerConfiguration": {
+    "dataBrokerEnabled": true,
+    "mqttServerAddress": "192.168.1.2",
+    "cloudPublishConfiguration": {
+      "Enabled": true,
+      "updateIntervalMinutes": "5",
+      "historyUpdateIntervalMinutes": "30",
+      "historyLengthDays": "3",
+      "firebaseStorage": {
+        "enabled": true,
+        "url": "https://xyz.firebaseio.com/vahti/",
+        "databaseSecret": "databaseSecretFromFirebaseProjectSettings"
+      }
+    },
+    "alertConfiguration": {
+      "enabled": true,
+      "azurePushNotifications": {
+        "enabled": true,
+        "connectionString": "Endpoint=sb://myhub.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=xxx",
+        "notificationHubName": "MyHubName"
+      },
+      "emailNotifications": {
+        "Enabled": true,
+        "Sender": "John Doe <john.doe@domain.com>",
+        "Recipients": [
+          "John Doe <john.doe@domain.com>",
+          "jane.doe@domain.com"
+        ],
+        "smtpServerAddress": "smtpa.mailserver.com",
+        "smtpServerPort": "465",
+        "smtpAuthentication": {
+          "enabled": true,
+          "UserName": "myusername",
+          "Password": "mystrongpassword"
+        }
+      },
+      "alerts": [
+        {
+          "id": "mowerMissing",
+          "description": "Mower is missing",
+          "title": "Alert",
+          "message": "Mower has not been in charger for an hour",
+          "ruleSet": {
+            "type": "AND",
+            "rules": [
+              {
+                "location": "Mower",
+                "sensorDeviceId": "ruuviMower",
+                "sensorId": "lastCharged",
+                "operator": "IsGreaterThan",
+                "value": "3600"
+              }
+            ]
+          }
+        },
+        {
+          "id": "garageTempLow",
+          "description": "Garage temp is too low",
+          "title": "Alert",
+          "message": "Garage temp is under 15°C",
+          "ruleSet": {
+            "type": "AND",
+            "rules": [
+              {
+                "location": "Garage",
+                "sensorDeviceId": "ruuviGarage",
+                "sensorId": "temperature",
+                "operator": "IsLessThan",
+                "value": "15"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "bluetoothGwConfiguration": {
+    "bluetoothGwEnabled": true,
+    "mqttServerAddress": "192.168.1.2",
+    "scanIntervalSeconds": "60",
+    "adapterName": "hci0",
+    "sensorDevices": [
+      {
+        "id": "ruuviGarage",
+        "address": "12:34:56:78:90:AB",
+        "name": "RuuviTag in garage",
+        "sensorDeviceTypeId": "RuuviTag",
+        "location": "Garage"
+      },
+      {
+        "id": "ruuviMower",
+        "address": "AB:90:78:56:34:12",
+        "name": "RuuviTag on robotic mower charger",
+        "sensorDeviceTypeId": "RuuviTag",
+        "location": "Mower",
+        "calculatedMeasurements": [
+          {
+            "id": "lastCharged",
+            "name": "Last charged",
+            "class": "lastCharged",
+            "unit": "s",
+            "type": "wasLast",
+            "sensorId": "accelerationY",
+            "operator": "isLessThan",
+            "value": "-0.15"
+          }
+        ]
+      }
+    ],
+    "sensorDeviceTypes": [
+      {
+        "id": "RuuviTag",
+        "name": "RuuviTag",
+        "manufacturer": "Ruuvi",
+        "sensors": [
+          {
+            "id": "temperature",
+            "name": "Temperature",
+            "class": "temperature",
+            "unit": "°C"
+          },
+          {
+            "id": "humidity",
+            "name": "Relative humidity",
+            "class": "humidity",
+            "unit": "%"
+          },
+          {
+            "id": "pressure",
+            "name": "Air pressure",
+            "class": "pressure",
+            "unit": "hPa"
+          },
+          {
+            "id": "accelerationX",
+            "name": "Acceleration (X)",
+            "class": "accelerationX",
+            "unit": "G"
+          },
+          {
+            "id": "accelerationY",
+            "name": "Acceleration (Y)",
+            "class": "accelerationY",
+            "unit": "G"
+          },
+          {
+            "id": "accelerationZ",
+            "name": "Acceleration (Z)",
+            "class": "accelerationZ",
+            "unit": "G"
+          },
+          {
+            "id": "batteryVoltage",
+            "name": "Battery voltage",
+            "class": "batteryvoltage",
+            "unit": "V"
+          },
+          {
+            "id": "movementCounter",
+            "name": "Movement counter",
+            "class": "movementCounter",
+            "unit": ""
+          }
+        ]
+      }
+    ]
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "Console": {
+      "IncludeScopes": true
+    }
+  }
+}

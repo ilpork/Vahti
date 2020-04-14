@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;DebugMock</Configurations>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="DataProvider\MockData\HistoryData.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+    <EmbeddedResource Include="DataProvider\MockData\Locations.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+    <EmbeddedResource Include="DataProvider\MockData\MobileDevices.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+    <EmbeddedResource Include="DataProvider\MockData\SensorDevices.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+    <EmbeddedResource Include="DataProvider\MockData\SensorDeviceTypes.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

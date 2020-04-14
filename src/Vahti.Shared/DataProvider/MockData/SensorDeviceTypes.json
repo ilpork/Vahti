@@ -1,0 +1,76 @@
+[  
+    {
+      "Id": "RuuviTag",
+      "Manufacturer": "Ruuvi",
+      "Name": "RuuviTag",
+      "Sensors": [
+        {
+          "Class": "temperature",
+          "Id": "temperature",
+          "Name": "Temperature",
+          "Unit": "°C"
+        },
+        {
+          "Class": "humidity",
+          "Id": "humidity",
+          "Name": "Relative humidity",
+          "Unit": "%"
+        },
+        {
+          "Class": "pressure",
+          "Id": "pressure",
+          "Name": "Air pressure",
+          "Unit": "hPa"
+        },
+        {
+          "Class": "accelerationX",
+          "Id": "accelerationX",
+          "Name": "Acceleration (X)",
+          "Unit": "G"
+        },
+        {
+          "Class": "accelerationY",
+          "Id": "accelerationY",
+          "Name": "Acceleration (Y)",
+          "Unit": "G"
+        },
+        {
+          "Class": "accelerationZ",
+          "Id": "accelerationZ",
+          "Name": "Acceleration (Z)",
+          "Unit": "G"
+        },
+        {
+          "Class": "batteryvoltage",
+          "Id": "batteryVoltage",
+          "Name": "Battery voltage",
+          "Unit": "V"
+        },
+        {
+          "Class": "movementCounter",
+          "Id": "movementCounter",
+          "Name": "Movement counter",
+          "Unit": ""
+        }
+      ]
+    },    
+    {
+      "Id": "DHT22",
+      "Manufacturer": "",
+      "Name": "DHT22",
+      "Sensors": [
+        {
+          "Class": "temperature",
+          "Id": "temperature",
+          "Name": "Temperature",
+          "Unit": "°C"
+        },
+        {
+          "Class": "humidity",
+          "Id": "humidity",
+          "Name": "Relative humidity",
+          "Unit": "%"
+        }
+      ]
+    } 
+]

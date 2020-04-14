@@ -1,0 +1,197 @@
+[  
+    {
+      "Id": "Mower",
+      "Measurements": [
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "temperature",
+          "Timestamp": "2020-03-15T09:57:40.3556827+02:00",
+          "Value": "1.12"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "humidity",
+          "Timestamp": "2020-03-15T09:57:40.3558717+02:00",
+          "Value": "79.8125"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "pressure",
+          "Timestamp": "2020-03-15T09:57:40.3560931+02:00",
+          "Value": "1006.51"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "accelerationX",
+          "Timestamp": "2020-03-15T09:57:40.3563635+02:00",
+          "Value": "0.012"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "accelerationY",
+          "Timestamp": "2020-03-15T09:57:40.356672+02:00",
+          "Value": "0.128"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "accelerationZ",
+          "Timestamp": "2020-03-15T09:57:40.35702+02:00",
+          "Value": "1.076"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "batteryVoltage",
+          "Timestamp": "2020-03-15T09:57:40.3573988+02:00",
+          "Value": "2.713"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "movementCounter",
+          "Timestamp": "2020-03-15T09:57:40.3578354+02:00",
+          "Value": "79"
+        },
+        {
+          "SensorDeviceId": "ruuviMower",
+          "SensorId": "lastCharged",
+          "Timestamp": "2020-03-15T09:57:40.3626561+02:00",
+          "Value": "0"
+        }
+      ],
+      "Name": "Mower",
+      "Timestamp": "2020-03-15T09:57:40.3574636+02:00",
+      "UpdateInterval": 4
+    },
+    {
+      "Id": "Living room",
+      "Measurements": [
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "temperature",
+          "Timestamp": "2020-03-15T09:57:40.3579496+02:00",
+          "Value": "22.98"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "humidity",
+          "Timestamp": "2020-03-15T09:57:40.3581045+02:00",
+          "Value": "19.325"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "pressure",
+          "Timestamp": "2020-03-15T09:57:40.3583045+02:00",
+          "Value": "1004.02"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "accelerationX",
+          "Timestamp": "2020-03-15T09:57:40.3585546+02:00",
+          "Value": "-0.036"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "accelerationY",
+          "Timestamp": "2020-03-15T09:57:40.3588493+02:00",
+          "Value": "-0.016"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "accelerationZ",
+          "Timestamp": "2020-03-15T09:57:40.3591891+02:00",
+          "Value": "1.016"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "batteryVoltage",
+          "Timestamp": "2020-03-15T09:57:40.3595808+02:00",
+          "Value": "2.917"
+        },
+        {
+          "SensorDeviceId": "ruuviLivingRoom",
+          "SensorId": "movementCounter",
+          "Timestamp": "2020-03-15T09:57:40.3600209+02:00",
+          "Value": "35"
+        }
+      ],
+      "Name": "Living room",
+      "Timestamp": "2020-03-15T09:57:40.35964+02:00",
+      "UpdateInterval": 4
+    },
+    {
+      "Id": "Bedroom",
+      "Measurements": [
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "temperature",
+          "Timestamp": "2020-03-15T09:57:40.3601377+02:00",
+          "Value": "18.66"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "humidity",
+          "Timestamp": "2020-03-15T09:57:40.3602892+02:00",
+          "Value": "26.775000000000002"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "pressure",
+          "Timestamp": "2020-03-15T09:57:40.3604859+02:00",
+          "Value": "1005.04"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "accelerationX",
+          "Timestamp": "2020-03-15T09:57:40.3607277+02:00",
+          "Value": "-0.008"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "accelerationY",
+          "Timestamp": "2020-03-15T09:57:40.3610144+02:00",
+          "Value": "-0.004"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "accelerationZ",
+          "Timestamp": "2020-03-15T09:57:40.3613485+02:00",
+          "Value": "1.028"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "batteryVoltage",
+          "Timestamp": "2020-03-15T09:57:40.361725+02:00",
+          "Value": "2.863"
+        },
+        {
+          "SensorDeviceId": "ruuviBedroom",
+          "SensorId": "movementCounter",
+          "Timestamp": "2020-03-15T09:57:40.3621445+02:00",
+          "Value": "186"
+        }       
+      ],
+      "Name": "Bedroom",
+      "Timestamp": "2020-03-15T09:57:40.3622598+02:00",
+      "UpdateInterval": 4
+    },
+    {
+      "Id": "Garage",
+      "Measurements": [
+        {
+          "SensorDeviceId": "dhtGarage",
+          "SensorId": "temperature",
+          "Timestamp": "2020-03-15T09:56:45.9583909+02:00",
+          "Value": "12.300000190734863"
+        },
+        {
+          "SensorDeviceId": "dhtGarage",
+          "SensorId": "humidity",
+          "Timestamp": "2020-03-15T09:56:46.0422541+02:00",
+          "Value": "35.400001525878906"
+        }
+      ],
+      "Name": "Garage",
+      "Timestamp": "2020-03-15T09:56:46.0419068+02:00",
+      "UpdateInterval": 4
+    }
+  
+]
