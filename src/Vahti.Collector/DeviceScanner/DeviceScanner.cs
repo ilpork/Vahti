@@ -1,10 +1,12 @@
 ﻿using BleReaderNet.Device;
 using BleReaderNet.Reader;
+using Iot.Device.DHTxx;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Device.Gpio;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +29,7 @@ namespace Vahti.Collector.DeviceScanner
         private readonly CollectorConfiguration _config;
         private readonly Dictionary<string, DateTime> _wasLastList = new Dictionary<string, DateTime>();
         private readonly ReadOnlyCollection<string> _bluetoothDevices = new List<string>() { Type.SensorDeviceTypeId.RuuviTag }.AsReadOnly();
-        private NumberFormatInfo _numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
+        private readonly NumberFormatInfo _numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
 
         public DeviceScanner(ILogger<DeviceScanner> logger, IBleReader bleReader, IOptions<CollectorConfiguration> config)
         {
@@ -60,6 +62,9 @@ namespace Vahti.Collector.DeviceScanner
                 {
                     case Type.SensorDeviceTypeId.RuuviTag:
                         measurementsList.AddRange(await GetRuuviTagMeasurements(sensorDevice));
+                        break;
+                    case Type.SensorDeviceTypeId.Dht22:
+                        measurementsList.AddRange(GetDht22Measurements(sensorDevice));
                         break;
                     // Add handlers for other device types here                
                     default:
@@ -102,8 +107,34 @@ namespace Vahti.Collector.DeviceScanner
                 measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(_numberFormatInfo) });
 
             return measurements;
-
         }
+
+        /// <summary>
+        /// Read values from DHT22 sensor. It seems that the Dht22 support in Iot.Device.Bindings does not work very well, 
+        /// but this can be considered as example on how to easily add support for additional devices
+        /// </summary>        
+        private IList<MeasurementData> GetDht22Measurements(SensorDevice sensorDevice)
+        {
+            var measurements = new List<MeasurementData>();
+                        
+            var pinNumber = int.Parse(sensorDevice.Address);
+
+            using (var dht22 = new Dht22(pinNumber, PinNumberingScheme.Logical))
+            {
+                if (dht22.IsLastReadSuccessful)
+                {
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
+                }
+                else
+                {
+                    _logger.LogWarning($"{DateTime.Now}: Could not read data from {sensorDevice.Id}");
+                }
+            }           
+
+            return measurements;
+        }
+
         private MeasurementData GetCustomMeasurementValue(SensorDevice sensorDevice, List<MeasurementData> measurements, CustomMeasurementRule rule)
         {
             var sensorMeasurement = measurements.FirstOrDefault(m => m.SensorId.Equals(rule.SensorId, StringComparison.OrdinalIgnoreCase));

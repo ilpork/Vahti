@@ -5,6 +5,7 @@
     /// </summary>
     public static class SensorDeviceTypeId
     {
-        public const string RuuviTag = "RuuviTag";                
+        public const string RuuviTag = "RuuviTag";
+        public const string Dht22 = "DHT22";
     }
 }
