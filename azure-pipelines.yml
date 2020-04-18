@@ -11,10 +11,10 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - task: DotNetCoreCLI@2
-    displayName: Build Vahti.BluetoothGw
+    displayName: Build Vahti.Collector
     inputs:
       command: build
-      projects: 'src/Vahti.BluetoothGw/**/*.csproj'
+      projects: 'src/Vahti.Collector/**/*.csproj'
       arguments: '--configuration Release'
   - task: DotNetCoreCLI@2
     displayName: Build Vahti.DataBroker
@@ -47,7 +47,7 @@ jobs:
       projects: '**/*Test/*.csproj'
       arguments: '--configuration $(buildConfiguration)'
   - task: DotNetCoreCLI@2
-    displayName: Publish Vahti.Server  (linux-arm)
+    displayName: Publish Vahti.Server (linux-arm)
     inputs:
       command: publish
       publishWebProjects: false

@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using Vahti.Shared.TypeData;
 
-namespace Vahti.BluetoothGw.Configuration
+namespace Vahti.Collector.Configuration
 {
     /// <summary>
-    /// Represents configuration of <see cref="BluetoothGwService"/>
+    /// Represents configuration of <see cref="CollectorService"/>
     /// </summary>
-    public partial class BluetoothGwConfiguration
+    public partial class CollectorConfiguration
     {
-        public bool BluetoothGwEnabled { get; set; }
+        public bool CollectorEnabled { get; set; }
 
         public string MqttServerAddress { get; set; }
 
         public int ScanIntervalSeconds { get; set; }
 
-        public string AdapterName { get; set; }
+        public string BluetoothAdapterName { get; set; }
 
         public List<SensorDevice> SensorDevices { get; set; }
 
