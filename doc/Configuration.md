@@ -1,7 +1,7 @@
 # Configuration
 The server side applications are configured using configuration file (`config.json`), which is placed in same folder as where the application binaries are. You can use `config.template.json` as base by copying it to `config.json`. 
 
-The can contain multiple configuration sections depending on application. There's one section per service (BluetoothGw, DataBroker, Mqtt) and also logging section can be used. Vahti.App.Full contains all services in one app, so its configuration file must contain all sections.
+The can contain multiple configuration sections depending on application. There's one section per service (Collector, DataBroker, Mqtt) and also logging section can be used. Vahti.App.Full contains all services in one app, so its configuration file must contain all sections.
 
 ## MqttConfiguration
 It's simple. Either the MQTT service is enabled or not. If you don't have another MQTT service running, then this should be true. MQTT service is a hub for published MQTT messages containing sensor data.
@@ -178,15 +178,15 @@ Example:
   }
 ```
 
-### BluetoothGwConfiguration
-Bluetooth gateway is responsible for reading data from Bluetooth LE devices and publish the data using MQTT. Disable it if you don't have Bluetooth LE devices that you would like to monitor using this service.
+### CollectorConfiguration
+Collector is responsible for reading data from devices and publish the data using MQTT. Disable it if you don't have devices which you would like to monitor using this service.
 
 |Property|Purpose|
 |--------|-------|
-|bluetoothGwEnabled|Indicates if Bluetooth gateway service is enabled|
+|collectorEnabled|Indicates if collector service is enabled|
 |mqttServerAddress|Address of the MQTT server|
-|scanIntervalSeconds|How often to read data from Bluetooth LE devices|
-|adapterName|Name of Bluetooth adapter used when scanning|
+|scanIntervalSeconds|How often to read data from devices|
+|bluetoothAdapterName|Name of Bluetooth adapter used when scanning Bluetooth LE devices|
 |sensorDeviceTypes|List of sensor device types|
 |sensorDevices|List of devices having sensors| 
 
@@ -234,7 +234,7 @@ Represents a single instance of an sensor device type.
 |id|Unique ID of the sensor device instance|
 |name|Name of the sensor device. Could be used in user interfaces|
 |sensorDeviceTypeId|ID of the sensor device type|
-|address|Address information (could be MAC address for Bluetooth LE devices)|
+|address|Address information (could be MAC address for Bluetooth LE devices, or pin number for device connected via GPIO)|
 |location|Name of location to which the sensor is related to. Location name is also shown in mobile app UI|
 |calculatedMeasurements|List of sensor device instance specific custom measurements|
 
@@ -254,11 +254,11 @@ An experimental way to support sensor device instance specific measurements. In 
 
 
   ```
-  "bluetoothGwConfiguration": {
-    "bluetoothGwEnabled": true,
+  "collectorConfiguration": {
+    "collectorEnabled": true,
     "mqttServerAddress": "192.168.1.2",
     "scanIntervalSeconds": "60",
-    "adapterName": "hci0",
+    "bluetoothAdapterName": "hci0",
     "sensorDevices": [
       {
         "id": "ruuviGarage",

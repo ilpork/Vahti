@@ -20,11 +20,7 @@ The tutorial contains a lot of steps, but the aim is to help those who are not s
  https://docs.microsoft.com/en-us/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm
 
 ### Create Google Firebase realtime database
-1. In Google Firebase project overview page select "Database" and "Create realtime database". Select "Start in test mode" to use it without authentication 
-2. Now you see the URL of your database and copy it to clipboard
-3. If App.config does not already exist in root of Vahti.Mobile.Android project, copy App.template.config as App.config
-4. Put the database URL in `value` field of `FirebaseDatabaseUrl` app setting in `App.config`
-5. When you've later noticed that everything works, you can enable authentication for Firebase database (in `Rules` tab of Firebase database console) and put database secret (found in `Project settings\Service accounts\Database secrets` in Firebase Console) as `value` of `FirebaseDatabaseSecret` app setting
+Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on how to create Firebase database, where data is stored.
 
 ### Update mobile projects
 1. Set Vahti.Mobile.Android project as start-up project in toolbar (or via project context menu)
@@ -34,31 +30,5 @@ The tutorial contains a lot of steps, but the aim is to help those who are not s
 5. Build solution (CTRL-Shift-B)
 6. Build should succeed and you can run the application, which deploy it in your mobile device
 
-### Set up the Raspberry Pi
-Steps below are minimum steps for simple setup, so you should harden the security when you've checked that everything works.
-1. Get Balena Etcher https://www.balena.io/etcher/
-2. Get Raspbian https://www.raspberrypi.org/downloads/raspbian/
-3. Extract image
-4. Flash it using Etcher
-5. Create empty file named `ssh` on boot partition of SD card to enable SSH service
-6. Put card to Raspberry Pi
-7. Connect Raspberry Pi to LAN and power it on
-8. Connect using SSH terminal (`ssh pi@raspberrypi`) 
-9. Change default password for user pi by typing `passwd`
-10. Update Raspbian (`sudo apt update` and `sudo apt upgrade`)
-11. Check BlueZ version by running `bluetoothd -v`. It should output "5.50" or newer
-12. Download Vahti.Server binaries: `wget https://github.com/ilpork/vahti/releases/latest/download/Vahti.Server-linux-arm.zip`
-13. Extract the files: `tar -xzf Vahti.Server.zip`
-14. Move to dir
-15. Copy config.template.json as config.json 'cp config.template.json config.json'
-16. Update user permission on config.json so that only user `pi` can read it: `chmod 600 config.json`
-17. Edit config.json: 'nano config.json'. See [Configuration](Configuration.md) for details on how to configure the app.
-- In scenario described in this tutorial, you need to have all services enabled and configured
-- You can disable `alertConfiguration` if you don't want to configure alerts yet
-- Fill your database URL (and database secret if authentication is enabled) in `firebaseStorage` section
-- Update MQTT server address in `DataBrokerConfiguration` and `BluetoothGwConfiguration` sections. As it's running on same device, use the IP of the Raspberry Pi
-- Update `BluetoothGwConfiguration` according to how many RuuviTags you have. `location` of SensorDevice is shown in mobile app UI, `address` is the MAC address of the RuuviTag and `name` is free text. You can update `name` of each sensor in `SensorDeviceType` to have localized text on your language
-- Configure suitable interval for data publishing in `DataBrokerConfiguration`. I use 5 minutes (and 30 minutes for history data).
-18. Add user to bluetooth group 'sudo adduser pi bluetooth'
-19. Reboot 'sudo reboot now'
-20. Now you can navigate to folder and start the app by executing `./Vahti.Server`
+### Set up Raspberry Pi
+Read [Setting up Raspberry Pi](SettingUpRaspberryPi) to get detailed information about needed Raspberry Pi setup.

@@ -59,11 +59,11 @@ This example assumes that you have one RuuviTag.
       ]
     }
   },
-  "bluetoothGwConfiguration": {
-    "bluetoothGwEnabled": true,
+  "collectorConfiguration": {
+    "collectorEnabled": true,
     "mqttServerAddress": "192.168.1.2",
     "scanIntervalSeconds": "60",
-    "adapterName": "hci0",
+    "bluetoothAdapterName": "hci0",
     "sensorDevices": [
       {
         "id": "ruuviGarage",
@@ -135,7 +135,7 @@ This example assumes that you have one RuuviTag.
 ```
 
 ## Example configuration 2
-If you don't have RuuviTag or other Bluetooth LE device, but some other source providing data (see [Add other data sources](AddOtherDataSources.md)), the configuration file is shorter. This example assumes that you have configured a sensor device with name `dhtGarage` to publish temperature data.
+If you don't have RuuviTag, DHT22 or other device supported by Vahti.Collector, but some other source providing data (see [Add other data sources](AddOtherDataSources.md)), the configuration file is shorter. This example assumes that you have configured a sensor device with name `dhtGarage` to publish temperature data.
 
 ```
 {
