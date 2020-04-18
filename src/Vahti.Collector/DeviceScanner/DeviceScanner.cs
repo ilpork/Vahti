@@ -1,11 +1,14 @@
 ﻿using BleReaderNet.Device;
 using BleReaderNet.Reader;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Vahti.Collector.Configuration;
 using Vahti.Shared.Data;
 using Vahti.Shared.TypeData;
 using Vahti.Shared.Utils;
@@ -17,70 +20,90 @@ namespace Vahti.Collector.DeviceScanner
     /// </summary>
     public class DeviceScanner : IDeviceScanner
     {
+        public const int DeviceScanDuration = 10;
+
         private readonly IBleReader _bleReader;
         private readonly ILogger<DeviceScanner> _logger;
+        private readonly CollectorConfiguration _config;
         private readonly Dictionary<string, DateTime> _wasLastList = new Dictionary<string, DateTime>();
+        private readonly ReadOnlyCollection<string> _bluetoothDevices = new List<string>() { Type.SensorDeviceTypeId.RuuviTag }.AsReadOnly();
+        private NumberFormatInfo _numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
 
-        public DeviceScanner(ILogger<DeviceScanner> logger, IBleReader bleReader)
+        public DeviceScanner(ILogger<DeviceScanner> logger, IBleReader bleReader, IOptions<CollectorConfiguration> config)
         {
             _bleReader = bleReader;
             _logger = logger;
-        }
-        public async Task ScanDevicesAsync(string adapterName, int scanDurationSeconds)
-        {
-            await _bleReader.ScanAsync(adapterName, scanDurationSeconds);
+            _config = config.Value;
         }
 
-        public async Task<List<MeasurementData>> GetDeviceDataAsync(SensorDevice sensorDevice)
+        public async Task<IList<MeasurementData>> GetDeviceDataAsync(IList<SensorDevice> sensorDevices)
         {
-            if (sensorDevice == null)
+            if (sensorDevices == null)
             {
                 return null;
             }
+            
+            var measurementsList = new List<MeasurementData>();            
 
-            var measurementsList = new List<MeasurementData>();
-            var nfi = new NumberFormatInfo() { NumberDecimalSeparator = "." };
-
-            switch (sensorDevice.SensorDeviceTypeId)
+            bool bluetoothDevicesScanned = false;
+            foreach (var sensorDevice in sensorDevices)
             {
-                case "RuuviTag":
-                    var ruuviData = await _bleReader.GetManufacturerDataAsync<RuuviTag>(sensorDevice.Address);
-
-                    measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = ruuviData.Temperature.Value.ToString(nfi) });
-                    measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = ruuviData.Humidity.Value.ToString(nfi) });
-                    measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "pressure", Value = ruuviData.AirPressure.Value.ToString(nfi) });
-
-                    if (ruuviData.AccelerationX != null)
-                        measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationX", Value = ruuviData.AccelerationX.Value.ToString(nfi) });
-                    if (ruuviData.AccelerationY != null)
-                        measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationY", Value = ruuviData.AccelerationY.Value.ToString(nfi) });
-                    if (ruuviData.AccelerationZ != null)
-                        measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationZ", Value = ruuviData.AccelerationZ.Value.ToString(nfi) });
-                    if (ruuviData.BatteryVoltage != null)
-                        measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "batteryVoltage", Value = ruuviData.BatteryVoltage.Value.ToString(nfi) });
-                    if (ruuviData.MovementCounter != null)
-                        measurementsList.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(nfi) });
-
-                    // Publish measurement sequence number, tx power etc here if needed
-                    break;
-                // Add handlers for other device types here                
-                default:
-                    _logger.LogError($"Type of device at {sensorDevice.Address} is not supported. " +
-                        "Please check that it's been correctly defined in 'sensordevicetype' section of the configuration file");
-                    return null;
-            }
-
-            if (sensorDevice.CalculatedMeasurements != null)
-            {
-                foreach (var customMeasurement in sensorDevice.CalculatedMeasurements)
+                // Scan devices only once per collecting session
+                if (!bluetoothDevicesScanned && _bluetoothDevices.Contains(sensorDevice.SensorDeviceTypeId, StringComparer.OrdinalIgnoreCase))
                 {
-                    measurementsList.Add(GetCustomMeasurementValue(sensorDevice, measurementsList, customMeasurement));
+                    _logger.LogDebug($"{DateTime.Now}: Scanning for {DeviceScanDuration} seconds...");
+                    await _bleReader.ScanAsync(_config.BluetoothAdapterName);
+                    bluetoothDevicesScanned = true;
                 }
-            }
+
+                switch (sensorDevice.SensorDeviceTypeId)
+                {
+                    case Type.SensorDeviceTypeId.RuuviTag:
+                        measurementsList.AddRange(await GetRuuviTagMeasurements(sensorDevice));
+                        break;
+                    // Add handlers for other device types here                
+                    default:
+                        _logger.LogError($"Type of device at {sensorDevice.Address} is not supported. " +
+                            "Please check that it's been correctly defined in 'sensordevicetype' section of the configuration file");
+                        return null;
+                }
+
+                if (sensorDevice.CalculatedMeasurements != null)
+                {
+                    foreach (var customMeasurement in sensorDevice.CalculatedMeasurements)
+                    {
+                        measurementsList.Add(GetCustomMeasurementValue(sensorDevice, measurementsList, customMeasurement));
+                    }
+                }
+            }            
 
             return measurementsList;
         }
 
+        private async Task<IList<MeasurementData>> GetRuuviTagMeasurements(SensorDevice sensorDevice)
+        {
+            var measurements = new List<MeasurementData>();
+
+            var ruuviData = await _bleReader.GetManufacturerDataAsync<RuuviTag>(sensorDevice.Address);
+
+            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = ruuviData.Temperature.Value.ToString(_numberFormatInfo) });
+            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = ruuviData.Humidity.Value.ToString(_numberFormatInfo) });
+            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "pressure", Value = ruuviData.AirPressure.Value.ToString(_numberFormatInfo) });
+
+            if (ruuviData.AccelerationX != null)
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationX", Value = ruuviData.AccelerationX.Value.ToString(_numberFormatInfo) });
+            if (ruuviData.AccelerationY != null)
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationY", Value = ruuviData.AccelerationY.Value.ToString(_numberFormatInfo) });
+            if (ruuviData.AccelerationZ != null)
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationZ", Value = ruuviData.AccelerationZ.Value.ToString(_numberFormatInfo) });
+            if (ruuviData.BatteryVoltage != null)
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "batteryVoltage", Value = ruuviData.BatteryVoltage.Value.ToString(_numberFormatInfo) });
+            if (ruuviData.MovementCounter != null)
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(_numberFormatInfo) });
+
+            return measurements;
+
+        }
         private MeasurementData GetCustomMeasurementValue(SensorDevice sensorDevice, List<MeasurementData> measurements, CustomMeasurementRule rule)
         {
             var sensorMeasurement = measurements.FirstOrDefault(m => m.SensorId.Equals(rule.SensorId, StringComparison.OrdinalIgnoreCase));

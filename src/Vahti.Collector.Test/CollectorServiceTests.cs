@@ -85,7 +85,7 @@ namespace Vahti.Collector.Test
             _mqttClientMock.Setup(m => m.IsConnected).Returns(true);
             _mqttClientMock.Setup(m => m.PublishAsync(It.IsAny<MqttApplicationMessage>(), CancellationToken.None)).Callback((MqttApplicationMessage message, CancellationToken ct) => { publishedMessage = message; });
             _configMock.Setup(c => c.Value).Returns(config);
-            _deviceScannerMock.Setup(d => d.GetDeviceDataAsync(sensorDevice)).ReturnsAsync(measurementList);
+            _deviceScannerMock.Setup(d => d.GetDeviceDataAsync(config.SensorDevices)).ReturnsAsync(measurementList);
 
             //Act      
             var btGwService = _serviceProvider.GetService<CollectorService>();
@@ -117,7 +117,7 @@ namespace Vahti.Collector.Test
 
             _mqttClientMock.Setup(m => m.IsConnected).Returns(true);
             _configMock.Setup(c => c.Value).Returns(config);
-            _deviceScannerMock.Setup(d => d.ScanDevicesAsync(It.IsAny<string>(), It.IsAny<int>())).Throws(new Exception());
+            _deviceScannerMock.Setup(d => d.GetDeviceDataAsync(It.IsAny<IList<SensorDevice>>())).Throws(new Exception());
 
             //Act      
             var btGwService = _serviceProvider.GetService<CollectorService>();
@@ -130,7 +130,7 @@ namespace Vahti.Collector.Test
             await Task.Delay(500);
             cts.Cancel();
 
-            _deviceScannerMock.Verify(d => d.ScanDevicesAsync(It.IsAny<string>(), It.IsAny<int>()),
+            _deviceScannerMock.Verify(d => d.GetDeviceDataAsync(It.IsAny<IList<SensorDevice>>()),
                 Times.Exactly(CollectorService.MaxRepeatedReadFailCount), "The service did not stop after specified amount of failed reads");
         }
 

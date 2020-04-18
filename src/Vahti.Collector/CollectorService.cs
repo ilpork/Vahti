@@ -23,8 +23,7 @@ namespace Vahti.Collector
     /// Service to scan and collect data from devices and publish it using an MQTT client
     /// </summary>
     public class CollectorService : BackgroundService, IMqttClientConnectedHandler
-    {
-        public const int DeviceScanDuration = 10;
+    {        
         public const int MaxRepeatedReadFailCount = 10;
 
         private readonly ILogger<CollectorService> _logger;
@@ -102,18 +101,7 @@ namespace Vahti.Collector
                     // First scan the devices
                     try
                     {
-                        _logger.LogDebug($"{DateTime.Now}: Scanning for {DeviceScanDuration} seconds...");
-                        await _deviceScanner.ScanDevicesAsync(_config.BluetoothAdapterName, DeviceScanDuration);
-
-                        // Read device data
-                        foreach (var sensorDevice in _sensorDevices)
-                        {
-                            var deviceMeasurements = await _deviceScanner.GetDeviceDataAsync(sensorDevice);
-                            if (deviceMeasurements != null)
-                            {
-                                measurements.AddRange(deviceMeasurements);
-                            }
-                        }
+                        measurements.AddRange(await _deviceScanner.GetDeviceDataAsync(_sensorDevices));
                     }
                     catch (Exception ex)
                     {
