@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vahti.BluetoothGw\Vahti.BluetoothGw.csproj" />
+    <ProjectReference Include="..\Vahti.Collector\Vahti.Collector.csproj" />
     <ProjectReference Include="..\Vahti.DataBroker\Vahti.DataBroker.csproj" />
     <ProjectReference Include="..\Vahti.Mqtt\Vahti.Mqtt.csproj" />
     <ProjectReference Include="..\Vahti.Shared\Vahti.Shared.csproj" />

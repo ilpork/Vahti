@@ -9,9 +9,9 @@ using MQTTnet;
 using MQTTnet.Extensions.ManagedClient;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Vahti.BluetoothGw;
-using Vahti.BluetoothGw.Configuration;
-using Vahti.BluetoothGw.DeviceScanner;
+using Vahti.Collector;
+using Vahti.Collector.Configuration;
+using Vahti.Collector.DeviceScanner;
 using Vahti.DataBroker;
 using Vahti.DataBroker.AlertHandler;
 using Vahti.DataBroker.Configuration;
@@ -59,14 +59,14 @@ namespace Vahti.Server
                 services.AddSingleton<IAlertHandler, AlertHandler>();
                 services.AddHostedService<DataBrokerService>();
 
-                services.Configure<BluetoothGwConfiguration>(hostContext.Configuration.GetSection("bluetoothGwConfiguration"));
+                services.Configure<CollectorConfiguration>(hostContext.Configuration.GetSection("collectorConfiguration"));
                 services.Configure<List<SensorDevice>>(hostContext.Configuration.GetSection("sensorDevice"));
                 services.Configure<List<SensorDeviceType>>(hostContext.Configuration.GetSection("sensorDevicetype"));
                 services.AddSingleton<IBluetoothService, DotNetBlueZService>();
                 services.AddSingleton<IBleReader, BleReader>();
                 services.AddSingleton<IDeviceScanner, DeviceScanner>();
                 services.AddTransient((p) => new MqttFactory().CreateManagedMqttClient());
-                services.AddHostedService<BluetoothGwService>();
+                services.AddHostedService<CollectorService>();
 
             })
             .ConfigureLogging((hostingContext, logging) =>

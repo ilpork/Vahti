@@ -5,13 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Vahti.Shared.Data;
 using Vahti.Shared.TypeData;
 using Vahti.Shared.Utils;
 
-namespace Vahti.BluetoothGw.DeviceScanner
+namespace Vahti.Collector.DeviceScanner
 {
     /// <summary>
     /// Provides functionality to scan and read data from devices

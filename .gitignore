@@ -363,3 +363,4 @@ MigrationBackup/
 /src/Vahti.App/Vahti.App.Full/config.json
 /src/Vahti.Mobile/Vahti.Mobile.Android/google-services.json
 /src/Vahti.Server/config.json
+/src/Vahti.Collector/Properties/launchSettings.json

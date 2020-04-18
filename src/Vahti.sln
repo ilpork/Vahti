@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.DataBroker", "Vahti.DataBroker\Vahti.DataBroker.csproj", "{09A44F61-3D3C-4B38-8BDA-A8C8116C795A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.BluetoothGw", "Vahti.BluetoothGw\Vahti.BluetoothGw.csproj", "{5A522053-D655-40D1-BCE7-33B8E7269663}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Collector", "Vahti.Collector\Vahti.Collector.csproj", "{5A522053-D655-40D1-BCE7-33B8E7269663}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Shared", "Vahti.Shared\Vahti.Shared.csproj", "{58F6E7FD-EF04-4261-9A63-A23C45739965}"
 EndProject
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vahti.Mobile.iOS", "Vahti.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.DataBroker.Test", "Vahti.DataBroker.Test\Vahti.DataBroker.Test.csproj", "{FC4CE2F2-FBFB-469F-9940-F40E03A7868D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.BluetoothGw.Test", "Vahti.BluetoothGw.Test\Vahti.BluetoothGw.Test.csproj", "{402E4F31-3267-4820-8610-4DAC9D8D4557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Collector.Test", "Vahti.Collector.Test\Vahti.Collector.Test.csproj", "{402E4F31-3267-4820-8610-4DAC9D8D4557}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Mqtt", "Vahti.Mqtt\Vahti.Mqtt.csproj", "{27C9828B-23AC-4CB7-BC8B-93728DFAB6DA}"
 EndProject
