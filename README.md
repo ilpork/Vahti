@@ -17,8 +17,8 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 ![Locations](doc/images/locations.png) 
 ![Locations](doc/images/history.png)
 ![Locations](doc/images/details.png)
-- Implemented with Xamarin Forms (focus has been on Android because iOS compiled with Apple Developer license works only a week at time, so it's not very appealing)
-- Show latest measurement data and history graphs for measurement data
+- Implemented with Xamarin Forms (focus has been on Android because iOS app compiled with Apple Developer license works only a week at time)
+- Show latest measurement data and history graphs
 - Choose which measurements to show in UI
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
@@ -27,13 +27,13 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 Server can be configured to run all or any of the services below. All services can run on same machine, or they can be distributed to different machines.
 #### DataBroker (Vahti.DataBroker)
 - Implemented with .NET Core 3.0
-- Uses MQTT to gather measurement data from any MQTT client publishing data in specific format
+- Uses MQTT to gather measurement data from any MQTT client 
 - Sends measurements and history data periodically to cloud database (currently Google Firebase)
 - Send alerts as push notifications to the mobile application, or as email to any device
 #### Collector (Vahti.Collector)
 - Implemented with .NET Core 3.0
 - Read data from Bluetooth LE and other type of devices, like those connected via GPIO
-- Currently supports parsing data of [RuuviTag](https://www.ruuvi.com) and DHT22, but support for other devices can and will be be added
+- Currently supports parsing data of [RuuviTag](https://www.ruuvi.com) and DHT22, but support for other devices can be added
 - Uses my [BleReader.Net](https://github.com/ilpork/BleReader.Net) to read BLE data
 #### MQTT server
 - Wraps the [MQTTnet](https://github.com/chkr1011/MQTTnet) server to provide MQTT server functionality
@@ -46,22 +46,21 @@ For sending alerts by email or to publish for a generic MQTT client:
 1) A server (Linux/Windows/Mac) where to run the server part (Vahti.DataBroker, Vahti.Collector and Vahti.Mqtt). Raspberry Pi 2/3/4 is fine for that purpose
 2) Have some measurement sources to publish measurement data using MQTT
 
-To support showing data in mobile requires in addition to above:
+To support showing data in mobile app requires (in addition to what's listed above):
 
-3. Android device (app should work on iOS too, but requires Apple developer license, so iOS version has been on side track)
+3. Android device (building for iOS requires Apple developer license, so iOS version has been on side track)
 4. Google Firebase realtime database needed for data storage to use the mobile app (free)
 
-For full setup with mobile app and push notifications requires in addition to above:
-1. Visual Studio 2019 (Community edition is fine) to build the mobile app
+For full setup with mobile app and push notifications requires (in addition to what's listed above):
+1. Visual Studio 2019 (Community edition is fine) for building (free)
 4. Google Firebase project needed to get Push notifications on Android (free) 
 5. Microsoft Azure account and notification hub needed for push notifications (free)
 
-
 ## Usage
-Depending on configuration and functionality used, the system requires different kind of setup. See details with tutorials  in [Getting started](doc/GettingStarted.md)
+Depending on configuration and functionality used, the system requires different kind of setup. See details with tutorials in [Getting started](doc/GettingStarted.md)
 
 ## Background
-Originally I did a very simple version of the system for my own purposes to supervise my robotic lawnmower by using a RuuviTag sensor, and show that information along with other available sensor information anywhere I am, without exposing my home network to Internet. Then I thought that maybe I could make it more generic, so someone could use it too. Vahti.Collector doesn't support many devices yet, but more can be added.
+Originally I did a very simple version of the system for my own purposes to supervise my robotic lawnmower by using a RuuviTag sensor, and show that information along with other available sensor information anywhere I am, without exposing my home network to Internet. Then I thought that maybe I could make it more generic, so that others could use it too in way that adding support for additional devices isn't too complicated.
 
 I try to document the project so that also those with less development experience could use it. 
 

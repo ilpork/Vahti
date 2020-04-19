@@ -7,7 +7,7 @@ Starting to use Vahti requires setting up different kind of things depending on 
 
 - [Alert tutorial](AlertTutorial.md) describes how to get just alerts without having mobile app
 
-Configuration file options have been described in [Configuration](Configuration.md)
+Configuration file options have been described in [Configuration](Configuration.md). Latest released binaries can be found from [Releases page](https://github.com/ilpork/vahti/releases/latest/)
 
 If you want to have other devices to publish their data using MQTT via Vahti, check [Add other data sources](AddOtherDataSources.md).
 
