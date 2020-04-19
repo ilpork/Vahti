@@ -97,6 +97,9 @@
     <Compile Include="Localize.cs" />
     <Compile Include="Renderers\GradientColorStackLayoutRenderer.cs" />
     <Compile Include="Renderers\GradientColorGridRenderer.cs" />
+    <None Include="..\Vahti.Mobile.Forms\App.config">
+      <Link>App.config</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -183,7 +186,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Vahti.Mobile.Forms\Vahti.Mobile.Forms.csproj">
-      <Project>{3ED07C76-F6A4-4163-B892-852510B44DA5}</Project>
+      <Project>{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}</Project>
       <Name>Vahti.Mobile.Forms</Name>
     </ProjectReference>
   </ItemGroup>

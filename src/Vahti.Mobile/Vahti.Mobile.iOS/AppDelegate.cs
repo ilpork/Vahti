@@ -3,6 +3,7 @@ using Foundation;
 using Vahti.Mobile.Forms.Theme;
 using UIKit;
 using Vahti.Mobile.Forms;
+using PCLAppConfig;
 
 namespace Vahti.Mobile.iOS
 {
@@ -29,6 +30,8 @@ namespace Vahti.Mobile.iOS
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
             global::Xamarin.Forms.Forms.Init();
             OxyPlot.Xamarin.Forms.Platform.iOS.PlotViewRenderer.Init();
+
+            ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
             LoadApplication(new App(this));
 
             return base.FinishedLaunching(app, options);
