@@ -5,4 +5,4 @@ Tutorial is assumes that you have a Raspberry Pi, run all needed services on tha
 Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on how to create Firebase database, where data is stored.
 
 ### Set up Raspberry Pi
-Read [Setting up Raspberry Pi](SettingUpRaspberryPi) to get detailed information about needed Raspberry Pi setup.
+Read [Setting up Raspberry Pi](SettingUpRaspberryPi.md) to get detailed information about needed Raspberry Pi setup.

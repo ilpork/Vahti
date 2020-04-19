@@ -31,4 +31,4 @@ Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on
 6. Build should succeed and you can run the application, which deploy it in your mobile device
 
 ### Set up Raspberry Pi
-Read [Setting up Raspberry Pi](SettingUpRaspberryPi) to get detailed information about needed Raspberry Pi setup.
+Read [Setting up Raspberry Pi](SettingUpRaspberryPi.md) to get detailed information about needed Raspberry Pi setup.

@@ -3,7 +3,7 @@ Starting to use Vahti requires setting up different kind of things depending on 
 
 - [Full setup tutorial](FullTutorial.md) describes how to set up system where full functionality of Vahti is used: read data using Vahti.Collector, relay data to cloud database using Vahti.DataBroker and show it in mobile app.
 
-- [No Azure notifications tutorial](NoNotificationsTutorial.ms) describes show to set up system like in full tutorial, except that no Azure notifications are configured. You can configure email notifications, however, using [Alert tutorial](Alerttutorial.md)
+- [No Azure notifications tutorial](NoAzureNotificationsTutorial.md) describes show to set up system like in full tutorial, except that no Azure notifications are configured. You can configure email notifications, however, using [Alert tutorial](Alerttutorial.md)
 
 - [Alert tutorial](AlertTutorial.md) describes how to get just alerts without having mobile app
 
