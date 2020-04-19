@@ -1,9 +1,11 @@
 # Tutorial for alert setup
 Setting up Vahti is  simpler if you don't want to use the mobile app. This tutorial assumes that you have Raspberry Pi (at 192.168.1.2) with BlueZ 5.48 (or later) installed on it and you want to get notifications as email.
 
-1. Compile Vahti.App.Full (or use pre-built binaries)
+For basic setup of Raspberry Pi you can read [Setting up Raspberry Pi](SettingUpRaspberryPi.md)
+
+1. Create new directory: `mkdir ~/vahti && cd ~/vahti`
 2. Download Vahti.Server binaries: `wget https://github.com/ilpork/vahti/releases/latest/download/Vahti.Server-linux-arm.zip`
-3. Extract the files: `tar -xzf Vahti.Server.zip`
+3. Extract the files: `unzip Vahti.Server-linux-arm.zip`
 4. Copy `config.template.json` as `config.json` and modify it to suit your configuation. See [Configuration](Configuration.md) for details.
 4. Run the app with `./Vahti.Server`
 
