@@ -17,7 +17,8 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 ![Locations](doc/images/locations.png) 
 ![Locations](doc/images/history.png)
 ![Locations](doc/images/details.png)
-- Implemented with Xamarin Forms (focus has been on Android because iOS app compiled with Apple Developer license works only a week at time)
+- Implemented with Xamarin Forms 
+- Focus has been on Android (iOS app compiled without Apple Developer license works only a week at time)
 - Show latest measurement data and history graphs
 - Choose which measurements to show in UI
 - Get push notifications (alerts) from server 
@@ -48,7 +49,7 @@ For sending alerts by email or to publish for a generic MQTT client:
 
 To support showing data in mobile app requires (in addition to what's listed above):
 
-3. Android device (building for iOS requires Apple developer license, so iOS version has been on side track)
+3. Android device (building for iOS basically requires Apple developer license, so iOS version has been on side track)
 4. Google Firebase realtime database needed for data storage to use the mobile app (free)
 
 For full setup with mobile app and push notifications requires (in addition to what's listed above):
@@ -58,6 +59,9 @@ For full setup with mobile app and push notifications requires (in addition to w
 
 ## Usage
 Depending on configuration and functionality used, the system requires different kind of setup. See details with tutorials in [Getting started](doc/GettingStarted.md)
+
+## Support for iOS
+iOS app currently starts up and is able to show data on overview page. There are still many issues and some platform specific functionality has not been implemented yet in iOS app. I'm not focusing on them currently because I'm not sure how many of those who are interested in this project have Apple developer license. 
 
 ## Background
 Originally I did a very simple version of the system for my own purposes to supervise my robotic lawnmower by using a RuuviTag sensor, and show that information along with other available sensor information anywhere I am, without exposing my home network to Internet. Then I thought that maybe I could make it more generic, so that others could use it too in way that adding support for additional devices isn't too complicated.
