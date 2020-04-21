@@ -75,8 +75,7 @@ namespace Vahti.DataBroker
                     {
                         if (minuteCounter % _config.CloudPublishConfiguration.UpdateIntervalMinutes == 0)
                         {
-                            await _dataBroker.PublishCurrentData();
-                            await _dataBroker.SendAlerts();
+                            await _dataBroker.PublishCurrentData();                            
                         }
 
                         if (minuteCounter % _config.CloudPublishConfiguration.HistoryUpdateIntervalMinutes == 0)
@@ -88,7 +87,9 @@ namespace Vahti.DataBroker
                         {
                             await _dataBroker.DeleteOldHistoryData();
                         }
-                    }                    
+                    }
+
+                    await _dataBroker.SendAlerts();
 
                     await Task.Delay(TimeSpan.FromSeconds(LoopInterval), stoppingToken);
                     minuteCounter++;
