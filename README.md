@@ -11,6 +11,7 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 - No paid services needed
 - Can be used without mobile app just as an alert system
 - Different services can also be run on different machines
+- A 3rd party mobile app (MQTT client) can also be used to display the data
 
 ## Features
 ### Mobile application (Vahti.Mobile)
@@ -69,6 +70,9 @@ Originally I did a very simple version of the system for my own purposes to supe
 I try to document the project so that also those with less development experience could use it. 
 
 Vahti is a Finnish word. It means guard, watch or sentry in English. 
+
+## Contribute
+You can raise issues regarding both code and documentation. If you wish to contribute by making a pull request, please first raise an issue.
 
 ## License
 

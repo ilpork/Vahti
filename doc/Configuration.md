@@ -347,12 +347,13 @@ An experimental way to support sensor device instance specific measurements. In 
   }
   ```
 ### Logging
-Optional logging section provide way to configure what information is logged in console. See [Logging in .NET Core and ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1) for more details
+Optional logging section provide way to configure what information is logged in console. See [Logging in .NET Core and ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1) for more details. Setting log level `Debug` for Vahti, you'll getmore  detailed information about collected/published data.
 
 ```
 "Logging": {
     "LogLevel": {
       "Default": "Information",
+      "Vahti": "Information",
       "System": "Information",
       "Microsoft": "Information"
     },

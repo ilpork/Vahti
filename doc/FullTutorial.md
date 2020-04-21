@@ -32,3 +32,11 @@ Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on
 
 ### Set up Raspberry Pi
 Read [Setting up Raspberry Pi](SettingUpRaspberryPi.md) to get detailed information about needed Raspberry Pi setup.
+
+Some notes regarding editing `config.json`:
+- In scenario described in this tutorial, you need to have all services enabled and configured
+- You can disable also `alertConfiguration` if you don't want to configure alerts yet
+- Fill your database URL (and database secret if authentication is enabled) in `FirebaseStorage` section
+- Update MQTT server address in `DataBrokerConfiguration` and `CollectorConfiguration` sections. As it's running on same device, use the IP of the Raspberry Pi
+- Update `CollectorConfiguration` according to how many RuuviTags you have. `location` of SensorDevice is shown in mobile app UI, `address` is the MAC address of the RuuviTag and `name` is free text. You can update `name` of each sensor in `SensorDeviceType` to have localized text on your language
+- Configure suitable interval for data publishing in `DataBrokerConfiguration`. I use 5 minutes (and 30 minutes for history data).
