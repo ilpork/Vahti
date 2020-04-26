@@ -8,7 +8,7 @@ namespace Vahti.Mobile.Forms.ViewModels
     /// <summary>
     /// View model for page displaying application options
     /// </summary>
-    public class OptionsViewModel : BaseViewModel
+    public class OptionsGeneralViewModel : BaseViewModel
     {
         private int _colorThemesSelectedIndex;
         private IDatabaseManagementService _dbManagementService;
@@ -79,15 +79,18 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
         }
         
-        public OptionsViewModel(INavigationService navigationService, IDatabaseManagementService dbManagementService) : base(navigationService)
+        public OptionsGeneralViewModel(INavigationService navigationService, IDatabaseManagementService dbManagementService) : base(navigationService)
         {
             _dbManagementService = dbManagementService;
             ColorThemes.Add(Resources.AppResources.ColorTheme_Gray);
             ColorThemes.Add(Resources.AppResources.ColorTheme_Green);
             ColorThemes.Add(Resources.AppResources.ColorTheme_Light);
 
-            DatabaseUrl = _dbManagementService.DatabaseUrl;
-            DatabaseSecret = _dbManagementService.DatabaseSecret;
+            if (IsDatabaseConfigurationInAppNeeded)
+            {
+                DatabaseUrl = _dbManagementService.DatabaseUrl;
+                DatabaseSecret = _dbManagementService.DatabaseSecret;
+            }            
 
             ColorThemesSelectedIndex = Preferences.Get(Theme.ColorTheme.ColorThemePreferenceName, 0);        
             Title = Resources.AppResources.Options_Title;

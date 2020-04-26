@@ -5,16 +5,16 @@
              xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
              xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"   
-             x:Class="Vahti.Mobile.Forms.Views.OptionsPage"
+             x:Class="Vahti.Mobile.Forms.Views.OptionsGeneralPage"
              Title="{Binding Title}"
              >
     <ContentPage.Resources>
         <converter:IsEmptyStringConverter x:Key="IsEmptyStringConverter"/>
         <Style x:Key="OptionsLabelStyle" TargetType="Label" >
             <Setter Property="FontSize" Value="Small"/>
-            <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>            
+            <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>
         </Style>
-    </ContentPage.Resources>    
+    </ContentPage.Resources>
     <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundColor}" EndColor="{DynamicResource ThemeBackgroundLightColor}"  Spacing="20" Padding="24">
         <StackLayout Orientation="Vertical">
             <Label Text="{i18n:Translate Options_ColorThemeLabel}" Style="{DynamicResource OptionsLabelStyle}" />
@@ -31,7 +31,7 @@
         </StackLayout>
         <StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">
             <Label Text="{i18n:Translate Options_CloudDatabaseUrlLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
-            <StackLayout Orientation="Vertical" Spacing="0">                
+            <StackLayout Orientation="Vertical" Spacing="0">
                 <Entry Text="{Binding DatabaseUrl}" FontSize="Medium" TextColor="{DynamicResource ThemeTextColor}">
                     <Entry.BackgroundColor>
                         <OnPlatform x:TypeArguments="Color">
@@ -43,7 +43,7 @@
                     </Entry.Effects>
                 </Entry>
                 <Label Text="{i18n:Translate Options_CloudDatabaseUrlMissingLabel}" FontSize="Small" TextColor="Red" IsVisible="{Binding DatabaseUrl, Converter={StaticResource IsEmptyStringConverter}}"/>
-            </StackLayout>                                
+            </StackLayout>
             <Label Text="{i18n:Translate Options_CloudDatabaseSecretLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -65,7 +65,7 @@
                         <TapGestureRecognizer Tapped="EyeLabel_Tapped" />
                     </Label.GestureRecognizers>
                 </Label>
-            </Grid>            
+            </Grid>
         </StackLayout>
-    </custom:GradientColorStackLayout>    
+    </custom:GradientColorStackLayout>
 </ContentPage>

@@ -64,8 +64,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\OptionsPage.xaml.cs">
-      <DependentUpon>OptionsPage.xaml</DependentUpon>
+    <Compile Update="Views\OptionsGeneralPage.xaml.cs">
+      <DependentUpon>OptionsGeneralPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\LocationDetailsPage.xaml.cs">
       <DependentUpon>LocationDetailsPage.xaml</DependentUpon>
@@ -78,6 +78,9 @@
     </Compile>
     <Compile Update="Views\LocationGraphPage.xaml.cs">
       <DependentUpon>LocationGraphPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OptionsSummaryPage.xaml.cs">
+      <DependentUpon>OptionsSummaryPage.xaml</DependentUpon>
     </Compile>    
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +94,13 @@
     <EmbeddedResource Update="Views\CustomNavigationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\OptionsGeneralPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LocationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OptionsSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

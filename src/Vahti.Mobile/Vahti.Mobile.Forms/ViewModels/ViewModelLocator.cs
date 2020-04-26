@@ -17,9 +17,14 @@ namespace MobileClient.ViewModels
             get { return ServiceLocator.Current.GetInstance<LocationListViewModel>(); }
         }
 
-        public static OptionsViewModel Options
+        public static OptionsGeneralViewModel OptionsGeneral
         {
-            get { return ServiceLocator.Current.GetInstance<OptionsViewModel>(); }
+            get { return ServiceLocator.Current.GetInstance<OptionsGeneralViewModel>(); }
+        }
+
+        public static OptionsSummaryViewModel OptionsSummary
+        {
+            get { return ServiceLocator.Current.GetInstance<OptionsSummaryViewModel>(); }
         }
 
         public static AboutViewModel About

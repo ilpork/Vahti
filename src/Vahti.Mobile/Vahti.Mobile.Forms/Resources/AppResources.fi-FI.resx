@@ -204,4 +204,13 @@
   <data name="Options_CloudDatabaseUrlMissingLabel" xml:space="preserve">
     <value>Pilvitietokannan osoite pitää määrittää tietojen näyttämiseksi</value>
   </data>
+  <data name="Options_General_Title" xml:space="preserve">
+    <value>Yleiset</value>
+  </data>
+  <data name="Options_Summary_Description" xml:space="preserve">
+    <value>Valitse yhteenvetonäkymässä näytettävät tiedot:</value>
+  </data>
+  <data name="Options_Summary_Title" xml:space="preserve">
+    <value>Yhteenveto</value>
+  </data>
 </root>

@@ -61,7 +61,7 @@ namespace Vahti.Mobile.Forms
             var firebaseConfigurationOptions = Options.Create<FirebaseConfiguration>(new FirebaseConfiguration() 
                 { Enabled = true });
 
-            containerBuilder.RegisterInstance(firebaseConfigurationOptions).As(typeof(IOptions<FirebaseConfiguration>));
+            containerBuilder.RegisterInstance(firebaseConfigurationOptions).As(typeof(IOptions<FirebaseConfiguration>)).SingleInstance();
             containerBuilder.RegisterType<FirebaseDataProvider>().As(typeof(IDataProvider)).SingleInstance();
 #endif
             containerBuilder.RegisterType<DatabaseManagementService>().As(typeof(IDatabaseManagementService)).SingleInstance();
@@ -76,7 +76,9 @@ namespace Vahti.Mobile.Forms
             containerBuilder.RegisterType<LocationViewModel>().As(typeof(LocationViewModel)).SingleInstance().AutoActivate();
             containerBuilder.RegisterType<LocationGraphViewModel>().As(typeof(LocationGraphViewModel)).SingleInstance().AutoActivate();
             containerBuilder.RegisterType<LocationDetailsViewModel>().As(typeof(LocationDetailsViewModel)).SingleInstance().AutoActivate();
-            containerBuilder.RegisterType<OptionsViewModel>().As(typeof(OptionsViewModel)).SingleInstance();
+            containerBuilder.RegisterType<OptionsGeneralViewModel>().As(typeof(OptionsGeneralViewModel)).SingleInstance();
+            containerBuilder.RegisterType<OptionsSummaryViewModel>().As(typeof(OptionsSummaryViewModel)).SingleInstance();
+
             containerBuilder.RegisterType<AboutViewModel>().As(typeof(AboutViewModel)).SingleInstance();
 
             var container = containerBuilder.Build();

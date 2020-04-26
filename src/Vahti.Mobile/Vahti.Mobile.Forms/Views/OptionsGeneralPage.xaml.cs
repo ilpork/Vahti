@@ -1,32 +1,33 @@
-﻿using System;
-
+﻿using MobileClient.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Vahti.Mobile.Forms.ViewModels;
+using Vahti.Mobile.Forms.Views.Fonts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.ViewModels;
-using MobileClient.ViewModels;
-using Vahti.Mobile.Forms.Views.Fonts;
-
 namespace Vahti.Mobile.Forms.Views
 {
-    public partial class OptionsPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class OptionsGeneralPage : ContentPage
     {
-        public bool _databaseSecretHidden = false;
-        OptionsViewModel viewModel;
+        public bool _databaseSecretHidden = false;        
 
-        public OptionsPage()
+        public OptionsGeneralPage()
         {
             InitializeComponent();
 
             ToggleDatabaseSecretCharacters();
-
-            BindingContext = this.viewModel = ViewModelLocator.Options;
+            BindingContext = ViewModelLocator.OptionsGeneral;
         }
 
         private void EyeLabel_Tapped(object sender, EventArgs e)
         {
             ToggleDatabaseSecretCharacters();
+
         }
 
         private void ToggleDatabaseSecretCharacters()

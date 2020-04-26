@@ -13,12 +13,11 @@
                 <Setter Property="Shell.BackgroundColor" Value="{DynamicResource ThemeShellBackgroundColor}" />
                 <Setter Property="Shell.ForegroundColor" Value="{DynamicResource ThemeTextColor}" />
                 <Setter Property="Shell.TitleColor" Value="{DynamicResource ThemeTextColor}" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />                
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource ThemeBackgroundColor}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource ThemeTextColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource ThemeUnselectedTabTextColor}"/>
+                <Setter Property="Shell.UnselectedColor" Value="{DynamicResource ThemeUnselectedTabTextColor}"/>                
                 <Setter Property="Shell.FlyoutBackgroundColor" Value="#888888"/>                        
             </Style>
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -45,8 +44,16 @@
     </FlyoutItem>
     <FlyoutItem FlyoutIcon="ic_menu_settings.png"
                 Title="{i18n:Translate Options_Title}">
-        <ShellContent Route="options"
-                      ContentTemplate="{DataTemplate local:OptionsPage}" />
+        <Tab Title="{i18n:Translate Options_Title}"
+             Route="sdfsfad"             >
+            <ShellContent Route="optionsGeneral"
+                          Title="{i18n:Translate Options_General_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsGeneralPage}" />
+            <ShellContent Route="optionsSummary" 
+                          Title="{i18n:Translate Options_Summary_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsSummaryPage}" />           
+        </Tab>
+        
     </FlyoutItem>
     <FlyoutItem FlyoutIcon="ic_menu_info.png"
                 Title="{i18n:Translate About_Title}">

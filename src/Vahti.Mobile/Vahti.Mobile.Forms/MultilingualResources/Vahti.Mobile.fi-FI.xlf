@@ -126,6 +126,18 @@
           <source>Cloud database URL has to be specified</source>
           <target state="new">Cloud database URL has to be specified</target>
         </trans-unit>
+        <trans-unit id="Options_General_Title" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target state="new">General</target>
+        </trans-unit>
+        <trans-unit id="Options_Summary_Description" translate="yes" xml:space="preserve">
+          <source>Choose information to be shown in summary view:</source>
+          <target state="new">Choose information to be shown in summary view:</target>
+        </trans-unit>
+        <trans-unit id="Options_Summary_Title" translate="yes" xml:space="preserve">
+          <source>Summary</source>
+          <target state="new">Summary</target>
+        </trans-unit>
       </group>
     </body>
   </file>
