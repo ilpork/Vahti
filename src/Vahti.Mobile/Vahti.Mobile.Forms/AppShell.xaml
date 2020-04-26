@@ -51,7 +51,10 @@
                       ContentTemplate="{DataTemplate local:OptionsGeneralPage}" />
             <ShellContent Route="optionsSummary" 
                           Title="{i18n:Translate Options_Summary_Title}"
-                      ContentTemplate="{DataTemplate local:OptionsSummaryPage}" />           
+                      ContentTemplate="{DataTemplate local:OptionsSummaryPage}" />
+            <ShellContent Route="optionsWidget" 
+                          Title="{i18n:Translate Options_Widget_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsWidgetPage}" />
         </Tab>
         
     </FlyoutItem>

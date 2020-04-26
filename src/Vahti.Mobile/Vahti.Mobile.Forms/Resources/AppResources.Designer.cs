@@ -277,6 +277,24 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose information to be shown in application widget (max. 3).
+        /// </summary>
+        internal static string Options_Widget_Description {
+            get {
+                return ResourceManager.GetString("Options_Widget_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widget.
+        /// </summary>
+        internal static string Options_Widget_Title {
+            get {
+                return ResourceManager.GetString("Options_Widget_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acceleration (X).
         /// </summary>
         internal static string SensorClass_accelerationX {

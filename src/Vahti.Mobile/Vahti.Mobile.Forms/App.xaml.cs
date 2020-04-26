@@ -78,6 +78,7 @@ namespace Vahti.Mobile.Forms
             containerBuilder.RegisterType<LocationDetailsViewModel>().As(typeof(LocationDetailsViewModel)).SingleInstance().AutoActivate();
             containerBuilder.RegisterType<OptionsGeneralViewModel>().As(typeof(OptionsGeneralViewModel)).SingleInstance();
             containerBuilder.RegisterType<OptionsSummaryViewModel>().As(typeof(OptionsSummaryViewModel)).SingleInstance();
+            containerBuilder.RegisterType<OptionsWidgetViewModel>().As(typeof(OptionsWidgetViewModel)).SingleInstance();
 
             containerBuilder.RegisterType<AboutViewModel>().As(typeof(AboutViewModel)).SingleInstance();
 

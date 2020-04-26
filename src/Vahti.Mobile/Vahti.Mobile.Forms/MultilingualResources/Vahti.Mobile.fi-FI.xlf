@@ -138,6 +138,14 @@
           <source>Summary</source>
           <target state="new">Summary</target>
         </trans-unit>
+        <trans-unit id="Options_Widget_Description" translate="yes" xml:space="preserve">
+          <source>Choose information to be shown in application widget (max. 3)</source>
+          <target state="new">Choose information to be shown in application widget (max. 3)</target>
+        </trans-unit>
+        <trans-unit id="Options_Widget_Title" translate="yes" xml:space="preserve">
+          <source>Widget</source>
+          <target state="new">Widget</target>
+        </trans-unit>
       </group>
     </body>
   </file>

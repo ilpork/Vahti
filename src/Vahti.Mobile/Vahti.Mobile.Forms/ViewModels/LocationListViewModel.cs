@@ -136,7 +136,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                     foreach (var location in items)
                     {
                         var filteredLocation = new Models.Location(location.Name, location.Timestamp, location.UpdateInterval, location.ToList());
-                        filteredLocation.RemoveAll(m => !m.IsVisible);
+                        filteredLocation.RemoveAll(m => !m.IsVisibleInSummaryView);
                         Locations.Add(filteredLocation);
                     }                
                 }
