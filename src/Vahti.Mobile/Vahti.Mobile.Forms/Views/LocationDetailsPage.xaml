@@ -42,7 +42,7 @@
                 SelectedItem="{Binding SelectedLocation, Mode=TwoWay}">                              
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" Padding="8,0,4,8">
+                        <Grid RowSpacing="0" Padding="16,8,12,8">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
