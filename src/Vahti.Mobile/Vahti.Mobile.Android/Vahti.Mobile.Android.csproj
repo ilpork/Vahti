@@ -97,6 +97,7 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DataWidget.cs" />
     <Compile Include="Effects\EditTextLineColorEffect.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="MainActivity.cs" />
@@ -221,13 +222,13 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\widget_loading.xml" />
+    <AndroidResource Include="Resources\layout\data_widget_loading.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\widget_sensors.xml" />
+    <AndroidResource Include="Resources\layout\widget_measurements.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\xml\widget_sensor.xml" />
+    <AndroidResource Include="Resources\xml\data_widget.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vahti.Shared\Vahti.Shared.csproj">
@@ -274,6 +275,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_stat_lighthouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-fi\strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

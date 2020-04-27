@@ -78,12 +78,20 @@
     <item name="android:background">#992d2d2d</item>
   </style>    
   <style name="Widget"/>
-  <style name="Widget.Header">      
+  <style name="Widget.Location">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">6dip</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+  <style name="Widget.Sensor">      
     <item name="android:layout_width">0dp</item>      
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_marginTop">10dip</item>
+    <item name="android:layout_marginTop">2dip</item>
     <item name="android:gravity">center</item>
-    <item name="android:textSize">14sp</item>    
+    <item name="android:textSize">12sp</item>    
     <item name="android:textColor">@android:color/white</item>
   </style>
     <style name="Widget.Value">      
