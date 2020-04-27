@@ -2,8 +2,8 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="3"
+    android:layout_height="match_parent"    
+    android:columnCount="3"    
     android:rowCount="4"
     android:focusable="true"
     style="@style/WidgetBackground">
@@ -14,14 +14,13 @@
         android:layout_row="0"        
         android:layout_columnWeight="1"        
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dip"
-        android:paddingRight="14dip"
+        android:layout_height="wrap_content"        
+        android:layout_marginTop="3dp"
+        android:paddingRight="8dip"
         android:gravity="right"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:textColor="#cccccc"
-        
+        android:textColor="#cccccc"        
         android:text="13:05"
         />
       <TextView
