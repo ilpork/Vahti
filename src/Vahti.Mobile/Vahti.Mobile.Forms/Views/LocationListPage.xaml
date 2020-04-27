@@ -42,9 +42,9 @@
                 <Setter Property="FontSize" Value="14"/>
             </Style>
             <ResourceDictionary>
-                <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-                <converters:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+                <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />                
                 <converters:SecondsToLastChargedConverter x:Key="SecondsToLastChargedConverter"/>
+                <converters:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
                 <DataTemplate x:Key="mowerTemplate">
                     <StackLayout Orientation="Horizontal" Padding="4,4,8,4" >
                         <Label Margin="0,0,0,0" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
@@ -107,41 +107,7 @@
 
                             </Label.Triggers>                            
                             </Label>
-                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F1}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Humidity}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F0}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Pressure}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F0}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationX}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationY}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationZ}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.BatteryVoltage}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Rssi}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F0}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.MovementCounter}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F0}', Converter={StaticResource StringToDoubleConverter}}"/>
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}">
-                                    <Setter Property="Text" Value="{Binding Value, StringFormat='{}{0:F0}', Converter={StaticResource StringToDoubleConverter}}"/>                                   
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                        <Label Text="{Binding Unit}" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" Margin="2,0,0,0"></Label>
+                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center"/>
                     </StackLayout>                
                    
                 </DataTemplate>

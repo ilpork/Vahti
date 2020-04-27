@@ -10,8 +10,8 @@
              >
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
-        <converter:HasPropertyConverter x:Key="HasPropertyConverter"/>        
-        <converter:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+        <converter:HasPropertyConverter x:Key="HasPropertyConverter"/>
+        <converter:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
         <Style x:Key="DetailsNameLabelStyle" TargetType="Label" >
             <Setter Property="FontSize" Value="Small"/>
             <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>            
@@ -52,11 +52,7 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding SensorName}" Style="{StaticResource DetailsNameLabelStyle}" Grid.Row="0" Grid.Column="0"/>
-                            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                                <!-- TODO: formatting <Label Text="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}" Style="{StaticResource DetailsValueLabelStyle}"/>-->
-                                <Label Text="{Binding Value}" Style="{StaticResource DetailsValueLabelStyle}"/>
-                                <Label Text="{Binding Unit}" Style="{StaticResource DetailsValueLabelStyle}"/>
-                            </StackLayout>                            
+                            <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Style="{StaticResource DetailsValueLabelStyle}" Grid.Row="1" Grid.Column="0"/>                                                            
                         </Grid>                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
