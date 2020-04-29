@@ -9156,31 +9156,37 @@ namespace Vahti.Mobile.Droid
 			public const int hide_bottom_view_on_scroll_behavior = 2131492940;
 			
 			// aapt resource value: 0x7F0C004D
-			public const int mtrl_chip_close_icon_content_description = 2131492941;
+			public const int loading_widget_data_error = 2131492941;
 			
 			// aapt resource value: 0x7F0C004E
-			public const int password_toggle_content_description = 2131492942;
+			public const int mtrl_chip_close_icon_content_description = 2131492942;
 			
 			// aapt resource value: 0x7F0C004F
-			public const int path_password_eye = 2131492943;
+			public const int no_widget_data_found = 2131492943;
 			
 			// aapt resource value: 0x7F0C0050
-			public const int path_password_eye_mask_strike_through = 2131492944;
+			public const int password_toggle_content_description = 2131492944;
 			
 			// aapt resource value: 0x7F0C0051
-			public const int path_password_eye_mask_visible = 2131492945;
+			public const int path_password_eye = 2131492945;
 			
 			// aapt resource value: 0x7F0C0052
-			public const int path_password_strike_through = 2131492946;
+			public const int path_password_eye_mask_strike_through = 2131492946;
 			
 			// aapt resource value: 0x7F0C0053
-			public const int project_id = 2131492947;
+			public const int path_password_eye_mask_visible = 2131492947;
 			
 			// aapt resource value: 0x7F0C0054
-			public const int search_menu_title = 2131492948;
+			public const int path_password_strike_through = 2131492948;
 			
 			// aapt resource value: 0x7F0C0055
-			public const int status_bar_notification_info_overflow = 2131492949;
+			public const int project_id = 2131492949;
+			
+			// aapt resource value: 0x7F0C0056
+			public const int search_menu_title = 2131492950;
+			
+			// aapt resource value: 0x7F0C0057
+			public const int status_bar_notification_info_overflow = 2131492951;
 			
 			static String()
 			{
