@@ -111,11 +111,11 @@ namespace Vahti.Mobile.Droid
         
         private void RegisterClicks(Context context, int[] appWidgetIds, RemoteViews widgetView)
         {
-            var intent = new Intent(context, typeof(MainActivity));
+            var intent = new Intent(context, typeof(DataWidget));
             intent.SetAction(AppWidgetManager.ActionAppwidgetUpdate);
             intent.PutExtra(AppWidgetManager.ExtraAppwidgetIds, appWidgetIds);
 
-            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, 0);
+            var pendingIntent = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent);
             widgetView.SetOnClickPendingIntent(Resource.Id.widget, pendingIntent);
         }
     }
