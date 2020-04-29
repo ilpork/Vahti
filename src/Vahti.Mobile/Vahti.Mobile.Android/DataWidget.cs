@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
@@ -58,7 +57,7 @@ namespace Vahti.Mobile.Droid
             {
                 var currentTime = string.Format("{0}:{1}", DateTime.Now.Hour, DateTime.Now.Minute.ToString("00"));
                 widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);
-                widgetView.SetTextViewText(Resource.Id.updated, $"Could not download data at {currentTime}, {ex.Message}");
+                widgetView.SetTextViewText(Resource.Id.updated, $"{context.Resources.GetString(Resource.String.loading_widget_data_error)} at {currentTime}, {ex.Message}");
                 return widgetView;
             }
 
@@ -102,7 +101,7 @@ namespace Vahti.Mobile.Droid
             else
             {
                 widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);                
-                widgetView.SetTextViewText(Resource.Id.updated, "No data found");
+                widgetView.SetTextViewText(Resource.Id.updated, context.Resources.GetString(Resource.String.no_widget_data_found));
             }           
 
             RegisterClicks(context, appWidgetIds, widgetView);
@@ -114,8 +113,8 @@ namespace Vahti.Mobile.Droid
         {
             var intent = new Intent(context, typeof(MainActivity));
             intent.SetAction(AppWidgetManager.ActionAppwidgetUpdate);
-            intent.PutExtra(AppWidgetManager.ExtraAppwidgetIds, appWidgetIds);                      
-            
+            intent.PutExtra(AppWidgetManager.ExtraAppwidgetIds, appWidgetIds);
+
             var pendingIntent = PendingIntent.GetActivity(context, 0, intent, 0);
             widgetView.SetOnClickPendingIntent(Resource.Id.widget, pendingIntent);
         }
