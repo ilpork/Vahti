@@ -10,8 +10,8 @@
              >
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
-        <converter:HasPropertyConverter x:Key="HasPropertyConverter"/>        
-        <converter:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+        <converter:HasPropertyConverter x:Key="HasPropertyConverter"/>
+        <converter:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
         <Style x:Key="DetailsNameLabelStyle" TargetType="Label" >
             <Setter Property="FontSize" Value="Small"/>
             <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>            
@@ -28,19 +28,10 @@
         <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding InitializeCommand}" />
     </ContentPage.Behaviors>
     <custom:GradientColorGrid StartColor="{DynamicResource ThemeBackgroundLightColor}" EndColor="{DynamicResource ThemeBackgroundColor}" Margin="0,0,0,0" Padding="0,8,0,0" RowSpacing="8">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+        <Grid.RowDefinitions>            
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Padding="8,4,8,4" Grid.Row="0" BackgroundColor="{StaticResource ThemeListItemBackgroundColor}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="50*"/>
-            </Grid.ColumnDefinitions>
-            <Label Text="Sensor information" TextColor="{StaticResource ThemeTextColor}" Grid.Column="0" Style="{StaticResource DetailsNameLabelStyle}"/>
-            <Label Text="Visible" TextColor="{StaticResource ThemeTextColor}" Grid.Column="1" HorizontalTextAlignment="End" Style="{StaticResource DetailsNameLabelStyle}"/>
-        </Grid>        
-        <RefreshView Grid.Row="1"
+        </Grid.RowDefinitions>        
+        <RefreshView Grid.Row="0"
              Command="{Binding RefreshCommand}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView
@@ -51,7 +42,7 @@
                 SelectedItem="{Binding SelectedLocation, Mode=TwoWay}">                              
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" Padding="8,0,4,8">
+                        <Grid RowSpacing="0" Padding="16,8,12,8">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -61,16 +52,7 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding SensorName}" Style="{StaticResource DetailsNameLabelStyle}" Grid.Row="0" Grid.Column="0"/>
-                            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                                <!-- TODO: formatting <Label Text="{Binding Value, StringFormat='{}{0:F3}', Converter={StaticResource StringToDoubleConverter}}" Style="{StaticResource DetailsValueLabelStyle}"/>-->
-                                <Label Text="{Binding Value}" Style="{StaticResource DetailsValueLabelStyle}"/>
-                                <Label Text="{Binding Unit}" Style="{StaticResource DetailsValueLabelStyle}"/>
-                            </StackLayout>
-                            <Switch IsToggled="{Binding IsVisible}" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" ThumbColor="{StaticResource ThemeSwitchThumbColor}" OnColor="{StaticResource ThemeSwitchThumbOnColor}">
-                                <Switch.Behaviors>
-                                    <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding Source={x:Reference LocationDetails}, Path=BindingContext.VisibilityToggledCommand}" />
-                                </Switch.Behaviors>
-                            </Switch>
+                            <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Style="{StaticResource DetailsValueLabelStyle}" Grid.Row="1" Grid.Column="0"/>                                                            
                         </Grid>                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

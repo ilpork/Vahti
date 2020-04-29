@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vahti.Mobile.Forms.Views.OptionsSummaryPage"
+             xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
+             xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
+             x:Name="optionsSummaryPage"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding UpdateCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding InitializeCommand}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ListPageBackground">Transparent</Color>            
+            <Style x:Key="BaseLabelStyle" TargetType="Label" >
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource ListPageBackground}"/>
+            </Style>
+            <Style x:Key="ItemHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="DescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>                   
+            <ResourceDictionary>
+                <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />                             
+            </ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundLightColor}" EndColor="{DynamicResource ThemeBackgroundColor}" Margin="0,0,0,0" Padding="16,22,16,12">
+        <StackLayout Margin="0,0,0,16">
+            <Label Text="{i18n:Translate Options_Summary_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
+        </StackLayout>
+        <RefreshView Command="{Binding RefreshCommand}" CommandParameter="{StaticResource True}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+            <CollectionView x:Name="LocationList" IsGrouped="true" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ThemeLocationHeaderColor}">                        
+                            <Label VerticalOptions="Center" Text="{Binding Name}" Style="{DynamicResource ItemHeaderLabelStyle}" Padding="0,4,0,4"/>                            
+                        </StackLayout>                        
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.GroupFooterTemplate>
+                    <DataTemplate>
+                        <Label Padding="8,0,8,0"/>
+                    </DataTemplate>
+                </CollectionView.GroupFooterTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0" Padding="8,8,4,8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding SensorName}" Style="{DynamicResource BaseLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                <Switch IsToggled="{Binding IsVisibleInSummaryView}" HorizontalOptions="End"  ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSwitchThumbOnColor}">
+                                    <Switch.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding Source={x:Reference optionsSummaryPage}, Path=BindingContext.VisibilityToggledCommand}" />
+                                    </Switch.Behaviors>
+                                </Switch>                                
+                            </StackLayout>                            
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </custom:GradientColorStackLayout>
+</ContentPage>

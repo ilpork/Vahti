@@ -241,11 +241,56 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string Options_General_Title {
+            get {
+                return ResourceManager.GetString("Options_General_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose information to be shown in summary view:.
+        /// </summary>
+        internal static string Options_Summary_Description {
+            get {
+                return ResourceManager.GetString("Options_Summary_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        internal static string Options_Summary_Title {
+            get {
+                return ResourceManager.GetString("Options_Summary_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         internal static string Options_Title {
             get {
                 return ResourceManager.GetString("Options_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose information to be shown in application widget (max. 3).
+        /// </summary>
+        internal static string Options_Widget_Description {
+            get {
+                return ResourceManager.GetString("Options_Widget_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widget.
+        /// </summary>
+        internal static string Options_Widget_Title {
+            get {
+                return ResourceManager.GetString("Options_Widget_Title", resourceCulture);
             }
         }
         

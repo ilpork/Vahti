@@ -78,20 +78,28 @@
     <item name="android:background">#992d2d2d</item>
   </style>    
   <style name="Widget"/>
-  <style name="Widget.Header">      
+  <style name="Widget.Location">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">2dip</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+  <style name="Widget.Sensor">      
     <item name="android:layout_width">0dp</item>      
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_marginTop">10dip</item>
+    <item name="android:layout_marginTop">0dip</item>
     <item name="android:gravity">center</item>
-    <item name="android:textSize">14sp</item>    
+    <item name="android:textSize">11sp</item>    
     <item name="android:textColor">@android:color/white</item>
   </style>
     <style name="Widget.Value">      
     <item name="android:layout_width">0dp</item>      
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_marginTop">14dip</item>
+    <item name="android:layout_marginTop">10dip</item>
     <item name="android:gravity">center</item>
-    <item name="android:textSize">22sp</item>
+    <item name="android:textSize">21sp</item>
     <item name="android:textStyle">bold</item>
     <item name="android:textColor">@android:color/white</item>
   </style>  

@@ -48,14 +48,20 @@ namespace Vahti.Mobile.Forms.Services
         {
             foreach (var measurement in location)
             {
-                Preferences.Set(GetKeyName(location.Name, measurement.SensorId), measurement.IsVisible);
+                Preferences.Set(GetOverviewVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInSummaryView);
+                Preferences.Set(GetWidgetVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInWidget);
             }
             return Task.CompletedTask;
         }
 
-        private string GetKeyName(string locationName, string measurementName)
+        private string GetOverviewVisibilityKeyName(string locationName, string measurementName)
         {
-            return $"{locationName}£${measurementName}";
+            return $"OverviewVisibility_{locationName}£${measurementName}";
+        }
+
+        private string GetWidgetVisibilityKeyName(string locationName, string measurementName)
+        {
+            return $"WidgetVisibility_{locationName}£${measurementName}";
         }
 
         private async Task<IEnumerable<Models.Location>> LoadAll()
@@ -105,7 +111,8 @@ namespace Vahti.Mobile.Forms.Services
                         Unit = unit,
                         Value = m.Value,
                         SensorName = sensorName,
-                        IsVisible = Preferences.Get(GetKeyName(locationData.Name, m.SensorId), true)
+                        IsVisibleInSummaryView = Preferences.Get(GetOverviewVisibilityKeyName(locationData.Name, m.SensorId), true),
+                        IsVisibleInWidget = Preferences.Get(GetWidgetVisibilityKeyName(locationData.Name, m.SensorId), false)
                     });                  
 
                 }
