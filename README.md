@@ -18,12 +18,14 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 ![Locations](doc/images/locations.png) 
 ![Locations](doc/images/history.png)
 ![Locations](doc/images/details.png)
+![Widget](doc/images/widget.png)
 - Implemented with Xamarin Forms 
 - Focus has been on Android (iOS app compiled without Apple Developer license works only a week at time)
 - Show latest measurement data and history graphs
 - Choose which measurements to show in UI
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
+- Android widget to show selected information on home screen
 - No background polling done
 ### Server (Vahti.Server)
 Server can be configured to run all or any of the services below. All services can run on same machine, or they can be distributed to different machines.
