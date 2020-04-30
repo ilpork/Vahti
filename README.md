@@ -18,8 +18,9 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 ![Locations](doc/images/locations.png) 
 ![Locations](doc/images/history.png)
 ![Locations](doc/images/details.png)
-![Widget](doc/images/widget.png)
 ![Options](doc/images/options.png)
+![Widget](doc/images/widget.png)
+
 - Implemented with Xamarin Forms 
 - Focus has been on Android (iOS app compiled without Apple Developer license works only a week at time)
 - Show latest measurement data and history graphs
