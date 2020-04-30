@@ -22,7 +22,7 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 - Implemented with Xamarin Forms 
 - Focus has been on Android (iOS app compiled without Apple Developer license works only a week at time)
 - Show latest measurement data and history graphs
-- Choose which measurements to show in UI
+- Choose which measurements to show on main view
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
 - Android widget to show selected information on home screen
