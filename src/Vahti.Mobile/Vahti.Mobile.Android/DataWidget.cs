@@ -46,22 +46,20 @@ namespace Vahti.Mobile.Droid
 
         private async Task<RemoteViews> BuildRemoteViews(Context context, int[] appWidgetIds)
         {
-            RemoteViews widgetView;           
-            IList<Location> locationList;
+            RemoteViews widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);
+            IList<Location> locationList = null;
 
             try
             {
                 locationList = (await _locationDataService.GetAllDataAsync(true)).ToList();
             }
-            catch (Exception ex)
+            catch
             {
-                var currentTime = string.Format("{0}:{1}", DateTime.Now.Hour, DateTime.Now.Minute.ToString("00"));
-                widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);
-                widgetView.SetTextViewText(Resource.Id.updated, $"{context.Resources.GetString(Resource.String.loading_widget_data_error)} at {currentTime}, {ex.Message}");
-                return widgetView;
+                // Error handling needs more work, and check how to make widget work more reliably in general
+                // For now, just go without updating anything on widget if reading data fails due to OS preventing access etc.
             }
 
-            if (locationList.Count > 0)
+            if (locationList != null && locationList.Count > 0)
             {
                 var measurements = new List<Tuple<string, Measurement>>();
                 foreach (var location in locationList)
@@ -74,8 +72,6 @@ namespace Vahti.Mobile.Droid
                         }
                     }
                 }
-
-                widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);
 
                 if (measurements.Count >= 1)
                 {
@@ -99,8 +95,7 @@ namespace Vahti.Mobile.Droid
                 widgetView.SetTextViewText(Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));
             }            
             else
-            {
-                widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);                
+            {                         
                 widgetView.SetTextViewText(Resource.Id.updated, context.Resources.GetString(Resource.String.no_widget_data_found));
             }           
 
