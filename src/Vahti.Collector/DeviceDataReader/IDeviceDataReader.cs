@@ -10,6 +10,6 @@ namespace Vahti.Collector.DeviceDataReader
     /// </summary>
     public interface IDeviceDataReader
     {
-        Task<IList<MeasurementData>> ReadDeviceData(SensorDevice sensorDevice);
+        Task<IList<MeasurementData>> ReadDeviceDataAsync(SensorDevice sensorDevice);
     }
 }

@@ -27,14 +27,14 @@ namespace Vahti.Collector.DeviceDataReader
             _logger = logger;            
         }
 
-        public async Task<IList<MeasurementData>> ReadDeviceData(SensorDevice sensorDevice)
+        public async Task<IList<MeasurementData>> ReadDeviceDataAsync(SensorDevice sensorDevice)
         {
             var measurements = new List<MeasurementData>();
 
             switch (sensorDevice.SensorDeviceTypeId)
             {
                 case Type.SensorDeviceTypeId.RuuviTag:
-                    measurements.AddRange(await GetRuuviTagMeasurements(sensorDevice));
+                    measurements.AddRange(await GetRuuviTagMeasurementsAsync(sensorDevice));
                     break;
                 case Type.SensorDeviceTypeId.Dht22:
                     measurements.AddRange(GetDht22Measurements(sensorDevice));
@@ -48,7 +48,7 @@ namespace Vahti.Collector.DeviceDataReader
             return measurements;
         }
 
-        private async Task<IList<MeasurementData>> GetRuuviTagMeasurements(SensorDevice sensorDevice)
+        private async Task<IList<MeasurementData>> GetRuuviTagMeasurementsAsync(SensorDevice sensorDevice)
         {
             var measurements = new List<MeasurementData>();
 

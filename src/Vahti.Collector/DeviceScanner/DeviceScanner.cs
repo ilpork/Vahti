@@ -57,7 +57,7 @@ namespace Vahti.Collector.DeviceScanner
                     bluetoothDevicesScanned = true;
                 }
 
-                measurementsList.AddRange(await _dataReader.ReadDeviceData(sensorDevice));
+                measurementsList.AddRange(await _dataReader.ReadDeviceDataAsync(sensorDevice));
 
                 if (sensorDevice.CalculatedMeasurements != null)
                 {
