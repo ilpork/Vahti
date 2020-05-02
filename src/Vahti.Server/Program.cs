@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Vahti.Collector;
 using Vahti.Collector.Configuration;
+using Vahti.Collector.DeviceDataReader;
 using Vahti.Collector.DeviceScanner;
 using Vahti.DataBroker;
 using Vahti.DataBroker.AlertHandler;
@@ -65,6 +66,7 @@ namespace Vahti.Server
                 services.AddSingleton<IBluetoothService, DotNetBlueZService>();
                 services.AddSingleton<IBleReader, BleReader>();
                 services.AddSingleton<IDeviceScanner, DeviceScanner>();
+                services.AddSingleton<IDeviceDataReader, DeviceDataReader>();
                 services.AddTransient((p) => new MqttFactory().CreateManagedMqttClient());
                 services.AddHostedService<CollectorService>();
 
