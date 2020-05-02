@@ -81,7 +81,7 @@ namespace Vahti.Collector.DeviceScanner
                 return null;
             }
 
-            var data = new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = rule.Id };
+            var data = new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = rule.Id, Timestamp = DateTime.Now };
             var comparisonResult = LogicHelper.Compare(sensorMeasurement.Value, rule.Value, rule.Operator);
 
             switch (rule.Type)
