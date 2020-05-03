@@ -96,12 +96,12 @@ namespace Vahti.Collector.Test
             Task.Run(() => btGwService.StartAsync(cts.Token).ConfigureAwait(false));
 #pragma warning restore CS4014
 
-            await Task.Delay(100);
+            await Task.Delay(300);
             cts.Cancel();
 
             var expectedMessage = $"{Constant.TopicMeasurement}/{sensorDevice.Location}/{sensorDevice.Id}/{measurementData.SensorId}";
-            Assert.AreEqual(expectedMessage, publishedMessage.Topic, "Published topic was incorrect");
-            Assert.AreEqual(measurementData.Value, publishedMessage.ConvertPayloadToString(), "Published payload was incorrect");
+            Assert.AreEqual(expectedMessage, publishedMessage?.Topic, "Published topic was incorrect");
+            Assert.AreEqual(measurementData.Value, publishedMessage?.ConvertPayloadToString(), "Published payload was incorrect");
         }
 
         [TestMethod]
@@ -167,7 +167,7 @@ namespace Vahti.Collector.Test
             Task.Run(() => btGwService.StartAsync(cts.Token).ConfigureAwait(false));
 #pragma warning restore CS4014
 
-            await Task.Delay(100);
+            await Task.Delay(300);
             await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientAuthenticateResult()));
             cts.Cancel();
 
@@ -218,7 +218,7 @@ namespace Vahti.Collector.Test
             Task.Run(() => btGwService.StartAsync(cts.Token).ConfigureAwait(false));
 #pragma warning restore CS4014
 
-            await Task.Delay(100);
+            await Task.Delay(300);
             await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientAuthenticateResult()));
             cts.Cancel();
 
