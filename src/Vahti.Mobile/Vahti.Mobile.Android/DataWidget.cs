@@ -59,45 +59,48 @@ namespace Vahti.Mobile.Droid
                 // For now, just go without updating anything on widget if reading data fails due to OS preventing access etc.
             }
 
-            if (locationList != null && locationList.Count > 0)
+            if (locationList != null)
             {
-                var measurements = new List<Tuple<string, Measurement>>();
-                foreach (var location in locationList)
+                if (locationList.Count > 0)
                 {
-                    foreach (var measurement in location)
+                    var measurements = new List<Tuple<string, Measurement>>();
+                    foreach (var location in locationList)
                     {
-                        if (measurement.IsVisibleInWidget)
+                        foreach (var measurement in location)
                         {
-                            measurements.Add(new Tuple<string, Measurement>(location.Name, measurement));
+                            if (measurement.IsVisibleInWidget)
+                            {
+                                measurements.Add(new Tuple<string, Measurement>(location.Name, measurement));
+                            }
                         }
                     }
-                }
 
-                if (measurements.Count >= 1)
-                {
-                    widgetView.SetTextViewText(Resource.Id.location1, measurements[0].Item1);
-                    widgetView.SetTextViewText(Resource.Id.sensor1, measurements[0].Item2.SensorName);
-                    widgetView.SetTextViewText(Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[0].Item2));
+                    if (measurements.Count >= 1)
+                    {
+                        widgetView.SetTextViewText(Resource.Id.location1, measurements[0].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor1, measurements[0].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[0].Item2));
+                    }
+                    if (measurements.Count >= 2)
+                    {
+                        widgetView.SetTextViewText(Resource.Id.location2, measurements[1].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor2, measurements[1].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[1].Item2));
+                    }
+                    if (measurements.Count >= 3)
+                    {
+                        widgetView.SetTextViewText(Resource.Id.location3, measurements[2].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor3, measurements[2].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[2].Item2));
+                    }
+                    var firstLocation = locationList.FirstOrDefault();
+                    widgetView.SetTextViewText(Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));
                 }
-                if (measurements.Count >= 2)
+                else
                 {
-                    widgetView.SetTextViewText(Resource.Id.location2, measurements[1].Item1);
-                    widgetView.SetTextViewText(Resource.Id.sensor2, measurements[1].Item2.SensorName);
-                    widgetView.SetTextViewText(Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[1].Item2));
+                    widgetView.SetTextViewText(Resource.Id.updated, context.Resources.GetString(Resource.String.no_widget_data_found));
                 }
-                if (measurements.Count >= 3)
-                {
-                    widgetView.SetTextViewText(Resource.Id.location3, measurements[2].Item1);
-                    widgetView.SetTextViewText(Resource.Id.sensor3, measurements[2].Item2.SensorName);
-                    widgetView.SetTextViewText(Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[2].Item2));
-                }
-                var firstLocation = locationList.FirstOrDefault();
-                widgetView.SetTextViewText(Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));
-            }            
-            else
-            {                         
-                widgetView.SetTextViewText(Resource.Id.updated, context.Resources.GetString(Resource.String.no_widget_data_found));
-            }           
+            }                        
 
             RegisterClicks(context, appWidgetIds, widgetView);
 
