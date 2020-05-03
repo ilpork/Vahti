@@ -63,7 +63,12 @@ namespace Vahti.Collector.DeviceScanner
                 {
                     foreach (var customMeasurement in sensorDevice.CalculatedMeasurements)
                     {
-                        measurementsList.Add(GetCustomMeasurementValue(sensorDevice, measurementsList, customMeasurement));
+                        var customMeasurementValue = GetCustomMeasurementValue(sensorDevice, measurementsList, customMeasurement);
+
+                        if (customMeasurementValue != null)
+                        {
+                            measurementsList.Add(customMeasurementValue);
+                        }                        
                     }
                 }
             }            
