@@ -97,6 +97,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                 return;
             }
 
+            NoDataMessage = null;
             var updatedNeeded = Locations.Count == 0;
 
             foreach (var location in Locations)
@@ -136,7 +137,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                     foreach (var location in items)
                     {
                         var filteredLocation = new Models.Location(location.Name, location.Timestamp, location.UpdateInterval, location.ToList());
-                        filteredLocation.RemoveAll(m => !m.IsVisibleInSummaryView);
+                        filteredLocation.RemoveAll(m => !m.IsVisibleInSummaryView);                        
                         Locations.Add(filteredLocation);
                     }                
                 }
