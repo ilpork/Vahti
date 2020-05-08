@@ -5,6 +5,7 @@
     /// </summary>
     public enum SensorClass
     {
+        None,
         Temperature,
         Humidity,
         Pressure,
