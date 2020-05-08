@@ -131,16 +131,16 @@
           <target state="new">General</target>
         </trans-unit>
         <trans-unit id="Options_Summary_Description" translate="yes" xml:space="preserve">
-          <source>Choose information to be shown in summary view:</source>
-          <target state="new">Choose information to be shown in summary view:</target>
+          <source>Choose items to be show in summary view:</source>
+          <target state="new">Choose items to be show in summary view:</target>
         </trans-unit>
         <trans-unit id="Options_Summary_Title" translate="yes" xml:space="preserve">
           <source>Summary</source>
           <target state="new">Summary</target>
         </trans-unit>
         <trans-unit id="Options_Widget_Description" translate="yes" xml:space="preserve">
-          <source>Choose information to be shown in application widget (max. 3)</source>
-          <target state="new">Choose information to be shown in application widget (max. 3)</target>
+          <source>Choose items (3) to show in application widget:</source>
+          <target state="new">Choose items (3) to show in application widget:</target>
         </trans-unit>
         <trans-unit id="Options_Widget_Title" translate="yes" xml:space="preserve">
           <source>Widget</source>

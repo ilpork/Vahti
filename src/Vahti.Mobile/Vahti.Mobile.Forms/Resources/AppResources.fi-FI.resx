@@ -217,6 +217,6 @@
     <value>Pienoisohjelma</value>
   </data>
   <data name="Options_Widget_Description" xml:space="preserve">
-    <value>Valitse pienoisohjelmassa näytettävät tiedot (max. 3)</value>
+    <value>Valitse pienoisohjelmassa näytettävät tiedot (3)</value>
   </data>
 </root>
