@@ -12,7 +12,9 @@ namespace Vahti.Mobile.Forms.Localization
         public static string GetMeasurementDisplayValue(Measurement measurement)
         {
             switch (measurement.SensorClass)
-            {                
+            {
+                case SensorClass.None:
+                    return string.Empty;
                 case SensorClass.Temperature:
                     return $"{string.Format("{0:0.0}", double.Parse(measurement.Value, CultureInfo.InvariantCulture))} {measurement.Unit}";
                 case SensorClass.AccelerationX:
