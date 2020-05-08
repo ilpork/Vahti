@@ -10,23 +10,23 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{DynamicResource ThemeShellBackgroundColor}" />
-                <Setter Property="Shell.ForegroundColor" Value="{DynamicResource ThemeTextColor}" />
-                <Setter Property="Shell.TitleColor" Value="{DynamicResource ThemeTextColor}" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />                
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource ThemeBackgroundColor}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource ThemeTextColor}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource ThemeUnselectedTabTextColor}"/>
-                <Setter Property="Shell.UnselectedColor" Value="{DynamicResource ThemeUnselectedTabTextColor}"/>                
+                <Setter Property="Shell.BackgroundColor" Value="{DynamicResource ThemePrimaryDark}" />
+                <Setter Property="Shell.ForegroundColor" Value="{DynamicResource ThemeOnPrimary}" />
+                <Setter Property="Shell.TitleColor" Value="{DynamicResource ThemeOnPrimary}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource ThemePrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource ThemeOnPrimary}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource ThemePrimary}"/>
+                <Setter Property="Shell.UnselectedColor" Value="{DynamicResource ThemeUnselectedTabText}"/>
                 <Setter Property="Shell.FlyoutBackgroundColor" Value="#888888"/>                        
             </Style>
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
     <Shell.FlyoutHeader>
-        <Grid HeightRequest="200" BackgroundColor="{DynamicResource ThemeBackgroundLightColor}">            
+        <Grid HeightRequest="200" BackgroundColor="{DynamicResource ThemeSurface}">            
             <Label Text="Vahti"
-                   TextColor="{DynamicResource ThemeTextColor}"
+                   TextColor="{DynamicResource ThemeOnSurface}"
                    FontSize="48"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
@@ -44,8 +44,8 @@
     </FlyoutItem>
     <FlyoutItem FlyoutIcon="ic_menu_settings.png"
                 Title="{i18n:Translate Options_Title}">
-        <Tab Title="{i18n:Translate Options_Title}"
-             Route="sdfsfad"             >
+        <Tab Title="{i18n:Translate Options_Title}"             
+             >
             <ShellContent Route="optionsGeneral"
                           Title="{i18n:Translate Options_General_Title}"
                       ContentTemplate="{DataTemplate local:OptionsGeneralPage}" />

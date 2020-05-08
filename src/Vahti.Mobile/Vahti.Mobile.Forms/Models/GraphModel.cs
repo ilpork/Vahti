@@ -44,7 +44,7 @@ namespace Vahti.Mobile.Forms.Models
                 case ColorThemeEnum.Gray:
                     plotModel.TitleColor = OxyColors.WhiteSmoke;
                     plotModel.PlotAreaBorderColor = OxyColors.DimGray;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.LightBlue;
+                    ((LineSeries)plotModel.Series[0]).Color = OxyColor.Parse("#FF9FA8DA");
                     break;
                 case ColorThemeEnum.Green:
                     plotModel.TitleColor = OxyColors.WhiteSmoke;
@@ -54,7 +54,7 @@ namespace Vahti.Mobile.Forms.Models
                 case ColorThemeEnum.Light:
                     plotModel.TitleColor = OxyColors.Black;
                     plotModel.PlotAreaBorderColor = OxyColors.Black;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.DimGray;
+                    ((LineSeries)plotModel.Series[0]).Color = OxyColor.Parse("#FF3F51B5");
                     break;
             }
             return plotModel;

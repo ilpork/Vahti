@@ -17,47 +17,18 @@ namespace Vahti.Mobile.Forms.Theme
         }
         public ColorThemeEnum ApplyColorTheme()
         {
-            var colorTheme = (ColorThemeEnum)Preferences.Get(ColorThemePreferenceName, 0);
-                        
-            switch (colorTheme)
-            {
-                case ColorThemeEnum.Gray:
-                    Application.Current.Resources["ThemeBackgroundColor"] = Application.Current.Resources["GrayThemeDark"];
-                    Application.Current.Resources["ThemeBackgroundLightColor"] = Application.Current.Resources["GrayThemeLight"];
-                    Application.Current.Resources["ThemeLocationHeaderColor"] = Application.Current.Resources["GrayThemeLocationHeaderColor"];
-                    Application.Current.Resources["ThemeListItemBackgroundColor"] = Application.Current.Resources["GrayThemeListItemBackground"];
-                    Application.Current.Resources["ThemeTabHeaderBackgroundColor"] = Application.Current.Resources["GrayThemeTabHeaderBackgroundColor"];
-                    Application.Current.Resources["ThemeUnselectedTabTextColor"] = Application.Current.Resources["GrayThemeUnselectedTabTextColor"];
-                    Application.Current.Resources["ThemeTextColor"] = Application.Current.Resources["GrayThemeTextColor"];
-                    Application.Current.Resources["ThemeShellBackgroundColor"] = Application.Current.Resources["GrayThemeShellBackgroundColor"];
-                    Application.Current.Resources["ThemeSwitchThumbOnColor"] = Application.Current.Resources["GrayThemeSwitchThumbOnColor"];
-                    Application.Current.Resources["ThemeSwitchThumbColor"] = Application.Current.Resources["GrayThemeSwitchThumbColor"];
-                    break;
-                case ColorThemeEnum.Green:
-                    Application.Current.Resources["ThemeBackgroundColor"] = Application.Current.Resources["GreenThemeDark"];
-                    Application.Current.Resources["ThemeBackgroundLightColor"] = Application.Current.Resources["GreenThemeLight"];
-                    Application.Current.Resources["ThemeLocationHeaderColor"] = Application.Current.Resources["GreenThemeLocationHeaderColor"];
-                    Application.Current.Resources["ThemeListItemBackgroundColor"] = Application.Current.Resources["GreenThemeListItemBackground"];
-                    Application.Current.Resources["ThemeTabHeaderBackgroundColor"] = Application.Current.Resources["GreenThemeTabHeaderBackgroundColor"];
-                    Application.Current.Resources["ThemeUnselectedTabTextColor"] = Application.Current.Resources["GreenThemeUnselectedTabTextColor"];
-                    Application.Current.Resources["ThemeTextColor"] = Application.Current.Resources["GreenThemeTextColor"];
-                    Application.Current.Resources["ThemeShellBackgroundColor"] = Application.Current.Resources["GreenThemeShellBackgroundColor"];
-                    Application.Current.Resources["ThemeSwitchThumbOnColor"] = Application.Current.Resources["GreenThemeSwitchThumbOnColor"];
-                    Application.Current.Resources["ThemeSwitchThumbColor"] = Application.Current.Resources["GreenThemeSwitchThumbColor"];
-                    break;
-                case ColorThemeEnum.Light:
-                    Application.Current.Resources["ThemeBackgroundColor"] = Application.Current.Resources["LightThemeDark"];
-                    Application.Current.Resources["ThemeBackgroundLightColor"] = Application.Current.Resources["LightThemeLight"];
-                    Application.Current.Resources["ThemeLocationHeaderColor"] = Application.Current.Resources["LightThemeLocationHeaderColor"];
-                    Application.Current.Resources["ThemeListItemBackgroundColor"] = Application.Current.Resources["LightThemeListItemBackground"];
-                    Application.Current.Resources["ThemeTabHeaderBackgroundColor"] = Application.Current.Resources["LightThemeTabHeaderBackgroundColor"];
-                    Application.Current.Resources["ThemeUnselectedTabTextColor"] = Application.Current.Resources["LightThemeUnselectedTabTextColor"];
-                    Application.Current.Resources["ThemeTextColor"] = Application.Current.Resources["LightThemeTextColor"];
-                    Application.Current.Resources["ThemeShellBackgroundColor"] = Application.Current.Resources["LightThemeShellBackgroundColor"];
-                    Application.Current.Resources["ThemeSwitchThumbOnColor"] = Application.Current.Resources["LightThemeSwitchThumbOnColor"];
-                    Application.Current.Resources["ThemeSwitchThumbColor"] = Application.Current.Resources["LightThemeSwitchThumbColor"];
-                    break;
-            }
+            var colorTheme = (ColorThemeEnum)Preferences.Get(ColorThemePreferenceName, 0);                       
+            
+            Application.Current.Resources["ThemeBackground"] = Application.Current.Resources[$"{colorTheme}ThemeBackground"];
+            Application.Current.Resources["ThemePrimaryDark"] = Application.Current.Resources[$"{colorTheme}ThemePrimaryDark"];
+            Application.Current.Resources["ThemePrimary"] = Application.Current.Resources[$"{colorTheme}ThemePrimary"];
+            Application.Current.Resources["ThemeOnPrimary"] = Application.Current.Resources[$"{colorTheme}ThemeOnPrimary"];
+            Application.Current.Resources["ThemeSecondary"] = Application.Current.Resources[$"{colorTheme}ThemeSecondary"];
+            Application.Current.Resources["ThemeOnSecondary"] = Application.Current.Resources[$"{colorTheme}ThemeOnSecondary"];
+            Application.Current.Resources["ThemeSurface"] = Application.Current.Resources[$"{colorTheme}ThemeSurface"];
+            Application.Current.Resources["ThemeOnSurface"] = Application.Current.Resources[$"{colorTheme}ThemeOnSurface"];
+            Application.Current.Resources["ThemeUnselectedTabText"] = Application.Current.Resources[$"{colorTheme}ThemeUnselectedTabText"];                    
+            
             _themeChanger.ApplyTheme(colorTheme);
             
             return colorTheme;
