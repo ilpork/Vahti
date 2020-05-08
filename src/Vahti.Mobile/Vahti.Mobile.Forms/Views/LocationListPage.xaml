@@ -178,7 +178,7 @@
                             <!--<Label Padding="4,0,4,0" HeightRequest="15" BackgroundColor="#dddddd"/>-->
                         <StackLayout Spacing="0">
                             <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
-                            <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeBackground}"/>
+                            <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
                         </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupFooterTemplate>
