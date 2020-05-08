@@ -88,20 +88,11 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gray.
+        ///   Looks up a localized string similar to Dark.
         /// </summary>
         internal static string ColorTheme_Gray {
             get {
                 return ResourceManager.GetString("ColorTheme_Gray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green.
-        /// </summary>
-        internal static string ColorTheme_Green {
-            get {
-                return ResourceManager.GetString("ColorTheme_Green", resourceCulture);
             }
         }
         

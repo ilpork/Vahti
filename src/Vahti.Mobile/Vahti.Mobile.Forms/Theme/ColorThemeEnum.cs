@@ -6,8 +6,7 @@ namespace Vahti.Mobile.Forms.Theme
     /// </summary>
     public enum ColorThemeEnum
     {
-        Gray,
-        Green,
-        Light
+        Gray = 0,
+        Light = 1
     }
 }

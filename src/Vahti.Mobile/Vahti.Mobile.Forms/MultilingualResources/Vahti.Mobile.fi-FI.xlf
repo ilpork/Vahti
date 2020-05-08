@@ -19,12 +19,8 @@
           <target state="new">Vahti</target>
         </trans-unit>
         <trans-unit id="ColorTheme_Gray" translate="yes" xml:space="preserve">
-          <source>Gray</source>
-          <target state="new">Gray</target>
-        </trans-unit>
-        <trans-unit id="ColorTheme_Green" translate="yes" xml:space="preserve">
-          <source>Green</source>
-          <target state="new">Green</target>
+          <source>Dark</source>
+          <target state="new">Dark</target>
         </trans-unit>
         <trans-unit id="ColorTheme_Light" translate="yes" xml:space="preserve">
           <source>Light</source>

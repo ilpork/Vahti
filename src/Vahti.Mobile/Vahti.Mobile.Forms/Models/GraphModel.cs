@@ -45,12 +45,7 @@ namespace Vahti.Mobile.Forms.Models
                     plotModel.TitleColor = OxyColors.WhiteSmoke;
                     plotModel.PlotAreaBorderColor = OxyColors.DimGray;
                     ((LineSeries)plotModel.Series[0]).Color = OxyColor.Parse("#FF9FA8DA");
-                    break;
-                case ColorThemeEnum.Green:
-                    plotModel.TitleColor = OxyColors.WhiteSmoke;
-                    plotModel.PlotAreaBorderColor = OxyColors.DimGray;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.LightSkyBlue;
-                    break;
+                    break;               
                 case ColorThemeEnum.Light:
                     plotModel.TitleColor = OxyColors.Black;
                     plotModel.PlotAreaBorderColor = OxyColors.Black;
@@ -145,11 +140,6 @@ namespace Vahti.Mobile.Forms.Models
                     minorGridLineColor = OxyColor.FromRgb(0x50, 0x50, 0x50);
                     textColor = tickLineColor = axisLineColor = OxyColors.White;
                     break;
-                case ColorThemeEnum.Green:
-                    majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColor.FromRgb(0x60, 0x60, 0x60);
-                    textColor = tickLineColor = axisLineColor = OxyColors.White;
-                    break;
                 case ColorThemeEnum.Light:
                     majorGridLineColor = OxyColors.LightGray;
                     minorGridLineColor = OxyColor.FromRgb(0xDF, 0xDF, 0xDF);
@@ -190,10 +180,6 @@ namespace Vahti.Mobile.Forms.Models
             switch (theme)
             {
                 case ColorThemeEnum.Gray:
-                    majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColors.DimGray;                    
-                    break;
-                case ColorThemeEnum.Green:
                     majorGridLineColor = OxyColors.DimGray;
                     minorGridLineColor = OxyColors.DimGray;                    
                     break;

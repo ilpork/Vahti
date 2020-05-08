@@ -127,10 +127,7 @@
     <value>Vahti</value>
   </data>
   <data name="ColorTheme_Gray" xml:space="preserve">
-    <value>Gray</value>
-  </data>
-  <data name="ColorTheme_Green" xml:space="preserve">
-    <value>Green</value>
+    <value>Dark</value>
   </data>
   <data name="ColorTheme_Light" xml:space="preserve">
     <value>Light</value>

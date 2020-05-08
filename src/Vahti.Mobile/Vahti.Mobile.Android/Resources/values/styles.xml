@@ -57,15 +57,7 @@
     <item name="android:activatedBackgroundIndicator">@color/listViewSelectedGray</item>
     <item name="colorPrimaryDark">#0c0c0c</item>
     <item name="android:navigationBarColor">#101010</item>
-  </style>
-  <style name="GreenTheme" parent="MainTheme.Dark">
-    <item name="android:colorLongPressedHighlight">@color/listViewSelectedGreen</item>
-    <item name="android:colorFocusedHighlight">@color/listViewSelectedGreen</item>
-    <item name="android:colorActivatedHighlight">@color/listViewSelectedGreen</item>
-    <item name="android:activatedBackgroundIndicator">@color/listViewSelectedGreen</item>
-    <item name="colorPrimaryDark">#006500</item>
-    <item name="android:navigationBarColor">#006500</item>
-  </style>
+  </style>  
   <style name="LightTheme" parent="MainTheme.Light">
     <item name="android:colorLongPressedHighlight">@color/listViewSelectedLight</item>
     <item name="android:colorFocusedHighlight">@color/listViewSelectedLight</item>

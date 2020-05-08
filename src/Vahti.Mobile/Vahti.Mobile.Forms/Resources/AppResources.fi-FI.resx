@@ -124,10 +124,7 @@
     <value>Yhteenveto</value>
   </data>
   <data name="ColorTheme_Gray" xml:space="preserve">
-    <value>Harmaa</value>
-  </data>
-  <data name="ColorTheme_Green" xml:space="preserve">
-    <value>Vihreä</value>
+    <value>Tumma</value>
   </data>
   <data name="Graph_HumidityGraphTitle" xml:space="preserve">
     <value>Ilmankosteus (%)</value>

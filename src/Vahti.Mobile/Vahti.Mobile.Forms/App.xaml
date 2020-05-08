@@ -23,19 +23,8 @@
         <Color x:Key="GrayThemeOnSecondary">#000000</Color>
         <Color x:Key="GrayThemeSurface">#1a1a1a</Color>
         <Color x:Key="GrayThemeOnSurface">#FFFFFF</Color>
-        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>    
-                
-        <Color x:Key="GreenThemeDark">#006000</Color>
-        <Color x:Key="GreenThemeLight">#006500</Color>
-        <Color x:Key="GreenThemeLocationHeaderColor">#007200</Color>
-        <Color x:Key="GreenThemeListItemBackground">#007500</Color>
-        <Color x:Key="GreenThemeTabHeaderBackgroundColor">#007200</Color>
-        <Color x:Key="GreenThemeUnselectedTabTextColor">#a0a0a0</Color>
-        <Color x:Key="GreenThemeTextColor">#ffffff</Color>
-        <Color x:Key="GreenThemeShellBackgroundColor">#006000</Color>
-        <Color x:Key="GreenThemeSwitchThumbOnColor">#fdfdfd</Color>
-        <Color x:Key="GreenThemeSwitchThumbColor">#dddddd</Color>
-        
+        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>                   
+             
         <Color x:Key="LightThemeBackground">#e4e4e4</Color>        
         <Color x:Key="LightThemePrimaryDark">#303F9F</Color>
         <Color x:Key="LightThemePrimary">#3F51B5</Color>
