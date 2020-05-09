@@ -15,9 +15,10 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 
 ## Features
 ### Mobile application (Vahti.Mobile)
+![Locations (Dark)](doc/images/locations_dark.png) 
 ![Locations](doc/images/locations.png) 
-![Locations](doc/images/history.png)
-![Locations](doc/images/details.png)
+![History](doc/images/history.png)
+![Details](doc/images/details.png)
 ![Options](doc/images/options.png)
 ![Widget](doc/images/widget.png)
 
@@ -28,6 +29,7 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
 - Android widget to show selected information on home screen
+- Dark and light theme
 - No background polling done
 ### Server (Vahti.Server)
 Server can be configured to run all or any of the services below. All services can run on same machine, or they can be distributed to different machines.
