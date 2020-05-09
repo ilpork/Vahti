@@ -176,16 +176,18 @@ namespace Vahti.Mobile.Forms.Models
         private static LinearAxis GetLinearAxis(ColorThemeEnum theme, AxisPosition position, double minimum, double maximum, double majorStep)
         {
             OxyColor textColor, tickLineColor, axisLineColor, majorGridLineColor, minorGridLineColor;
-            textColor = tickLineColor = axisLineColor = OxyColors.White;
+            
             switch (theme)
             {
                 case ColorThemeEnum.Gray:
                     majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColors.DimGray;                    
+                    minorGridLineColor = OxyColors.DimGray;
+                    textColor = tickLineColor = axisLineColor = OxyColors.White;
                     break;
                 default:
                     majorGridLineColor = OxyColors.LightGray;
-                    minorGridLineColor = OxyColors.LightGray;                    
+                    minorGridLineColor = OxyColors.LightGray;
+                    textColor = tickLineColor = axisLineColor = OxyColors.Black;
                     break;
             }
 
