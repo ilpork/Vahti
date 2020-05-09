@@ -68,10 +68,7 @@ namespace Vahti.Mobile.Droid
                 default:
                 case ColorThemeEnum.Gray:
                     SetTheme(Resource.Style.GrayTheme);
-                    break;
-                case ColorThemeEnum.Green:
-                    SetTheme(Resource.Style.GreenTheme);
-                    break;
+                    break;                
                 case ColorThemeEnum.Light:
                     SetTheme(Resource.Style.LightTheme);
                     break;

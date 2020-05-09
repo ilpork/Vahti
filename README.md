@@ -15,9 +15,10 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 
 ## Features
 ### Mobile application (Vahti.Mobile)
+![Locations (Dark)](doc/images/locations_dark.png) 
 ![Locations](doc/images/locations.png) 
-![Locations](doc/images/history.png)
-![Locations](doc/images/details.png)
+![History](doc/images/history.png)
+![Details](doc/images/details.png)
 ![Options](doc/images/options.png)
 ![Widget](doc/images/widget.png)
 
@@ -28,7 +29,7 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
 - Android widget to show selected information on home screen
-- No background polling done
+- Dark and light theme
 ### Server (Vahti.Server)
 Server can be configured to run all or any of the services below. All services can run on same machine, or they can be distributed to different machines.
 #### DataBroker (Vahti.DataBroker)
@@ -41,7 +42,7 @@ Server can be configured to run all or any of the services below. All services c
 - Read data from Bluetooth LE and other type of devices, like those connected via GPIO
 - Currently supports parsing data of [RuuviTag](https://www.ruuvi.com) and DHT22, but support for other devices can be added
 - Uses my [BleReader.Net](https://github.com/ilpork/BleReader.Net) to read BLE data
-#### MQTT server
+#### MQTT server (Vahti.Mqtt)
 - Wraps the [MQTTnet](https://github.com/chkr1011/MQTTnet) server to provide MQTT server functionality
 
 ## System overview
@@ -69,9 +70,7 @@ Depending on configuration and functionality used, the system requires different
 iOS app currently starts up and is able to show data on overview page. There are still many issues and some platform specific functionality has not been implemented yet in iOS app. I'm not focusing on them currently because I'm not sure how many of those who are interested in this project have Apple developer license. 
 
 ## Background
-Originally I did a very simple version of the system for my own purposes to supervise my robotic lawnmower by using a RuuviTag sensor, and show that information along with other available sensor information anywhere I am, without exposing my home network to Internet. Then I thought that maybe I could make it more generic, so that others could use it too in way that adding support for additional devices isn't too complicated.
-
-I try to document the project so that also those with less development experience could use it. 
+Originally I did a very simple version of the system for my own purposes to supervise my robotic lawnmower by using a RuuviTag sensor. Then I thought that maybe I could make it more generic, so that adding support for additional devices isn't too complicated. I've tried to document the project so that also those with less development experience could use it (see [Getting started](doc/GettingStarted.md))
 
 Vahti is a Finnish word. It means guard, watch or sentry in English. 
 

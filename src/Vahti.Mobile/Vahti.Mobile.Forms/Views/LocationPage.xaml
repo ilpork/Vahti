@@ -7,9 +7,9 @@
             mc:Ignorable="d"            
             x:Class="Vahti.Mobile.Forms.Views.LocationPage"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"            
-            BarBackgroundColor="{DynamicResource ThemeTabHeaderBackgroundColor}"
-            SelectedTabColor="{DynamicResource ThemeTextColor}" 
-            UnselectedTabColor="{DynamicResource ThemeUnselectedTabTextColor}"
+            BarBackgroundColor="{DynamicResource ThemePrimary}"
+            SelectedTabColor="{DynamicResource ThemeOnPrimary}" 
+            UnselectedTabColor="{DynamicResource ThemeUnselectedTabText}"
             Title="{Binding Title}"             
             >
     <!--android:TabbedPage.ToolbarPlacement="Bottom"-->

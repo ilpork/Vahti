@@ -83,7 +83,6 @@ namespace Vahti.Mobile.Forms.ViewModels
         {
             _dbManagementService = dbManagementService;
             ColorThemes.Add(Resources.AppResources.ColorTheme_Gray);
-            ColorThemes.Add(Resources.AppResources.ColorTheme_Green);
             ColorThemes.Add(Resources.AppResources.ColorTheme_Light);
 
             if (IsDatabaseConfigurationInAppNeeded)
@@ -92,7 +91,11 @@ namespace Vahti.Mobile.Forms.ViewModels
                 DatabaseSecret = _dbManagementService.DatabaseSecret;
             }            
 
-            ColorThemesSelectedIndex = Preferences.Get(Theme.ColorTheme.ColorThemePreferenceName, 0);        
+            var colorThemeIndex = Preferences.Get(Theme.ColorTheme.ColorThemePreferenceName, 0);
+
+            // For backwards compatibility (green theme does not exist anymore, light is now '1')
+            ColorThemesSelectedIndex = (colorThemeIndex == 2) ? 1 : colorThemeIndex;
+
             Title = Resources.AppResources.Options_Title;
 
             this.PropertyChanged += OptionsViewModel_PropertyChanged;

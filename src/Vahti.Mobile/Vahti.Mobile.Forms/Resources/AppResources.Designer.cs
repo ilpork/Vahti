@@ -88,20 +88,11 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gray.
+        ///   Looks up a localized string similar to Dark.
         /// </summary>
         internal static string ColorTheme_Gray {
             get {
                 return ResourceManager.GetString("ColorTheme_Gray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green.
-        /// </summary>
-        internal static string ColorTheme_Green {
-            get {
-                return ResourceManager.GetString("ColorTheme_Green", resourceCulture);
             }
         }
         
@@ -250,7 +241,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose information to be shown in summary view:.
+        ///   Looks up a localized string similar to Choose items to be show in summary view:.
         /// </summary>
         internal static string Options_Summary_Description {
             get {
@@ -277,7 +268,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose information to be shown in application widget (max. 3).
+        ///   Looks up a localized string similar to Choose items (3) to show in application widget:.
         /// </summary>
         internal static string Options_Widget_Description {
             get {

@@ -97,6 +97,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                 return;
             }
 
+            NoDataMessage = null;
             var updatedNeeded = Locations.Count == 0;
 
             foreach (var location in Locations)
@@ -137,6 +138,13 @@ namespace Vahti.Mobile.Forms.ViewModels
                     {
                         var filteredLocation = new Models.Location(location.Name, location.Timestamp, location.UpdateInterval, location.ToList());
                         filteredLocation.RemoveAll(m => !m.IsVisibleInSummaryView);
+
+                        // If measurement count is not even, add a dummy measurement to make location group look like rectangle
+                        if (filteredLocation.Count % 2 != 0)
+                        {
+                            filteredLocation.Add(new Measurement() { IsVisibleInSummaryView = true });
+                        }
+
                         Locations.Add(filteredLocation);
                     }                
                 }

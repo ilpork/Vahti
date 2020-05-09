@@ -102,8 +102,6 @@
     <Compile Include="Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="VahtiFirebaseMessagingService.cs" />
-    <Compile Include="Renderers\GradientColorGridRenderer.cs" />
-    <Compile Include="Renderers\GradientColorStackLayoutRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />

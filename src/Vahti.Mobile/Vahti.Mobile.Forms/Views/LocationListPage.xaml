@@ -9,7 +9,7 @@
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
              xmlns:sharedEnum="clr-namespace:Vahti.Shared.Enum;assembly=Vahti.Shared"
-             x:Name="locationListPage"
+             x:Name="locationListPage"             
              Title="{Binding Title}"                          
              >
         
@@ -24,16 +24,17 @@
             <Color x:Key="ListPageBackground">Transparent</Color>
             <Style x:Key="IconLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="22"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
             </Style>            
             <Style x:Key="BaseLabelStyle" TargetType="Label" >
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeTextColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
             </Style>
             <Style x:Key="ItemHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
-                <Setter Property="FontSize" Value="20"/>                
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnPrimary}"/>
             </Style>
             <Style x:Key="StatusTextLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="14"/>                
@@ -46,7 +47,7 @@
                 <converters:SecondsToLastChargedConverter x:Key="SecondsToLastChargedConverter"/>
                 <converters:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
                 <DataTemplate x:Key="mowerTemplate">
-                    <StackLayout Orientation="Horizontal" Padding="4,4,8,4" >
+                    <StackLayout Orientation="Horizontal" Padding="12,4,12,4" BackgroundColor="{DynamicResource ThemeSurface}" >
                         <Label Margin="0,0,0,0" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Value}" Value="0">
@@ -57,8 +58,8 @@
                         <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}"/>
                     </StackLayout>
                 </DataTemplate>
-                <DataTemplate x:Key="defaultTemplate">                                     
-                    <StackLayout Orientation="Horizontal" Padding="4,4,8,4">
+                <DataTemplate x:Key="defaultTemplate">                    
+                        <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{DynamicResource ThemeSurface}">
                             <Label Margin="0,0,0,0" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
@@ -98,17 +99,18 @@
                                         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
                                     </DataTrigger>
                                     <MultiTrigger TargetType="Label">
-                                            <MultiTrigger.Conditions>
-                                            <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />                                        
-                                            </MultiTrigger.Conditions>
-                                            <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
-                                            <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                                        </MultiTrigger>                                   
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
+                                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                    </MultiTrigger>
 
-                            </Label.Triggers>                            
+                                </Label.Triggers>
                             </Label>
-                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center"/>
-                    </StackLayout>                
+                            <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    
                    
                 </DataTemplate>
                 <selector:MeasurementDataTemplateSelector x:Key="measurementDataTemplateSelector" 
@@ -118,58 +120,69 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundLightColor}" EndColor="{DynamicResource ThemeBackgroundColor}" Margin="0,0,0,0" Padding="16,12,16,12">
-        <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="{Binding IsOldData}">
-            <Label Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" Style="{StaticResource StatusTextLabelStyle}" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center"/>
-            <Label Text="{Binding LastUpdated}" IsVisible="{Binding IsOldData}" Style="{StaticResource StatusTextLabelStyle}" VerticalTextAlignment="Center" />
-        </StackLayout>
-        
-        <RefreshView
+     
+        <StackLayout Margin="0,0,0,0" Padding="8" BackgroundColor="{DynamicResource ThemeBackground}">
+            <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="{Binding IsOldData}">
+                <Label Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" Style="{StaticResource StatusTextLabelStyle}" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center"/>
+                <Label Text="{Binding LastUpdated}" IsVisible="{Binding IsOldData}" Style="{StaticResource StatusTextLabelStyle}" VerticalTextAlignment="Center" />
+            </StackLayout>
+
+            <RefreshView
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-            >
-            <CollectionView
+            >            
+                <CollectionView
+                
             x:Name="LocationList"                   
             IsGrouped="true"
             ItemsSource="{Binding Locations}"
-            VerticalOptions="EndAndExpand"                  
+            VerticalOptions="EndAndExpand"
+                    BackgroundColor="{DynamicResource ThemeBackground}"
             ItemTemplate="{StaticResource measurementDataTemplateSelector}"
             SelectedItem="{Binding SelectedMeasurement, Mode=TwoWay}"
                 SelectionMode="Single"
             SelectionChanged="LocationList_SelectionChanged"
             SelectionChangedCommand="{Binding SelectItemCommand}"
                 >
-                <CollectionView.EmptyView>
-                    <StackLayout>
-                        <Label Text="{Binding NoDataMessage}"
+                    <CollectionView.EmptyView>
+                        <StackLayout>
+                            <Label Text="{Binding NoDataMessage}"
                                Style="{StaticResource StatusTextLabelStyle}"
                                HorizontalOptions="Fill"
-                               HorizontalTextAlignment="Start"/>                        
-                    </StackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
+                               HorizontalTextAlignment="Start"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
                         Span="2" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.GroupHeaderTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource ThemeLocationHeaderColor}">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" CommandParameter="{Binding Name}" NumberOfTapsRequired="1" />
-                            </StackLayout.GestureRecognizers>
-                            <Label VerticalOptions="Center" Text="{Binding Name}" Style="{StaticResource ItemHeaderLabelStyle}" Padding="8,4,0,4"/>
-                            <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" Padding="0,0,8,0"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                        <StackLayout Spacing="0">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ThemePrimary}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" CommandParameter="{Binding Name}" NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
+                                <Label VerticalOptions="Center" Text="{Binding Name}" Style="{StaticResource ItemHeaderLabelStyle}" Padding="8,4,0,4"/>
+                                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" 
+                                       Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" TextColor="{StaticResource ThemeOnPrimary}" Padding="0,0,8,0"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="4" BackgroundColor="{StaticResource ThemeSurface}"/>
+                        </StackLayout>
+                        
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+                    <CollectionView.GroupFooterTemplate>
+                        <DataTemplate>
+                            <!--<Label Padding="4,0,4,0" HeightRequest="15" BackgroundColor="#dddddd"/>-->
+                        <StackLayout Spacing="0">
+                            <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
+                            <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
                         </StackLayout>                        
-                    </DataTemplate>
-                </CollectionView.GroupHeaderTemplate>
-                <CollectionView.GroupFooterTemplate>
-                    <DataTemplate>
-                        <Label Padding="8,0,8,0"/>
-                    </DataTemplate>
-                </CollectionView.GroupFooterTemplate>
-            </CollectionView>
-        </RefreshView>
-    </custom:GradientColorStackLayout>
-        
+                        </DataTemplate>
+                    </CollectionView.GroupFooterTemplate>
+                </CollectionView>            
+            </RefreshView>
+        </StackLayout>      
 </ContentPage>

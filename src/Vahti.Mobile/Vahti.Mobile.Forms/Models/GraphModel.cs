@@ -44,17 +44,12 @@ namespace Vahti.Mobile.Forms.Models
                 case ColorThemeEnum.Gray:
                     plotModel.TitleColor = OxyColors.WhiteSmoke;
                     plotModel.PlotAreaBorderColor = OxyColors.DimGray;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.LightBlue;
-                    break;
-                case ColorThemeEnum.Green:
-                    plotModel.TitleColor = OxyColors.WhiteSmoke;
-                    plotModel.PlotAreaBorderColor = OxyColors.DimGray;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.LightSkyBlue;
-                    break;
+                    ((LineSeries)plotModel.Series[0]).Color = OxyColor.Parse("#FF9FA8DA");
+                    break;               
                 case ColorThemeEnum.Light:
                     plotModel.TitleColor = OxyColors.Black;
                     plotModel.PlotAreaBorderColor = OxyColors.Black;
-                    ((LineSeries)plotModel.Series[0]).Color = OxyColors.DimGray;
+                    ((LineSeries)plotModel.Series[0]).Color = OxyColor.Parse("#FF3F51B5");
                     break;
             }
             return plotModel;
@@ -145,11 +140,6 @@ namespace Vahti.Mobile.Forms.Models
                     minorGridLineColor = OxyColor.FromRgb(0x50, 0x50, 0x50);
                     textColor = tickLineColor = axisLineColor = OxyColors.White;
                     break;
-                case ColorThemeEnum.Green:
-                    majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColor.FromRgb(0x60, 0x60, 0x60);
-                    textColor = tickLineColor = axisLineColor = OxyColors.White;
-                    break;
                 case ColorThemeEnum.Light:
                     majorGridLineColor = OxyColors.LightGray;
                     minorGridLineColor = OxyColor.FromRgb(0xDF, 0xDF, 0xDF);
@@ -186,20 +176,18 @@ namespace Vahti.Mobile.Forms.Models
         private static LinearAxis GetLinearAxis(ColorThemeEnum theme, AxisPosition position, double minimum, double maximum, double majorStep)
         {
             OxyColor textColor, tickLineColor, axisLineColor, majorGridLineColor, minorGridLineColor;
-            textColor = tickLineColor = axisLineColor = OxyColors.White;
+            
             switch (theme)
             {
                 case ColorThemeEnum.Gray:
                     majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColors.DimGray;                    
-                    break;
-                case ColorThemeEnum.Green:
-                    majorGridLineColor = OxyColors.DimGray;
-                    minorGridLineColor = OxyColors.DimGray;                    
+                    minorGridLineColor = OxyColors.DimGray;
+                    textColor = tickLineColor = axisLineColor = OxyColors.White;
                     break;
                 default:
                     majorGridLineColor = OxyColors.LightGray;
-                    minorGridLineColor = OxyColors.LightGray;                    
+                    minorGridLineColor = OxyColors.LightGray;
+                    textColor = tickLineColor = axisLineColor = OxyColors.Black;
                     break;
             }
 

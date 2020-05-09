@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <custom:GradientColorStackLayout StartColor="{DynamicResource ThemeBackgroundColor}" EndColor="{DynamicResource ThemeBackgroundLightColor}" VerticalOptions="FillAndExpand">
+    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" VerticalOptions="FillAndExpand">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -23,11 +23,11 @@
             <ScrollView Grid.Row="1">
                 <StackLayout Orientation="Vertical" Padding="24" Spacing="8">
                     <StackLayout Orientation="Horizontal" Margin="0,16,0,0">
-                        <Label Text="{i18n:Translate App_Title}" FontSize="24" TextColor="{DynamicResource ThemeTextColor}" />
-                        <Label Text="{Binding Version}" FontSize="24" TextColor="{DynamicResource ThemeTextColor}" />
+                        <Label Text="{i18n:Translate App_Title}" FontSize="24" TextColor="{DynamicResource ThemeOnSurface}" />
+                        <Label Text="{Binding Version}" FontSize="24" TextColor="{DynamicResource ThemeOnSurface}" />
                     </StackLayout>                    
                 </StackLayout>
             </ScrollView>
         </Grid>
-    </custom:GradientColorStackLayout>
+    </StackLayout>
 </ContentPage>
