@@ -78,7 +78,8 @@ namespace Vahti.Collector.DeviceScanner
 
         private MeasurementData GetCustomMeasurementValue(SensorDevice sensorDevice, List<MeasurementData> measurements, CustomMeasurementRule rule)
         {
-            var sensorMeasurement = measurements.FirstOrDefault(m => m.SensorId.Equals(rule.SensorId, StringComparison.OrdinalIgnoreCase));
+            var sensorMeasurement = measurements.FirstOrDefault(m => m.SensorId.Equals(rule.SensorId, StringComparison.OrdinalIgnoreCase) && 
+                m.SensorDeviceId.Equals(sensorDevice.Id, StringComparison.OrdinalIgnoreCase));
 
             if (sensorMeasurement == null)
             {

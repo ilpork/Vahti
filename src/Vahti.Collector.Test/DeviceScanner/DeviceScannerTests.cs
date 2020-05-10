@@ -573,5 +573,93 @@ namespace Vahti.Collector.Test.DeviceScanner
             customMeasurement = fullList.First(f => f.SensorId.Equals(customRule.Id, StringComparison.OrdinalIgnoreCase));
             Assert.AreEqual("0", customMeasurement.Value, "Value is not what expected when condition is true again");
         }
+
+        /// <summary>
+        /// Tests that custom measurement data is returned for measurement of correct sensor device
+        /// </summary>        
+        [TestMethod]        
+        public async Task GetDeviceDataAsync_CustomMeasurementCreatedForCorrectSensor()
+        {
+            var sensorDeviceTypeId = "SomeSensorType";
+            var sensorDeviceId = "SomeSensorDevice";
+            var sensorId = "SomeSensor";
+            var anotherSensorDeviceId = "AnotherSensor";
+            var customRule = new CustomMeasurementRule()
+            {
+                Class = "MyClass",
+                Id = "MyId",
+                Name = "My custom measurement",
+                Unit = "qwerty",
+                Operator = Shared.Enum.OperatorType.IsGreaterThan,
+                SensorId = sensorId,
+                Type = Shared.Enum.ValueType.Default,
+                Value = "10"
+            };
+
+            // Arrange
+            var sensorDevice = new SensorDevice
+            {
+                SensorDeviceTypeId = sensorDeviceTypeId,
+                Id = sensorDeviceId,
+                CalculatedMeasurements = new List<CustomMeasurementRule>()
+                {
+                    customRule
+                }
+            };
+            var anotherSensorDevice = new SensorDevice
+            {
+                SensorDeviceTypeId = sensorDeviceTypeId,
+                Id = anotherSensorDeviceId,
+                CalculatedMeasurements = new List<CustomMeasurementRule>()
+                {
+                    customRule
+                }
+            };
+
+            var sensorDeviceType = new SensorDeviceType()
+            {
+                Id = sensorDeviceTypeId,
+                Sensors = new List<Sensor>() {
+                        new Sensor(){
+                            Id = sensorId,
+                        }                        
+                    }
+            };
+            _dataReaderMock.Setup(d => d.ReadDeviceDataAsync(It.IsAny<SensorDevice>()))
+                .ReturnsAsync(new List<MeasurementData>() { new MeasurementData()
+                {
+                    SensorDeviceId = anotherSensorDeviceId,
+                    SensorId = sensorId,
+                    Value = "12"
+                },
+                new MeasurementData()
+                {
+                    SensorDeviceId = sensorDeviceId,
+                    SensorId = sensorId,
+                    Value = "8"
+                }});
+
+            var config = new CollectorConfiguration
+            {
+                CollectorEnabled = true,
+                BluetoothAdapterName = "test",
+                ScanIntervalSeconds = 1,
+                SensorDevices = new List<SensorDevice>() { sensorDevice, anotherSensorDevice },
+                SensorDeviceTypes = new List<SensorDeviceType>() { sensorDeviceType }
+            };
+
+            _configMock.Setup(c => c.Value).Returns(config);
+
+            var deviceScanner = _serviceProvider.GetService<Collector.DeviceScanner.DeviceScanner>();
+
+            // Act      
+            var fullList = await deviceScanner.GetDeviceDataAsync(config.SensorDevices);
+
+            // Assert 
+            Assert.AreEqual(6, fullList.Count, "Amount of measurements is not correct");
+
+            var customMeasurement = fullList.First(f => f.SensorId.Equals(customRule.Id, StringComparison.OrdinalIgnoreCase));                 
+            Assert.IsFalse(bool.Parse(customMeasurement.Value), "Custom measurement value should be false for the correct sensor device");
+        }
     }
 }
