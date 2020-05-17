@@ -54,20 +54,27 @@ namespace Vahti.Collector.DeviceDataReader
 
             var ruuviData = await _bleReader.GetManufacturerDataAsync<RuuviTag>(sensorDevice.Address);
 
-            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = ruuviData.Temperature.Value.ToString(_numberFormatInfo) });
-            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = ruuviData.Humidity.Value.ToString(_numberFormatInfo) });
-            measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "pressure", Value = ruuviData.AirPressure.Value.ToString(_numberFormatInfo) });
+            if (ruuviData == null)
+            {
+                _logger.LogWarning($"{DateTime.Now}: Could not read manufacturer data from '{sensorDevice.Id}' at '{sensorDevice.Address}'");                
+            }
+            else
+            {
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = ruuviData.Temperature.Value.ToString(_numberFormatInfo) });
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = ruuviData.Humidity.Value.ToString(_numberFormatInfo) });
+                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "pressure", Value = ruuviData.AirPressure.Value.ToString(_numberFormatInfo) });
 
-            if (ruuviData.AccelerationX != null)
-                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationX", Value = ruuviData.AccelerationX.Value.ToString(_numberFormatInfo) });
-            if (ruuviData.AccelerationY != null)
-                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationY", Value = ruuviData.AccelerationY.Value.ToString(_numberFormatInfo) });
-            if (ruuviData.AccelerationZ != null)
-                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationZ", Value = ruuviData.AccelerationZ.Value.ToString(_numberFormatInfo) });
-            if (ruuviData.BatteryVoltage != null)
-                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "batteryVoltage", Value = ruuviData.BatteryVoltage.Value.ToString(_numberFormatInfo) });
-            if (ruuviData.MovementCounter != null)
-                measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(_numberFormatInfo) });
+                if (ruuviData.AccelerationX != null)
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationX", Value = ruuviData.AccelerationX.Value.ToString(_numberFormatInfo) });
+                if (ruuviData.AccelerationY != null)
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationY", Value = ruuviData.AccelerationY.Value.ToString(_numberFormatInfo) });
+                if (ruuviData.AccelerationZ != null)
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "accelerationZ", Value = ruuviData.AccelerationZ.Value.ToString(_numberFormatInfo) });
+                if (ruuviData.BatteryVoltage != null)
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "batteryVoltage", Value = ruuviData.BatteryVoltage.Value.ToString(_numberFormatInfo) });
+                if (ruuviData.MovementCounter != null)
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(_numberFormatInfo) });
+            }            
 
             return measurements;
         }
