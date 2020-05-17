@@ -309,6 +309,49 @@ namespace Vahti.Collector.Test.DeviceScanner
         }
 
         /// <summary>
+        /// Tests that custom measurements are not handled if sensor data is not available at all
+        /// </summary>        
+        [TestMethod]
+        public async Task GetDeviceDataAsync_NoDataAvailable_CustomMeasurementsNotHandled()
+        {
+            var customRule = new CustomMeasurementRule();           
+
+            // Arrange
+            var sensorDevice = new SensorDevice
+            {
+                SensorDeviceTypeId = "someSensorDeviceTypeId",
+                Id = "someSensorId",
+                CalculatedMeasurements = new List<CustomMeasurementRule>()
+                {
+                    customRule
+                }
+            };            
+
+            _dataReaderMock.Setup(d => d.ReadDeviceDataAsync(It.IsAny<SensorDevice>()))
+                .ReturnsAsync(new List<MeasurementData>());
+
+            var config = new CollectorConfiguration
+            {
+                CollectorEnabled = true,
+                BluetoothAdapterName = "test",
+                ScanIntervalSeconds = 1,
+                SensorDevices = new List<SensorDevice>() { sensorDevice },
+                SensorDeviceTypes = new List<SensorDeviceType>()
+            };
+
+            _configMock.Setup(c => c.Value).Returns(config);
+
+            var deviceScanner = _serviceProvider.GetService<Collector.DeviceScanner.DeviceScanner>();
+
+            // Act      
+            var fullList = await deviceScanner.GetDeviceDataAsync(config.SensorDevices);
+
+            // Assert 
+            _loggerMock.Verify(l => l.Log(LogLevel.Error, It.IsAny<EventId>(), It.IsAny<It.IsAnyType>(), It.IsAny<Exception>(),
+                (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()), Times.Never, "No error should be raised in DeviceScanner if no measurement data available");
+        }
+
+        /// <summary>
         /// Tests that custom measurement data is returned correctly for with default comparison type
         /// </summary>        
         [TestMethod]
