@@ -102,7 +102,7 @@ namespace Vahti.DataBroker
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError($"{DateTime.Now}: Error occured in Vahti.DataBroker: {ex.Message}");
+                    _logger.LogError($"{DateTime.Now}: Error occured in Vahti.DataBroker: {ex.Message}, {ex.StackTrace}");
                     consecutiveReadFailCount++;
 
                     // Break from loop if the problem persists
