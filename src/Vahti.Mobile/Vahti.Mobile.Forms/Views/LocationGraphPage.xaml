@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
-             xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"             
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
