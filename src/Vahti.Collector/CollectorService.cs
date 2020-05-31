@@ -105,7 +105,7 @@ namespace Vahti.Collector
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError("Reading device data failed: " + ex.Message);
+                        _logger.LogError($"{DateTime.Now}: Reading device data failed: {ex.Message}, {ex.StackTrace}");
                         consecutiveReadFailCount++;
 
                         // Break from loop if the problem persists
