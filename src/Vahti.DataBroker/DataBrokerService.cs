@@ -19,6 +19,8 @@ namespace Vahti.DataBroker
     /// </summary>
     public class DataBrokerService : BackgroundService
     {
+        public const int MaxRepeatedFailCount = 10;
+
         private const int LoopInterval = 60; // How often run the main loop (in seconds)
         private const int HistoryDatabaseCleanupIntervalMinutes = 60 * 24; // Clean up history database of old data once per day
 
@@ -64,8 +66,7 @@ namespace Vahti.DataBroker
             await _mqttClient.StartAsync(options);
 
             var minuteCounter = 0;
-            int consecutiveReadFailCount = 0;
-            const int maxReadFailCount = 10;
+            int consecutiveReadFailCount = 0;            
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -90,7 +91,7 @@ namespace Vahti.DataBroker
                     }
 
                     await _dataBroker.SendAlerts();
-
+                    consecutiveReadFailCount = 0;
                     await Task.Delay(TimeSpan.FromSeconds(LoopInterval), stoppingToken);
                     minuteCounter++;
                 }
@@ -102,11 +103,10 @@ namespace Vahti.DataBroker
                 catch (Exception ex)
                 {
                     _logger.LogError($"{DateTime.Now}: Error occured in Vahti.DataBroker: {ex.Message}");
-
                     consecutiveReadFailCount++;
 
                     // Break from loop if the problem persists
-                    if (consecutiveReadFailCount >= maxReadFailCount)
+                    if (consecutiveReadFailCount >= MaxRepeatedFailCount)
                     {
                         break;
                     }
