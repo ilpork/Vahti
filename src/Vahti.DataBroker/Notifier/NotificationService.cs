@@ -4,6 +4,7 @@ using FluentEmail.MailKitSmtp;
 using Microsoft.Azure.NotificationHubs;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -28,12 +29,14 @@ namespace Vahti.DataBroker.Notifier
 
         public async Task Send(string title, string message)
         {
+            var messageWithDateTime = $"{message} ({DateTime.Now})";
+
             // Send push notification
             if (_config.AzurePushNotifications != null && _config.AzurePushNotifications.Enabled)
             {
                 var hub = NotificationHubClient.CreateClientFromConnectionString(_config.AzurePushNotifications.ConnectionString, 
                     _config.AzurePushNotifications.NotificationHubName);
-                var payload = JsonConvert.SerializeObject(new AzureNotificationPayload(title, message));
+                var payload = JsonConvert.SerializeObject(new AzureNotificationPayload(title, messageWithDateTime));
                 await hub.SendFcmNativeNotificationAsync(payload);
             }
             // Send email notification
@@ -72,7 +75,7 @@ namespace Vahti.DataBroker.Notifier
                     var email = await Email.From(senderAddress.Address, senderAddress.DisplayName)
                         .To(recipientAddresses.ToList())
                         .Subject(title)
-                        .Body(message)
+                        .Body(messageWithDateTime)
                         .SendAsync();                     
                 }                
             }
