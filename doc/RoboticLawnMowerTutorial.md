@@ -1,13 +1,11 @@
 # Tutorial for monitoring a robotic lawn mower
-Why I originally started to develop early version of this system was to check if my robotic lawn mower has returned safely back to its charging station after its work session. There are some obstacles in our garden, and sometimes the mower gets stuck on them. So I wanted to get notification to my phone if mower is not back in charging station in one hour.
+Why I originally started to develop early version of this system was to check if my robotic lawn mower has returned safely back to its charging station after mowing. There are some obstacles in our garden, and sometimes the mower gets stuck on them. So I wanted to get notification to my phone if mower is not back in charging station in one hour.
 
-Charging station of Husqvarna Automower (as well as many other models) has a horizontal flap, which raises a bit when mower comes to there. RuuviTag needs to be put on that flap. Then you can investigate RuuviTag accelerator meter values to see which axis provides clearest change in sensor value when angle of the flap changes.
+Charging station of Husqvarna Automower (as well as many other models) has a horizontal flap, which raises a bit when mower enters the charging station. RuuviTag needs to be put on that flap. Then you can investigate RuuviTag accelerometer values to see which axis provides clearest change in sensor value when angle of the flap changes.
 
-The following configuration is based on [Alert tutorial](AlertTutorial.md) for simplicity, because the main difference is in the configuration file. You can check other tutorials regarding how to set up mobile app. Mobile app shows the status of the mower (is it charging or how long has it been away). See screenshot on main README for an example.
+The following configuration is based on [Alert tutorial](AlertTutorial.md) for simplicity, because the main difference is in the configuration file. You can check other tutorials regarding how to set up mobile app. Mobile app shows the status of the mower (is it charging or how long has it been away). See screenshot in README for an example.
 
-In configuration file you need to define `calculatedMeasurements` for the SensorDevice. In this case it defines sensor with class `lastCharged`, so mobile app knows how to show the data in user interface. Other fields define that value of `lastCharged` is the time passed since given condition was true last time.
-
-Alert respectively defines that alert is sent when the value is greater than 1 hour (3600 seconds). 
+In configuration file you need to define `calculatedMeasurements` for the SensorDevice. In this case it defines sensor with class `lastCharged`, so mobile app knows how to show the data in user interface. `lastCharged` is handled by Vahti.Collector and value is the time passed (in seconds) since given condition was true last time. Alert respectively defines that alert is sent when the value is greater than 1 hour (3600 seconds). 
 
 This tutorial assumes that you have Raspberry Pi (at 192.168.1.2) and you want to get notifications by email.
 
