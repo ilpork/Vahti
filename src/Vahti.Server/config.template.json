@@ -171,6 +171,7 @@
   },
   "Logging": {
     "LogLevel": {
+      "Vahti": "Warning",
       "Default": "Information",
       "System": "Information",
       "Microsoft": "Information"
