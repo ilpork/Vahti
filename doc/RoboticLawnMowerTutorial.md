@@ -15,10 +15,10 @@ For basic setup of Raspberry Pi you can read [Setting up Raspberry Pi](SettingUp
 2. Download Vahti.Server binaries: `wget https://github.com/ilpork/vahti/releases/latest/download/Vahti.Server-linux-arm.zip`
 3. Extract the files: `unzip Vahti.Server-linux-arm.zip`
 4. Copy `config.template.json` as `config.json` and modify it to suit your configuration (like email settings and RuuviTag address). See [Configuration](Configuration.md) for details.
-4. Run the app with `./Vahti.Server`
+5. Run the app with `./Vahti.Server`
 
 ## Example configuration
-This example assumes that you have one RuuviTag and it's on the mower.
+This example assumes that you have one RuuviTag and it's on the mower. Change logging level to `Information` or `Debug` to get more detailed output.
 ```
 {
   "mqttConfiguration": {
@@ -152,6 +152,17 @@ This example assumes that you have one RuuviTag and it's on the mower.
         ]
       }
     ]
+  },
+  "Logging": {
+    "LogLevel": {
+      "Vahti": "Warning",
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "Console": {
+      "IncludeScopes": true
+    }
   }
 }
 ```

@@ -10,7 +10,7 @@ For basic setup of Raspberry Pi you can read [Setting up Raspberry Pi](SettingUp
 4. Run the app `./Vahti.Server`
 
 ## Example configuration 1
-This example assumes that you have one RuuviTag.
+This example assumes that you have one RuuviTag. Change logging level to `Information` or `Debug` to get more detailed output.
 ```
 {
   "mqttConfiguration": {
@@ -132,12 +132,25 @@ This example assumes that you have one RuuviTag.
         ]
       }
     ]
+  },
+  "Logging": {
+    "LogLevel": {
+      "Vahti": "Warning",
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "Console": {
+      "IncludeScopes": true
+    }
   }
 }
 ```
 
 ## Example configuration 2
 If you don't have RuuviTag, DHT22 or other device supported by Vahti.Collector, but some other source providing data (see [Add other data sources](AddOtherDataSources.md)), the configuration file is even simpler. This example assumes that you have configured a sensor device with name `dhtGarage` to publish temperature data.
+
+Change logging level of Vahti to `Information` or `Debug` to get more detailed output.
 
 ```
 {
@@ -188,7 +201,18 @@ If you don't have RuuviTag, DHT22 or other device supported by Vahti.Collector, 
         }
       ]
     }
-  }  
+  },
+  "Logging": {
+    "LogLevel": {
+      "Vahti": "Warning",
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "Console": {
+      "IncludeScopes": true
+    }
+  }
 }
 ```
 
