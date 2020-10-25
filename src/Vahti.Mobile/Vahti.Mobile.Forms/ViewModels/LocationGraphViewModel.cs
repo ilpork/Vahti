@@ -20,14 +20,14 @@ namespace Vahti.Mobile.Forms.ViewModels
     public class LocationGraphViewModel : BaseViewModel
     {
         private readonly IDataService<MeasurementHistory> _historyDataService;
-        private ObservableCollection<PlotModel> _plotModels = new ObservableCollection<PlotModel>();
+        private ObservableCollection<IPlotModel> _plotModels = new ObservableCollection<IPlotModel>();
         private Models.Location _selectedLocation;
         private bool _showGraphs = false;
         
         public Command<bool> RefreshGraphCommand { get; }
         
         
-        public ObservableCollection<PlotModel> PlotModels
+        public ObservableCollection<IPlotModel> PlotModels
         {
             get
             {

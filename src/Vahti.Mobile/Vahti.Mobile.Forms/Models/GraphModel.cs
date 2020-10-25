@@ -15,7 +15,7 @@ namespace Vahti.Mobile.Forms.Models
     /// </summary>
     public class GraphModel
     {        
-        public static PlotModel GetPlotModel(MeasurementHistory historyData, SensorClass sensorClass, string sensorName)
+        public static IPlotModel GetPlotModel(MeasurementHistory historyData, SensorClass sensorClass, string sensorName)
         {
             var graphDataPoints = new List<GraphData>();
 
@@ -30,7 +30,7 @@ namespace Vahti.Mobile.Forms.Models
 
             var theme = (ColorThemeEnum)Preferences.Get(ColorTheme.ColorThemePreferenceName, 0);
 
-            var plotModel = new PlotModel() { Title = $"{sensorName} ({historyData.Unit})" };
+            var plotModel = new ViewResolvingPlotModel() { Title = $"{sensorName} ({historyData.Unit})" };
             var ls = new AreaSeries() { DataFieldX = "X", DataFieldY = "Y", ItemsSource = graphDataPoints };
             plotModel.Series.Add(ls);
 
