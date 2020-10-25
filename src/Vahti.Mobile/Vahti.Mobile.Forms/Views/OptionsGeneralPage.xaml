@@ -28,8 +28,7 @@
                 </Picker.Effects>
             </Picker>
         </StackLayout>
-        <!--<StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">-->
-        <StackLayout Orientation="Vertical" IsVisible="True">
+        <StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">        
             <Label Text="{i18n:Translate Options_CloudDatabaseUrlLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
             <StackLayout Orientation="Vertical" Spacing="0">
                 <Entry Text="{Binding DatabaseUrl}" 
