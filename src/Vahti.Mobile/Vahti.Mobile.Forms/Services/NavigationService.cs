@@ -20,10 +20,10 @@ namespace Vahti.Mobile.Forms.Services
             switch (pageType)
             {
                 case PageType.Location:
-                    routeId = "//summary/location";
+                    routeId = "location";
                     break;
                 case PageType.Options:
-                    routeId = "//options";
+                    routeId = "options";
                     break;
                 default:
                     throw new NotImplementedException(nameof(pageType));
