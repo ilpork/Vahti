@@ -50,7 +50,6 @@
     <PackageReference Include="PCLAppConfig" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
-    <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vahti.Shared\Vahti.Shared.csproj" />

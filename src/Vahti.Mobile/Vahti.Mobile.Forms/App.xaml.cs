@@ -31,19 +31,6 @@ namespace Vahti.Mobile.Forms
             Theme = new ColorTheme(themeChanger); 
             Theme.ApplyColorTheme();
 
-#if DEBUG
-            try
-            {
-                if (!HotReloader.Current.IsRunning)
-                {
-                    HotReloader.Current.Run(this);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"Starting HotReload failed: {e.Message}");
-            }            
-#endif                 
 
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
             {
