@@ -169,13 +169,13 @@
                                 <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" 
                                        Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" TextColor="{StaticResource ThemeOnPrimary}" Padding="0,0,8,0"/>
                             </StackLayout>
-                            <BoxView HeightRequest="4" BackgroundColor="{StaticResource ThemeSurface}"/>
+                            <BoxView HeightRequest="4" BackgroundColor="{DynamicResource ThemeSurface}"/>
                         </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupHeaderTemplate>
                     <CollectionView.GroupFooterTemplate>
                         <DataTemplate>                            
-                            <StackLayout Spacing="0">
+                            <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Spacing="0">
                                 <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
                                 <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
                             </StackLayout>                        
