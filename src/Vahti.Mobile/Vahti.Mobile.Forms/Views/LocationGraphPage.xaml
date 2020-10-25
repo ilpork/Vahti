@@ -6,32 +6,32 @@
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource ThemeBackground}"
-             >
+             BackgroundColor="{StaticResource ThemeBackground}">
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
     </ContentPage.Resources>    
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshGraphCommand}" CommandParameter="{StaticResource False}" />
-    </ContentPage.Behaviors>    
-    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="8" Padding="16,12,16,12">
-
-        <RefreshView
-             Command="{Binding RefreshGraphCommand}"
-             CommandParameter="{StaticResource True}"
-             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-            >
-            <CollectionView                        
-            ItemsSource="{Binding PlotModels}"
-                 
-            VerticalOptions="EndAndExpand">
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <oxy:PlotView Model="{Binding .}" Margin="0" HeightRequest="250" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
-    </StackLayout>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="8" Padding="16,12,16,12">
+            <RefreshView
+                Command="{Binding RefreshGraphCommand}"
+                CommandParameter="{StaticResource True}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}">                
+                <CollectionView                                        
+                    ItemsSource="{Binding PlotModels}"                 
+                    VerticalOptions="EndAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <oxy:PlotView Model="{Binding .}" Margin="0" HeightRequest="250" />
+                                <Grid BackgroundColor="Transparent"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>    
 </ContentPage>
