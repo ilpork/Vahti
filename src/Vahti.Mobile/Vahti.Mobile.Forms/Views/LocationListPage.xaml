@@ -144,15 +144,17 @@
             SelectionChanged="LocationList_SelectionChanged"
             SelectionChangedCommand="{Binding SelectItemCommand}"
                 >
-                    <CollectionView.EmptyView>
-                        <StackLayout>
-                            <Label Text="{Binding NoDataMessage}"
+                <!-- Uncomment this when https://github.com/xamarin/Xamarin.Forms/pull/12377 is available
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No data"
                                Style="{StaticResource StatusTextLabelStyle}"
                                HorizontalOptions="Fill"
                                HorizontalTextAlignment="Start"/>
-                        </StackLayout>
-                    </CollectionView.EmptyView>
-                    <CollectionView.ItemsLayout>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                -->
+                <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
                         Span="2" />
                     </CollectionView.ItemsLayout>
@@ -168,17 +170,15 @@
                                        Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" TextColor="{StaticResource ThemeOnPrimary}" Padding="0,0,8,0"/>
                             </StackLayout>
                             <BoxView HeightRequest="4" BackgroundColor="{StaticResource ThemeSurface}"/>
-                        </StackLayout>
-                        
+                        </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupHeaderTemplate>
                     <CollectionView.GroupFooterTemplate>
-                        <DataTemplate>
-                            <!--<Label Padding="4,0,4,0" HeightRequest="15" BackgroundColor="#dddddd"/>-->
-                        <StackLayout Spacing="0">
-                            <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
-                            <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
-                        </StackLayout>                        
+                        <DataTemplate>                            
+                            <StackLayout Spacing="0">
+                                <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
+                                <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
+                            </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupFooterTemplate>
                 </CollectionView>            
