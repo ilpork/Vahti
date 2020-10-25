@@ -5,8 +5,11 @@
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
-             Title="{Binding Title}"
+             Title="{Binding SelectedLocation.Name}"
              BackgroundColor="{StaticResource ThemeBackground}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Details" Command="{Binding ShowDetailsCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
     </ContentPage.Resources>    

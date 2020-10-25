@@ -25,8 +25,8 @@ namespace Vahti.Mobile.Forms.ViewModels
         private bool _showGraphs = false;
         
         public Command<bool> RefreshGraphCommand { get; }
-        
-        
+        public Command ShowDetailsCommand { get; set; }
+
         public ObservableCollection<IPlotModel> PlotModels
         {
             get
@@ -68,6 +68,11 @@ namespace Vahti.Mobile.Forms.ViewModels
             _historyDataService = dataStore;
             NavigationService.NavigatedTo += NavigationService_NavigatedTo;
             RefreshGraphCommand = new Command<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
+            ShowDetailsCommand = new Command(() =>
+            {   
+                NavigationService.NavigateTo(Constants.PageType.Details, SelectedLocation);                
+            });
+
             Title = Resources.AppResources.Graph_Title;
         }
 

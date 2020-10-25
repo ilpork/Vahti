@@ -6,6 +6,7 @@
     public enum PageType
     {        
         Location,
-        Options
+        Options,
+        Details
     }
 }

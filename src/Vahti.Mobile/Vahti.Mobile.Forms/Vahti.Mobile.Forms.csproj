@@ -72,9 +72,6 @@
     <Compile Update="Views\LocationListPage.xaml.cs">
       <DependentUpon>LocationListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LocationPage.xaml.cs">
-      <DependentUpon>LocationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\LocationGraphPage.xaml.cs">
       <DependentUpon>LocationGraphPage.xaml</DependentUpon>
     </Compile>
@@ -97,9 +94,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OptionsGeneralPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LocationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OptionsSummaryPage.xaml">

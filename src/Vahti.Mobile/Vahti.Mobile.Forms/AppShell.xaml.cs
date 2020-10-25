@@ -10,9 +10,9 @@ namespace Vahti.Mobile.Forms
         public AppShell()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute("summary", typeof(LocationListPage));
-            Routing.RegisterRoute("location", typeof(LocationPage));
+                        
+            Routing.RegisterRoute("location", typeof(LocationGraphPage));
+            Routing.RegisterRoute("location/details", typeof(LocationDetailsPage));
         }
     }
 }
