@@ -242,7 +242,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <AndroidResource Include="Resources\bg_splash.png" />
+    <BundleResource Include="Resources\bg_splash.png" />
     <AndroidResource Include="Resources\ic_menu_info.png" />
     <AndroidResource Include="Resources\ic_menu_list.png" />
     <AndroidResource Include="Resources\ic_menu_settings.png" />
