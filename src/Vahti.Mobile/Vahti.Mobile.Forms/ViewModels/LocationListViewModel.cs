@@ -142,7 +142,9 @@ namespace Vahti.Mobile.Forms.ViewModels
                         // If measurement count is not even, add a dummy measurement to make location group look like rectangle
                         if (filteredLocation.Count % 2 != 0)
                         {
-                            filteredLocation.Add(new Measurement() { IsVisibleInSummaryView = true });
+                            var lastMeasurement = filteredLocation.Last();
+                            filteredLocation.Add(new Measurement() { IsVisibleInSummaryView = false, SensorName = lastMeasurement.SensorName, 
+                                Value = lastMeasurement.Value, Unit = lastMeasurement.Unit, SensorClass = lastMeasurement.SensorClass });
                         }
 
                         Locations.Add(filteredLocation);
