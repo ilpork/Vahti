@@ -51,10 +51,19 @@
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Value}" Value="0">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeChargingStation}"/>
-                                </DataTrigger>                               
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}"/>
+                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                     </StackLayout>
                 </DataTemplate>
                 <DataTemplate x:Key="defaultTemplate">
