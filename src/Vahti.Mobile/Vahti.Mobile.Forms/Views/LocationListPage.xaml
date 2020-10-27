@@ -136,6 +136,7 @@
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+             RefreshColor="{StaticResource ThemeOnSurface}"
             >            
                 <CollectionView
                 

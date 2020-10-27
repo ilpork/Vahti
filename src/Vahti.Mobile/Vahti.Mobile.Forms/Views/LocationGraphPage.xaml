@@ -21,6 +21,7 @@
             <RefreshView
                 Command="{Binding RefreshGraphCommand}"
                 CommandParameter="{StaticResource True}"
+                RefreshColor="{StaticResource ThemeOnSurface}"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">                
                 <CollectionView                                        
                     ItemsSource="{Binding PlotModels}"                 
