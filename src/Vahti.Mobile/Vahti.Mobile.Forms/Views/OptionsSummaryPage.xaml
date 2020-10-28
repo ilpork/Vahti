@@ -67,7 +67,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding SensorName}" Style="{DynamicResource BaseLabelStyle}" Grid.Row="0" Grid.Column="0"/>
                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                                <Switch IsToggled="{Binding IsVisibleInSummaryView}" HorizontalOptions="End" ThumbColor="{DynamicResource ThemeOnPrimary}" OnColor="{DynamicResource ThemeSecondary}">
+                                <Switch IsToggled="{Binding IsVisibleInSummaryView}" HorizontalOptions="End" ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSecondary}">
                                     <Switch.Behaviors>
                                         <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding Source={x:Reference optionsSummaryPage}, Path=BindingContext.VisibilityToggledCommand}" />
                                     </Switch.Behaviors>

@@ -136,7 +136,7 @@
 
      
         <StackLayout Margin="0,0,0,0" Padding="8" BackgroundColor="{DynamicResource ThemeBackground}">
-            <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="{Binding IsOldData}">
+            <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="false">
                 <Label Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" Style="{StaticResource StatusTextLabelStyle}" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center"/>
                 <Label Text="{Binding LastUpdated}" IsVisible="{Binding IsOldData}" Style="{StaticResource StatusTextLabelStyle}" VerticalTextAlignment="Center" />
             </StackLayout>
