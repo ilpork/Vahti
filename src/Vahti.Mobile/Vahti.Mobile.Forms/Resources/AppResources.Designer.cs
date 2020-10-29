@@ -241,7 +241,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose items to be show in summary view:.
+        ///   Looks up a localized string similar to Choose items to show in summary view:.
         /// </summary>
         internal static string Options_Summary_Description {
             get {
@@ -268,7 +268,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose items (3) to show in application widget:.
+        ///   Looks up a localized string similar to Choose items (3) to show in Android widget:.
         /// </summary>
         internal static string Options_Widget_Description {
             get {
