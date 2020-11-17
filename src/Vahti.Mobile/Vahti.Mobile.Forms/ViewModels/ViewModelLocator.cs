@@ -40,10 +40,6 @@ namespace MobileClient.ViewModels
         {
             get { return ServiceLocator.Current.GetInstance<LocationDetailsViewModel>(); }
         }
-        public static LocationViewModel Location
-        {
-            get { return ServiceLocator.Current.GetInstance<LocationViewModel>(); }
-        }
         public static LocationGraphViewModel Graph
         {
             get { return ServiceLocator.Current.GetInstance<LocationGraphViewModel>(); }

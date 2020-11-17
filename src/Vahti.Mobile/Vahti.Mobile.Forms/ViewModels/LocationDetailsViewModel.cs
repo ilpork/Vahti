@@ -53,9 +53,7 @@ namespace Vahti.Mobile.Forms.ViewModels
             VisibilityToggledCommand = new Command(() =>
             {
                 _visibilitySettingsUpdated = true;
-            });
-            
-            Title = AppResources.Details_Title;
+            });            
         }
 
         private async void NavigationService_NavigatedTo(object sender, NavigatedToEventArgs e)
@@ -63,14 +61,14 @@ namespace Vahti.Mobile.Forms.ViewModels
             if (e.Page == Constants.PageType.Location)
             {
                 _locationName = ((Models.Location)e.Parameter).Name;
+                Title = $"{_locationName} ({AppResources.Details_Title})";                
                 await RefreshDataAsync();
             }
         }
 
         public async Task RefreshDataAsync()
         {            
-            Location = await _dataService.GetDataAsync(_locationName, false);          
-            
+            Location = await _dataService.GetDataAsync(_locationName, false);        
         }        
     }    
 }

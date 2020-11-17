@@ -19,8 +19,12 @@ The tutorial contains a lot of steps, but the aim is to help those who are not s
 
  https://docs.microsoft.com/en-us/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm
 
+ If you're building for iOS, check this tutorial:
+
+ https://docs.microsoft.com/en-us/azure/developer/mobile-apps/notification-hubs-backend-service-xamarin-forms
+
 ### Create Google Firebase realtime database
-Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on how to create Firebase database, where data is stored.
+Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on how to create Firebase database and where data is stored.
 
 ### Update mobile projects
 1. Set Vahti.Mobile.Android project as start-up project in toolbar (or via project context menu)

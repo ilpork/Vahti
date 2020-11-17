@@ -51,66 +51,81 @@
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Value}" Value="0">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeChargingStation}"/>
-                                </DataTrigger>                               
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}"/>
+                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                     </StackLayout>
                 </DataTemplate>
-                <DataTemplate x:Key="defaultTemplate">                    
-                        <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{DynamicResource ThemeSurface}">
-                            <Label Margin="0,0,0,0" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsThermometer}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Humidity}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsHumidity}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Pressure}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsBarometer}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.BatteryVoltage}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationX}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsRight}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationY}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsDown}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationZ}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsUpLeft}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Rssi}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeSignal}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.MovementCounter}">
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeArrows}"/>
-                                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                                    </DataTrigger>
-                                    <MultiTrigger TargetType="Label">
-                                        <MultiTrigger.Conditions>
-                                            <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />
-                                        </MultiTrigger.Conditions>
-                                        <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
-                                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                                    </MultiTrigger>
-
-                                </Label.Triggers>
-                            </Label>
-                            <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center"/>
-                        </StackLayout>
-                    
-                   
+                <DataTemplate x:Key="defaultTemplate">
+                    <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{DynamicResource ThemeSurface}">
+                        <Label Margin="0,0,0,0" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsThermometer}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Humidity}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsHumidity}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Pressure}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsBarometer}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.BatteryVoltage}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationX}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsRight}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationY}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsDown}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationZ}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsUpLeft}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Rssi}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeSignal}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.MovementCounter}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeArrows}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                </DataTrigger>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
+                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                </MultiTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
                 </DataTemplate>
                 <selector:MeasurementDataTemplateSelector x:Key="measurementDataTemplateSelector" 
                                                      MowerTemplate="{StaticResource mowerTemplate}" 
@@ -121,7 +136,7 @@
 
      
         <StackLayout Margin="0,0,0,0" Padding="8" BackgroundColor="{DynamicResource ThemeBackground}">
-            <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="{Binding IsOldData}">
+            <StackLayout Orientation="Horizontal" Margin="0,4,0,4" IsVisible="false">
                 <Label Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" Style="{StaticResource StatusTextLabelStyle}" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center"/>
                 <Label Text="{Binding LastUpdated}" IsVisible="{Binding IsOldData}" Style="{StaticResource StatusTextLabelStyle}" VerticalTextAlignment="Center" />
             </StackLayout>
@@ -130,6 +145,7 @@
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+             RefreshColor="{StaticResource ThemeOnSurface}"
             >            
                 <CollectionView
                 
@@ -144,15 +160,17 @@
             SelectionChanged="LocationList_SelectionChanged"
             SelectionChangedCommand="{Binding SelectItemCommand}"
                 >
-                    <CollectionView.EmptyView>
-                        <StackLayout>
-                            <Label Text="{Binding NoDataMessage}"
+                <!-- Uncomment this when https://github.com/xamarin/Xamarin.Forms/pull/12377 is available
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No data"
                                Style="{StaticResource StatusTextLabelStyle}"
                                HorizontalOptions="Fill"
                                HorizontalTextAlignment="Start"/>
-                        </StackLayout>
-                    </CollectionView.EmptyView>
-                    <CollectionView.ItemsLayout>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                -->
+                <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
                         Span="2" />
                     </CollectionView.ItemsLayout>
@@ -167,18 +185,16 @@
                                 <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" 
                                        Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" TextColor="{StaticResource ThemeOnPrimary}" Padding="0,0,8,0"/>
                             </StackLayout>
-                            <BoxView HeightRequest="4" BackgroundColor="{StaticResource ThemeSurface}"/>
-                        </StackLayout>
-                        
+                            <BoxView HeightRequest="4" BackgroundColor="{DynamicResource ThemeSurface}"/>
+                        </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupHeaderTemplate>
                     <CollectionView.GroupFooterTemplate>
-                        <DataTemplate>
-                            <!--<Label Padding="4,0,4,0" HeightRequest="15" BackgroundColor="#dddddd"/>-->
-                        <StackLayout Spacing="0">
-                            <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
-                            <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
-                        </StackLayout>                        
+                        <DataTemplate>                            
+                            <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Spacing="0">
+                                <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
+                                <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
+                            </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupFooterTemplate>
                 </CollectionView>            

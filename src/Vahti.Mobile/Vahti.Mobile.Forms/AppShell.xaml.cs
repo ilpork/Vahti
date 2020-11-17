@@ -11,7 +11,8 @@ namespace Vahti.Mobile.Forms
         {
             InitializeComponent();
                         
-            Routing.RegisterRoute("//summary/location", typeof(LocationPage));
+            Routing.RegisterRoute("location", typeof(LocationGraphPage));
+            Routing.RegisterRoute("location/details", typeof(LocationDetailsPage));
         }
     }
 }

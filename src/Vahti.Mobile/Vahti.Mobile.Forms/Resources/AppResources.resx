@@ -178,7 +178,7 @@
     <value>General</value>
   </data>
   <data name="Options_Summary_Description" xml:space="preserve">
-    <value>Choose items to be show in summary view:</value>
+    <value>Choose items to show in summary view:</value>
   </data>
   <data name="Options_Summary_Title" xml:space="preserve">
     <value>Summary</value>
@@ -187,7 +187,7 @@
     <value>Options</value>
   </data>
   <data name="Options_Widget_Description" xml:space="preserve">
-    <value>Choose items (3) to show in application widget:</value>
+    <value>Choose items (3) to show in Android widget:</value>
   </data>
   <data name="Options_Widget_Title" xml:space="preserve">
     <value>Widget</value>

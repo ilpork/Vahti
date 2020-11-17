@@ -27,8 +27,10 @@ namespace Vahti.Mobile.Forms.Theme
             Application.Current.Resources["ThemeOnSecondary"] = Application.Current.Resources[$"{colorTheme}ThemeOnSecondary"];
             Application.Current.Resources["ThemeSurface"] = Application.Current.Resources[$"{colorTheme}ThemeSurface"];
             Application.Current.Resources["ThemeOnSurface"] = Application.Current.Resources[$"{colorTheme}ThemeOnSurface"];
-            Application.Current.Resources["ThemeUnselectedTabText"] = Application.Current.Resources[$"{colorTheme}ThemeUnselectedTabText"];                    
-            
+            Application.Current.Resources["ThemeUnselectedTabText"] = Application.Current.Resources[$"{colorTheme}ThemeUnselectedTabText"];
+            Application.Current.Resources["ThemeEntryBackground"] = Application.Current.Resources[$"{colorTheme}ThemeEntryBackground"];
+            Application.Current.Resources["ThemeSwitchThumbColor"] = Application.Current.Resources[$"{colorTheme}ThemeSwitchThumbColor"];
+
             _themeChanger.ApplyTheme(colorTheme);
             
             return colorTheme;

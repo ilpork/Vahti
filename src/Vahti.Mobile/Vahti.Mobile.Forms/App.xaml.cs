@@ -31,19 +31,6 @@ namespace Vahti.Mobile.Forms
             Theme = new ColorTheme(themeChanger); 
             Theme.ApplyColorTheme();
 
-#if DEBUG
-            try
-            {
-                if (!HotReloader.Current.IsRunning)
-                {
-                    HotReloader.Current.Run(this);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"Starting HotReload failed: {e.Message}");
-            }            
-#endif                 
 
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
             {
@@ -72,8 +59,7 @@ namespace Vahti.Mobile.Forms
             containerBuilder.RegisterType<NavigationService>().As(typeof(INavigationService)).SingleInstance();
 
             // Register view models
-            containerBuilder.RegisterType<LocationListViewModel>().As(typeof(LocationListViewModel)).SingleInstance().AutoActivate();
-            containerBuilder.RegisterType<LocationViewModel>().As(typeof(LocationViewModel)).SingleInstance().AutoActivate();
+            containerBuilder.RegisterType<LocationListViewModel>().As(typeof(LocationListViewModel)).SingleInstance().AutoActivate();            
             containerBuilder.RegisterType<LocationGraphViewModel>().As(typeof(LocationGraphViewModel)).SingleInstance().AutoActivate();
             containerBuilder.RegisterType<LocationDetailsViewModel>().As(typeof(LocationDetailsViewModel)).SingleInstance().AutoActivate();
             containerBuilder.RegisterType<OptionsGeneralViewModel>().As(typeof(OptionsGeneralViewModel)).SingleInstance();

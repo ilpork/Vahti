@@ -48,9 +48,8 @@
       <NoWarn>NU1701</NoWarn>
     </PackageReference>
     <PackageReference Include="PCLAppConfig" Version="1.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991477" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
-    <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vahti.Shared\Vahti.Shared.csproj" />
@@ -72,9 +71,6 @@
     </Compile>
     <Compile Update="Views\LocationListPage.xaml.cs">
       <DependentUpon>LocationListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\LocationPage.xaml.cs">
-      <DependentUpon>LocationPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\LocationGraphPage.xaml.cs">
       <DependentUpon>LocationGraphPage.xaml</DependentUpon>
@@ -98,9 +94,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OptionsGeneralPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LocationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OptionsSummaryPage.xaml">

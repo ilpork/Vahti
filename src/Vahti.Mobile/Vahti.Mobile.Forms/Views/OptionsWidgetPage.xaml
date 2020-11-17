@@ -38,7 +38,10 @@
         <StackLayout Margin="0,0,0,12">
             <Label Text="{i18n:Translate Options_Widget_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
         </StackLayout>
-        <RefreshView Command="{Binding RefreshCommand}" CommandParameter="{StaticResource True}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+        <RefreshView Command="{Binding RefreshCommand}"
+                     CommandParameter="{StaticResource True}"
+                     RefreshColor="{StaticResource ThemeOnSurface}"
+                     IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView x:Name="LocationList" IsGrouped="true" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
@@ -64,7 +67,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding SensorName}" Style="{DynamicResource BaseLabelStyle}" Grid.Row="0" Grid.Column="0"/>
                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                                <Switch IsToggled="{Binding IsVisibleInWidget}" HorizontalOptions="End"  ThumbColor="{DynamicResource ThemeOnPrimary}" OnColor="{DynamicResource ThemeSecondary}">
+                                <Switch IsToggled="{Binding IsVisibleInWidget}" HorizontalOptions="End"  ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSecondary}">
                                     <Switch.Behaviors>
                                         <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding Source={x:Reference optionsWidgetPage}, Path=BindingContext.VisibilityToggledCommand}" />
                                     </Switch.Behaviors>

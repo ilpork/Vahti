@@ -13,7 +13,9 @@
         <Color x:Key="ThemeOnSecondary">#FFFFFF</Color>
         <Color x:Key="ThemeSurface">#777777</Color>
         <Color x:Key="ThemeOnSurface">#FFFFFF</Color>
-        <Color x:Key="ThemeUnselectedTabText">#777777</Color>               
+        <Color x:Key="ThemeUnselectedTabText">#777777</Color>
+        <Color x:Key="ThemeEntryBackground">#777777</Color>
+        <Color x:Key="ThemeSwitchThumbColor">White</Color>
 
         <Color x:Key="GrayThemeBackground">#000000</Color>        
         <Color x:Key="GrayThemePrimaryDark">#0c0c0c</Color>
@@ -23,8 +25,13 @@
         <Color x:Key="GrayThemeOnSecondary">#000000</Color>
         <Color x:Key="GrayThemeSurface">#1a1a1a</Color>
         <Color x:Key="GrayThemeOnSurface">#FFFFFF</Color>
-        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>                   
-             
+        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>
+        <OnPlatform x:Key="GrayThemeEntryBackground"
+            x:TypeArguments="Color"
+            iOS="#2a2a2a"
+            Android="#1a1a1a" />
+        <Color x:Key="GrayThemeSwitchThumbColor">White</Color>
+
         <Color x:Key="LightThemeBackground">#e4e4e4</Color>        
         <Color x:Key="LightThemePrimaryDark">#303F9F</Color>
         <Color x:Key="LightThemePrimary">#3F51B5</Color>
@@ -33,8 +40,13 @@
         <Color x:Key="LightThemeOnSecondary">#FFFFFF</Color>
         <Color x:Key="LightThemeSurface">#ffffff</Color>
         <Color x:Key="LightThemeOnSurface">#222222</Color>
-        <Color x:Key="LightThemeUnselectedTabText">#bbbbbb</Color>                    
-        
+        <Color x:Key="LightThemeUnselectedTabText">#bbbbbb</Color>
+        <Color x:Key="LightThemeEntryBackground">#ffffff</Color>
+        <OnPlatform x:Key="LightThemeSwitchThumbColor"
+            x:TypeArguments="Color"
+            iOS="White"
+            Android="#F0F0F0" />
+
         <ResourceDictionary>
             <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
                 <On Platform="Android" Value="FontAwesomeBrands.otf#Regular" />
