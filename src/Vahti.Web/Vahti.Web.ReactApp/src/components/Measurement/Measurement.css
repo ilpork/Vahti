@@ -1,0 +1,32 @@
+.Measurement {    
+    display: flex;        
+    color: white;    
+    margin-left: 20px;         
+    margin-right: 20px;              
+}
+
+.Measurement__value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    text-align: left;  
+    width: 80px;
+    font-size:large;
+}
+.Measurement__icon {    
+    width: 45px;
+    height: 45px;
+    margin: 1px;    
+}
+
+.Measurement__weatherIcon {
+    margin-top: 5px;    
+}
+
+.Measurement__fontAwesomeIcon {
+    margin-top: 12px;
+    margin-left: 12px;    
+    margin-right: 12px;
+    margin-bottom: 0px;
+    font-size: 20;
+}

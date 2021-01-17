@@ -1,0 +1,33 @@
+.Location__measurementList {        
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-bottom: 8px;
+}
+.Location {    
+    background-color: #1A1A1A;
+    margin-bottom: 8px;    
+}
+
+.Location__header {    
+    padding-left: 35px;
+    padding-right: 8px;       
+    margin-bottom: 8px;             
+    background-color: #222222;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    font-size: 14pt;   
+}
+
+.Location__header__caret {    
+    margin-left: auto;    
+    margin-right: 8px;    
+}
+
+.Location__header__title{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

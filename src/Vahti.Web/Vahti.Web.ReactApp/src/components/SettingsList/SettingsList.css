@@ -1,0 +1,55 @@
+.SettingsList {
+    display: flex;
+    flex-direction: column;       
+    flex-wrap: wrap;        
+}
+
+.SettingsList__description {
+    text-align: start;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-size: 13pt;
+}
+
+.SettingsList__dataSource {
+    display: flex;    
+    flex-direction: column;       
+    flex-wrap: wrap;
+    align-items: left;    
+    margin-bottom: 24px;    
+}
+
+.SettingsList__dataSource__label {
+    text-align: start;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-size: 13pt;
+}
+
+.SettingsList__dataSource__value {        
+    font-size: 13pt;   
+    color: #fff;
+    background-color: #222222;
+}
+
+.SettingsList__dataSource__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.SettingsList__dataSource__button {
+    background-color: black;
+    color: #ffffff;
+    font-size: 13pt;
+    margin: 12px 8px 0px 0px;
+    padding: 4px 8px 4px 8px;
+}
+
+.SettingsList__dataSource__button--commit {
+    background-color: #3F51B5;    
+}
+
+.SettingsList__updating {
+    text-align: center;
+}
