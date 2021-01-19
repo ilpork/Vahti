@@ -1,7 +1,7 @@
 # Tutorial for web application
-This tutorial is assumes that you have configured the server side and firebase database following the other tutorials.
+This tutorial is assumes that you have already configured the server side and firebase database using the other tutorials.
 
-At simplest, you can just open [vahti.netlify.app](https://vahti.netlify.app), tap the cog icon and specify the address of your data in "data source" field. This app will be running at least for now. 
+At simplest, you can just open [vahti.netlify.app](https://vahti.netlify.app), tap the cog icon and specify the address of your data in "data source" field. This app will be running in Netlify at least for now. 
 
 The address should be same as the address in configuration of `Vahti.Server` (dataBrokerConfiguration/cloudPublishConfiguration/firebaseStorage/url) with "/.json" added in the end. Example:
 
