@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Dots from 'react-activity/lib/Dots';
+import 'react-activity/lib/Dots/Dots.css';
 import SettingStorage from '../../classes/SettingStorage';
 import SettingGroup from '../SettingGroup/SettingGroup';
 import './SettingsList.css';
@@ -34,13 +36,15 @@ class SettingsList extends Component {
     updateVisibilitySettings = () => {
         this.setState({showVisibilitySettings: this.originalDataSource === this.dataSource});
     }
-
+    
     render() {
         if (this.props.locations != null && (this.props.locations === undefined || this.props.locations.size === 0)){
             return (
                 <div className="SettingsList">
-                <p className="SettingsList__updating">Updating...</p>
-                </div>);
+                    <p className="SettingsList__updating">Updating</p>
+                    <Dots className="SettingsList__dots"/>
+                </div>
+                );
         }
 
         let visibilitySettingList = null;

@@ -52,4 +52,10 @@
 
 .SettingsList__updating {
     text-align: center;
+    margin-top: 40px;    
+    font-size: 12pt;
+}
+
+.SettingsList__dots {
+    text-align: center;        
 }

@@ -76,7 +76,7 @@ class App extends Component {
   updateData = async() => {
     const dataSource = SettingStorage.getDataSource();
     const locations = await DataFetcher.fetchLocationData(dataSource);    
-
+  
     this.setState({
       locations: locations      
       });    
