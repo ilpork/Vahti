@@ -1,0 +1,47 @@
+{
+  "name": "Vahti",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@intern0t/react-weather-icons": "^1.0.3",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "pondjs": "^0.9.0",
+    "react": "^17.0.1",
+    "react-activity": "^1.2.2",
+    "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-timeseries-charts": "^0.16.1",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

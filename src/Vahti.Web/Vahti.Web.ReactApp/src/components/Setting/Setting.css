@@ -1,0 +1,17 @@
+.Setting {    
+    margin: 8px;
+    display: flex;        
+    color: white;    
+    align-items: center;
+    margin-left: 16px;        
+    margin-right: 16px;                
+}
+.Setting__text {   
+    margin-left: 16px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    text-align: left;  
+    width: 200px;
+    font-size:large;
+}

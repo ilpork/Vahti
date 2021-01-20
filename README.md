@@ -1,9 +1,10 @@
 # Vahti
 [![Build Status](https://dev.azure.com/ilpork/github/_apis/build/status/ilpork.Vahti?branchName=master)](https://dev.azure.com/ilpork/github/_build/latest?definitionId=3&branchName=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b93f50a0-c805-4447-ade1-4c704da1945e/deploy-status)](https://app.netlify.com/sites/vahti/deploys)
 
 Vahti is a lightweight .NET and MQTT based home monitoring system to read measurement data from different kind of sources. 
 
-It consists of server part (running on Raspberry Pi, for example) to gather data and and mobile app to show it. Alerts (push/email) are also supported. System can also be used without mobile app just to get alerts by email from server, or to publish data for any generic MQTT client application.
+Server part (running on Raspberry Pi, for example) gathers data for mobile and web application to show. Alerts (push/email) are also supported. System can also be used without mobile app just to get alerts by email from server, or to publish data for any generic MQTT client application.
 
 ## General concepts
 - Lightweight. Server runs well on Raspberry Pi (2/3/4 with ARMv7/8)
@@ -26,16 +27,24 @@ It consists of server part (running on Raspberry Pi, for example) to gather data
 - For Android and iOS
 - Implemented with Xamarin Forms
 - Show latest measurement data and history graphs
-- Choose which measurements to show on main view
+- Choose which measurements to show in main view
 - Get push notifications (alerts) from server 
 - Localizable (currently supports Finnish and English)
 - Android widget to show selected information on home screen
 - Dark and light theme
+### Web application (Vahti.Web)
+![Web application](doc/images/react_app.png)
+- Implemented with ReactJS
+- Show latest measurement data and history graphs
+- Choose which measurements to show in main view
+- Can be easily deployed to app hosting services like Netlify
+- Use [vahti.netlify.app](https://vahti.netlify.app) either with demo data or your own data
+
 ### Server (Vahti.Server)
 Server can be configured to run all or any of the services below. All services can run on same machine, or they can be distributed to different machines.
 #### DataBroker (Vahti.DataBroker)
 - Implemented with .NET Core 3.0
-- Uses MQTT to gather measurement data from any MQTT client 
+- Uses MQTT to gather measurement data from any MQTT client
 - Sends measurements and history data periodically to cloud database (currently Google Firebase)
 - Send alerts as push notifications to the mobile application, or as email to any device
 #### Collector (Vahti.Collector)
@@ -63,6 +72,8 @@ For full setup with mobile app and push notifications requires (in addition to w
 1. Visual Studio 2019 (Community edition is fine) for building (free)
 4. Google Firebase project needed to get Push notifications on Android (free) 
 5. Microsoft Azure account and notification hub needed for push notifications (free)
+
+Web application can be used instead of (or along with) with mobile app. It can be easily deployed to Netlify, for example, or use existing [vahti.netlify.app](https://vahti.netlify.app) to view your data.
 
 ## Usage
 Depending on configuration and functionality used, the system requires different kind of setup. See details with tutorials in [Getting started](doc/GettingStarted.md)

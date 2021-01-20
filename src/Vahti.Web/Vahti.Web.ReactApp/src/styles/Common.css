@@ -1,0 +1,47 @@
+.Page {
+    text-align: center;     
+}
+
+.Body {
+    background-color: #000000; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.ChildPage__header {
+    background-color: #000000;  
+    padding: 20px;
+    display: flex;  
+    flex-direction: row;
+    align-items: left;
+    color: white;
+
+    justify-content:flex-start;
+    font-size: 10pt;    
+}
+
+.ChildPage__header a {
+    color: White;
+    width: 40px;    
+}
+  
+.ChildPages__header__title {
+    background-color: #000000;      
+    padding-left: 8px;    
+    width: 100%;
+    display: flex;    
+    align-items:center;  
+    justify-content: left;  
+    color: white;
+}
+  
+.ChildPage__header_title_text {
+    padding-left: 24px;
+    margin: 0px;
+    align-content: flex-start;
+}

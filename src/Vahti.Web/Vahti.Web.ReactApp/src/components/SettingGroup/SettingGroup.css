@@ -1,0 +1,23 @@
+.SettingGroup {
+    background-color: #1a1a1a;    
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SettingGroup__header {
+    background-color: #222222;    
+    margin: 0px;
+    padding: 8px;
+    text-align: left;   
+    font-size: 14pt;    
+}
+
+.SettingGroup__settings {    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+    margin-top: 8px;    
+    margin-bottom: 8px;    
+}

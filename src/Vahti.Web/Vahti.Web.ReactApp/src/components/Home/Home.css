@@ -1,0 +1,28 @@
+.Home__header {
+    background-color: #000000;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    text-align: left;
+    justify-content:flex-start;
+    font-size: 18pt;    
+  }
+  
+.Home__header a {  
+  color: White;    
+}
+
+.Home__header__settingsIcon {
+    margin-left: auto;    
+    margin-right: 8px;    
+}
+
+.Home__header__title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 8px;  
+  font-size: 14pt;      
+}
+  
