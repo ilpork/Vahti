@@ -4,11 +4,12 @@
              xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"             
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"  
              x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
              Title="{Binding SelectedLocation.Name}"
              BackgroundColor="{StaticResource ThemeBackground}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Details" Command="{Binding ShowDetailsCommand}"/>
+        <ToolbarItem Text="{i18n:Translate Details_Title}" Command="{Binding ShowDetailsCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
