@@ -55,9 +55,6 @@
     <ProjectReference Include="..\..\Vahti.Shared\Vahti.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="MultilingualResources\Vahti.Mobile.fi-FI.xlf" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Resources\AppResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -80,12 +77,9 @@
     </Compile>
     <Compile Update="Views\OptionsSummaryPage.xaml.cs">
       <DependentUpon>OptionsSummaryPage.xaml</DependentUpon>
-    </Compile>    
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resources\AppResources.fi-FI.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
@@ -99,6 +93,9 @@
     <EmbeddedResource Update="Views\OptionsSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MultilingualResources\" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' == 'Windows_NT'">
     <Exec Command="IF NOT EXIST &quot;$(ProjectDir)App.config&quot; (copy &quot;$(ProjectDir)App.template.config&quot; &quot;$(ProjectDir)App.config&quot; /Y)&#xD;&#xA;IF NOT EXIST &quot;$(ProjectDir)..\Vahti.Mobile.Android\google-services.json&quot; (copy &quot;$(ProjectDir)..\Vahti.Mobile.Android\google-services.template.json&quot; &quot;$(ProjectDir)..\Vahti.Mobile.Android\google-services.json&quot; /Y)" />

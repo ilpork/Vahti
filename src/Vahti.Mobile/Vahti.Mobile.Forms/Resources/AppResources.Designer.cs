@@ -142,24 +142,6 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Humidity (%).
-        /// </summary>
-        internal static string Graph_HumidityGraphTitle {
-            get {
-                return ResourceManager.GetString("Graph_HumidityGraphTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Temperature (°C).
-        /// </summary>
-        internal static string Graph_TemperatureGraphTitle {
-            get {
-                return ResourceManager.GetString("Graph_TemperatureGraphTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
         internal static string Graph_Title {
@@ -282,87 +264,6 @@ namespace Vahti.Mobile.Forms.Resources {
         internal static string Options_Widget_Title {
             get {
                 return ResourceManager.GetString("Options_Widget_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acceleration (X).
-        /// </summary>
-        internal static string SensorClass_accelerationX {
-            get {
-                return ResourceManager.GetString("SensorClass_accelerationX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acceleration (Y).
-        /// </summary>
-        internal static string SensorClass_accelerationY {
-            get {
-                return ResourceManager.GetString("SensorClass_accelerationY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acceleration (Z).
-        /// </summary>
-        internal static string SensorClass_accelerationZ {
-            get {
-                return ResourceManager.GetString("SensorClass_accelerationZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Battery voltage.
-        /// </summary>
-        internal static string SensorClass_batteryVoltage {
-            get {
-                return ResourceManager.GetString("SensorClass_batteryVoltage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Humidity.
-        /// </summary>
-        internal static string SensorClass_humidity {
-            get {
-                return ResourceManager.GetString("SensorClass_humidity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last charged.
-        /// </summary>
-        internal static string SensorClass_lastCharged {
-            get {
-                return ResourceManager.GetString("SensorClass_lastCharged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Movement counter.
-        /// </summary>
-        internal static string SensorClass_movementCounter {
-            get {
-                return ResourceManager.GetString("SensorClass_movementCounter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Air pressure.
-        /// </summary>
-        internal static string SensorClass_pressure {
-            get {
-                return ResourceManager.GetString("SensorClass_pressure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Temperature.
-        /// </summary>
-        internal static string SensorClass_temperature {
-            get {
-                return ResourceManager.GetString("SensorClass_temperature", resourceCulture);
             }
         }
     }

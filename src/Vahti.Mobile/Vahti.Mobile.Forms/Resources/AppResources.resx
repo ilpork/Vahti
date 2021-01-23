@@ -144,12 +144,6 @@
   <data name="Details_Title" xml:space="preserve">
     <value>Details</value>
   </data>
-  <data name="Graph_HumidityGraphTitle" xml:space="preserve">
-    <value>Humidity (%)</value>
-  </data>
-  <data name="Graph_TemperatureGraphTitle" xml:space="preserve">
-    <value>Temperature (°C)</value>
-  </data>
   <data name="Graph_Title" xml:space="preserve">
     <value>History</value>
   </data>
@@ -191,32 +185,5 @@
   </data>
   <data name="Options_Widget_Title" xml:space="preserve">
     <value>Widget</value>
-  </data>
-  <data name="SensorClass_accelerationX" xml:space="preserve">
-    <value>Acceleration (X)</value>
-  </data>
-  <data name="SensorClass_accelerationY" xml:space="preserve">
-    <value>Acceleration (Y)</value>
-  </data>
-  <data name="SensorClass_accelerationZ" xml:space="preserve">
-    <value>Acceleration (Z)</value>
-  </data>
-  <data name="SensorClass_batteryVoltage" xml:space="preserve">
-    <value>Battery voltage</value>
-  </data>
-  <data name="SensorClass_humidity" xml:space="preserve">
-    <value>Humidity</value>
-  </data>
-  <data name="SensorClass_lastCharged" xml:space="preserve">
-    <value>Last charged</value>
-  </data>
-  <data name="SensorClass_movementCounter" xml:space="preserve">
-    <value>Movement counter</value>
-  </data>
-  <data name="SensorClass_pressure" xml:space="preserve">
-    <value>Air pressure</value>
-  </data>
-  <data name="SensorClass_temperature" xml:space="preserve">
-    <value>Temperature</value>
   </data>
 </root>
