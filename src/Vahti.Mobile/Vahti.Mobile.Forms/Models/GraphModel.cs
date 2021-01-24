@@ -34,8 +34,17 @@ namespace Vahti.Mobile.Forms.Models
             var ls = new AreaSeries() { DataFieldX = "X", DataFieldY = "Y", ItemsSource = graphDataPoints };
             plotModel.Series.Add(ls);
 
-            plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Left, GetMinimumValue(graphDataPoints, sensorClass), GetMaximumValue(graphDataPoints, sensorClass), GetMajorStep(graphDataPoints, sensorClass)));
-            plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Right, GetMinimumValue(graphDataPoints, sensorClass), GetMaximumValue(graphDataPoints, sensorClass), GetMajorStep(graphDataPoints, sensorClass)));
+            // If values are all same, use custom min/max values to show graph
+            var minValue = GetMinimumValue(graphDataPoints, sensorClass);
+            var maxValue = GetMaximumValue(graphDataPoints, sensorClass);
+            if (minValue == maxValue)
+            {
+                minValue = minValue - 5;
+                maxValue = maxValue + 5;
+            }
+
+            plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Left, minValue, maxValue, GetMajorStep(minValue, maxValue, sensorClass)));
+            plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Right, minValue, maxValue, GetMajorStep(minValue, maxValue, sensorClass)));
             plotModel.Axes.Add(GetDateTimeAxis(theme));
 
             switch (theme)
@@ -55,9 +64,9 @@ namespace Vahti.Mobile.Forms.Models
             return plotModel;
         }
 
-        private static double GetMajorStep(List<GraphData> graphData, SensorClass sensorClass)
+        private static double GetMajorStep(double minValue, double maxValue, SensorClass sensorClass)
         {
-            var maxRange = graphData.Max(t => t.Y) - graphData.Min(t => t.Y);
+            var maxRange = maxValue - minValue;
             var majorStep = maxRange / 4;
 
             switch (sensorClass)

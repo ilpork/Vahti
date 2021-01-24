@@ -114,7 +114,15 @@ const Graph = (props) => {
                 return ".1f";
         }
     }
-  
+    
+    // If values are all same, use custom min/max values to show graph
+    let yMin = getMin(props.className, series.min());
+    let yMax = getMax(props.className, series.max());
+    if (yMin === yMax){
+        yMin = yMin - 5;
+        yMax = yMax + 5;
+    }
+
     return (   
         <Resizable className="Graph">
             <ChartContainer 
@@ -131,8 +139,8 @@ const Graph = (props) => {
                         showGrid 
                         tickCount={11} 
                         style={yAxisStyle} 
-                        min={getMin(props.className, series.min())} 
-                        max={getMax(props.className, series.max())} 
+                        min={yMin} 
+                        max={yMax} 
                         format={getFormat(props.className)}
                         width="40"                         
                         />
@@ -145,8 +153,8 @@ const Graph = (props) => {
                         showGrid 
                         tickCount={11} 
                         style={yAxisStyle} 
-                        min={getMin(props.className, series.min())} 
-                        max={getMax(props.className, series.max())} 
+                        min={yMin} 
+                        max={yMax} 
                         format={getFormat(props.className)}
                         width="40"                         
                         />
