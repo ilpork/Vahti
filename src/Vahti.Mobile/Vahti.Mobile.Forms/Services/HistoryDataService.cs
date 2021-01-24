@@ -43,7 +43,13 @@ namespace Vahti.Mobile.Forms.Services
                 foreach (var item in _historyData.DataList)
                 {
                     var sensorDeviceType = _sensorDeviceTypes[_sensorDevices[item.SensorDeviceId].SensorDeviceTypeId];
-                    var unit = sensorDeviceType.Sensors.FirstOrDefault(s => s.Id.Equals(item.SensorId)).Unit;
+                    var unit = sensorDeviceType.Sensors.FirstOrDefault(s => s.Id.Equals(item.SensorId))?.Unit;
+                    if (unit == null)
+                    {
+                        unit = _sensorDevices[item.SensorDeviceId].CalculatedMeasurements?
+                            .FirstOrDefault(cm => cm.Id.Equals(item.SensorId))?.Unit;
+                    }
+
                     var uiItem = new MeasurementHistory() { SensorDeviceId = item.SensorDeviceId, SensorId = item.SensorId, Values = item.Values, Unit = unit };
 
                     historyItems.Add(uiItem);                    

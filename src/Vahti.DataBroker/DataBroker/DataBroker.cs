@@ -95,24 +95,37 @@ namespace Vahti.DataBroker.DataBroker
 
             var historyData = new HistoryData() { Id = "1", DataList = new List<MeasurementHistoryData>() };
 
+            async Task AddHistoryData(string sensorDeviceId, string sensorId)
+            {
+                var measurementHistory = new MeasurementHistoryData() { SensorDeviceId = sensorDeviceId, SensorId = sensorId };
+                var allMeasurements = await _historyDataProvider.GetHistory(sensorDeviceId, sensorId, _config.CloudPublishConfiguration.HistoryLengthDays);
+
+                var groups = from s in allMeasurements
+                             let groupKey = new DateTime(s.Timestamp.Year, s.Timestamp.Month, s.Timestamp.Day, s.Timestamp.Hour, 0, 0)
+                             group s by groupKey into g
+                             select new HistoryValueData
+                             {
+                                 Timestamp = g.Key,
+                                 Value = g.First().Value
+                             };
+                measurementHistory.Values = groups.ToList();
+                historyData.DataList.Add(measurementHistory);                
+            }
+
             foreach (var sensorDevice in _sensorDevices)
             {
                 foreach (var sensor in _sensorDeviceTypes.First(t => t.Id.Equals(sensorDevice.SensorDeviceTypeId, StringComparison.OrdinalIgnoreCase)).Sensors)
                 {
-                    var measurementHistory = new MeasurementHistoryData() { SensorDeviceId = sensorDevice.Id, SensorId = sensor.Id };
-                    var allMeasurements = await _historyDataProvider.GetHistory(sensorDevice.Id, sensor.Id, _config.CloudPublishConfiguration.HistoryLengthDays);
-
-                    var groups = from s in allMeasurements
-                                 let groupKey = new DateTime(s.Timestamp.Year, s.Timestamp.Month, s.Timestamp.Day, s.Timestamp.Hour, 0, 0)
-                                 group s by groupKey into g
-                                 select new HistoryValueData
-                                 {
-                                     Timestamp = g.Key,
-                                     Value = g.First().Value
-                                 };
-                    measurementHistory.Values = groups.ToList();
-                    historyData.DataList.Add(measurementHistory);
+                    await AddHistoryData(sensorDevice.Id, sensor.Id);
                 }
+
+                if (sensorDevice.CalculatedMeasurements != null)
+                {
+                    foreach (var calculatedMeasurement in sensorDevice.CalculatedMeasurements)
+                    {
+                        await AddHistoryData(sensorDevice.Id, calculatedMeasurement.Id);
+                    }
+                }                
             }
 
             if (historyData.DataList.Count > 0)
