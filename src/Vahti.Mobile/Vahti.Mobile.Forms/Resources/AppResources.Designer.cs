@@ -223,6 +223,24 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort locations using arrows:.
+        /// </summary>
+        internal static string Options_Sorting_Description {
+            get {
+                return ResourceManager.GetString("Options_Sorting_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorting.
+        /// </summary>
+        internal static string Options_Sorting_Title {
+            get {
+                return ResourceManager.GetString("Options_Sorting_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose items to show in summary view:.
         /// </summary>
         internal static string Options_Summary_Description {

@@ -46,11 +46,14 @@ namespace Vahti.Mobile.Forms.Services
 
         public Task UpdateAsync(Models.Location location)
         {
+            Preferences.Set(GetLocationOrderKeyName(location.Name), location.Order);
+
             foreach (var measurement in location)
             {
                 Preferences.Set(GetOverviewVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInSummaryView);
-                Preferences.Set(GetWidgetVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInWidget);
+                Preferences.Set(GetWidgetVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInWidget);                
             }
+            
             return Task.CompletedTask;
         }
 
@@ -62,6 +65,11 @@ namespace Vahti.Mobile.Forms.Services
         private string GetWidgetVisibilityKeyName(string locationName, string measurementName)
         {
             return $"WidgetVisibility_{locationName}£${measurementName}";
+        }
+
+        private string GetLocationOrderKeyName(string locationName)
+        {
+            return $"LocationOrder_{locationName}";
         }
 
         private async Task<IEnumerable<Models.Location>> LoadAll()
@@ -77,6 +85,7 @@ namespace Vahti.Mobile.Forms.Services
 
             var sensorDeviceTypes = (await _dataProvider.LoadAllItemsAsync<SensorDeviceType>()).ToDictionary(p => p.Id);
             var sensorDevices = (await _dataProvider.LoadAllItemsAsync<SensorDevice>()).ToDictionary(p => p.Id);
+            var unsortedList = new List<Models.Location>();
 
             foreach (var locationData in await _dataProvider.LoadAllItemsAsync<LocationData>())
             {
@@ -117,8 +126,20 @@ namespace Vahti.Mobile.Forms.Services
 
                 }
 
-                var location = new Models.Location(locationData.Name, locationData.Timestamp, locationData.UpdateInterval, measurements);
+                var location = new Models.Location(locationData.Name, locationData.Timestamp, locationData.UpdateInterval, 
+                    measurements, Preferences.Get(GetLocationOrderKeyName(locationData.Name), 0));                
+                unsortedList.Add(location);
+            }
+
+            foreach (var location in unsortedList.OrderBy(i => i.Order).ThenBy(i => i.Name))
+            {                
                 _locations.Add(location);
+
+                if (_locations.IndexOf(location) != location.Order)
+                {
+                    location.Order = _locations.IndexOf(location);
+                    await UpdateAsync(location);
+                }
             }
 
             return _locations;

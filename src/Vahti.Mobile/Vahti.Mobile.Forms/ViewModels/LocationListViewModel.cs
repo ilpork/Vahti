@@ -136,7 +136,7 @@ namespace Vahti.Mobile.Forms.ViewModels
 
                     foreach (var location in items)
                     {
-                        var filteredLocation = new Models.Location(location.Name, location.Timestamp, location.UpdateInterval, location.ToList());
+                        var filteredLocation = new Models.Location(location.Name, location.Timestamp, location.UpdateInterval, location.ToList(), location.Order);
                         filteredLocation.RemoveAll(m => !m.IsVisibleInSummaryView);
 
                         // If measurement count is not even, add a dummy measurement to make location group look like rectangle

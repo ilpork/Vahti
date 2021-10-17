@@ -72,6 +72,9 @@
     <Compile Update="Views\LocationGraphPage.xaml.cs">
       <DependentUpon>LocationGraphPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\OptionsSortingPage.xaml.cs">
+      <DependentUpon>OptionsSortingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\OptionsWidgetPage.xaml.cs">
       <DependentUpon>OptionsWidgetPage.xaml</DependentUpon>
     </Compile>
