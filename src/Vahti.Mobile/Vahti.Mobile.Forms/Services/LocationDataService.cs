@@ -25,21 +25,15 @@ namespace Vahti.Mobile.Forms.Services
         }
 
         public async Task<IReadOnlyList<Models.Location>> GetAllDataAsync(bool forceRefresh)
-        {            
-            if (forceRefresh || _locations == null)
-            {
-                await LoadAll();
-            }         
-         
+        {
+            await LoadAllItemsIfNeeded(forceRefresh);
+
             return _locations;         
         }
 
         public async Task<Models.Location> GetDataAsync(string id, bool forceRefresh)
-        {            
-            if (forceRefresh || _locations == null)
-            {
-                await LoadAll();
-            }
+        {
+            await LoadAllItemsIfNeeded(forceRefresh);
 
             return _locations.FirstOrDefault(l => l.Name.Equals(id));
         }
@@ -55,6 +49,25 @@ namespace Vahti.Mobile.Forms.Services
             }
             
             return Task.CompletedTask;
+        }
+
+        private async Task LoadAllItemsIfNeeded(bool forceRefresh)
+        {            
+            var updatedNeeded = forceRefresh || _locations == null || _locations.Count == 0;
+            
+            if (!updatedNeeded)
+            {
+                foreach (var location in _locations)
+                {
+                    if (location != null && (location.Timestamp + TimeSpan.FromMinutes(location.UpdateInterval)) < DateTime.Now)
+                        updatedNeeded = true;
+                }
+            }
+            
+            if (updatedNeeded)
+            {
+                await LoadAll();
+            }
         }
 
         private string GetOverviewVisibilityKeyName(string locationName, string measurementName)
@@ -134,7 +147,10 @@ namespace Vahti.Mobile.Forms.Services
             foreach (var location in unsortedList.OrderBy(i => i.Order).ThenBy(i => i.Name))
             {                
                 _locations.Add(location);
+            }
 
+            foreach (var location in _locations)
+            {                
                 if (_locations.IndexOf(location) != location.Order)
                 {
                     location.Order = _locations.IndexOf(location);

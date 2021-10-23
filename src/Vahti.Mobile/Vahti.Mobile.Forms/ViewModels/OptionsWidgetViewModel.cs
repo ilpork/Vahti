@@ -3,6 +3,10 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
 using System.Collections.Generic;
+using System.Windows.Input;
+using MvvmHelpers.Interfaces;
+using MvvmHelpers.Commands;
+using Command = MvvmHelpers.Commands.Command;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -15,10 +19,10 @@ namespace Vahti.Mobile.Forms.ViewModels
         private bool _visibilitySettingsUpdated;        
         private IReadOnlyList<Models.Location> _locationList;
 
-        public Command InitializeCommand { get; set; }
-        public Command RefreshCommand { get; set; }
-        public Command UpdateCommand { get; set; }
-        public Command VisibilityToggledCommand { get; set; }       
+        public IAsyncCommand InitializeCommand { get; set; }
+        public IAsyncCommand RefreshCommand { get; set; }
+        public IAsyncCommand UpdateCommand { get; set; }
+        public ICommand VisibilityToggledCommand { get; set; }       
 
         public IReadOnlyList<Models.Location> Locations
         {
@@ -36,20 +40,20 @@ namespace Vahti.Mobile.Forms.ViewModels
         {
             _dataService = dataService;            
 
-            InitializeCommand = new Command(async () => 
+            InitializeCommand = new AsyncCommand(async () => 
             {
                 await RefreshDataAsync();
                 _visibilitySettingsUpdated = false; 
             });
 
-            RefreshCommand = new Command(async () => await RefreshDataAsync());
-            UpdateCommand = new Command(() =>
+            RefreshCommand = new AsyncCommand(async () => await RefreshDataAsync());
+            UpdateCommand = new AsyncCommand(async () =>
             {
                 if (_visibilitySettingsUpdated)
                 {
                     foreach (var location in Locations)
                     {
-                        _dataService.UpdateAsync(location);
+                        await _dataService.UpdateAsync(location);
                         _visibilitySettingsUpdated = false;                 
                     }                 
                 }               
@@ -64,6 +68,11 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         public async Task RefreshDataAsync()
         {
+            if (IsBusy)
+            {
+                return;
+            }
+
             try
             {
                 IsBusy = true;

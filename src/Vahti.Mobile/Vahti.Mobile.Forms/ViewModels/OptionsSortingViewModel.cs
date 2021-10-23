@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
 using System.Collections.ObjectModel;
 using Vahti.Mobile.Forms.Models;
+using MvvmHelpers.Interfaces;
+using System.Windows.Input;
+using MvvmHelpers.Commands;
+using Command = MvvmHelpers.Commands.Command;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -16,11 +20,11 @@ namespace Vahti.Mobile.Forms.ViewModels
         private bool _locationsSorted;
         private ObservableCollection<Models.Location> _locationList = new ObservableCollection<Models.Location>();
 
-        public Command InitializeCommand { get; set; }
-        public Command RefreshCommand { get; set; }
-        public Command UpdateCommand { get; set; }
-        public Command MoveUpCommand { get; set; }
-        public Command MoveDownCommand { get; set; }
+        public IAsyncCommand InitializeCommand { get; set; }
+        public IAsyncCommand RefreshCommand { get; set; }
+        public IAsyncCommand UpdateCommand { get; set; }
+        public ICommand MoveUpCommand { get; set; }
+        public ICommand MoveDownCommand { get; set; }
 
         public ObservableCollection<Models.Location> Locations
         {
@@ -38,20 +42,20 @@ namespace Vahti.Mobile.Forms.ViewModels
         {
             _dataService = dataService;            
 
-            InitializeCommand = new Command(async () => 
+            InitializeCommand = new AsyncCommand(async () => 
             {
                 await RefreshDataAsync();
                 _locationsSorted = false; 
             });
 
-            RefreshCommand = new Command(async () => await RefreshDataAsync());
-            UpdateCommand = new Command(() =>
+            RefreshCommand = new AsyncCommand(async () => await RefreshDataAsync());
+            UpdateCommand = new AsyncCommand(async () =>
             {
                 if (_locationsSorted)
                 {
                     foreach (var location in Locations)
                     {
-                        _dataService.UpdateAsync(location);                        
+                        await _dataService.UpdateAsync(location);                        
                     }
                     _locationsSorted = false;
                 }               
@@ -72,11 +76,16 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         public async Task RefreshDataAsync()
         {
+            if (IsBusy)
+            {
+                return;
+            }
+
             try
             {
                 IsBusy = true;
                 Locations.Clear();
-
+                
                 foreach (var location in await _dataService.GetAllDataAsync(false))
                 {
                     Locations.Add(location);

@@ -11,6 +11,10 @@ using System.Collections.Generic;
 using Vahti.Mobile.Forms.Services;
 using Vahti.Shared.Data;
 using Vahti.Shared.Exception;
+using MvvmHelpers.Interfaces;
+using MvvmHelpers.Commands;
+using Command = MvvmHelpers.Commands.Command;
+using System.Windows.Input;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -28,9 +32,9 @@ namespace Vahti.Mobile.Forms.ViewModels
         private readonly IDatabaseManagementService _databaseManagementService;        
 
         public ObservableCollection<Models.Location> Locations { get; set; }
-        public Command<bool> RefreshListCommand { get; set; }
-        public Command SelectItemCommand { get; set; }
-        public Command<string> TapLocationCommand { get; set; }
+        public IAsyncCommand<bool> RefreshListCommand { get; set; }
+        public ICommand SelectItemCommand { get; set; }
+        public AsyncCommand<string> TapLocationCommand { get; set; }
 
         public bool HasItems 
         { 
@@ -69,7 +73,7 @@ namespace Vahti.Mobile.Forms.ViewModels
 
             Title = Resources.AppResources.App_Title;
             Locations = new ObservableCollection<Models.Location>();            
-            RefreshListCommand = new Command<bool>(async (forceRefresh) => await RefreshSensorList(forceRefresh));            
+            RefreshListCommand = new AsyncCommand<bool>(async (forceRefresh) => await RefreshSensorList(forceRefresh));            
             SelectItemCommand = new Command(() =>
             {                
                 if (SelectedMeasurement != null)
@@ -79,7 +83,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                 }                
             });
 
-            TapLocationCommand = new Command<string>(async (locationName) =>
+            TapLocationCommand = new AsyncCommand<string>(async (locationName) =>
             {
                 if (locationName != null)
                 {
@@ -97,16 +101,9 @@ namespace Vahti.Mobile.Forms.ViewModels
                 return;
             }
 
-            NoDataMessage = null;
-            var updatedNeeded = Locations.Count == 0;
+            NoDataMessage = null;            
 
-            foreach (var location in Locations)
-            {
-                if (location != null && (location.Timestamp + TimeSpan.FromMinutes(location.UpdateInterval)) < DateTime.Now)
-                    updatedNeeded = true;
-            }
-
-            if (IsBusy || (!forceRefresh && !updatedNeeded))
+            if (IsBusy)
                 return;
 
             IsBusy = true;
@@ -118,7 +115,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                 IEnumerable<Models.Location> items = new List<Models.Location>();
                 try
                 {
-                    items = await _locationDataService.GetAllDataAsync(forceRefresh || updatedNeeded);
+                    items = await _locationDataService.GetAllDataAsync(forceRefresh);
                                         
                     foreach (var location in items)
                     {
