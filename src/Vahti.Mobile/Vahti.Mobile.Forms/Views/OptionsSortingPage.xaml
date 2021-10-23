@@ -26,11 +26,11 @@
                 <Setter Property="FontSize" Value="14"/>                
             </Style>
             <Style x:Key="ArrowButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource ThemeSurface}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
-                <Setter Property="TextColor" Value="{StaticResource ThemeOnSurface}"/>
-                <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
             </Style>
             <ResourceDictionary>                
                 <converters:CanMoveUpConverter x:Key="CanMoveUpConverter" />
