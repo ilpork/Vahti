@@ -29,7 +29,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource ThemeSurface}"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
-                <Setter Property="TextColor" Value="{StaticResource ThemeOnPrimary}"/>
+                <Setter Property="TextColor" Value="{StaticResource ThemeOnSurface}"/>
                 <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
             </Style>
             <ResourceDictionary>                
