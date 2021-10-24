@@ -18,6 +18,7 @@ namespace Vahti.Mobile.Forms.Services
     {
         private readonly IDataProvider _dataProvider;
         private List<Models.Location> _locations;
+        private bool _locationPropertyChanged = false;
 
         public LocationDataService(IDataProvider dataProvider)
         {
@@ -47,13 +48,14 @@ namespace Vahti.Mobile.Forms.Services
                 Preferences.Set(GetOverviewVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInSummaryView);
                 Preferences.Set(GetWidgetVisibilityKeyName(location.Name, measurement.SensorId), measurement.IsVisibleInWidget);                
             }
-            
+
+            _locationPropertyChanged = true;
             return Task.CompletedTask;
         }
 
         private async Task LoadAllItemsIfNeeded(bool forceRefresh)
         {            
-            var updatedNeeded = forceRefresh || _locations == null || _locations.Count == 0;
+            var updatedNeeded = forceRefresh || _locationPropertyChanged || _locations == null || _locations.Count == 0;
             
             if (!updatedNeeded)
             {
@@ -68,6 +70,7 @@ namespace Vahti.Mobile.Forms.Services
             {
                 await LoadAll();
             }
+            _locationPropertyChanged = false;
         }
 
         private string GetOverviewVisibilityKeyName(string locationName, string measurementName)
