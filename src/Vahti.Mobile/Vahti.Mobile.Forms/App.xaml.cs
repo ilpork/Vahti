@@ -65,7 +65,7 @@ namespace Vahti.Mobile.Forms
             containerBuilder.RegisterType<OptionsGeneralViewModel>().As(typeof(OptionsGeneralViewModel)).SingleInstance();
             containerBuilder.RegisterType<OptionsSummaryViewModel>().As(typeof(OptionsSummaryViewModel)).SingleInstance();
             containerBuilder.RegisterType<OptionsWidgetViewModel>().As(typeof(OptionsWidgetViewModel)).SingleInstance();
-
+            containerBuilder.RegisterType<OptionsSortingViewModel>().As(typeof(OptionsSortingViewModel)).SingleInstance();
             containerBuilder.RegisterType<AboutViewModel>().As(typeof(AboutViewModel)).SingleInstance();
 
             var container = containerBuilder.Build();

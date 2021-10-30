@@ -99,6 +99,14 @@
           <source>Widget</source>
           <target state="translated">Pienoisohjelma</target>
         </trans-unit>
+        <trans-unit id="Options_Sorting_Description" translate="yes" xml:space="preserve">
+          <source>Sort locations using arrows:</source>
+          <target state="translated">Järjestä paikat nuolien avulla:</target>
+        </trans-unit>
+        <trans-unit id="Options_Sorting_Title" translate="yes" xml:space="preserve">
+          <source>Sorting</source>
+          <target state="translated">Järjestys</target>
+        </trans-unit>
       </group>
     </body>
   </file>

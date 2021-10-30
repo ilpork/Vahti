@@ -55,6 +55,9 @@
             <ShellContent Route="optionsWidget" 
                           Title="{i18n:Translate Options_Widget_Title}"
                       ContentTemplate="{DataTemplate local:OptionsWidgetPage}" />
+            <ShellContent Route="optionsSorting" 
+                          Title="{i18n:Translate Options_Sorting_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsSortingPage}" />
         </Tab>
         
     </FlyoutItem>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vahti.Mobile.Forms.Views.OptionsSortingPage"             
+             xmlns:fonticons="clr-namespace:Vahti.Mobile.Forms.Views.Fonts"        
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
+             xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
+             x:Name="optionsSortingPage"
+             BackgroundColor="{DynamicResource ThemeBackground}"
+             Title="{Binding Title}">
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding UpdateCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding InitializeCommand}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ListPageBackground">Transparent</Color>            
+            <Style x:Key="BaseLabelStyle" TargetType="Label" >
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>           
+            <Style x:Key="DescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="14"/>                
+            </Style>
+            <Style x:Key="ArrowButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
+                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
+            </Style>
+            <ResourceDictionary>                
+                <converters:CanMoveUpConverter x:Key="CanMoveUpConverter" />
+                <converters:CanMoveDownConverter x:Key="CanMoveDownConverter" />
+            </ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="4" Padding="16,12,16,12">
+        <StackLayout Margin="0,0,0,12">
+            <Label Text="{i18n:Translate Options_Sorting_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
+        </StackLayout>
+        <RefreshView Command="{Binding RefreshCommand}"
+                     CommandParameter="{StaticResource True}"
+                     RefreshColor="{StaticResource ThemeOnSurface}"
+                     IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+            <CollectionView x:Name="LocationList" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0" Padding="8,8,4,8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>                                
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" Style="{DynamicResource BaseLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="Center">
+                                <Button Text="{x:Static fonticons:FontIcons.FontAwesomeArrowUp}" Style="{StaticResource ArrowButtonStyle}"
+                                    Command="{Binding BindingContext.MoveUpCommand, Source={x:Reference LocationList}}"
+                                    CommandParameter="{Binding .}"
+                                    IsVisible="{Binding Order, Converter={StaticResource CanMoveUpConverter}}"/>
+                                <Button Text="{x:Static fonticons:FontIcons.FontAwesomeArrowDown}" Style="{StaticResource ArrowButtonStyle}"
+                                    Command="{Binding BindingContext.MoveDownCommand, Source={x:Reference LocationList}}"
+                                    CommandParameter="{Binding .}">
+                                    <Button.IsVisible>
+                                        <MultiBinding Converter="{StaticResource CanMoveDownConverter}">
+                                            <Binding Path="Order"/>
+                                            <Binding Source="{x:Reference LocationList}"/>
+                                        </MultiBinding>
+                                    </Button.IsVisible>
+                                </Button>
+                            </StackLayout>                            
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

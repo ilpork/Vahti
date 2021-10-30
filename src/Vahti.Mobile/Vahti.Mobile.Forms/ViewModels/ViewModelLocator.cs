@@ -27,6 +27,11 @@ namespace MobileClient.ViewModels
             get { return ServiceLocator.Current.GetInstance<OptionsSummaryViewModel>(); }
         }
 
+        public static OptionsSortingViewModel OptionsSorting
+        {
+            get { return ServiceLocator.Current.GetInstance<OptionsSortingViewModel>(); }
+        }
+
         public static OptionsWidgetViewModel OptionsWidget
         {
             get { return ServiceLocator.Current.GetInstance<OptionsWidgetViewModel>(); }

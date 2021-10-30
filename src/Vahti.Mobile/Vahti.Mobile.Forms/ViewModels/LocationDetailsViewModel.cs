@@ -5,6 +5,10 @@ using System;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
+using System.Windows.Input;
+using MvvmHelpers.Interfaces;
+using MvvmHelpers.Commands;
+using Command = MvvmHelpers.Commands.Command;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -18,10 +22,10 @@ namespace Vahti.Mobile.Forms.ViewModels
         private string _locationName;
         private bool _visibilitySettingsUpdated;
 
-        public Command InitializeCommand { get; set; }
-        public Command RefreshCommand { get; set; }
-        public Command UpdateCommand { get; set; }
-        public Command VisibilityToggledCommand { get; set; }
+        public ICommand InitializeCommand { get; set; }
+        public IAsyncCommand RefreshCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand VisibilityToggledCommand { get; set; }
 
         public Models.Location Location
         {
@@ -41,7 +45,7 @@ namespace Vahti.Mobile.Forms.ViewModels
             NavigationService.NavigatedTo += NavigationService_NavigatedTo;
 
             InitializeCommand = new Command(() => { _visibilitySettingsUpdated = false; });
-            RefreshCommand = new Command(async () => await RefreshDataAsync());
+            RefreshCommand = new AsyncCommand(async () => await RefreshDataAsync());
             UpdateCommand = new Command(() =>
             {
                 if (_visibilitySettingsUpdated)
