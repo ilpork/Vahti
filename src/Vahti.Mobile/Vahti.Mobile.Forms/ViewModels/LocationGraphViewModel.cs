@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 using OxyPlot;
 using Vahti.Mobile.Forms.Exceptions;
 using Vahti.Mobile.Forms.Models;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Vahti.Mobile.Forms.EventArguments;
 using Vahti.Mobile.Forms.Services;
 using System.Collections.ObjectModel;
-using MvvmHelpers.Interfaces;
-using System.Windows.Input;
-using MvvmHelpers.Commands;
-using Command = MvvmHelpers.Commands.Command;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -24,12 +19,13 @@ namespace Vahti.Mobile.Forms.ViewModels
     public class LocationGraphViewModel : BaseViewModel
     {
         private readonly IDataService<MeasurementHistory> _historyDataService;
+        private readonly IOptionService _optionService;
         private ObservableCollection<IPlotModel> _plotModels = new ObservableCollection<IPlotModel>();
         private Models.Location _selectedLocation;
         private bool _showGraphs = false;
         
-        public IAsyncCommand<bool> RefreshGraphCommand { get; }
-        public ICommand ShowDetailsCommand { get; set; }
+        public Command<bool> RefreshGraphCommand { get; }
+        public Command ShowDetailsCommand { get; set; }
 
         public ObservableCollection<IPlotModel> PlotModels
         {
@@ -67,11 +63,14 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
         }    
 
-        public LocationGraphViewModel(IDataService<MeasurementHistory> dataStore, INavigationService navigationService) : base(navigationService)
+        public LocationGraphViewModel(IDataService<MeasurementHistory> dataStore, INavigationService navigationService,
+            IOptionService optionService) : base(navigationService)
         {
             _historyDataService = dataStore;
+            _optionService = optionService;
+
             NavigationService.NavigatedTo += NavigationService_NavigatedTo;
-            RefreshGraphCommand = new AsyncCommand<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
+            RefreshGraphCommand = new Command<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
             ShowDetailsCommand = new Command(() =>
             {   
                 NavigationService.NavigateTo(Constants.PageType.Details, SelectedLocation);                
@@ -118,7 +117,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                         continue;
                     }
 
-                    PlotModels.Add(GraphModel.GetPlotModel(historyItem, measurement.SensorClass, measurement.SensorName));
+                    PlotModels.Add(GraphModel.GetPlotModel(historyItem, measurement.SensorClass, measurement.SensorName, _optionService.ShowMinMaxValues));
                 }
             }
             catch (Exception ex)

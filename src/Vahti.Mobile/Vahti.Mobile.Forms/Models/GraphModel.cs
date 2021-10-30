@@ -1,9 +1,12 @@
 ﻿using OxyPlot;
+using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Vahti.Mobile.Forms.Localization;
 using Vahti.Mobile.Forms.Theme;
 using Vahti.Shared.Enum;
 using Xamarin.Essentials;
@@ -14,8 +17,10 @@ namespace Vahti.Mobile.Forms.Models
     /// Provides graph models used in measurement history graphs
     /// </summary>
     public class GraphModel
-    {        
-        public static IPlotModel GetPlotModel(MeasurementHistory historyData, SensorClass sensorClass, string sensorName)
+    {
+        private static NumberFormatInfo DotNumberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
+
+        public static IPlotModel GetPlotModel(MeasurementHistory historyData, SensorClass sensorClass, string sensorName, bool showMinMax)
         {
             var graphDataPoints = new List<GraphData>();
 
@@ -46,7 +51,31 @@ namespace Vahti.Mobile.Forms.Models
             plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Left, minValue, maxValue, GetMajorStep(minValue, maxValue, sensorClass)));
             plotModel.Axes.Add(GetLinearAxis(theme, AxisPosition.Right, minValue, maxValue, GetMajorStep(minValue, maxValue, sensorClass)));
             plotModel.Axes.Add(GetDateTimeAxis(theme));
+            
+            if (showMinMax)
+            {                
+                try
+                {
+                    var minValue24h = Get24hMinimumValue(graphDataPoints, sensorClass);
+                    var maxValue24h = Get24hMaximumValue(graphDataPoints, sensorClass);
 
+                    plotModel.Annotations.Add(new CustomTextAnnotation()
+                    {
+                        X = 6,
+                        Y = 6,
+                        Text = string.Format(Resources.AppResources.Graph_MinMax,
+                        DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, minValue24h.ToString(DotNumberFormatInfo)),
+                        DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, maxValue24h.ToString(DotNumberFormatInfo)), historyData.Unit),
+                        FontSize = 12,
+                        TextColor = OxyColors.White
+                    });
+                }
+                catch (InvalidOperationException)
+                {
+                    // No values from last 24h, do not add min/max annotation
+                }
+            }
+            
             switch (theme)
             {
                 default:
@@ -110,6 +139,22 @@ namespace Vahti.Mobile.Forms.Models
                 default:
                     return minValue;
             }
+        }
+
+        private static double Get24hMinimumValue(List<GraphData> graphData, SensorClass category)
+        {
+            var now = DateTime.Now;
+            var dataMinValue = graphData.Where(t => (now - t.X).Days == 0).Min(t => t.Y);
+
+            return dataMinValue;
+        }
+
+        private static double Get24hMaximumValue(List<GraphData> graphData, SensorClass category)
+        {
+            var now = DateTime.Now;           
+            var dataMaxValue = graphData.Where(t => (now - t.X).Days == 0).Max(t => t.Y);
+
+            return dataMaxValue;
         }
 
         private static double GetMaximumValue(List<GraphData> graphData, SensorClass category)
@@ -216,6 +261,24 @@ namespace Vahti.Mobile.Forms.Models
                 MajorGridlineColor = majorGridLineColor,
                 MinorGridlineColor = minorGridLineColor
             };
+        }
+
+        private class CustomTextAnnotation : Annotation
+        {
+            public CustomTextAnnotation()
+            { }
+
+            public string Text { get; set; }
+            public double X { get; set; }
+            public double Y { get; set; }
+
+            public override void Render(IRenderContext rc)
+            {
+                base.Render(rc);
+                double pX = PlotModel.PlotArea.Left + X;
+                double pY = PlotModel.PlotArea.Top + Y;
+                rc.DrawMultilineText(new ScreenPoint(pX, pY), Text, TextColor, Font, FontSize, FontWeight);
+            }
         }
     }
 }
