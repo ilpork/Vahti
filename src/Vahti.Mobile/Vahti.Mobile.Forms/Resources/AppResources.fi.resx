@@ -32,7 +32,7 @@
     <value>Historia</value>
   </data>
   <data name="Options_ColorThemeLabel" xml:space="preserve">
-    <value>Väriteema:</value>
+    <value>Väriteema</value>
   </data>
   <data name="Options_Title" xml:space="preserve">
     <value>Asetukset</value>
@@ -56,10 +56,10 @@
     <value>Ongelma haettaessa dataa tietokannasta. Tarkista että tietokannan osoite on määritelty oikein App.config-tiedostossa: {0}. Jos haluat sen sijaan käyttää testidataa, valitse "DebugMock" käännöskonfiguraatio</value>
   </data>
   <data name="Options_CloudDatabaseSecretLabel" xml:space="preserve">
-    <value>Pilvitietokannan salasana:</value>
+    <value>Salasana</value>
   </data>
   <data name="Options_CloudDatabaseUrlLabel" xml:space="preserve">
-    <value>Pilvitietokannan osoite:</value>
+    <value>Osoite</value>
   </data>
   <data name="Options_CloudDatabaseUrlMissingLabel" xml:space="preserve">
     <value>Pilvitietokannan osoite pitää määrittää tietojen näyttämiseksi</value>
@@ -84,5 +84,17 @@
   </data>
   <data name="Options_Sorting_Title" xml:space="preserve">
     <value>Järjestys</value>
+  </data>
+  <data name="Options_ShowMinMaxValuesLabel" xml:space="preserve">
+    <value>Näytä min/max (24h)</value>
+  </data>
+  <data name="Options_GraphPageHeader" xml:space="preserve">
+    <value>Historianäkymä</value>
+  </data>
+  <data name="Options_DatabaseOptionsHeader" xml:space="preserve">
+    <value>Pilvitietokanta</value>
+  </data>
+  <data name="Graph_MinMax" xml:space="preserve">
+    <value>24h: {0} ... {1} {2}</value>
   </data>
 </root>

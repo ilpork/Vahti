@@ -142,6 +142,15 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 24h: {0} ... {1} {2}.
+        /// </summary>
+        internal static string Graph_MinMax {
+            get {
+                return ResourceManager.GetString("Graph_MinMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
         internal static string Graph_Title {
@@ -178,7 +187,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloud database secret:.
+        ///   Looks up a localized string similar to Secret.
         /// </summary>
         internal static string Options_CloudDatabaseSecretLabel {
             get {
@@ -187,7 +196,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloud database URL:.
+        ///   Looks up a localized string similar to URL.
         /// </summary>
         internal static string Options_CloudDatabaseUrlLabel {
             get {
@@ -205,11 +214,20 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color theme:.
+        ///   Looks up a localized string similar to Color theme.
         /// </summary>
         internal static string Options_ColorThemeLabel {
             get {
                 return ResourceManager.GetString("Options_ColorThemeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloud database.
+        /// </summary>
+        internal static string Options_DatabaseOptionsHeader {
+            get {
+                return ResourceManager.GetString("Options_DatabaseOptionsHeader", resourceCulture);
             }
         }
         
@@ -219,6 +237,24 @@ namespace Vahti.Mobile.Forms.Resources {
         internal static string Options_General_Title {
             get {
                 return ResourceManager.GetString("Options_General_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History view.
+        /// </summary>
+        internal static string Options_GraphPageHeader {
+            get {
+                return ResourceManager.GetString("Options_GraphPageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show min/max (24h).
+        /// </summary>
+        internal static string Options_ShowMinMaxValuesLabel {
+            get {
+                return ResourceManager.GetString("Options_ShowMinMaxValuesLabel", resourceCulture);
             }
         }
         
