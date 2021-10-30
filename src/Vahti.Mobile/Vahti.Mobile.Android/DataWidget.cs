@@ -79,19 +79,22 @@ namespace Vahti.Mobile.Droid
                     {
                         widgetView.SetTextViewText(Resource.Id.location1, measurements[0].Item1);
                         widgetView.SetTextViewText(Resource.Id.sensor1, measurements[0].Item2.SensorName);
-                        widgetView.SetTextViewText(Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[0].Item2));
+                        widgetView.SetTextViewText(Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(
+                            measurements[0].Item2.SensorClass, measurements[0].Item2.Value, measurements[0].Item2.Unit));
                     }
                     if (measurements.Count >= 2)
                     {
                         widgetView.SetTextViewText(Resource.Id.location2, measurements[1].Item1);
                         widgetView.SetTextViewText(Resource.Id.sensor2, measurements[1].Item2.SensorName);
-                        widgetView.SetTextViewText(Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[1].Item2));
+                        widgetView.SetTextViewText(Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(
+                            measurements[1].Item2.SensorClass, measurements[1].Item2.Value, measurements[1].Item2.Unit));
                     }
                     if (measurements.Count >= 3)
                     {
                         widgetView.SetTextViewText(Resource.Id.location3, measurements[2].Item1);
                         widgetView.SetTextViewText(Resource.Id.sensor3, measurements[2].Item2.SensorName);
-                        widgetView.SetTextViewText(Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(measurements[2].Item2));
+                        widgetView.SetTextViewText(Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(
+                            measurements[2].Item2.SensorClass, measurements[2].Item2.Value, measurements[2].Item2.Unit));
                     }
                     var firstLocation = locationList.FirstOrDefault();
                     widgetView.SetTextViewText(Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));

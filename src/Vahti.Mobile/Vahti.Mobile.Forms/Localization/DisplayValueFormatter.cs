@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Vahti.Mobile.Forms.Models;
 using Vahti.Shared.Enum;
 
 namespace Vahti.Mobile.Forms.Localization
@@ -9,24 +8,36 @@ namespace Vahti.Mobile.Forms.Localization
     /// </summary>
     public static class DisplayValueFormatter
     {
-        public static string GetMeasurementDisplayValue(Measurement measurement)
+        public static string GetMeasurementDisplayValue(SensorClass sensorClass, string value, string unit)
         {
-            switch (measurement.SensorClass)
+            var valueWithoutUnit = GetMeasurementDisplayValue(sensorClass, value);
+
+            if (!string.IsNullOrEmpty(valueWithoutUnit))
+            {
+                valueWithoutUnit += $" {unit}";
+            }
+
+            return valueWithoutUnit;
+        }
+
+        public static string GetMeasurementDisplayValue(SensorClass sensorClass, string value)
+        {
+            switch (sensorClass)
             {
                 case SensorClass.None:
                     return string.Empty;
                 case SensorClass.Temperature:
-                    return $"{string.Format("{0:0.0}", double.Parse(measurement.Value, CultureInfo.InvariantCulture))} {measurement.Unit}";
+                    return $"{string.Format("{0:0.0}", double.Parse(value, CultureInfo.InvariantCulture))}";
                 case SensorClass.AccelerationX:
                 case SensorClass.AccelerationY:
                 case SensorClass.AccelerationZ:
                 case SensorClass.BatteryVoltage:
-                    return $"{string.Format("{0:0.000}", double.Parse(measurement.Value, CultureInfo.InvariantCulture))} {measurement.Unit}";
+                    return $"{string.Format("{0:0.000}", double.Parse(value, CultureInfo.InvariantCulture))}";
                 case SensorClass.Humidity:
                 case SensorClass.MovementCounter:
                 case SensorClass.Pressure:
                 default:
-                    return $"{string.Format("{0:0}", double.Parse(measurement.Value, CultureInfo.InvariantCulture))} {measurement.Unit}";
+                    return $"{string.Format("{0:0}", double.Parse(value, CultureInfo.InvariantCulture))}";
             }
         }
     }

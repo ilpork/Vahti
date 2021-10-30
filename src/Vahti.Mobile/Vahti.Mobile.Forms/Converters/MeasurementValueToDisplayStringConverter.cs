@@ -14,7 +14,8 @@ namespace Vahti.Mobile.Forms.Converters
         {
             if (value != null && value is Measurement)
             {
-                return DisplayValueFormatter.GetMeasurementDisplayValue((Measurement)value);
+                var measurement = value as Measurement;
+                return DisplayValueFormatter.GetMeasurementDisplayValue(measurement.SensorClass, measurement.Value, measurement.Unit);
             }
             return null;
         }
