@@ -53,27 +53,24 @@ namespace Vahti.Mobile.Forms.Models
             plotModel.Axes.Add(GetDateTimeAxis(theme));
             
             if (showMinMax)
-            {                
-                try
-                {
-                    var minValue24h = Get24hMinimumValue(graphDataPoints, sensorClass);
-                    var maxValue24h = Get24hMaximumValue(graphDataPoints, sensorClass);
+            {
+                var minValue24h = Get24hMinimumValue(graphDataPoints);
+                var maxValue24h = Get24hMaximumValue(graphDataPoints);
 
+                if (minValue24h != null && maxValue24h != null)
+                {
                     plotModel.Annotations.Add(new CustomTextAnnotation()
                     {
                         X = 6,
                         Y = 6,
                         Text = string.Format(Resources.AppResources.Graph_MinMax,
-                        DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, minValue24h.ToString(DotNumberFormatInfo)),
-                        DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, maxValue24h.ToString(DotNumberFormatInfo)), historyData.Unit),
+                            DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, minValue24h.Value.ToString(DotNumberFormatInfo)),
+                            DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, maxValue24h.Value.ToString(DotNumberFormatInfo)), 
+                            historyData.Unit),
                         FontSize = 12,
                         TextColor = OxyColors.White
                     });
-                }
-                catch (InvalidOperationException)
-                {
-                    // No values from last 24h, do not add min/max annotation
-                }
+                }                
             }
             
             switch (theme)
@@ -141,20 +138,26 @@ namespace Vahti.Mobile.Forms.Models
             }
         }
 
-        private static double Get24hMinimumValue(List<GraphData> graphData, SensorClass category)
-        {
-            var now = DateTime.Now;
-            var dataMinValue = graphData.Where(t => (now - t.X).Days == 0).Min(t => t.Y);
+        private static double? Get24hMinimumValue(List<GraphData> graphData)
+        {         
+            var values24h = graphData.Where(t => (DateTime.Now - t.X).Days == 0).ToList();
+            if (values24h.Count == 0)
+            {
+                return null;
+            }
 
-            return dataMinValue;
+            return values24h.Min(t => t.Y);
         }
 
-        private static double Get24hMaximumValue(List<GraphData> graphData, SensorClass category)
-        {
-            var now = DateTime.Now;           
-            var dataMaxValue = graphData.Where(t => (now - t.X).Days == 0).Max(t => t.Y);
+        private static double? Get24hMaximumValue(List<GraphData> graphData)
+        {            
+            var values24h = graphData.Where(t => (DateTime.Now - t.X).Days == 0).ToList();
+            if (values24h.Count == 0)
+            {
+                return null;
+            }
 
-            return dataMaxValue;
+            return values24h.Max(t => t.Y);
         }
 
         private static double GetMaximumValue(List<GraphData> graphData, SensorClass category)
