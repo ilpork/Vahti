@@ -35,7 +35,7 @@
         </StackLayout>
         <StackLayout Orientation="Vertical">
             <Label Text="{i18n:Translate Options_GraphPageHeader}" Style="{DynamicResource OptionsHeaderStyle}" />
-            <Grid RowSpacing="0" Padding="0,8,4,8">
+            <Grid RowSpacing="0" Padding="4,8,4,8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{i18n:Translate Options_ShowMinMaxValuesLabel}" Style="{DynamicResource OptionsLabelStyle}" Grid.Column="0"/>
+                <Label Text="{i18n:Translate Options_ShowMinMaxValuesLabel}" Style="{DynamicResource OptionsLabelStyle}" Grid.Column="0" VerticalOptions="Center"/>
                 <Switch IsToggled="{Binding ShowMinMaxValues}" HorizontalOptions="End" ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSecondary}" Grid.Column="1"/>
             </Grid>            
         </StackLayout>
