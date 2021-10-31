@@ -56,8 +56,8 @@
           <target state="translated">Ei tietoa</target>
         </trans-unit>
         <trans-unit id="Locations_LastUpdatedText" translate="yes" xml:space="preserve">
-          <source>Data was last updated on {0}</source>
-          <target state="translated">Tiedot päivitetty viimeksi {0}</target>
+          <source>Data ({0}) was last updated on {1} or earlier</source>
+          <target state="translated">Tiedot ({0}) päivitetty viimeksi {1} tai aikaisemmin</target>
         </trans-unit>
         <trans-unit id="Locations_UpdateButtonText" translate="yes" xml:space="preserve">
           <source>Refresh</source>

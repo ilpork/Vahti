@@ -47,7 +47,7 @@
     <value>Ei tietoa</value>
   </data>
   <data name="Locations_LastUpdatedText" xml:space="preserve">
-    <value>Tiedot päivitetty viimeksi {0}</value>
+    <value>Tiedot ({0}) päivitetty viimeksi {1} tai aikaisemmin</value>
   </data>
   <data name="Locations_UpdateButtonText" xml:space="preserve">
     <value>Päivitä</value>

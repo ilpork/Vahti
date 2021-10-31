@@ -116,20 +116,8 @@ namespace Vahti.Mobile.Forms.ViewModels
                 try
                 {
                     items = await _locationDataService.GetAllDataAsync(forceRefresh);
-                                        
-                    foreach (var location in items)
-                    {
-                        if (location!= null && (location.Timestamp + TimeSpan.FromMinutes(location.UpdateInterval * 4)) < DateTime.Now)
-                        {
-                            LastUpdated = string.Format(Resources.AppResources.Locations_LastUpdatedText, $"{location.Timestamp.ToShortDateString()} {location.Timestamp.ToLongTimeString()}");
-                            IsOldData = true;
-                            break;
-                        }
-                        else
-                        {
-                            IsOldData = false;
-                        }
-                    }                    
+
+                    CheckIfDataIsOld(items);
 
                     foreach (var location in items)
                     {
@@ -166,6 +154,38 @@ namespace Vahti.Mobile.Forms.ViewModels
             {
                 IsBusy = false;
             }
-        }        
+        }      
+        
+        private void CheckIfDataIsOld(IEnumerable<Models.Location> locations)
+        {
+            var latestUpdateDateTime = DateTime.MinValue;
+            var locationsNotUpdated = new List<string>();
+
+            foreach (var location in locations)
+            {
+                // Use tolerance of four times of data update interval to determine if data is old or not
+                if (location != null && (location.Timestamp + TimeSpan.FromMinutes(location.UpdateInterval * 4)) < DateTime.Now)
+                {
+                    locationsNotUpdated.Add(location.Name);
+                    if (location.Timestamp > latestUpdateDateTime)
+                    {
+                        latestUpdateDateTime = location.Timestamp;
+                    }
+                }
+            }
+
+            if (locationsNotUpdated.Count > 0)
+            {
+                var locationListText = string.Join(", ", locationsNotUpdated);
+
+                LastUpdated = string.Format(Resources.AppResources.Locations_LastUpdatedText, locationListText,
+                    $"{latestUpdateDateTime.ToShortDateString()} {latestUpdateDateTime.ToLongTimeString()}");
+                IsOldData = true;
+            }
+            else
+            {
+                IsOldData = false;
+            }
+        }
     }
 }
