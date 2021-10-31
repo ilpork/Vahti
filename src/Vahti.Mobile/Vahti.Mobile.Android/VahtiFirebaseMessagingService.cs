@@ -68,13 +68,16 @@ namespace Vahti.Mobile.Droid
             var connectionString = ConfigurationManager.AppSettings["AzureListConnectionString"];
             var notificationHubName = ConfigurationManager.AppSettings["AzureNotificationHubName"];
 
-            // Register with Notification Hubs
-            hub = new NotificationHub(notificationHubName, connectionString, this);
+            if (!string.IsNullOrEmpty(connectionString) && !string.IsNullOrEmpty(notificationHubName))
+            {
+                // Register with Notification Hubs
+                hub = new NotificationHub(notificationHubName, connectionString, this);
 
-            var tags = new List<string>() { };
-            var regID = hub.Register(token, tags.ToArray()).RegistrationId;
+                var tags = new List<string>() { };
+                var regID = hub.Register(token, tags.ToArray()).RegistrationId;
 
-            Log.Debug(TAG, $"Successful registration of ID {regID}");
+                Log.Debug(TAG, $"Successful registration of ID {regID}");
+            }            
         }
     }
 }
