@@ -10,6 +10,10 @@ using Xamarin.Forms;
 using Vahti.Mobile.Forms.EventArguments;
 using Vahti.Mobile.Forms.Services;
 using System.Collections.ObjectModel;
+using MvvmHelpers.Interfaces;
+using System.Windows.Input;
+using MvvmHelpers.Commands;
+using Command = MvvmHelpers.Commands.Command;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -24,8 +28,8 @@ namespace Vahti.Mobile.Forms.ViewModels
         private Models.Location _selectedLocation;
         private bool _showGraphs = false;
         
-        public Command<bool> RefreshGraphCommand { get; }
-        public Command ShowDetailsCommand { get; set; }
+        public IAsyncCommand<bool> RefreshGraphCommand { get; }
+        public ICommand ShowDetailsCommand { get; set; }
 
         public ObservableCollection<IPlotModel> PlotModels
         {
@@ -70,7 +74,7 @@ namespace Vahti.Mobile.Forms.ViewModels
             _optionService = optionService;
 
             NavigationService.NavigatedTo += NavigationService_NavigatedTo;
-            RefreshGraphCommand = new Command<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
+            RefreshGraphCommand = new AsyncCommand<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
             ShowDetailsCommand = new Command(() =>
             {   
                 NavigationService.NavigateTo(Constants.PageType.Details, SelectedLocation);                
