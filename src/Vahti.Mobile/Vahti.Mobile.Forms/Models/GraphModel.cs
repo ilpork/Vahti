@@ -65,10 +65,10 @@ namespace Vahti.Mobile.Forms.Models
                         Y = 6,
                         Text = string.Format(Resources.AppResources.Graph_MinMax,
                             DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, minValue24h.Value.ToString(DotNumberFormatInfo)),
-                            DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, maxValue24h.Value.ToString(DotNumberFormatInfo)), 
+                            DisplayValueFormatter.GetMeasurementDisplayValue(sensorClass, maxValue24h.Value.ToString(DotNumberFormatInfo)),
                             historyData.Unit),
                         FontSize = 12,
-                        TextColor = OxyColors.White
+                        TextColor = theme == ColorThemeEnum.Gray ? OxyColors.White : OxyColors.Black
                     });
                 }                
             }
