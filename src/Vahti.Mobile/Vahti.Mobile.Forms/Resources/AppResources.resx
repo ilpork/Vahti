@@ -144,6 +144,9 @@
   <data name="Details_Title" xml:space="preserve">
     <value>Details</value>
   </data>
+  <data name="Graph_MinMax" xml:space="preserve">
+    <value>24h: {0} ... {1} {2}</value>
+  </data>
   <data name="Graph_Title" xml:space="preserve">
     <value>History</value>
   </data>
@@ -157,19 +160,28 @@
     <value>Refresh</value>
   </data>
   <data name="Options_CloudDatabaseSecretLabel" xml:space="preserve">
-    <value>Cloud database secret:</value>
+    <value>Secret</value>
   </data>
   <data name="Options_CloudDatabaseUrlLabel" xml:space="preserve">
-    <value>Cloud database URL:</value>
+    <value>URL</value>
   </data>
   <data name="Options_CloudDatabaseUrlMissingLabel" xml:space="preserve">
     <value>Cloud database URL has to be specified</value>
   </data>
   <data name="Options_ColorThemeLabel" xml:space="preserve">
-    <value>Color theme:</value>
+    <value>Color theme</value>
+  </data>
+  <data name="Options_DatabaseOptionsHeader" xml:space="preserve">
+    <value>Cloud database</value>
   </data>
   <data name="Options_General_Title" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="Options_GraphPageHeader" xml:space="preserve">
+    <value>History view</value>
+  </data>
+  <data name="Options_ShowMinMaxValuesLabel" xml:space="preserve">
+    <value>Show min/max (24h)</value>
   </data>
   <data name="Options_Sorting_Description" xml:space="preserve">
     <value>Sort locations using arrows:</value>

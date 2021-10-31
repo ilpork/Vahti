@@ -9,9 +9,11 @@ namespace Vahti.Mobile.Forms.ViewModels
     /// View model for page displaying application options
     /// </summary>
     public class OptionsGeneralViewModel : BaseViewModel
-    {
+    {        
         private int _colorThemesSelectedIndex;
+        private bool _showMinMaxValues;
         private IDatabaseManagementService _dbManagementService;
+        private IOptionService _optionService;
         private string _databaseSecret;
         private string _databaseUrl;
         private string _selectedColorTheme = null;              
@@ -62,7 +64,23 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
         }
 
-        
+        public bool ShowMinMaxValues
+        {
+            get
+            {
+                return _showMinMaxValues;
+            }
+            set
+            {
+                if (_showMinMaxValues != value)
+                {
+                    _showMinMaxValues = value;
+                    _optionService.ShowMinMaxValues = value;
+                    SetProperty(ref _showMinMaxValues, value, nameof(ShowMinMaxValues));
+                }
+            }
+        }
+
         public string SelectedColorTheme
         {
             get
@@ -79,9 +97,12 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
         }
         
-        public OptionsGeneralViewModel(INavigationService navigationService, IDatabaseManagementService dbManagementService) : base(navigationService)
+        public OptionsGeneralViewModel(INavigationService navigationService, IDatabaseManagementService dbManagementService,
+            IOptionService optionService) : base(navigationService)
         {
             _dbManagementService = dbManagementService;
+            _optionService = optionService;
+
             ColorThemes.Add(Resources.AppResources.ColorTheme_Gray);
             ColorThemes.Add(Resources.AppResources.ColorTheme_Light);
 
@@ -95,7 +116,7 @@ namespace Vahti.Mobile.Forms.ViewModels
 
             // For backwards compatibility (green theme does not exist anymore, light is now '1')
             ColorThemesSelectedIndex = (colorThemeIndex == 2) ? 1 : colorThemeIndex;
-
+            ShowMinMaxValues = optionService.ShowMinMaxValues;
             Title = Resources.AppResources.Options_Title;
 
             this.PropertyChanged += OptionsViewModel_PropertyChanged;

@@ -36,8 +36,8 @@
           <target state="translated">Historia</target>
         </trans-unit>
         <trans-unit id="Options_ColorThemeLabel" translate="yes" xml:space="preserve">
-          <source>Color theme:</source>
-          <target state="translated">Väriteema:</target>
+          <source>Color theme</source>
+          <target state="translated">Väriteema</target>
         </trans-unit>
         <trans-unit id="Options_Title" translate="yes" xml:space="preserve">
           <source>Options</source>
@@ -68,12 +68,12 @@
           <target state="translated">Ongelma haettaessa dataa tietokannasta. Tarkista että tietokannan osoite on määritelty oikein App.config-tiedostossa: {0}. Jos haluat sen sijaan käyttää testidataa, valitse "DebugMock" käännöskonfiguraatio</target>
         </trans-unit>
         <trans-unit id="Options_CloudDatabaseSecretLabel" translate="yes" xml:space="preserve">
-          <source>Cloud database secret:</source>
-          <target state="translated">Pilvitietokannan salasana:</target>
+          <source>Secret</source>
+          <target state="translated">Salasana</target>
         </trans-unit>
         <trans-unit id="Options_CloudDatabaseUrlLabel" translate="yes" xml:space="preserve">
-          <source>Cloud database URL:</source>
-          <target state="translated">Pilvitietokannan osoite:</target>
+          <source>URL</source>
+          <target state="translated">Osoite</target>
         </trans-unit>
         <trans-unit id="Options_CloudDatabaseUrlMissingLabel" translate="yes" xml:space="preserve">
           <source>Cloud database URL has to be specified</source>
@@ -106,6 +106,22 @@
         <trans-unit id="Options_Sorting_Title" translate="yes" xml:space="preserve">
           <source>Sorting</source>
           <target state="translated">Järjestys</target>
+        </trans-unit>
+        <trans-unit id="Options_ShowMinMaxValuesLabel" translate="yes" xml:space="preserve">
+          <source>Show min/max (24h)</source>
+          <target state="translated">Näytä min/max (24h)</target>
+        </trans-unit>
+        <trans-unit id="Options_GraphPageHeader" translate="yes" xml:space="preserve">
+          <source>History view</source>
+          <target state="translated">Historianäkymä</target>
+        </trans-unit>
+        <trans-unit id="Options_DatabaseOptionsHeader" translate="yes" xml:space="preserve">
+          <source>Cloud database</source>
+          <target state="translated">Pilvitietokanta</target>
+        </trans-unit>
+        <trans-unit id="Graph_MinMax" translate="yes" xml:space="preserve">
+          <source>24h: {0} ... {1} {2}</source>
+          <target state="translated">24h: {0} ... {1} {2}</target>
         </trans-unit>
       </group>
     </body>

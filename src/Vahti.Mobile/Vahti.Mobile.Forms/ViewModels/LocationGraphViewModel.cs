@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using OxyPlot;
 using Vahti.Mobile.Forms.Exceptions;
 using Vahti.Mobile.Forms.Models;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Vahti.Mobile.Forms.EventArguments;
 using Vahti.Mobile.Forms.Services;
@@ -24,6 +23,7 @@ namespace Vahti.Mobile.Forms.ViewModels
     public class LocationGraphViewModel : BaseViewModel
     {
         private readonly IDataService<MeasurementHistory> _historyDataService;
+        private readonly IOptionService _optionService;
         private ObservableCollection<IPlotModel> _plotModels = new ObservableCollection<IPlotModel>();
         private Models.Location _selectedLocation;
         private bool _showGraphs = false;
@@ -67,9 +67,12 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
         }    
 
-        public LocationGraphViewModel(IDataService<MeasurementHistory> dataStore, INavigationService navigationService) : base(navigationService)
+        public LocationGraphViewModel(IDataService<MeasurementHistory> dataStore, INavigationService navigationService,
+            IOptionService optionService) : base(navigationService)
         {
             _historyDataService = dataStore;
+            _optionService = optionService;
+
             NavigationService.NavigatedTo += NavigationService_NavigatedTo;
             RefreshGraphCommand = new AsyncCommand<bool>(async (forceRefresh) => await RefreshDataAsync(forceRefresh));
             ShowDetailsCommand = new Command(() =>
@@ -118,7 +121,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                         continue;
                     }
 
-                    PlotModels.Add(GraphModel.GetPlotModel(historyItem, measurement.SensorClass, measurement.SensorName));
+                    PlotModels.Add(GraphModel.GetPlotModel(historyItem, measurement.SensorClass, measurement.SensorName, _optionService.ShowMinMaxValues));
                 }
             }
             catch (Exception ex)

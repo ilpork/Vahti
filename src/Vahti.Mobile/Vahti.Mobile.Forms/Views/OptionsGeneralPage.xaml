@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                
              xmlns:effects="clr-namespace:Vahti.Mobile.Forms.Effects"
              xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"             
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"   
              x:Class="Vahti.Mobile.Forms.Views.OptionsGeneralPage"
+             x:Name="optionsGeneralPage"
              BackgroundColor="{DynamicResource ThemeBackground}"
              Title="{Binding Title}"
              >
@@ -14,10 +15,14 @@
             <Setter Property="FontSize" Value="Small"/>
             <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
         </Style>
+        <Style x:Key="OptionsHeaderStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+        </Style>
     </ContentPage.Resources>
     <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="4" Spacing="20" Padding="24">
         <StackLayout Orientation="Vertical">
-            <Label Text="{i18n:Translate Options_ColorThemeLabel}" Style="{DynamicResource OptionsLabelStyle}" />
+            <Label Text="{i18n:Translate Options_ColorThemeLabel}" Style="{DynamicResource OptionsHeaderStyle}" />
             <Picker x:Name="colorThemePicker" 
                     ItemsSource="{Binding ColorThemes}" 
                     SelectedIndex="{Binding ColorThemesSelectedIndex}" 
@@ -28,7 +33,22 @@
                 </Picker.Effects>
             </Picker>
         </StackLayout>
-        <StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">        
+        <StackLayout Orientation="Vertical">
+            <Label Text="{i18n:Translate Options_GraphPageHeader}" Style="{DynamicResource OptionsHeaderStyle}" />
+            <Grid RowSpacing="0" Padding="0,8,4,8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{i18n:Translate Options_ShowMinMaxValuesLabel}" Style="{DynamicResource OptionsLabelStyle}" Grid.Column="0"/>
+                <Switch IsToggled="{Binding ShowMinMaxValues}" HorizontalOptions="End" ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSecondary}" Grid.Column="1"/>
+            </Grid>            
+        </StackLayout>
+        <StackLayout Orientation="Vertical" IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">
+            <Label Text="{i18n:Translate Options_DatabaseOptionsHeader}" Style="{DynamicResource OptionsHeaderStyle}"/>
             <Label Text="{i18n:Translate Options_CloudDatabaseUrlLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
             <StackLayout Orientation="Vertical" Spacing="0">
                 <Entry Text="{Binding DatabaseUrl}" 
