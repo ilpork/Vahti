@@ -169,7 +169,7 @@ namespace Vahti.Mobile.Forms.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data was last updated on {0}.
+        ///   Looks up a localized string similar to Data ({0}) was last updated on {1} or earlier.
         /// </summary>
         internal static string Locations_LastUpdatedText {
             get {

@@ -154,7 +154,7 @@
     <value>There was a problem when accessing the database. Please check that URL defined in App.config is valid: {0}. To use fake data instead, select "DebugMock" build configuration</value>
   </data>
   <data name="Locations_LastUpdatedText" xml:space="preserve">
-    <value>Data was last updated on {0}</value>
+    <value>Data ({0}) was last updated on {1} or earlier</value>
   </data>
   <data name="Locations_UpdateButtonText" xml:space="preserve">
     <value>Refresh</value>
