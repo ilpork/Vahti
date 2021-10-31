@@ -32,7 +32,7 @@
             Android="#1a1a1a" />
         <Color x:Key="GrayThemeSwitchThumbColor">White</Color>
 
-        <Color x:Key="LightThemeBackground">#e4e4e4</Color>        
+        <Color x:Key="LightThemeBackground">#eaeaea</Color>        
         <Color x:Key="LightThemePrimaryDark">#303F9F</Color>
         <Color x:Key="LightThemePrimary">#3F51B5</Color>
         <Color x:Key="LightThemeOnPrimary">#FFFFFF</Color>

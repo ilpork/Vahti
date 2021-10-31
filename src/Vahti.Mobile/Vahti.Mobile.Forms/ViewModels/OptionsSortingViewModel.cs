@@ -85,11 +85,13 @@ namespace Vahti.Mobile.Forms.ViewModels
             {
                 IsBusy = true;
                 Locations.Clear();
-                
+                var tempCollection = new ObservableCollection<Models.Location>();
                 foreach (var location in await _dataService.GetAllDataAsync(false))
                 {
-                    Locations.Add(location);
+                    //await Task.Delay(50);
+                    tempCollection.Add(location);
                 }
+                Locations = tempCollection;
             }
             finally
             {

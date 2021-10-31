@@ -132,6 +132,12 @@ namespace Vahti.Mobile.Forms.ViewModels
                                 Value = lastMeasurement.Value, Unit = lastMeasurement.Unit, SensorClass = lastMeasurement.SensorClass });
                         }
 
+                        // Small delay is needed on iOS prevent crashing due to a bug in XF
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            await Task.Delay(50);
+                        }
+
                         Locations.Add(filteredLocation);
                     }                
                 }

@@ -58,6 +58,7 @@
     <item name="colorPrimaryDark">#0c0c0c</item>
     <item name="android:navigationBarColor">#101010</item>
     <item name="android:textAllCaps">false</item>
+    <item name="android:colorForeground">#ffffff</item>
   </style>  
   <style name="LightTheme" parent="MainTheme.Light">
     <item name="android:colorLongPressedHighlight">@color/listViewSelectedLight</item>
@@ -68,6 +69,7 @@
     <item name="colorPrimary">#3F51B5</item>
     <item name="colorPrimaryDark">#303F9F</item>
     <item name="android:textAllCaps">false</item>
+    <item name="android:colorForeground">#777777</item>
   </style>
   <style name="WidgetBackground">
     <item name="android:background">#992d2d2d</item>
