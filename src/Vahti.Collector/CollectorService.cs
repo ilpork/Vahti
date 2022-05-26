@@ -108,8 +108,8 @@ namespace Vahti.Collector
                         _logger.LogError($"{DateTime.Now}: Reading device data failed: {ex.Message}, {ex.StackTrace}");
                         consecutiveReadFailCount++;
 
-                        // Break from loop if the problem persists
-                        if (consecutiveReadFailCount >= MaxRepeatedReadFailCount)
+                        // Break from then loop if the problem persists and configured to stop on repeated errors
+                        if (consecutiveReadFailCount >= MaxRepeatedReadFailCount && _config.StopOnRepeatedErrors)
                         {
                             break;
                         }

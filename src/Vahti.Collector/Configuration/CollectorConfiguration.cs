@@ -19,5 +19,7 @@ namespace Vahti.Collector.Configuration
         public List<SensorDevice> SensorDevices { get; set; }
 
         public List<SensorDeviceType> SensorDeviceTypes { get; set; }
+
+        public bool StopOnRepeatedErrors { get; set; }
     }
 }

@@ -105,8 +105,8 @@ namespace Vahti.DataBroker
                     _logger.LogError($"{DateTime.Now}: Error occured in Vahti.DataBroker: {ex.Message}, {ex.StackTrace}");
                     consecutiveReadFailCount++;
 
-                    // Break from loop if the problem persists
-                    if (consecutiveReadFailCount >= MaxRepeatedFailCount)
+                    // Break from the loop if the problem persists and configured to stop on repeated errors
+                    if (consecutiveReadFailCount >= MaxRepeatedFailCount && _config.StopOnRepeatedErrors)
                     {
                         break;
                     }
