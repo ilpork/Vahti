@@ -389,3 +389,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .eslintcache
+/src/Vahti.Server/Properties/launchSettings.json

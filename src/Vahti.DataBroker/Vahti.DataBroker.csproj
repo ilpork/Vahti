@@ -25,9 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Vahti.Shared\Vahti.Shared.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="Properties\" />
+	<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+	  <_Parameter1>Vahti.DataBroker.Test</_Parameter1>
+	</AssemblyAttribute>
   </ItemGroup>
-
 </Project>

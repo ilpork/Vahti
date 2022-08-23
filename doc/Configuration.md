@@ -23,7 +23,9 @@ DataBroker is responsible for gathering the measurement data published by anothe
 |--------|-------|
 |dataBrokerConfigurationEnabled|Indicates if data broker service is enabled|
 |mqttServerAddress|Address of the MQTT server|
+|stopOnRepeatedErrors|Indicates if service should stop if repeated errors occur|
 |cloudPublishConfiguration|Cloud publishing configuration|
+
 
 ### CloudPublishConfiguration
 Defines cloud database access details and how often data is published.
@@ -187,6 +189,7 @@ Collector is responsible for reading data from devices and publish the data usin
 |mqttServerAddress|Address of the MQTT server|
 |scanIntervalSeconds|How often to read data from devices|
 |bluetoothAdapterName|Name of Bluetooth adapter used when scanning Bluetooth LE devices|
+|stopOnRepeatedErrors|Indicates if service should stop if repeated errors occur|
 |sensorDeviceTypes|List of sensor device types|
 |sensorDevices|List of devices having sensors| 
 

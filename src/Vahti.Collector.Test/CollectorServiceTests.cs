@@ -112,7 +112,8 @@ namespace Vahti.Collector.Test
             {
                 CollectorEnabled = true,
                 BluetoothAdapterName = "test",
-                ScanIntervalSeconds = 0
+                ScanIntervalSeconds = 0,
+                StopOnRepeatedErrors = true
             };
 
             _mqttClientMock.Setup(m => m.IsConnected).Returns(true);

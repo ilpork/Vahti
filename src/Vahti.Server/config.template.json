@@ -5,6 +5,7 @@
   "dataBrokerConfiguration": {
     "dataBrokerEnabled": true,
     "mqttServerAddress": "192.168.1.2",
+    "stopOnRepeatedErrors":  false,
     "cloudPublishConfiguration": {
       "Enabled": true,
       "updateIntervalMinutes": "5",
@@ -83,6 +84,7 @@
     "mqttServerAddress": "192.168.1.2",
     "scanIntervalSeconds": "60",
     "bluetoothAdapterName": "hci0",
+    "stopOnRepeatedErrors": false,
     "sensorDevices": [
       {
         "id": "ruuviGarage",

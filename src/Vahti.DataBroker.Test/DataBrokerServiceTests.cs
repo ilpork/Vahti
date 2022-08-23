@@ -52,7 +52,8 @@ namespace Vahti.DataBroker.Test
                 AlertConfiguration = new AlertConfiguration() { Enabled = false },
                 CloudPublishConfiguration = new CloudPublishConfiguration() { Enabled = true, UpdateIntervalMinutes = 1, HistoryUpdateIntervalMinutes = 1 },
                 DataBrokerEnabled = true,
-                MqttServerAddress = "1.1.1.1"
+                MqttServerAddress = "1.1.1.1",
+                StopOnRepeatedErrors = true,
             };
 
             _mqttClientMock.Setup(m => m.IsConnected).Returns(true);
@@ -61,6 +62,8 @@ namespace Vahti.DataBroker.Test
 
             //Act      
             var btGwService = _serviceProvider.GetService<DataBrokerService>();
+            btGwService.LoopInterval = 0;
+
             var cts = new CancellationTokenSource();
 #pragma warning disable CS4014
             // Run as fire & forget            

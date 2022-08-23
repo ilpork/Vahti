@@ -102,10 +102,30 @@ namespace Vahti.Collector
                     try
                     {
                         measurements.AddRange(await _deviceScanner.GetDeviceDataAsync(_sensorDevices));
+
+                        // Publish data to server
+                        int publishCounter = 0;
+                        foreach (var measurement in measurements)
+                        {
+                            var sensorDevice = _sensorDevices.First(d => d.Id.Equals(measurement.SensorDeviceId, StringComparison.OrdinalIgnoreCase));
+                            var topic = $"{Constant.TopicMeasurement}/{sensorDevice.Location}/{sensorDevice.Id}/{measurement.SensorId}";
+
+                            await _mqttClient.PublishAsync(
+                                new MqttApplicationMessageBuilder()
+                                .WithPayload(measurement.Value)
+                                .WithRetainFlag()
+                                .WithTopic(topic)
+                                .Build(), CancellationToken.None);
+
+                            publishCounter++;
+                        }
+                        
+                        consecutiveReadFailCount = 0;
+                        _logger.LogInformation($"{DateTime.Now}: Published data for {publishCounter} measurement(s)");
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError($"{DateTime.Now}: Reading device data failed: {ex.Message}, {ex.StackTrace}");
+                        _logger.LogError($"{DateTime.Now}: Collecting device data failed: {ex.Message}, {ex.StackTrace}");
                         consecutiveReadFailCount++;
 
                         // Break from then loop if the problem persists and configured to stop on repeated errors
@@ -113,31 +133,9 @@ namespace Vahti.Collector
                         {
                             break;
                         }
-
-                        continue;
                     }
-
-
-                    // Publish data to server
-                    int publishCounter = 0;
-                    foreach (var measurement in measurements)
-                    {
-                        var sensorDevice = _sensorDevices.First(d => d.Id.Equals(measurement.SensorDeviceId, StringComparison.OrdinalIgnoreCase));
-                        var topic = $"{Constant.TopicMeasurement}/{sensorDevice.Location}/{sensorDevice.Id}/{measurement.SensorId}";
-
-                        await _mqttClient.PublishAsync(
-                            new MqttApplicationMessageBuilder()
-                            .WithPayload(measurement.Value)
-                            .WithRetainFlag()
-                            .WithTopic(topic)
-                            .Build(), CancellationToken.None);
-
-                        publishCounter++;
-                    }
-
-                    _logger.LogInformation($"{DateTime.Now}: Published data for {publishCounter} measurement(s)");
-                    consecutiveReadFailCount = 0;
-                    await Task.Delay(TimeSpan.FromSeconds(_config.ScanIntervalSeconds), stoppingToken);
+                    
+                    await Task.Delay(TimeSpan.FromSeconds(_config.ScanIntervalSeconds), stoppingToken);                    
                 }
             }
             catch (TaskCanceledException)
