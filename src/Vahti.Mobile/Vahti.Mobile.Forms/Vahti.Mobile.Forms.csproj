@@ -40,7 +40,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="OxyPlot.Core" Version="1.0.0">
       <NoWarn>NU1701</NoWarn>
     </PackageReference>
