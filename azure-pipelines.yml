@@ -156,9 +156,9 @@ jobs:
   - task: CmdLine@2
     inputs:
       script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_4_0"'
-  - task: CmdLine@2
-    inputs:
-      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_11.4.app/Contents/Developer"'
+  #- task: CmdLine@2
+  #  inputs:
+  #    script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_11.4.app/Contents/Developer"'
   - task: XamariniOS@2
     displayName: Build iOS app
     inputs:
