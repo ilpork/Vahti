@@ -118,6 +118,10 @@ jobs:
     inputs:
       script: 'cp App.template.config App.config' 
       workingDirectory: 'src/Vahti.Mobile/Vahti.Mobile.Forms'      
+  - task: CmdLine@2
+    displayName: XA5104 Workaround
+    inputs:
+      script: '${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.4.7075529"'
   - task: XamarinAndroid@1
     displayName: Build Android app
     inputs:
@@ -151,10 +155,10 @@ jobs:
       artifactName: 'apk'      
   - task: CmdLine@2
     inputs:
-      script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_4_0"'
+      script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_12"'
   - task: CmdLine@2
     inputs:
-      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_11.4.app/Contents/Developer"'
+      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_13.2.1.app/Contents/Developer"'
   - task: XamariniOS@2
     displayName: Build iOS app
     inputs:
