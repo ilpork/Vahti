@@ -155,7 +155,7 @@ jobs:
       artifactName: 'apk'      
   - task: CmdLine@2
     inputs:
-      script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_15"'
+      script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_12"'
   - task: CmdLine@2
     inputs:
       script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_13.2.1.app/Contents/Developer"'
