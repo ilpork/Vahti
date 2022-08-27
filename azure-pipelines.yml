@@ -118,6 +118,10 @@ jobs:
     inputs:
       script: 'cp App.template.config App.config' 
       workingDirectory: 'src/Vahti.Mobile/Vahti.Mobile.Forms'      
+  - task: CmdLine@2
+    displayName: XA5104 Workaround
+    inputs:
+      script: '${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.4.7075529"'
   - task: XamarinAndroid@1
     displayName: Build Android app
     inputs:
