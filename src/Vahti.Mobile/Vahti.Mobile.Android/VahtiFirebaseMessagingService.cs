@@ -12,7 +12,7 @@ namespace Vahti.Mobile.Droid
     /// <summary>
     /// Provides support for handling push notifications
     /// </summary>
-    [Service]
+    [Service(Exported = false)]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
     public class VahtiFirebaseMessagingService : FirebaseMessagingService

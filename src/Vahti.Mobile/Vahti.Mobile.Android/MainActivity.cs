@@ -11,7 +11,7 @@ using PCLAppConfig;
 
 namespace Vahti.Mobile.Droid
 {    
-    [Activity(Label = "Vahti", Icon = "@drawable/ic_launcher_lighthouse", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Vahti", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IThemeChanger
     {
         private bool _isInitialized;
