@@ -16,9 +16,9 @@ namespace Vahti.Mobile.Droid
     /// <summary>
     /// Show selected measurement values in home screen widget
     /// </summary>
-    [BroadcastReceiver (Label = "@string/data_widget_name")]
+    [BroadcastReceiver (Label = "@string/data_widget_name", Exported = false)]
 	[IntentFilter (new string [] { "android.appwidget.action.APPWIDGET_UPDATE" })]
-	[MetaData ("android.appwidget.provider", Resource = "@xml/data_widget")]
+	[MetaData ("android.appwidget.provider", Resource = "@xml/data_widget")]    
     public class DataWidget : AppWidgetProvider
     {
         private readonly IDataService<Forms.Models.Location> _locationDataService;
