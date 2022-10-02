@@ -1,6 +1,9 @@
 # Vahti
 [![Build Status](https://dev.azure.com/ilpork/github/_apis/build/status/ilpork.Vahti?branchName=master)](https://dev.azure.com/ilpork/github/_build/latest?definitionId=3&branchName=master)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b93f50a0-c805-4447-ade1-4c704da1945e/deploy-status)](https://app.netlify.com/sites/vahti/deploys)
+<!--
+Hide Netlify badge for now. It indicates incorrectly "failed" when build has been auto-canceled due to site content not changed
+https://answers.netlify.com/t/status-badge-incorrectly-shows-failing-when-deploy-is-auto-cancelled/7316
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b93f50a0-c805-4447-ade1-4c704da1945e/deploy-status)](https://app.netlify.com/sites/vahti/deploys)-->
 
 Vahti is a lightweight .NET and MQTT based home monitoring system to read measurement data from different kind of sources. 
 
