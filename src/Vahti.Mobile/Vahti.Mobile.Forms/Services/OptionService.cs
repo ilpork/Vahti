@@ -1,6 +1,4 @@
-﻿using Xamarin.Essentials;
-
-namespace Vahti.Mobile.Forms.Services
+﻿namespace Vahti.Mobile.Forms.Services
 {
     /// <summary>
     /// Provides application option information

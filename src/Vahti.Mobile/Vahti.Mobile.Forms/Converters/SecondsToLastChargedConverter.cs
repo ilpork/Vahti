@@ -1,7 +1,5 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using Vahti.Mobile.Forms.Resources;
-using Xamarin.Forms;
 
 namespace Vahti.Mobile.Forms.Converters
 {

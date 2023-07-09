@@ -1,7 +1,5 @@
 ﻿using Vahti.Mobile.Forms.Constants;
-using Vahti.Mobile.Forms.EventArguments;
-using System;
-using System.Threading.Tasks;
+using NavigatedToEventArgs = Vahti.Mobile.Forms.EventArguments.NavigatedToEventArgs;
 
 namespace Vahti.Mobile.Forms.Services
 {

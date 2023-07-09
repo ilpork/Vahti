@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Forms.Converters
 {
     /// <summary>
     /// Converts string to boolean indicating if string is empty

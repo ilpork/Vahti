@@ -1,9 +1,5 @@
 ﻿using Vahti.Mobile.Forms.Constants;
-using Vahti.Mobile.Forms.EventArguments;
-using Vahti.Mobile.Forms.Views;
-using System;
-using Xamarin.Forms;
-using System.Threading.Tasks;
+using NavigatedToEventArgs = Vahti.Mobile.Forms.EventArguments.NavigatedToEventArgs;
 
 namespace Vahti.Mobile.Forms.Services
 {

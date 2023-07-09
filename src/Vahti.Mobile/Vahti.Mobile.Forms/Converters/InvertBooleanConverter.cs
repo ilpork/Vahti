@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Forms.Converters
 {
     /// <summary>
     /// Inverts a boolean value

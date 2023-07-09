@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Vahti.Mobile.Forms.Views.LocationListPage"
              xmlns:fonticons="clr-namespace:Vahti.Mobile.Forms.Views.Fonts"             
@@ -13,7 +13,7 @@
              >
         
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_toolbar_refresh.png" Text="{i18n:Translate Locations_UpdateButtonText}" Command="{Binding RefreshListCommand}" CommandParameter="{StaticResource True}"/>
+        <ToolbarItem Text="{i18n:Translate Locations_UpdateButtonText}" Command="{Binding RefreshListCommand}" CommandParameter="{StaticResource True}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshListCommand}" CommandParameter="{StaticResource False}" />
@@ -118,7 +118,7 @@
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center">
+                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="8,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
                                     <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>

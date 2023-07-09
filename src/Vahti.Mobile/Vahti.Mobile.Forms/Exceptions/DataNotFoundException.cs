@@ -1,6 +1,4 @@
-﻿using Vahti.Shared.Exception;
-
-namespace Vahti.Mobile.Forms.Exceptions
+﻿namespace Vahti.Mobile.Forms.Exceptions
 {
     /// <summary>
     /// Exception used when requested data was not found 

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Vahti.Mobile.Forms.Views;
-using Xamarin.Forms;
+﻿using Vahti.Mobile.Forms.Views;
 
 namespace Vahti.Mobile.Forms
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShell : Shell
     {
         public AppShell()
         {

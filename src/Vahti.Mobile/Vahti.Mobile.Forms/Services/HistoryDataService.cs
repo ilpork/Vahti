@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Vahti.Mobile.Forms.Models;
+﻿using Vahti.Mobile.Forms.Models;
 using Vahti.Shared.Data;
 using Vahti.Shared.DataProvider;
 using Vahti.Shared.TypeData;

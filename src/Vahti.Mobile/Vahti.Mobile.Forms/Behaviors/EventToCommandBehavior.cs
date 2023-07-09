@@ -1,7 +1,5 @@
-using System;
 using System.Reflection;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Vahti.Mobile.Forms.Behaviors
 {

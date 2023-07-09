@@ -1,9 +1,7 @@
 ﻿using Vahti.Mobile.Forms.Localization;
-using System;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using Xamarin.Forms;
 
 namespace Vahti.Mobile.Forms.Services
 {
@@ -19,10 +17,10 @@ namespace Vahti.Mobile.Forms.Services
             () => new ResourceManager(ResourceId, typeof(LanguageService).GetTypeInfo().Assembly));
 
         public LanguageService()
-        {
-            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+        {            
+            if (DeviceInfo.Platform == DevicePlatform.iOS || DeviceInfo.Platform == DevicePlatform.Android)
             {
-                ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                ci = new Localize().GetCurrentCultureInfo();
             }
         }
         public string GetString(string id)

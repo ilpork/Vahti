@@ -356,11 +356,11 @@ MigrationBackup/
 *.ppk
 /src/Vahti.Server/id_p50h_dev
 /src/Vahti.DataBroker/id_p50h_dev
-/src/Vahti.Mobile/Vahti.Mobile.Forms/App.config
 /src/Vahti.App/Vahti.App.Mqtt/config.json
 /src/Vahti.App/Vahti.App.BluetoothGw/config.json
 /src/Vahti.App/Vahti.App.DataBroker/config.json
 /src/Vahti.App/Vahti.App.Full/config.json
+/src/Vahti.Mobile/Vahti.Mobile.Forms/appsettings.json
 /src/Vahti.Mobile/Vahti.Mobile.Android/google-services.json
 /src/Vahti.Server/config.json
 /src/Vahti.Collector/Properties/launchSettings.json
@@ -390,3 +390,4 @@ yarn-debug.log*
 yarn-error.log*
 .eslintcache
 /src/Vahti.Server/Properties/launchSettings.json
+/src/Vahti.Mobile/Vahti.Mobile.Forms/Properties/launchSettings.json

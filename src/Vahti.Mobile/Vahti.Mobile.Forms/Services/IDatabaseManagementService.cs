@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vahti.Mobile.Forms.Services
+﻿namespace Vahti.Mobile.Forms.Services
 {
     /// <summary>
     /// Defines functionality related to managing database access

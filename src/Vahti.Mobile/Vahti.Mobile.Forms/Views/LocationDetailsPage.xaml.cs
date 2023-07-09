@@ -1,7 +1,5 @@
 ﻿using MobileClient.ViewModels;
 using Vahti.Mobile.Forms.ViewModels;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Vahti.Mobile.Forms.Views
 {

@@ -1,7 +1,5 @@
-﻿using PCLAppConfig;
-using System;
-using Vahti.Shared.DataProvider;
-using Xamarin.Essentials;
+﻿using Vahti.Shared.DataProvider;
+using Vahti.Mobile.Forms.Models;
 
 namespace Vahti.Mobile.Forms.Services
 {
@@ -13,17 +11,19 @@ namespace Vahti.Mobile.Forms.Services
         private const string DatabaseUrlKey = "DatabaseUrl";
         private const string DatabaseSecretKey = "DatabaseSecret";
         private readonly IDataProvider _dataProvider;
+        private readonly AppSettings _settings;
 
-        public DatabaseManagementService(IDataProvider dataProvider)
+        public DatabaseManagementService(IDataProvider dataProvider, AppSettings settings)
         {
             _dataProvider = dataProvider;
+            _settings = settings;
         }
 
         public bool HasStaticConfiguration
         {
             get
             {
-                var databaseUrl = ConfigurationManager.AppSettings[Constants.AppConfig.FirebaseDatabaseUrl];
+                var databaseUrl = _settings.FirebaseDatabaseUrl;
 
                 return (!string.IsNullOrEmpty(databaseUrl)) ? true : false;                
             }
@@ -67,8 +67,8 @@ namespace Vahti.Mobile.Forms.Services
         {
             if (HasStaticConfiguration)
             {
-                var databaseUrl = ConfigurationManager.AppSettings[Constants.AppConfig.FirebaseDatabaseUrl];
-                var databaseSecret = ConfigurationManager.AppSettings[Constants.AppConfig.FirebaseDatabaseSecret];
+                var databaseUrl = _settings.FirebaseDatabaseUrl;
+                var databaseSecret = _settings.FirebaseDatabaseSecret;
                 _dataProvider.SetConfiguration(databaseUrl, databaseSecret);
             }
             else

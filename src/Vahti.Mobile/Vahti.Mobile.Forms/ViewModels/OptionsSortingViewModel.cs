@@ -1,13 +1,11 @@
 ﻿using Vahti.Mobile.Forms.Resources;
-using Xamarin.Forms;
-using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
 using System.Collections.ObjectModel;
-using Vahti.Mobile.Forms.Models;
 using MvvmHelpers.Interfaces;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
+using Location = Vahti.Mobile.Forms.Models.Location;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {

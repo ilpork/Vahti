@@ -1,7 +1,4 @@
-﻿using Xamarin.Essentials;
-using Xamarin.Forms;
-
-namespace Vahti.Mobile.Forms.Theme
+﻿namespace Vahti.Mobile.Forms.Theme
 {
     /// <summary>
     /// Provides functionality to change color theme of the application
