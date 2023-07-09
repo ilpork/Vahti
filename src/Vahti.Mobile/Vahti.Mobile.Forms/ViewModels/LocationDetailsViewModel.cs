@@ -1,14 +1,10 @@
 ﻿using Vahti.Mobile.Forms.Resources;
-using Vahti.Mobile.Forms.EventArguments;
-using Xamarin.Forms;
-using System;
-using Xamarin.Essentials;
-using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
 using System.Windows.Input;
 using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
+using NavigatedToEventArgs = Vahti.Mobile.Forms.EventArguments.NavigatedToEventArgs;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {

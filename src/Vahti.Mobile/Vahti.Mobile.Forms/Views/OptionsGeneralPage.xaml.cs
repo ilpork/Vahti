@@ -1,13 +1,5 @@
 ﻿using MobileClient.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vahti.Mobile.Forms.ViewModels;
 using Vahti.Mobile.Forms.Views.Fonts;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Vahti.Mobile.Forms.Views
 {

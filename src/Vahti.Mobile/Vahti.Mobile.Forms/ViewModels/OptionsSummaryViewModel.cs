@@ -1,8 +1,5 @@
 ﻿using Vahti.Mobile.Forms.Resources;
-using Xamarin.Forms;
-using System.Threading.Tasks;
 using Vahti.Mobile.Forms.Services;
-using System.Collections.Generic;
 using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;

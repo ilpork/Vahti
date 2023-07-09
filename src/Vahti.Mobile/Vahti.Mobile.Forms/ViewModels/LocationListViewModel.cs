@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 using Vahti.Mobile.Forms.Models;
-using System.Linq;
-using Xamarin.Essentials;
 using Vahti.Mobile.Forms.Exceptions;
-using System.Collections.Generic;
 using Vahti.Mobile.Forms.Services;
-using Vahti.Shared.Data;
 using Vahti.Shared.Exception;
 using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
@@ -132,8 +125,8 @@ namespace Vahti.Mobile.Forms.ViewModels
                                 Value = lastMeasurement.Value, Unit = lastMeasurement.Unit, SensorClass = lastMeasurement.SensorClass });
                         }
 
-                        // Small delay is needed on iOS prevent crashing due to a bug in XF
-                        if (Device.RuntimePlatform == Device.iOS)
+                        // Small delay is needed on iOS prevent crashing due to a bug in XF                        
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
                             await Task.Delay(50);
                         }

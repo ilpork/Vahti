@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "475845122828",
+    "firebase_url": "https://vahti-2398a.firebaseio.com",
+    "project_id": "vahti-2398a",
+    "storage_bucket": "vahti-2398a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475845122828:android:8b302c74f86adc6d7dc729",
+        "android_client_info": {
+          "package_name": "com.ilpork.vahti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475845122828-999vku7koliekro2qu50u5m29gb2nt22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoeXLHNjDK9zG-g77dH4jJwKaU1o99Cqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475845122828-999vku7koliekro2qu50u5m29gb2nt22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

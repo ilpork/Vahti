@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Vahti.Mobile.Forms.Services
+﻿namespace Vahti.Mobile.Forms.Services
 {
     /// <summary>
     /// Defines interface for loading and updating data 

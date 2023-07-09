@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Forms.Converters
 {
     /// <summary>
     /// Converts <see cref="Models.Location"/> to boolean indicating if item can be moved up in the list

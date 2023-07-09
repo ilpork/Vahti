@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using MobileClient.ViewModels;
+﻿using MobileClient.ViewModels;
 
 namespace Vahti.Mobile.Forms.Views
 {

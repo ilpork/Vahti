@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vahti.Mobile.Forms.Models
+﻿namespace Vahti.Mobile.Forms.Models
 {
     /// <summary>
     /// Represents a data point in history data graph

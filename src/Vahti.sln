@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33808.371
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.DataBroker", "Vahti.DataBroker\Vahti.DataBroker.csproj", "{09A44F61-3D3C-4B38-8BDA-A8C8116C795A}"
 EndProject
@@ -128,6 +128,7 @@ Global
 		{91EC24AD-ED2D-40DD-AEF5-8069480020DF}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU

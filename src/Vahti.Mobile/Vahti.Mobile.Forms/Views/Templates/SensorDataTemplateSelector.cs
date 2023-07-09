@@ -1,5 +1,4 @@
 ﻿using Vahti.Mobile.Forms.Models;
-using Xamarin.Forms;
 
 namespace Vahti.Mobile.Forms.Views.Templates
 {

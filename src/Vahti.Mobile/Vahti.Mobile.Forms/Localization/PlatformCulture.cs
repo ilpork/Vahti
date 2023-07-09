@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vahti.Mobile.Forms.Localization
+﻿namespace Vahti.Mobile.Forms.Localization
 {
     /// <summary>
     /// Represents platform specific culture

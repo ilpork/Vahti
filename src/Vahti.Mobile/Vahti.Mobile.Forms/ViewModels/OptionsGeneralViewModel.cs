@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Vahti.Mobile.Forms.Services;
-using Xamarin.Essentials;
+﻿using Vahti.Mobile.Forms.Services;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {

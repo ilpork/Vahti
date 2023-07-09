@@ -1,5 +1,3 @@
-using Xamarin.Forms;
-
 namespace Vahti.Mobile.Forms.Behaviors
 {
     /// <summary>

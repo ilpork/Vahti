@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Forms.Converters
 {
     /// <summary>
     /// Converts object to boolean indicating if object has specified property

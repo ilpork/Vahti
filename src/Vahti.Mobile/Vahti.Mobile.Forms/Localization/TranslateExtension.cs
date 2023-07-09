@@ -1,9 +1,6 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Vahti.Mobile.Forms.Localization
 {
@@ -23,9 +20,10 @@ namespace Vahti.Mobile.Forms.Localization
 
         public TranslateExtension()
         {
-            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+            if (DeviceInfo.Platform == DevicePlatform.iOS || DeviceInfo.Platform == DevicePlatform.Android)
             {
-                ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                var localizer = new Localize();
+                ci = localizer.GetCurrentCultureInfo();
             }
         }
 

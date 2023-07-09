@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
        xmlns:local="clr-namespace:Vahti.Mobile.Forms.Views"
        xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"       
@@ -44,7 +44,7 @@
     </FlyoutItem>
     <FlyoutItem FlyoutIcon="ic_menu_settings.png"
                 Title="{i18n:Translate Options_Title}">
-        <Tab Title="{i18n:Translate Options_Title}"             
+        <Tab Title="{i18n:Translate Options_Title}"              
              >
             <ShellContent Route="optionsGeneral"
                           Title="{i18n:Translate Options_General_Title}"

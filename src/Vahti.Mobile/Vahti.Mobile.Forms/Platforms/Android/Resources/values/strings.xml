@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>  
+  <string name="data_widget_name">Vahti</string>
+  <string name="data_widget_loading">Loading data...</string>
+  <string name="loading_widget_data_error">Error when loading data:</string>
+  <string name="no_widget_data_found">No data found</string>
+</resources>
