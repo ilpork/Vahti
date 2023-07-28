@@ -9,7 +9,7 @@ using Android.Content;
 
 namespace Vahti.Mobile.Droid
 {
-    [Activity(Label = "Vahti2", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Vahti", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Microsoft.Maui.MauiAppCompatActivity, IThemeChanger
     {        
         public const string TAG = "MainActivity";
