@@ -1,4 +1,5 @@
 ﻿using Vahti.Mobile.Forms.Services;
+using Vahti.Mobile.Forms.Theme;
 
 namespace Vahti.Mobile.Forms.ViewModels
 {
@@ -53,10 +54,10 @@ namespace Vahti.Mobile.Forms.ViewModels
                 if (_colorThemesSelectedIndex != value)
                 {
                     _colorThemesSelectedIndex = value;
-                    Preferences.Set(Theme.ColorTheme.ColorThemePreferenceName, _colorThemesSelectedIndex);
-                                  
+                    Preferences.Set(Theme.ColorThemeChanger.ColorThemePreferenceName, _colorThemesSelectedIndex);
+                                        
                     SelectedColorTheme = ColorThemes[_colorThemesSelectedIndex];
-                    OnPropertyChanged(nameof(ColorThemesSelectedIndex));
+                    OnPropertyChanged(nameof(ColorThemesSelectedIndex));                    
                 }
             }
         }
@@ -109,7 +110,7 @@ namespace Vahti.Mobile.Forms.ViewModels
                 DatabaseSecret = _dbManagementService.DatabaseSecret;
             }            
 
-            var colorThemeIndex = Preferences.Get(Theme.ColorTheme.ColorThemePreferenceName, 0);
+            var colorThemeIndex = Preferences.Get(Theme.ColorThemeChanger.ColorThemePreferenceName, 0);
 
             // For backwards compatibility (green theme does not exist anymore, light is now '1')
             ColorThemesSelectedIndex = (colorThemeIndex == 2) ? 1 : colorThemeIndex;
@@ -121,7 +122,10 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         private void OptionsViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            ((App)App.Current).Theme.ApplyColorTheme();
+            if (e.PropertyName == nameof(ColorThemesSelectedIndex))
+            {
+                ColorThemeChanger.ApplyTheme();
+            }            
         }
     }
 }

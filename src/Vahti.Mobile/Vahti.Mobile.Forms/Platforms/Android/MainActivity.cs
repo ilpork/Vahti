@@ -6,21 +6,19 @@ using Android.OS;
 using Vahti.Mobile.Forms.Theme;
 using Resource = Vahti.Mobile.Forms.Resource;
 using Android.Content;
+using Android.Views;
+using Firebase;
 
 namespace Vahti.Mobile.Droid
 {
     [Activity(Label = "Vahti", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Microsoft.Maui.MauiAppCompatActivity, IThemeChanger
+    public class MainActivity : global::Microsoft.Maui.MauiAppCompatActivity
     {        
         public const string TAG = "MainActivity";
         internal static readonly string CHANNEL_ID = "my_notification_channel";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-
-            //TabLayoutResource = Resource.Layout.Tabbar;
-            //ToolbarResource = Resource.Layout.Toolbar;
-
             base.OnCreate(savedInstanceState);
 
             if (Intent.Extras != null)
@@ -38,28 +36,9 @@ namespace Vahti.Mobile.Droid
             IsPlayServicesAvailable();
             CreateNotificationChannel();
 
-            //global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
-            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);            
-            //OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer.Init();
-            //FirebaseApp.InitializeApp(Application.Context);            
-
-            //LoadApplication(new App(this));
+            FirebaseApp.InitializeApp(this);            
         }
 
-        public void ApplyTheme(ColorThemeEnum theme)
-        {
-            switch (theme)
-            {
-                default:
-                case ColorThemeEnum.Gray:
-                    SetTheme(Resource.Style.GrayTheme);
-                    break;                
-                case ColorThemeEnum.Light:
-                    SetTheme(Resource.Style.LightTheme);
-                    break;
-            }
-        }
         public bool IsPlayServicesAvailable()
         {
             int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);

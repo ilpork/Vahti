@@ -4,7 +4,6 @@ using Maui.FixesAndWorkarounds;
 using Microsoft.Extensions.Configuration;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
-using Vahti.Mobile.Forms.Effects;
 
 namespace Vahti.Mobile.Forms;
 
@@ -22,8 +21,7 @@ public static class MauiProgram
         builder.Configuration.AddConfiguration(config);
         builder
             .UseSkiaSharp(true)
-            .UseMauiApp<App>()
-            .ConfigureEffects(effects => { effects.Add<LineColorEffect, EditTextLineColorEffect>(); });
+            .UseMauiApp<App>();
 
         var app = builder.Build();
         Services = app.Services;

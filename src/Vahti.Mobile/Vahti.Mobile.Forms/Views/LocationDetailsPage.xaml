@@ -7,7 +7,7 @@
              x:Class="Vahti.Mobile.Forms.Views.LocationDetailsPage"  
              x:Name="LocationDetails"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource ThemeBackground}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
              >
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
@@ -15,11 +15,11 @@
         <converter:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
         <Style x:Key="DetailsNameLabelStyle" TargetType="Label" >
             <Setter Property="FontSize" Value="Small"/>
-            <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>            
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>            
         </Style>
         <Style x:Key="DetailsValueLabelStyle" TargetType="Label" >
             <Setter Property="FontSize" Value="Medium"/>
-            <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
         </Style>
         <Style x:Key="DetailsHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource DetailsValueLabelStyle}">            
         </Style>
@@ -34,7 +34,7 @@
         </Grid.RowDefinitions>        
         <RefreshView Grid.Row="0"
              Command="{Binding RefreshCommand}"
-             RefreshColor="{StaticResource ThemeOnSurface}"
+             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView
                 x:Name="DetailsList"       
