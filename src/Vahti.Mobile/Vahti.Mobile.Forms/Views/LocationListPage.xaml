@@ -13,27 +13,33 @@
              >
         
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{i18n:Translate Locations_UpdateButtonText}" Command="{Binding RefreshListCommand}" CommandParameter="{StaticResource True}"/>
+        <ToolbarItem 
+            Text="{i18n:Translate Locations_UpdateButtonText}" 
+            Command="{Binding RefreshListCommand}" 
+            CommandParameter="{StaticResource True}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
-        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshListCommand}" CommandParameter="{StaticResource False}" />
+        <behaviors:EventToCommandBehavior 
+            EventName="Appearing" 
+            Command="{Binding RefreshListCommand}" 
+            CommandParameter="{StaticResource False}" />
     </ContentPage.Behaviors>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ListPageBackground">Transparent</Color>
             <Style x:Key="IconLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="22"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
             </Style>            
             <Style x:Key="BaseLabelStyle" TargetType="Label" >
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
             </Style>
             <Style x:Key="ItemHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnPrimary}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}"/>
             </Style>
             <Style x:Key="StatusTextLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="14"/>                
@@ -46,28 +52,41 @@
                 <converters:SecondsToLastChargedConverter x:Key="SecondsToLastChargedConverter"/>
                 <converters:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
                 <DataTemplate x:Key="mowerTemplate">
-                    <StackLayout Orientation="Horizontal" Padding="12,4,12,4" BackgroundColor="{DynamicResource ThemeSurface}" >
-                        <Label Margin="0,0,0,0" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        Padding="12,4,12,4" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" >
+                        <Label 
+                            Margin="0,0,0,0" 
+                            FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Style="{StaticResource IconLabelStyle}" 
+                            VerticalTextAlignment="Center" 
+                            Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Value}" Value="0">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeChargingStation}"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
-                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Label Margin="4,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center" FontSize="16" Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}">
+                        <Label 
+                            Margin="4,0,0,0" 
+                            LineBreakMode="NoWrap" 
+                            Style="{StaticResource BaseLabelStyle}" 
+                            VerticalTextAlignment="Center" FontSize="16" 
+                            Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
-                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
                     </StackLayout>
                 </DataTemplate>
                 <DataTemplate x:Key="defaultTemplate">
-                    <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{DynamicResource ThemeSurface}">
+                    <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}">
                         <Label Margin="0,0,0,0" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
@@ -114,14 +133,19 @@
                                     <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
                                 </MultiTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
-                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
-                        <Label Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" Margin="8,0,0,0" LineBreakMode="NoWrap" Style="{StaticResource BaseLabelStyle}" VerticalTextAlignment="Center">
+                        <Label 
+                            Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" 
+                            Margin="8,0,0,0" 
+                            LineBreakMode="NoWrap" 
+                            Style="{StaticResource BaseLabelStyle}" 
+                            VerticalTextAlignment="Center">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
-                                    <Setter Property="TextColor" Value="{StaticResource ThemeSurface}"/>
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
@@ -134,8 +158,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-     
-        <StackLayout Margin="0,0,0,0" Padding="8" BackgroundColor="{DynamicResource ThemeBackground}">
+
+    <StackLayout 
+        Margin="0,0,0,0" 
+        Padding="8" 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}">
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto" IsVisible="{Binding IsOldData}">
                 <Label 
                     Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" 
@@ -155,7 +182,7 @@
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-             RefreshColor="{StaticResource ThemeOnSurface}"
+             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
             >            
                 <CollectionView
                 
@@ -163,7 +190,7 @@
             IsGrouped="true"
             ItemsSource="{Binding Locations}"
             VerticalOptions="EndAndExpand"
-                    BackgroundColor="{DynamicResource ThemeBackground}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
             ItemTemplate="{StaticResource measurementDataTemplateSelector}"
             SelectedItem="{Binding SelectedMeasurement, Mode=TwoWay}"
                 SelectionMode="Single"
@@ -187,23 +214,46 @@
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate>
                         <StackLayout Spacing="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ThemePrimary}">
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                HorizontalOptions="FillAndExpand" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}">
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" CommandParameter="{Binding Name}" NumberOfTapsRequired="1" />
+                                    <TapGestureRecognizer 
+                                        Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" 
+                                        CommandParameter="{Binding Name}" 
+                                        NumberOfTapsRequired="1" />
                                 </StackLayout.GestureRecognizers>
-                                <Label VerticalOptions="Center" Text="{Binding Name}" Style="{StaticResource ItemHeaderLabelStyle}" Padding="8,4,0,4"/>
-                                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center" 
-                                       Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" FontSize="18" TextColor="{StaticResource ThemeOnPrimary}" Padding="0,0,8,0"/>
+                                <Label 
+                                    VerticalOptions="Center" 
+                                    Text="{Binding Name}" 
+                                    Style="{StaticResource ItemHeaderLabelStyle}" 
+                                    Padding="8,4,0,4"/>
+                                <Label 
+                                    HorizontalOptions="EndAndExpand" 
+                                    VerticalOptions="Center" 
+                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Style="{StaticResource IconLabelStyle}" 
+                                    VerticalTextAlignment="Center" 
+                                    Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" 
+                                    FontSize="18" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}" Padding="0,0,8,0"/>
                             </StackLayout>
-                            <BoxView HeightRequest="4" BackgroundColor="{DynamicResource ThemeSurface}"/>
+                            <BoxView HeightRequest="4" BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                         </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupHeaderTemplate>
                     <CollectionView.GroupFooterTemplate>
-                        <DataTemplate>                            
-                            <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Spacing="0">
-                                <BoxView HeightRequest="8" BackgroundColor="{DynamicResource ThemeSurface}"/>
-                                <BoxView HeightRequest="10" BackgroundColor="{DynamicResource ThemeBackground}"/>
+                        <DataTemplate>
+                        <StackLayout 
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+                            Spacing="0">
+                            <BoxView 
+                                HeightRequest="8" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                            <BoxView 
+                                HeightRequest="10" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"/>
                             </StackLayout>                        
                         </DataTemplate>
                     </CollectionView.GroupFooterTemplate>

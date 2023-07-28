@@ -11,21 +11,30 @@ using Vahti.Shared.DataProvider;
 using Vahti.Shared.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
+using Vahti.Mobile.Forms.Constants;
+using Microsoft.Maui.Platform;
+#if ANDROID
+using Android.Content.Res;
+#endif
+#if ANDROID
+using Android.App;
+using Android.Content;
+using Android.Views;
+using System.Diagnostics;
+#endif
+using Microsoft.Maui.Handlers;
+//using Android.Graphics;
 
 namespace Vahti.Mobile.Forms
 {
-    public partial class App : Application
+    public partial class App : Microsoft.Maui.Controls.Application
     {
-        public ColorTheme Theme { get; }
-
         public App()
         {
             InitializeComponent();
-
-            var themeChanger = new ThemeChanger();
-            Theme = new ColorTheme(themeChanger); 
-            Theme.ApplyColorTheme();
-
+                 
+            ColorThemeChanger.ApplyTheme();
+                        
             if (DeviceInfo.Platform == DevicePlatform.iOS || DeviceInfo.Platform == DevicePlatform.Android)
             {
                 var localize = new Localize();
@@ -75,8 +84,8 @@ namespace Vahti.Mobile.Forms
             AutofacServiceLocator asl = new AutofacServiceLocator(container);
             ServiceLocator.SetLocatorProvider(() => asl);
             
-            MainPage = new AppShell();           
-        }        
+            MainPage = new AppShell();            
+        }            
 
         protected override void OnSleep()
         {
@@ -86,6 +95,13 @@ namespace Vahti.Mobile.Forms
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            ColorThemeChanger.UpdateStatusBar();
         }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
              x:Name="optionsSummaryPage"
-             BackgroundColor="{DynamicResource ThemeBackground}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
              Title="{Binding Title}">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding UpdateCommand}" />
@@ -17,13 +17,13 @@
             <Color x:Key="ListPageBackground">Transparent</Color>            
             <Style x:Key="BaseLabelStyle" TargetType="Label" >
                 <Setter Property="FontSize" Value="17"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
-                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
             </Style>
             <Style x:Key="ItemHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="BackgroundColor" Value="{DynamicResource ThemePrimary}"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnPrimary}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}"/>
             </Style>
             <Style x:Key="DescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="14"/>
@@ -33,18 +33,24 @@
             </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="4" Padding="16,12,16,12">
+    <StackLayout 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+        Margin="4" 
+        Padding="16,12,16,12">
         <StackLayout Margin="0,0,0,12">
             <Label Text="{i18n:Translate Options_Summary_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
         </StackLayout>
         <RefreshView Command="{Binding RefreshCommand}"
                      CommandParameter="{StaticResource True}"
-                     RefreshColor="{StaticResource ThemeOnSurface}"
+                     RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
                      IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView x:Name="LocationList" IsGrouped="true" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ThemePrimary}">                        
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="FillAndExpand" 
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}">                        
                             <Label VerticalOptions="Center" Text="{Binding Name}" Style="{DynamicResource ItemHeaderLabelStyle}" Padding="8,4,0,4"/>                            
                         </StackLayout>                        
                     </DataTemplate>
@@ -66,7 +72,11 @@
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding SensorName}" Style="{DynamicResource BaseLabelStyle}" Grid.Row="0" Grid.Column="0"/>
                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                                <Switch IsToggled="{Binding IsVisibleInSummaryView}" HorizontalOptions="End" ThumbColor="{DynamicResource ThemeSwitchThumbColor}" OnColor="{DynamicResource ThemeSecondary}">
+                                <Switch 
+                                    IsToggled="{Binding IsVisibleInSummaryView}" 
+                                    HorizontalOptions="End" 
+                                    ThumbColor="{AppThemeBinding Light={StaticResource LightThemeSwitchThumbColor}, Dark={StaticResource GrayThemeSwitchThumbColor}}" 
+                                    OnColor="{AppThemeBinding Light={StaticResource LightThemeSecondary}, Dark={StaticResource GrayThemeSecondary}}">
                                     <Switch.Behaviors>
                                         <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding Source={x:Reference optionsSummaryPage}, Path=BindingContext.VisibilityToggledCommand}" />
                                     </Switch.Behaviors>

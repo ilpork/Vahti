@@ -7,7 +7,7 @@
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
              x:Name="optionsSortingPage"
-             BackgroundColor="{DynamicResource ThemeBackground}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
              Title="{Binding Title}">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding UpdateCommand}" />
@@ -18,18 +18,18 @@
             <Color x:Key="ListPageBackground">Transparent</Color>            
             <Style x:Key="BaseLabelStyle" TargetType="Label" >
                 <Setter Property="FontSize" Value="17"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
-                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>           
             <Style x:Key="DescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontSize" Value="14"/>                
             </Style>
             <Style x:Key="ArrowButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSurface}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
-                <Setter Property="TextColor" Value="{DynamicResource ThemeOnSurface}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
                 <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
             </Style>
             <ResourceDictionary>                
@@ -38,13 +38,16 @@
             </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="4" Padding="16,12,16,12">
+    <StackLayout 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+        Margin="4" 
+        Padding="16,12,16,12">
         <StackLayout Margin="0,0,0,12">
             <Label Text="{i18n:Translate Options_Sorting_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
         </StackLayout>
         <RefreshView Command="{Binding RefreshCommand}"
                      CommandParameter="{StaticResource True}"
-                     RefreshColor="{StaticResource ThemeOnSurface}"
+                     RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
                      IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView x:Name="LocationList" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">                
                 <CollectionView.ItemTemplate>

@@ -2,19 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Vahti.Mobile.Forms.Views.AboutPage"             
-             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
-             xmlns:custom="clr-namespace:Vahti.Mobile.Forms.Views.Custom"
-             Title="{Binding Title}">     
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
-    <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" VerticalOptions="FillAndExpand">
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"        
+             Title="{Binding Title}">
+    <StackLayout 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+        VerticalOptions="FillAndExpand">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -23,8 +15,14 @@
             <ScrollView Grid.Row="1">
                 <StackLayout Orientation="Vertical" Padding="24" Spacing="8">
                     <StackLayout Orientation="Horizontal" Margin="0,16,0,0">
-                        <Label Text="{i18n:Translate App_Title}" FontSize="24" TextColor="{DynamicResource ThemeOnSurface}" />
-                        <Label Text="{Binding Version}" FontSize="24" TextColor="{DynamicResource ThemeOnSurface}" />
+                        <Label 
+                            Text="{i18n:Translate App_Title}" 
+                            FontSize="24" 
+                            TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" />
+                        <Label 
+                            Text="{Binding Version}" 
+                            FontSize="24" 
+                            TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" />
                     </StackLayout>                    
                 </StackLayout>
             </ScrollView>
