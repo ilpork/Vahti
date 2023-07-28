@@ -1,36 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"             
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
              xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
              xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"  
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"     
              x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
              Title="{Binding SelectedLocation.Name}"
-             BackgroundColor="{StaticResource ThemeBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{i18n:Translate Details_Title}" Command="{Binding ShowDetailsCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <converter:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+        <Style x:Key="TitleStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+        </Style>
+        <Style x:Key="MinMaxStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Micro"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+        </Style>
     </ContentPage.Resources>    
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshGraphCommand}" CommandParameter="{StaticResource False}" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{DynamicResource ThemeSurface}" Margin="8" Padding="16,12,16,12">
+        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" Margin="8" Padding="16,12,16,12">
             <RefreshView
                 Command="{Binding RefreshGraphCommand}"
                 CommandParameter="{StaticResource True}"
-                RefreshColor="{StaticResource ThemeOnSurface}"
+                RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">                
                 <CollectionView                                        
-                    ItemsSource="{Binding PlotModels}"                 
+                    ItemsSource="{Binding Charts}"                 
                     VerticalOptions="EndAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <oxy:PlotView Model="{Binding .}" Margin="0" HeightRequest="250" />
+                            <Grid 
+                                RowDefinitions="auto,auto"
+                                Margin="0,0,0,16">                                
+                                <Label 
+                                    Grid.Row="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Title}" 
+                                    Style="{DynamicResource TitleStyle}"/>
+                                <Label 
+                                    Grid.Row="1"
+                                    Margin="36,16,0,0"
+                                    Text="{Binding LatestMinMax}" 
+                                    Style="{DynamicResource MinMaxStyle}"/>              
+                                <lvc:CartesianChart
+                                    Grid.Row="1"
+                                    Margin="0"                                      
+                                    HeightRequest="250"                                     
+                                    Series="{Binding Series}"
+                                    Title="{Binding Title}"
+                                    XAxes="{Binding XAxes}"
+                                    YAxes="{Binding YAxes}">
+                                </lvc:CartesianChart>
                                 <Grid BackgroundColor="Transparent"/>
                             </Grid>
                         </DataTemplate>

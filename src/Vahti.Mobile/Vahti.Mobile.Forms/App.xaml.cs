@@ -64,6 +64,7 @@ namespace Vahti.Mobile.Forms
             containerBuilder.RegisterType<HistoryDataService>().As(typeof(IDataService<MeasurementHistory>)).SingleInstance();            
             containerBuilder.RegisterType<NavigationService>().As(typeof(INavigationService)).SingleInstance();
             containerBuilder.RegisterType<OptionService>().As(typeof(IOptionService)).SingleInstance();
+            containerBuilder.RegisterType<GraphService>().As(typeof(IGraphService)).SingleInstance();
 
             // Register view models
             containerBuilder.RegisterType<LocationListViewModel>().As(typeof(LocationListViewModel)).SingleInstance().AutoActivate();            

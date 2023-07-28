@@ -14,7 +14,11 @@
         <Color x:Key="GrayThemeOnSecondary">#000000</Color>
         <Color x:Key="GrayThemeSurface">#1a1a1a</Color>
         <Color x:Key="GrayThemeOnSurface">#FFFFFF</Color>
-        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>        
+        <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>
+        <Color x:Key="GrayThemeChartStroke">#FF9FA8DA</Color>
+        <Color x:Key="GrayThemeChartFill">#889FA8DA</Color>
+        <Color x:Key="GrayThemeChartSeparator">#ff909090</Color>
+        <Color x:Key="GrayThemeChartSubSeparator">#ff505050</Color>
         <OnPlatform x:Key="GrayThemeEntryBackground"
             x:TypeArguments="Color">
             <On Platform="iOS" Value="#2a2a2a"/>
@@ -33,6 +37,10 @@
         <Color x:Key="LightThemeOnSurface">#222222</Color>
         <Color x:Key="LightThemeUnselectedTabText">#bbbbbb</Color>
         <Color x:Key="LightThemeEntryBackground">#ffffff</Color>
+        <Color x:Key="LightThemeChartStroke">#FF3F51B5</Color>
+        <Color x:Key="LightThemeChartFill">#883F51B5</Color>
+        <Color x:Key="LightThemeChartSeparator">#ffafafaf</Color>
+        <Color x:Key="LightThemeChartSubSeparator">#ffdfdfdf</Color>
         <OnPlatform x:Key="LightThemeSwitchThumbColor"
             x:TypeArguments="Color">
             <On Platform="iOS" Value="White"/>
