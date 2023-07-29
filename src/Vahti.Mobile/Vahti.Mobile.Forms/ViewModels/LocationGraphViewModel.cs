@@ -22,6 +22,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         private ObservableCollection<ChartModel> _charts = new ObservableCollection<ChartModel>();
         private Models.Location _selectedLocation;
         private bool _showGraphs = false;
+        private bool _preventUpdate = false;
         
         public IAsyncCommand<bool> RefreshGraphCommand { get; }
         public ICommand ShowDetailsCommand { get; set; }
@@ -93,7 +94,13 @@ namespace Vahti.Mobile.Forms.ViewModels
             if (IsBusy || (!forceRefresh && Charts.Count > 0))
                 return;
 
-            IsBusy = true;
+            // Setting IsBusy trigs refresh command (through RefreshView), and this ugly thing prevents the duplicate call
+            if (_preventUpdate)
+            {
+                return;
+            }
+
+            IsBusy = _preventUpdate = true;
 
             try
             {
@@ -126,7 +133,7 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
             finally
             {
-                IsBusy = false;
+                IsBusy = _preventUpdate = false;
             }
         }                
     }    

@@ -181,13 +181,13 @@
             <RefreshView
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
-             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+             IsRefreshing="{Binding IsBusy}"
              RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
             >            
                 <CollectionView
                 
             x:Name="LocationList"                   
-            IsGrouped="true"
+            IsGrouped="true"                    
             ItemsSource="{Binding Locations}"
             VerticalOptions="EndAndExpand"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
