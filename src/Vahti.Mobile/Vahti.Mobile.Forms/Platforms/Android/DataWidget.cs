@@ -44,7 +44,7 @@ namespace Vahti.Mobile.Droid
             {
                 locationList = (await _locationDataService.GetAllDataAsync(true)).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Error handling needs more work, and check how to make widget work more reliably in general
                 // For now, just go without updating anything on widget if reading data fails due to OS preventing access etc.

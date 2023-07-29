@@ -5,15 +5,13 @@ namespace Vahti.Mobile.Forms.Localization
     /// <summary>
     /// Provides Android specific localization support
     /// </summary>
-    /// TODO: add iOS support
+    /// TODO: Add iOS support
     public class Localize
     {
-        private CultureInfo _ci;
-
         public void SetLocale(CultureInfo ci)
         {
 #if ANDROID
-            _ci = Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = ci;
 #endif
         }
 

@@ -3,7 +3,7 @@
 namespace Vahti.Mobile.Forms.Converters
 {
     /// <summary>
-    /// Converts <see cref="SelectedItemChangedEventArgs"/> to object representing <see cref="Xamarin.Forms.ListView.SelectedItem"/>
+    /// Converts <see cref="SelectedItemChangedEventArgs"/> to object representing the selected item
     /// </summary>
     public class SelectedItemEventArgsToSelectedItemConverter : IValueConverter
     {

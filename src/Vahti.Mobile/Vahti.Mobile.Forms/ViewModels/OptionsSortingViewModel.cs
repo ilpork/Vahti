@@ -18,7 +18,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         private bool _locationsSorted;
         private ObservableCollection<Models.Location> _locationList = new ObservableCollection<Models.Location>();
 
-        public IAsyncCommand InitializeCommand { get; set; }
+        public ICommand InitializeCommand { get; set; }
         public IAsyncCommand RefreshCommand { get; set; }
         public IAsyncCommand UpdateCommand { get; set; }
         public ICommand MoveUpCommand { get; set; }
@@ -40,7 +40,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         {
             _dataService = dataService;            
 
-            InitializeCommand = new AsyncCommand(async () => 
+            InitializeCommand = new Command(() => 
             {
                 IsBusy = true;
                 _locationsSorted = false; 
