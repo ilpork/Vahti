@@ -18,18 +18,9 @@ namespace Vahti.Mobile.Forms.Theme
         {
             var currentTheme = GetCurrentTheme();
             Application.Current.UserAppTheme = currentTheme == ColorTheme.Light ? AppTheme.Light : AppTheme.Dark;
-#if ANDROID        
-            Context context = Android.App.Application.Context;
-            switch (currentTheme)
-            {
-                default:
-                case ColorTheme.Gray:
-                    context.SetTheme(Resource.Style.GrayTheme);                    
-                    break;
-                case ColorTheme.Light:
-                    context.SetTheme(Resource.Style.LightTheme);
-                    break;
-            }
+#if ANDROID                    
+            Android.App.Application.Context.SetTheme(
+                currentTheme == ColorTheme.Light ? Resource.Style.LightTheme : Resource.Style.GrayTheme);            
             UpdateStatusBar();
 #endif
         }
@@ -43,12 +34,18 @@ namespace Vahti.Mobile.Forms.Theme
                 window.ClearFlags(WindowManagerFlags.TranslucentStatus);
                 window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
-                var color = GetCurrentTheme() == ColorTheme.Light ?
-                    (Color)Application.Current.Resources[ResourceNames.LightThemePrimaryDark] :
-                    (Color)Application.Current.Resources[ResourceNames.GrayThemePrimaryDark];
-                
-                window.SetStatusBarColor(color.ToPlatform());
-                
+                if (GetCurrentTheme() == ColorTheme.Light)
+                {
+                    window.SetStatusBarColor(
+                        ((Color)Application.Current.Resources[ResourceNames.LightThemePrimaryDark]).ToPlatform());
+                    window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.LightStatusBar;
+                }
+                else
+                {
+                    window.SetStatusBarColor(
+                        ((Color)Application.Current.Resources[ResourceNames.GrayThemePrimaryDark]).ToPlatform());
+                    window.DecorView.SystemUiVisibility = 0;
+                }   
             }            
 #endif
         }

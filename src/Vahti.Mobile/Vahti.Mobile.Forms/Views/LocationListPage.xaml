@@ -217,7 +217,7 @@
                             <StackLayout 
                                 Orientation="Horizontal" 
                                 HorizontalOptions="FillAndExpand" 
-                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}">
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeHeader}, Dark={StaticResource GrayThemeHeader}}">
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer 
                                         Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" 
