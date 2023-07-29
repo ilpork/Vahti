@@ -22,7 +22,8 @@ namespace Vahti.Mobile.Forms.ViewModels
         private string _noDataMessage;
         private Measurement _selectedMeasurement;
         private readonly IDataService<Models.Location> _locationDataService;
-        private readonly IDatabaseManagementService _databaseManagementService;        
+        private readonly IDatabaseManagementService _databaseManagementService;
+        private bool _preventUpdate = false;
 
         public ObservableCollection<Models.Location> Locations { get; set; }
         public IAsyncCommand<bool> RefreshListCommand { get; set; }
@@ -94,12 +95,14 @@ namespace Vahti.Mobile.Forms.ViewModels
                 return;
             }
 
-            NoDataMessage = null;            
-
-            if (IsBusy)
+            // Setting IsBusy trigs refresh command (through RefreshView), and this ugly thing prevents the duplicate call
+            if (_preventUpdate)
+            {
                 return;
+            }
 
-            IsBusy = true;
+            IsBusy = _preventUpdate = true;            
+            NoDataMessage = null;            
 
             try
             {                
@@ -151,7 +154,7 @@ namespace Vahti.Mobile.Forms.ViewModels
             }
             finally
             {
-                IsBusy = false;
+                IsBusy = _preventUpdate = false;
             }
         }      
         
