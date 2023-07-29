@@ -42,7 +42,7 @@ namespace Vahti.Mobile.Forms.ViewModels
 
             InitializeCommand = new AsyncCommand(async () => 
             {
-                await RefreshDataAsync();
+                IsBusy = true;
                 _locationsSorted = false; 
             });
 
@@ -74,14 +74,8 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         public async Task RefreshDataAsync()
         {
-            if (IsBusy)
-            {
-                return;
-            }
-
             try
             {
-                IsBusy = true;
                 Locations.Clear();
                 var tempCollection = new ObservableCollection<Models.Location>();
                 foreach (var location in await _dataService.GetAllDataAsync(false))

@@ -45,10 +45,9 @@
         <StackLayout Margin="0,0,0,12">
             <Label Text="{i18n:Translate Options_Sorting_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
         </StackLayout>
-        <RefreshView Command="{Binding RefreshCommand}"
-                     CommandParameter="{StaticResource True}"
+        <RefreshView Command="{Binding RefreshCommand}"                     
                      RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
-                     IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                     IsRefreshing="{Binding IsBusy}">
             <CollectionView x:Name="LocationList" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

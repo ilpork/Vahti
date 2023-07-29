@@ -39,7 +39,7 @@ namespace Vahti.Mobile.Forms.ViewModels
 
             InitializeCommand = new AsyncCommand(async () => 
             {
-                await RefreshDataAsync();
+                IsBusy = true;
                 _visibilitySettingsUpdated = false; 
             });
 
@@ -65,21 +65,14 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         public async Task RefreshDataAsync()
         {
-            if (IsBusy)
-            {
-                return;
-            }
-
             try
-            {
-                IsBusy = true;
+            {                
                 Locations = await _dataService.GetAllDataAsync(false);
             }
             finally
             {
                 IsBusy = false;
-            }
-            
+            }            
         }
     }
 }
