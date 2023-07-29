@@ -13,7 +13,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         public AboutViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = Resources.AppResources.About_Title;            
-            Version = $"v{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}";
+            Version = Assembly.GetExecutingAssembly().GetName().Version.ToString(3);
         }        
     }
 }
