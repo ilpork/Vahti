@@ -16,7 +16,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         private bool _visibilitySettingsUpdated;        
         private IReadOnlyList<Models.Location> _locationList;
 
-        public IAsyncCommand InitializeCommand { get; set; }
+        public ICommand InitializeCommand { get; set; }
         public IAsyncCommand RefreshCommand { get; set; }
         public IAsyncCommand UpdateCommand { get; set; }
         public ICommand VisibilityToggledCommand { get; set; }       
@@ -37,7 +37,7 @@ namespace Vahti.Mobile.Forms.ViewModels
         {
             _dataService = dataService;            
 
-            InitializeCommand = new AsyncCommand(async () => 
+            InitializeCommand = new Command(() => 
             {
                 IsBusy = true;
                 _visibilitySettingsUpdated = false; 

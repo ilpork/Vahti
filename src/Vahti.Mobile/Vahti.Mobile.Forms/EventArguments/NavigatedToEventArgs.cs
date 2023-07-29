@@ -3,7 +3,7 @@
 namespace Vahti.Mobile.Forms.EventArguments
 {
     /// <summary>
-    /// Event arguments used when navigating to a <see cref="Xamarin.Forms.Page"/>
+    /// Event arguments used when navigating to a page
     /// </summary>
     public class NavigatedToEventArgs : System.EventArgs
     {
