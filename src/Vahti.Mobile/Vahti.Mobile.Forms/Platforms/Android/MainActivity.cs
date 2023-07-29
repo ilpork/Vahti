@@ -11,7 +11,7 @@ using Firebase;
 
 namespace Vahti.Mobile.Droid
 {
-    [Activity(Label = "Vahti", Theme = "@style/GrayTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Vahti", Theme = "@style/LightTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Microsoft.Maui.MauiAppCompatActivity
     {        
         public const string TAG = "MainActivity";
