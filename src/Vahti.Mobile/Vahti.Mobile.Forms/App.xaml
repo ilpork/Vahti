@@ -15,10 +15,11 @@
         <Color x:Key="GrayThemeSurface">#1a1a1a</Color>
         <Color x:Key="GrayThemeOnSurface">#FFFFFF</Color>
         <Color x:Key="GrayThemeUnselectedTabText">#777777</Color>
-        <Color x:Key="GrayThemeChartStroke">#FF9FA8DA</Color>
-        <Color x:Key="GrayThemeChartFill">#889FA8DA</Color>
+        <Color x:Key="GrayThemeChartStroke">#FFa5a5a9</Color>
+        <Color x:Key="GrayThemeChartFill">#88a5a5a9</Color>
         <Color x:Key="GrayThemeChartSeparator">#ff909090</Color>
         <Color x:Key="GrayThemeChartSubSeparator">#ff505050</Color>
+        <Color x:Key="GrayThemeHeader">#222222</Color>
         <OnPlatform x:Key="GrayThemeEntryBackground"
             x:TypeArguments="Color">
             <On Platform="iOS" Value="#2a2a2a"/>
@@ -27,20 +28,21 @@
         <Color x:Key="GrayThemeSwitchThumbColor">White</Color>
         <Color x:Key="GrayThemeFlyoutBackgroundColor">#282828</Color>
 
-        <Color x:Key="LightThemeBackground">#eaeaea</Color>        
-        <Color x:Key="LightThemePrimaryDark">#303F9F</Color>
-        <Color x:Key="LightThemePrimary">#3F51B5</Color>
-        <Color x:Key="LightThemeOnPrimary">#FFFFFF</Color>
-        <Color x:Key="LightThemeSecondary">#3F51B5</Color>
+        <Color x:Key="LightThemeBackground">#fbfbfb</Color>
+        <Color x:Key="LightThemePrimaryDark">#ebebf2</Color>
+        <Color x:Key="LightThemePrimary">#ebebf2</Color>        
+        <Color x:Key="LightThemeOnPrimary">#222222</Color>
+        <Color x:Key="LightThemeSecondary">#8c97d3</Color>
         <Color x:Key="LightThemeOnSecondary">#FFFFFF</Color>
         <Color x:Key="LightThemeSurface">#ffffff</Color>
         <Color x:Key="LightThemeOnSurface">#222222</Color>
         <Color x:Key="LightThemeUnselectedTabText">#bbbbbb</Color>
         <Color x:Key="LightThemeEntryBackground">#ffffff</Color>
-        <Color x:Key="LightThemeChartStroke">#FF3F51B5</Color>
-        <Color x:Key="LightThemeChartFill">#883F51B5</Color>
+        <Color x:Key="LightThemeChartStroke">#FFa5a5a9</Color>
+        <Color x:Key="LightThemeChartFill">#88a5a5a9</Color>
         <Color x:Key="LightThemeChartSeparator">#ffafafaf</Color>
         <Color x:Key="LightThemeChartSubSeparator">#ffdfdfdf</Color>
+        <Color x:Key="LightThemeHeader">#f5f5f9</Color>
         <OnPlatform x:Key="LightThemeSwitchThumbColor"
             x:TypeArguments="Color">
             <On Platform="iOS" Value="White"/>
