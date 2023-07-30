@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>  
   <!-- Base theme applied no matter what API -->
-  <style name="MainTheme.Dark" parent="Theme.MaterialComponents.Light.DarkActionBar">
+  <style name="MainTheme.Dark" parent="com.ilpork.vahti:Theme.MaterialComponents.Light.DarkActionBar">
 	  <item name="textAllCaps">false</item>
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
@@ -22,7 +22,7 @@
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
     <item name="android:colorPressedHighlight">@color/listViewSelectedGray</item>    
   </style>
-  <style name="MainTheme.Light" parent="Theme.MaterialComponents.Light">
+  <style name="MainTheme.Light" parent="com.ilpork.vahti:Theme.MaterialComponents.Light">
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->
@@ -39,7 +39,7 @@
     <item name="android:colorPressedHighlight">@color/listViewSelectedGray</item>
   </style>
 
-  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+  <style name="AppCompatDialogStyle" parent="com.ilpork.vahti:Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#0000ff</item>
   </style>
   <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
