@@ -38,7 +38,11 @@ namespace Vahti.Mobile.Forms.ViewModels
 
         public bool IsOldData
         {
+#if DEBUGMOCK
+            get => false;
+#else
             get => _isOldData;
+#endif
             set => SetProperty(ref _isOldData, value);
         }
 
