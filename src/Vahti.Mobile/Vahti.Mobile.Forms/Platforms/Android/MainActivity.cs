@@ -3,11 +3,16 @@ using Android.Gms.Common;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Vahti.Mobile.Forms.Theme;
-using Resource = Vahti.Mobile.Forms.Resource;
 using Android.Content;
-using Android.Views;
 using Firebase;
+using Android;
+using AndroidX.Core.App;
+using AndroidX.Core.Content;
+using Android.Runtime;
+using WindowsAzure.Messaging.NotificationHubs;
+using Vahti.Mobile.Forms;
+using Microsoft.Extensions.Configuration;
+using Vahti.Mobile.Forms.Models;
 
 namespace Vahti.Mobile.Droid
 {
@@ -36,7 +41,30 @@ namespace Vahti.Mobile.Droid
             IsPlayServicesAvailable();
             CreateNotificationChannel();
 
-            FirebaseApp.InitializeApp(this);            
+            FirebaseApp.InitializeApp(this);
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new[] { Manifest.Permission.PostNotifications }, 0);
+            }
+
+            // Listen for push notifications
+            NotificationHub.SetListener(new AzureListener());
+
+            // Start the SDK
+            var configuration = MauiProgram.Services.GetService<IConfiguration>();
+            var settings = configuration.GetRequiredSection("Settings").Get<AppSettings>();
+            var connectionString = settings.AzureListConnectionString;
+            var notificationHubName = settings.AzureNotificationHubName;
+            NotificationHub.Start(Application, notificationHubName, connectionString);
+
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         public bool IsPlayServicesAvailable()
@@ -68,15 +96,13 @@ namespace Vahti.Mobile.Droid
                 return;
             }
 
-            var channelName = CHANNEL_ID;
-            var channelDescription = string.Empty;
-            var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            var channel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationImportance.Default)
             {
-                Description = channelDescription
+                Description = string.Empty
             };
 
             var notificationManager = (NotificationManager)GetSystemService(NotificationService);
             notificationManager.CreateNotificationChannel(channel);
         }
-    }
+    }    
 }
