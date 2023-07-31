@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Collector", "Vahti.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Shared", "Vahti.Shared\Vahti.Shared.csproj", "{58F6E7FD-EF04-4261-9A63-A23C45739965}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vahti.Mobile", "Vahti.Mobile", "{E41C4451-BD23-43D9-882F-ED09B258E09A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Mobile.Forms", "Vahti.Mobile\Vahti.Mobile.Forms\Vahti.Mobile.Forms.csproj", "{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.Mobile", "Vahti.Mobile\Vahti.Mobile.csproj", "{45E2C9BF-558D-4F2D-8E9F-19DB7C5CC0E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vahti.DataBroker.Test", "Vahti.DataBroker.Test\Vahti.DataBroker.Test.csproj", "{FC4CE2F2-FBFB-469F-9940-F40E03A7868D}"
 EndProject
