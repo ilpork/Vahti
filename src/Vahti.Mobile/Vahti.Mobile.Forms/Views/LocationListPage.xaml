@@ -58,7 +58,7 @@
                         BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" >
                         <Label 
                             Margin="0,0,0,0" 
-                            FontFamily="{StaticResource FontAwesomeSolid}" 
+                            FontFamily="FontAwesomeSolid" 
                             Style="{StaticResource IconLabelStyle}" 
                             VerticalTextAlignment="Center" 
                             Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
@@ -87,50 +87,50 @@
                 </DataTemplate>
                 <DataTemplate x:Key="defaultTemplate">
                     <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}">
-                        <Label Margin="0,0,0,0" FontFamily="{StaticResource WeatherIconsRegular}" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
+                        <Label Margin="0,0,0,0" FontFamily="WeatherIconsRegular" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsThermometer}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Humidity}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsHumidity}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Pressure}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsBarometer}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.BatteryVoltage}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationX}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsRight}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationY}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsDown}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationZ}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsUpLeft}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource WeatherIconsRegular}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Rssi}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeSignal}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.MovementCounter}">
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeArrows}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
                                 </DataTrigger>
                                 <MultiTrigger TargetType="Label">
                                     <MultiTrigger.Conditions>
                                         <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />
                                     </MultiTrigger.Conditions>
                                     <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
-                                    <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
                                 </MultiTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
                                     <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
@@ -167,7 +167,7 @@
                 <Label 
                     Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" 
                     Style="{StaticResource StatusTextLabelStyle}" 
-                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                    FontFamily="FontAwesomeSolid" 
                     VerticalOptions="Center"
                     Grid.Column="0"/>
                 <Label 
@@ -232,7 +232,7 @@
                                 <Label 
                                     HorizontalOptions="EndAndExpand" 
                                     VerticalOptions="Center" 
-                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    FontFamily="FontAwesomeSolid" 
                                     Style="{StaticResource IconLabelStyle}" 
                                     VerticalTextAlignment="Center" 
                                     Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" 

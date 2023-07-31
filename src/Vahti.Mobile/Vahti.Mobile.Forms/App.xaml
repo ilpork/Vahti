@@ -48,29 +48,7 @@
             <On Platform="iOS" Value="White"/>
             <On Platform="Android" Value="#f0f0f0"/>
         </OnPlatform>
-        <Color x:Key="LightThemeFlyoutBackgroundColor">#ffffff</Color>
-        <ResourceDictionary>
-            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
-                <On Platform="Android" Value="FontAwesomeBrands.otf#Regular" />
-                <On Platform="iOS" Value="FontAwesome5Free-Regular" />
-                <!--<On Platform="UWP" Value="/Assets/FontAwesome5rands.otf#Font Awesome 5 Brands" />-->
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String"  x:Key="FontAwesomeSolid">
-                <On Platform="Android" Value="FontAwesomeSolid.otf#Regular" />
-                <On Platform="iOS" Value="FontAwesome5Free-Solid" />
-                <!--<On Platform="UWP" Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />-->
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
-                <On Platform="Android" Value="FontAwesomeRegular.otf#Regular" />
-                <On Platform="iOS" Value="FontAwesome5Free-Regular" />
-                <!--<On Platform="UWP" Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />-->
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="WeatherIconsRegular">
-                <On Platform="Android" Value="WeatherIconsRegular.ttf#Regular" />
-                <On Platform="iOS" Value="WeatherIcons-Regular" />
-                <!--<On Platform="UWP" Value="/Assets/FontAwesome5rands.otf#Font Awesome 5 Brands" />-->
-            </OnPlatform>
-        </ResourceDictionary>
+        <Color x:Key="LightThemeFlyoutBackgroundColor">#ffffff</Color>        
         <n:Boolean x:Key="True">True</n:Boolean>
         <n:Boolean x:Key="False">False</n:Boolean>
     </Application.Resources>

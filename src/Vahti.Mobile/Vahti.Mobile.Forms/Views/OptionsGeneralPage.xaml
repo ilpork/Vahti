@@ -94,7 +94,7 @@
                 </Frame>                
                 <Label 
                     x:Name="labelEye" 
-                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                    FontFamily="FontAwesomeSolid" 
                     TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" 
                     Grid.Column="1" 
                     VerticalOptions="Center"
