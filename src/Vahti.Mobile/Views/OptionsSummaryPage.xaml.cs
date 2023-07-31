@@ -1,6 +1,6 @@
 ﻿using MobileClient.ViewModels;
 
-namespace Vahti.Mobile.Forms.Views
+namespace Vahti.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OptionsSummaryPage : ContentPage

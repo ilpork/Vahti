@@ -2,7 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:n="clr-namespace:System;assembly=netstandard"
-             x:Class="Vahti.Mobile.Forms.App">
+             x:Class="Vahti.Mobile.App">
     <Application.Resources>
         <Color x:Key="NavigationPrimary">#2196F3</Color>        
 

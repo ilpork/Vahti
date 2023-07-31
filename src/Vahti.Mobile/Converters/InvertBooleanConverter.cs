@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Inverts a boolean value

@@ -1,7 +1,7 @@
-﻿using Vahti.Mobile.Forms.Services;
+﻿using Vahti.Mobile.Services;
 using System.Reflection;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page used to show general information about application 

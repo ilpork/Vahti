@@ -1,6 +1,6 @@
-﻿using Vahti.Mobile.Forms.Models;
+﻿using Vahti.Mobile.Models;
 
-namespace Vahti.Mobile.Forms.Views.Templates
+namespace Vahti.Mobile.Views.Templates
 {
     /// <summary>
     /// Select <see cref="DataTemplate"/> for <see cref="Measurement"/>

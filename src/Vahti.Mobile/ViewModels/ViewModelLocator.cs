@@ -1,5 +1,5 @@
 ﻿using CommonServiceLocator;
-using Vahti.Mobile.Forms.ViewModels;
+using Vahti.Mobile.ViewModels;
 
 namespace MobileClient.ViewModels
 {

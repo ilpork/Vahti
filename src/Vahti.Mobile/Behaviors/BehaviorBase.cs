@@ -1,4 +1,4 @@
-namespace Vahti.Mobile.Forms.Behaviors
+namespace Vahti.Mobile.Behaviors
 {
     /// <summary>
     /// Base class for behaviors

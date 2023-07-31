@@ -5,13 +5,13 @@ using Microsoft.Extensions.Configuration;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
 
-namespace Vahti.Mobile.Forms;
+namespace Vahti.Mobile;
 
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {        
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Vahti.Mobile.Forms.appsettings.json");
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Vahti.Mobile.appsettings.json");
         var config = new ConfigurationBuilder()
                     .AddJsonStream(stream)
                     .Build();

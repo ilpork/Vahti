@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Vahti.Mobile.Forms.Converters
+namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Converts <see cref="SelectedItemChangedEventArgs"/> to object representing the selected item

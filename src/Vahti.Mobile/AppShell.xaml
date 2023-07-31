@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-       xmlns:local="clr-namespace:Vahti.Mobile.Forms.Views"
-       xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"       
+       xmlns:local="clr-namespace:Vahti.Mobile.Views"
+       xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"       
        FlyoutHeaderBehavior="CollapseOnScroll"
        FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource LightThemeFlyoutBackgroundColor}, Dark={StaticResource GrayThemeFlyoutBackgroundColor}}"
        Title="Vahti"       
-       x:Class="Vahti.Mobile.Forms.AppShell">
+       x:Class="Vahti.Mobile.AppShell">
 
     <Shell.Resources>
         <ResourceDictionary>

@@ -1,15 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.Exceptions;
-using Vahti.Mobile.Forms.Services;
+using Vahti.Mobile.Models;
+using Vahti.Mobile.Exceptions;
+using Vahti.Mobile.Services;
 using Vahti.Shared.Exception;
 using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
 using System.Windows.Input;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page used to show list the available sensors

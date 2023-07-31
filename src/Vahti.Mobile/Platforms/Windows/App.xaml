@@ -1,8 +1,8 @@
 ﻿<maui:MauiWinUIApplication
-    x:Class="Vahti.Mobile.Forms.WinUI.App"
+    x:Class="Vahti.Mobile.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:maui="using:Microsoft.Maui"
-    xmlns:local="using:Vahti.Mobile.Forms.WinUI">
+    xmlns:local="using:Vahti.Mobile.WinUI">
 
 </maui:MauiWinUIApplication>

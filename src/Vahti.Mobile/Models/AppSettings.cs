@@ -1,5 +1,5 @@
 ﻿
-namespace Vahti.Mobile.Forms.Models
+namespace Vahti.Mobile.Models
 {
     public class AppSettings
     {

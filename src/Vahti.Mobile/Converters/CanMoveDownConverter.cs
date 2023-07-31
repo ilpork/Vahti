@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Vahti.Mobile.Forms.Converters
+namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Converts <see cref="Models.Location"/> to boolean indicating if item can be moved down in the list

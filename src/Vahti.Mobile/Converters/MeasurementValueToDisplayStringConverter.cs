@@ -1,7 +1,7 @@
-﻿using Vahti.Mobile.Forms.Localization;
-using Vahti.Mobile.Forms.Models;
+﻿using Vahti.Mobile.Localization;
+using Vahti.Mobile.Models;
 
-namespace Vahti.Mobile.Forms.Converters
+namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Converts <see cref="Measurement"/> to string suitable for showing in UI

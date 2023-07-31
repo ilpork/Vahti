@@ -1,17 +1,17 @@
 ﻿using Autofac;
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.ViewModels;
+using Vahti.Mobile.Models;
+using Vahti.Mobile.ViewModels;
 using Autofac.Extras.CommonServiceLocator;
 using CommonServiceLocator;
-using Vahti.Mobile.Forms.Theme;
-using Vahti.Mobile.Forms.Localization;
-using Vahti.Mobile.Forms.Resources;
-using Vahti.Mobile.Forms.Services;
+using Vahti.Mobile.Theme;
+using Vahti.Mobile.Localization;
+using Vahti.Mobile.Resources;
+using Vahti.Mobile.Services;
 using Vahti.Shared.DataProvider;
 using Vahti.Shared.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
-using Vahti.Mobile.Forms.Constants;
+using Vahti.Mobile.Constants;
 using Microsoft.Maui.Platform;
 #if ANDROID
 using Android.Content.Res;
@@ -25,7 +25,7 @@ using System.Diagnostics;
 using Microsoft.Maui.Handlers;
 //using Android.Graphics;
 
-namespace Vahti.Mobile.Forms
+namespace Vahti.Mobile
 {
     public partial class App : Microsoft.Maui.Controls.Application
     {

@@ -1,6 +1,6 @@
 ﻿using Vahti.Shared.Data;
 
-namespace Vahti.Mobile.Forms.Models
+namespace Vahti.Mobile.Models
 {
     /// <summary>
     /// Contains <see cref="MeasurementHistoryData"/> unit information

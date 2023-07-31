@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Exceptions
+﻿namespace Vahti.Mobile.Exceptions
 {
     /// <summary>
     /// Exception used when requested data was not found 

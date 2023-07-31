@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Models
+﻿namespace Vahti.Mobile.Models
 {
     /// <summary>
     /// Represents a data point in history data graph

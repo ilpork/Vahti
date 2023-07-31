@@ -1,6 +1,6 @@
 ﻿using Vahti.Shared.Enum;
 
-namespace Vahti.Mobile.Forms.Models
+namespace Vahti.Mobile.Models
 {
     /// <summary>
     /// Represents a measurement shown in user interface

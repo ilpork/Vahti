@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics;
-using Vahti.Mobile.Forms.Exceptions;
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.Services;
+using Vahti.Mobile.Exceptions;
+using Vahti.Mobile.Models;
+using Vahti.Mobile.Services;
 using System.Collections.ObjectModel;
 using MvvmHelpers.Interfaces;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
-using NavigatedToEventArgs = Vahti.Mobile.Forms.EventArguments.NavigatedToEventArgs;
+using NavigatedToEventArgs = Vahti.Mobile.EventArguments.NavigatedToEventArgs;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page displaying sensor history graphs

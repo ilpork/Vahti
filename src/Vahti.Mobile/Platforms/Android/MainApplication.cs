@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Vahti.Mobile.Forms;
+namespace Vahti.Mobile;
 
 [Application]
 public class MainApplication : MauiApplication

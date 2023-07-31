@@ -1,6 +1,6 @@
-﻿using Vahti.Mobile.Forms.Constants;
+﻿using Vahti.Mobile.Constants;
 
-namespace Vahti.Mobile.Forms.EventArguments
+namespace Vahti.Mobile.EventArguments
 {
     /// <summary>
     /// Event arguments used when navigating to a page

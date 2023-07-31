@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Constants
+﻿namespace Vahti.Mobile.Constants
 {
     public class AppConfig
     {

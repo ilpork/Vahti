@@ -2,10 +2,10 @@
 using Android.Appwidget;
 using Android.Content;
 using Android.Widget;
-using Vahti.Mobile.Forms.Localization;
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.Services;
-using Location = Vahti.Mobile.Forms.Models.Location;
+using Vahti.Mobile.Localization;
+using Vahti.Mobile.Models;
+using Vahti.Mobile.Services;
+using Location = Vahti.Mobile.Models.Location;
 
 namespace Vahti.Mobile.Droid
 {
@@ -17,11 +17,11 @@ namespace Vahti.Mobile.Droid
 	[MetaData ("android.appwidget.provider", Resource = "@xml/data_widget")]    
     public class DataWidget : AppWidgetProvider
     {
-        private readonly IDataService<Forms.Models.Location> _locationDataService;
+        private readonly IDataService<Models.Location> _locationDataService;
 
         public DataWidget()
         {            
-            _locationDataService = CommonServiceLocator.ServiceLocator.Current.GetInstance<IDataService<Forms.Models.Location>>();            
+            _locationDataService = CommonServiceLocator.ServiceLocator.Current.GetInstance<IDataService<Models.Location>>();            
         }
 
         public async override void OnUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
@@ -37,7 +37,7 @@ namespace Vahti.Mobile.Droid
 
         private async Task<RemoteViews> BuildRemoteViews(Context context, int[] appWidgetIds)
         {
-            RemoteViews widgetView = new RemoteViews(context.PackageName, Forms.Resource.Layout.widget_measurements);
+            RemoteViews widgetView = new RemoteViews(context.PackageName, Resource.Layout.widget_measurements);
             IList<Location> locationList = null;
 
             try
@@ -68,31 +68,31 @@ namespace Vahti.Mobile.Droid
 
                     if (measurements.Count >= 1)
                     {
-                        widgetView.SetTextViewText(Forms.Resource.Id.location1, measurements[0].Item1);
-                        widgetView.SetTextViewText(Forms.Resource.Id.sensor1, measurements[0].Item2.SensorName);
-                        widgetView.SetTextViewText(Forms.Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(
+                        widgetView.SetTextViewText(Resource.Id.location1, measurements[0].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor1, measurements[0].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value1, DisplayValueFormatter.GetMeasurementDisplayValue(
                             measurements[0].Item2.SensorClass, measurements[0].Item2.Value, measurements[0].Item2.Unit));
                     }
                     if (measurements.Count >= 2)
                     {
-                        widgetView.SetTextViewText(Forms.Resource.Id.location2, measurements[1].Item1);
-                        widgetView.SetTextViewText(Forms.Resource.Id.sensor2, measurements[1].Item2.SensorName);
-                        widgetView.SetTextViewText(Forms.Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(
+                        widgetView.SetTextViewText(Resource.Id.location2, measurements[1].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor2, measurements[1].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value2, DisplayValueFormatter.GetMeasurementDisplayValue(
                             measurements[1].Item2.SensorClass, measurements[1].Item2.Value, measurements[1].Item2.Unit));
                     }
                     if (measurements.Count >= 3)
                     {
-                        widgetView.SetTextViewText(Forms.Resource.Id.location3, measurements[2].Item1);
-                        widgetView.SetTextViewText(Forms.Resource.Id.sensor3, measurements[2].Item2.SensorName);
-                        widgetView.SetTextViewText(Forms.Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(
+                        widgetView.SetTextViewText(Resource.Id.location3, measurements[2].Item1);
+                        widgetView.SetTextViewText(Resource.Id.sensor3, measurements[2].Item2.SensorName);
+                        widgetView.SetTextViewText(Resource.Id.value3, DisplayValueFormatter.GetMeasurementDisplayValue(
                             measurements[2].Item2.SensorClass, measurements[2].Item2.Value, measurements[2].Item2.Unit));
                     }
                     var firstLocation = locationList.FirstOrDefault();
-                    widgetView.SetTextViewText(Forms.Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));
+                    widgetView.SetTextViewText(Resource.Id.updated, string.Format("{0}:{1}", firstLocation.Timestamp.Hour, firstLocation.Timestamp.Minute.ToString("00")));
                 }
                 else
                 {
-                    widgetView.SetTextViewText(Forms.Resource.Id.updated, context.Resources.GetString(Forms.Resource.String.no_widget_data_found));
+                    widgetView.SetTextViewText(Resource.Id.updated, context.Resources.GetString(Resource.String.no_widget_data_found));
                 }
             }                        
 
@@ -108,7 +108,7 @@ namespace Vahti.Mobile.Droid
             intent.PutExtra(AppWidgetManager.ExtraAppwidgetIds, appWidgetIds);
 
             var pendingIntent = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable);
-            widgetView.SetOnClickPendingIntent(Forms.Resource.Id.widget, pendingIntent);
+            widgetView.SetOnClickPendingIntent(Resource.Id.widget, pendingIntent);
         }
     }
 }

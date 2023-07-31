@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Vahti.Mobile.Forms;
+namespace Vahti.Mobile;
 
 public class Program
 {

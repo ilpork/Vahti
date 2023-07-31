@@ -1,7 +1,7 @@
 ﻿using MobileClient.ViewModels;
-using Vahti.Mobile.Forms.ViewModels;
+using Vahti.Mobile.ViewModels;
 
-namespace Vahti.Mobile.Forms.Views
+namespace Vahti.Mobile.Views
 {
     public partial class LocationDetailsPage : ContentPage
     {

@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Converters
+﻿namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Converts object to boolean indicating if object has specified property

@@ -1,6 +1,6 @@
-﻿using Vahti.Mobile.Forms.Views;
+﻿using Vahti.Mobile.Views;
 
-namespace Vahti.Mobile.Forms
+namespace Vahti.Mobile
 {
     public partial class AppShell : Shell
     {

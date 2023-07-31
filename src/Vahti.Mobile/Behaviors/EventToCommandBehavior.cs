@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Windows.Input;
 
-namespace Vahti.Mobile.Forms.Behaviors
+namespace Vahti.Mobile.Behaviors
 {
     /// <summary>
     /// Provides functionality to bind a command to an event

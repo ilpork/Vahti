@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
-using Vahti.Mobile.Forms.Resources;
+using Vahti.Mobile.Resources;
 
-namespace Vahti.Mobile.Forms.Converters
+namespace Vahti.Mobile.Converters
 {
     /// <summary>
     /// Converts seconds to string indicating time since "last charged"
