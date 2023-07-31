@@ -21,7 +21,12 @@ public static class MauiProgram
         builder.Configuration.AddConfiguration(config);
         builder
             .UseSkiaSharp(true)
-            .UseMauiApp<App>();
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {                
+                fonts.AddFont("FontAwesomeSolid.otf", "FontAwesomeSolid");
+                fonts.AddFont("WeatherIconsRegular.ttf", "WeatherIconsRegular");
+            });
 
         var app = builder.Build();
         Services = app.Services;
