@@ -30,7 +30,7 @@
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
-                <Setter Property="FontFamily" Value="{DynamicResource FontAwesomeSolid}"/>
+                <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
             </Style>
             <ResourceDictionary>                
                 <converters:CanMoveUpConverter x:Key="CanMoveUpConverter" />
