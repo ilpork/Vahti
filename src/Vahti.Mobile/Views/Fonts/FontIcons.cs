@@ -10,8 +10,7 @@ namespace Vahti.Mobile.Views.Fonts
         public const string FontAwesomeCut = "\uf0c4";
         public const string FontAwesomeChargingStation = "\uf5e7";
         public const string FontAwesomeExclamation = "\uf06a";
-        public const string FontAwesomeChevronRight = "\uf054";
-        public const string FontAwesomeBroadcastTower = "\uf519";
+        public const string FontAwesomeChevronRight = "\uf054";        
         public const string FontAwesomeSignal = "\uf012";
         public const string FontAwesomeArrows = "\uf0b2";
         public const string FontAwesomeEyeSlash = "\uf070";
