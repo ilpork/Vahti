@@ -115,7 +115,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Vahti.Shared\Vahti.Shared.csproj" />
+	  <ProjectReference Include="..\Vahti.Shared\Vahti.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
