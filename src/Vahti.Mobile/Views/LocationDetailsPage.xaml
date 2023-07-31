@@ -34,7 +34,7 @@
         </Grid.RowDefinitions>        
         <RefreshView Grid.Row="0"
              Command="{Binding RefreshCommand}"
-             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSecondary}}"
              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
             <CollectionView
                 x:Name="DetailsList"       

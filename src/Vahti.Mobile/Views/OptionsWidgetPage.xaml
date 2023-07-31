@@ -41,7 +41,7 @@
             <Label Text="{i18n:Translate Options_Widget_Description}" Style="{DynamicResource DescriptionLabelStyle}"/>
         </StackLayout>
         <RefreshView Command="{Binding RefreshCommand}"                     
-                     RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+                     RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSecondary}}"
                      IsRefreshing="{Binding IsBusy}">
             <CollectionView x:Name="LocationList" IsGrouped="true" ItemsSource="{Binding Locations}" VerticalOptions="EndAndExpand">
                 <CollectionView.GroupHeaderTemplate>
