@@ -13,10 +13,16 @@
              >
         
     <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Text="{i18n:Translate Locations_UpdateButtonText}" 
+        <ToolbarItem                         
             Command="{Binding RefreshListCommand}" 
-            CommandParameter="{StaticResource True}"/>
+            CommandParameter="{StaticResource True}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                 FontFamily="FontAwesomeSolid"
+                 Glyph="{x:Static fonticons:FontIcons.FontAwesomeRotateRight}"
+                 Size="18" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior 

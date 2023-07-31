@@ -178,15 +178,6 @@ namespace Vahti.Mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        internal static string Locations_UpdateButtonText {
-            get {
-                return ResourceManager.GetString("Locations_UpdateButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Secret.
         /// </summary>
         internal static string Options_CloudDatabaseSecretLabel {

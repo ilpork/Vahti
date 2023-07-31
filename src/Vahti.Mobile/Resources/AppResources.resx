@@ -156,9 +156,6 @@
   <data name="Locations_LastUpdatedText" xml:space="preserve">
     <value>Data ({0}) was last updated on {1} or earlier</value>
   </data>
-  <data name="Locations_UpdateButtonText" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
   <data name="Options_CloudDatabaseSecretLabel" xml:space="preserve">
     <value>Secret</value>
   </data>
