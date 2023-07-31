@@ -1,9 +1,9 @@
-﻿using Vahti.Mobile.Forms.Localization;
+﻿using Vahti.Mobile.Localization;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Service used to access translated resource strings
@@ -11,7 +11,7 @@ namespace Vahti.Mobile.Forms.Services
     public class LanguageService : ILanguageService
     {
         readonly CultureInfo ci = null;
-        const string ResourceId = "Vahti.Mobile.Forms.Resources.AppResources";
+        const string ResourceId = "Vahti.Mobile.Resources.AppResources";
 
         static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(
             () => new ResourceManager(ResourceId, typeof(LanguageService).GetTypeInfo().Assembly));

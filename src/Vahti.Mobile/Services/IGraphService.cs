@@ -1,7 +1,7 @@
-﻿using Vahti.Mobile.Forms.Models;
+﻿using Vahti.Mobile.Models;
 using Vahti.Shared.Enum;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     public interface IGraphService
     {

@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Resources;
 
-namespace Vahti.Mobile.Forms.Localization
+namespace Vahti.Mobile.Localization
 {
     /// <summary>
     /// Extension to allow accessing translated texts from XAML
@@ -11,7 +11,7 @@ namespace Vahti.Mobile.Forms.Localization
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci = null;
-        const string ResourceId = "Vahti.Mobile.Forms.Resources.AppResources";
+        const string ResourceId = "Vahti.Mobile.Resources.AppResources";
 
         static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(
             () => new ResourceManager(ResourceId, IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly));

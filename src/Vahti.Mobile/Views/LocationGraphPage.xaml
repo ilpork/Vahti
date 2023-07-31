@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
-             xmlns:converter="clr-namespace:Vahti.Mobile.Forms.Converters"     
-             xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
-             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"  
+             xmlns:converter="clr-namespace:Vahti.Mobile.Converters"     
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Behaviors"
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"  
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"     
-             x:Class="Vahti.Mobile.Forms.Views.LocationGraphPage"
+             x:Class="Vahti.Mobile.Views.LocationGraphPage"
              Title="{Binding SelectedLocation.Name}"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}">
     <ContentPage.ToolbarItems>

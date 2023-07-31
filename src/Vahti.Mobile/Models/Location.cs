@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Vahti.Mobile.Forms.Models
+namespace Vahti.Mobile.Models
 {
     /// <summary>
     /// Represents a location containing measurements shown in UI

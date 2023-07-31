@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Vahti.Mobile.Forms.Services;
+using Vahti.Mobile.Services;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// Base class for view models

@@ -10,9 +10,9 @@ using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using Android.Runtime;
 using WindowsAzure.Messaging.NotificationHubs;
-using Vahti.Mobile.Forms;
+using Vahti.Mobile;
 using Microsoft.Extensions.Configuration;
-using Vahti.Mobile.Forms.Models;
+using Vahti.Mobile.Models;
 
 namespace Vahti.Mobile.Droid
 {

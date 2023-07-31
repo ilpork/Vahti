@@ -1,5 +1,5 @@
 ﻿
-namespace Vahti.Mobile.Forms.Theme
+namespace Vahti.Mobile.Theme
 {
     /// <summary>
     /// Defines available color themes

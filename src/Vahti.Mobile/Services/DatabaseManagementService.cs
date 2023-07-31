@@ -1,7 +1,7 @@
 ﻿using Vahti.Shared.DataProvider;
-using Vahti.Mobile.Forms.Models;
+using Vahti.Mobile.Models;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Provides functionality to manage database access

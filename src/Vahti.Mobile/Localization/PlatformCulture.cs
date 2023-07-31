@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Localization
+﻿namespace Vahti.Mobile.Localization
 {
     /// <summary>
     /// Represents platform specific culture

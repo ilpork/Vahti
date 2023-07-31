@@ -1,6 +1,6 @@
 ﻿
 
-namespace Vahti.Mobile.Forms.Constants
+namespace Vahti.Mobile.Constants
 {
     public static class ResourceNames
     {

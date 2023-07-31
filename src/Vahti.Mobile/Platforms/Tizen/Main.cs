@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Vahti.Mobile.Forms;
+namespace Vahti.Mobile;
 
 class Program : MauiApplication
 {

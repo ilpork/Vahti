@@ -1,7 +1,7 @@
-﻿using Vahti.Mobile.Forms.Services;
-using Vahti.Mobile.Forms.Theme;
+﻿using Vahti.Mobile.Services;
+using Vahti.Mobile.Theme;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page displaying application options

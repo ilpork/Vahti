@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
-using Vahti.Mobile.Forms.Localization;
-using Vahti.Mobile.Forms.Theme;
+using Vahti.Mobile.Localization;
+using Vahti.Mobile.Theme;
 using Vahti.Shared.Enum;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
@@ -8,10 +8,10 @@ using LiveChartsCore.Defaults;
 using SkiaSharp;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
-using Vahti.Mobile.Forms.Models;
-using Vahti.Mobile.Forms.Constants;
+using Vahti.Mobile.Models;
+using Vahti.Mobile.Constants;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Provides graphs used on measurement history page

@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Vahti.Mobile.Forms;
+namespace Vahti.Mobile;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

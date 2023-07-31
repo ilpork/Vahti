@@ -3,7 +3,7 @@
 using Foundation;
 #endif
 
-namespace Vahti.Mobile.Forms.Localization
+namespace Vahti.Mobile.Localization
 {    
     /// <summary>
     /// Provides Android specific localization support

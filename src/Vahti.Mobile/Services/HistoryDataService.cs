@@ -1,9 +1,9 @@
-﻿using Vahti.Mobile.Forms.Models;
+﻿using Vahti.Mobile.Models;
 using Vahti.Shared.Data;
 using Vahti.Shared.DataProvider;
 using Vahti.Shared.TypeData;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Provides history data of sensors

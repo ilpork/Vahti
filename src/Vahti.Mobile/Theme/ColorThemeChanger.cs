@@ -2,10 +2,10 @@
 using Android.Content;
 using Android.Views;
 using Microsoft.Maui.Platform;
-using Vahti.Mobile.Forms.Constants;
+using Vahti.Mobile.Constants;
 #endif
 
-namespace Vahti.Mobile.Forms.Theme
+namespace Vahti.Mobile.Theme
 {
     /// <summary>
     /// Provides functionality to change color theme of the application

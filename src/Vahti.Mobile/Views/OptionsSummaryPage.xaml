@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Vahti.Mobile.Forms.Views.OptionsSummaryPage"             
-             xmlns:i18n="clr-namespace:Vahti.Mobile.Forms.Localization"
-             xmlns:behaviors="clr-namespace:Vahti.Mobile.Forms.Behaviors"
-             xmlns:converters="clr-namespace:Vahti.Mobile.Forms.Converters"
+             x:Class="Vahti.Mobile.Views.OptionsSummaryPage"             
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Behaviors"
+             xmlns:converters="clr-namespace:Vahti.Mobile.Converters"
              x:Name="optionsSummaryPage"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
              Title="{Binding Title}">

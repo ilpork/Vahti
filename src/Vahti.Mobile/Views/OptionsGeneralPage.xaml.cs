@@ -1,7 +1,7 @@
 ﻿using MobileClient.ViewModels;
-using Vahti.Mobile.Forms.Views.Fonts;
+using Vahti.Mobile.Views.Fonts;
 
-namespace Vahti.Mobile.Forms.Views
+namespace Vahti.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OptionsGeneralPage : ContentPage

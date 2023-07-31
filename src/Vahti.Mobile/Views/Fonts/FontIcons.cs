@@ -1,5 +1,5 @@
 ﻿
-namespace Vahti.Mobile.Forms.Views.Fonts
+namespace Vahti.Mobile.Views.Fonts
 {
     /// <summary>
     /// Constant strings related to font icons

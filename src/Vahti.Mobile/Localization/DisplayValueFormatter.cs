@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Vahti.Shared.Enum;
 
-namespace Vahti.Mobile.Forms.Localization
+namespace Vahti.Mobile.Localization
 {
     /// <summary>
     /// Provides functionality to convert values to format suitable for showing in UI

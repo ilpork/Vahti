@@ -1,11 +1,11 @@
-﻿using Vahti.Mobile.Forms.Resources;
-using Vahti.Mobile.Forms.Services;
+﻿using Vahti.Mobile.Resources;
+using Vahti.Mobile.Services;
 using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
 using System.Windows.Input;
 
-namespace Vahti.Mobile.Forms.ViewModels
+namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page used to choose what data to show in summary UI

@@ -1,4 +1,4 @@
-﻿namespace Vahti.Mobile.Forms.Services
+﻿namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Defines interface for loading and updating data 

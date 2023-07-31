@@ -1,7 +1,7 @@
-﻿using Vahti.Mobile.Forms.Constants;
-using NavigatedToEventArgs = Vahti.Mobile.Forms.EventArguments.NavigatedToEventArgs;
+﻿using Vahti.Mobile.Constants;
+using NavigatedToEventArgs = Vahti.Mobile.EventArguments.NavigatedToEventArgs;
 
-namespace Vahti.Mobile.Forms.Services
+namespace Vahti.Mobile.Services
 {
     /// <summary>
     /// Interface defining navigation functionality
