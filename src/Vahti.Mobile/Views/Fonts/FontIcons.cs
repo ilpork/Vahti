@@ -18,6 +18,7 @@ namespace Vahti.Mobile.Views.Fonts
         public const string FontAwesomeEye = "\uf06e";
         public const string FontAwesomeArrowUp = "\uf062";
         public const string FontAwesomeArrowDown = "\uf063";
+        public const string FontAwesomeRotateRight = "\uf2f9";
         public const string WeatherIconsBarometer = "\uf079";
         public const string WeatherIconsThermometer = "\uf055";
         public const string WeatherIconsCelsius = "\uf03c";
