@@ -30,7 +30,7 @@
             <RefreshView
                 Command="{Binding RefreshGraphCommand}"
                 CommandParameter="{StaticResource True}"
-                RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+                RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSecondary}}"
                 IsRefreshing="{Binding IsBusy}">                
                 <CollectionView                                        
                     ItemsSource="{Binding Charts}"                 

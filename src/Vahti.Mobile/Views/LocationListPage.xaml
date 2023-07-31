@@ -182,7 +182,7 @@
              Command="{Binding RefreshListCommand}"
              CommandParameter="{StaticResource True}"
              IsRefreshing="{Binding IsBusy}"
-             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSecondary}}"
             >            
                 <CollectionView
                 
