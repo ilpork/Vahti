@@ -19,6 +19,7 @@
             <ToolbarItem.IconImageSource>
                 <FontImageSource 
                  FontFamily="FontAwesomeSolid"
+                 Color="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
                  Glyph="{x:Static fonticons:FontIcons.FontAwesomeRotateRight}"
                  Size="18" />
             </ToolbarItem.IconImageSource>
