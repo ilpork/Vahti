@@ -6,7 +6,8 @@
     <ApplicationIcon />
     <StartupObject />
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Release</Configurations>	  
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>	  
   </PropertyGroup>
 
   <ItemGroup>

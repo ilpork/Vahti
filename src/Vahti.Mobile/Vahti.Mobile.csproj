@@ -30,62 +30,75 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<Configurations>Debug;DebugMock;Release</Configurations>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationId>com.ilpork.vahti</ApplicationId>
 	  <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugMock|net7.0-android|AnyCPU'">
 	  <DefineConstants>$(DefineConstants);DEBUGMOCK</DefineConstants>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugMock|net7.0-ios|AnyCPU'">
 	  <DefineConstants>$(DefineConstants);DEBUGMOCK</DefineConstants>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugMock|net7.0-maccatalyst|AnyCPU'">
 	  <DefineConstants>$(DefineConstants);DEBUGMOCK</DefineConstants>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugMock|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <DefineConstants>$(DefineConstants);DEBUGMOCK</DefineConstants>
+	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
