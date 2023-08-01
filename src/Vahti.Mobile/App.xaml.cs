@@ -11,9 +11,8 @@ using Vahti.Shared.DataProvider;
 using Vahti.Shared.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
-using Vahti.Mobile.Constants;
-using Microsoft.Maui.Platform;
 using Vahti.Mobile.EventArguments;
+using System.Runtime.Versioning;
 #if ANDROID
 using Android.Content.Res;
 #endif
@@ -23,14 +22,13 @@ using Android.Content;
 using Android.Views;
 using System.Diagnostics;
 #endif
-using Microsoft.Maui.Handlers;
-//using Android.Graphics;
 
 namespace Vahti.Mobile
 {
+    [SupportedOSPlatform("windows10.0.17763.0")]
     public partial class App : Microsoft.Maui.Controls.Application
     {
-        public static event EventHandler<AppResumedEventArgs>? AppResumed;
+        public static event EventHandler<AppResumedEventArgs> AppResumed;
 
         public App()
         {

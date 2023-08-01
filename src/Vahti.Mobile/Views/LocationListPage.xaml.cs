@@ -1,9 +1,11 @@
 ﻿using MobileClient.ViewModels;
+using System.Runtime.Versioning;
 using Vahti.Mobile.EventArguments;
 using Vahti.Mobile.ViewModels;
 
 namespace Vahti.Mobile.Views
 {
+    [SupportedOSPlatform("windows10.0.17763.0")]
     public partial class LocationListPage : ContentPage
     {
         LocationListViewModel _viewModel;
