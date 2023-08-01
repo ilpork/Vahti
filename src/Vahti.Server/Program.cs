@@ -74,10 +74,7 @@ namespace Vahti.Server
             .ConfigureLogging((hostingContext, logging) =>
             {
                 logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                logging.AddConsole((options) =>
-                {
-                    options.Format = Microsoft.Extensions.Logging.Console.ConsoleLoggerFormat.Default;
-                });
+                logging.AddConsole();
             });
 
             await builder.RunConsoleAsync();
