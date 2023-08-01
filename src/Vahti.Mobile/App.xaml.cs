@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Vahti.Mobile.Constants;
 using Microsoft.Maui.Platform;
+using Vahti.Mobile.EventArguments;
 #if ANDROID
 using Android.Content.Res;
 #endif
@@ -29,6 +30,8 @@ namespace Vahti.Mobile
 {
     public partial class App : Microsoft.Maui.Controls.Application
     {
+        public static event EventHandler<AppResumedEventArgs>? AppResumed;
+
         public App()
         {
             InitializeComponent();
@@ -95,7 +98,7 @@ namespace Vahti.Mobile
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            AppResumed?.Invoke(this, new AppResumedEventArgs(Shell.Current.CurrentPage));  
         }
 
 
