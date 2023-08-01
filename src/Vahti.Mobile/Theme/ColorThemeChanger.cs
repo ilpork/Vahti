@@ -34,6 +34,7 @@ namespace Vahti.Mobile.Theme
                 window.ClearFlags(WindowManagerFlags.TranslucentStatus);
                 window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
+#pragma warning disable CA1422 // Use obsoleted View.SystemUiVisibility for now
                 if (GetCurrentTheme() == ColorTheme.Light)
                 {
                     window.SetStatusBarColor(
@@ -46,6 +47,7 @@ namespace Vahti.Mobile.Theme
                         ((Color)Application.Current.Resources[ResourceNames.GrayThemePrimaryDark]).ToPlatform());
                     window.DecorView.SystemUiVisibility = 0;
                 }   
+#pragma warning restore CA1422
             }            
 #endif
         }
