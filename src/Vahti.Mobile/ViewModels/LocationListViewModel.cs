@@ -8,12 +8,14 @@ using MvvmHelpers.Interfaces;
 using MvvmHelpers.Commands;
 using Command = MvvmHelpers.Commands.Command;
 using System.Windows.Input;
+using System.Runtime.Versioning;
 
 namespace Vahti.Mobile.ViewModels
 {
     /// <summary>
     /// View model for page used to show list the available sensors
     /// </summary>
+    [SupportedOSPlatform("windows10.0.17763.0")]
     public class LocationListViewModel : BaseViewModel
     {
         private bool _hasItems;
