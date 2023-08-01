@@ -28,7 +28,7 @@
         <Color x:Key="GrayThemeSwitchThumbColor">White</Color>
         <Color x:Key="GrayThemeFlyoutBackgroundColor">#282828</Color>
 
-        <Color x:Key="LightThemeBackground">#fbfbfb</Color>
+        <Color x:Key="LightThemeBackground">#fdfdfd</Color>
         <Color x:Key="LightThemePrimaryDark">#ebebf2</Color>
         <Color x:Key="LightThemePrimary">#ebebf2</Color>        
         <Color x:Key="LightThemeOnPrimary">#222222</Color>
