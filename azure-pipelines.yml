@@ -101,26 +101,26 @@ jobs:
     KeystorePwd: $(KeystorePassword)
 
   steps:
-  - task: UseDotNet@2
-    displayName: 'Install .NET sdk'
-    inputs:
-      packageType: sdk
-      version: 7.0.x
-      installationPath: $(Agent.ToolsDirectory)/dotnet
-  - task: CmdLine@2
-    displayName: 'Install Maui Workload'
-    inputs:
-      script: 'dotnet workload install maui'  
-  - task: CmdLine@2
-    displayName: Create google-services.json for Android project
-    inputs:
-      script: 'cp google-services.template.json google-services.json' 
-      workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
-  - task: CmdLine@2
-    displayName: Create appsettings.json
-    inputs:
-      script: 'cp appsettings.template.json appsettings.json' 
-      workingDirectory: 'src/Vahti.Mobile'          
+  # - task: UseDotNet@2
+  #   displayName: 'Install .NET sdk'
+  #   inputs:
+  #     packageType: sdk
+  #     version: 7.0.x
+  #     installationPath: $(Agent.ToolsDirectory)/dotnet
+  # - task: CmdLine@2
+  #   displayName: 'Install Maui Workload'
+  #   inputs:
+  #     script: 'dotnet workload install maui'  
+  # - task: CmdLine@2
+  #   displayName: Create google-services.json for Android project
+  #   inputs:
+  #     script: 'cp google-services.template.json google-services.json' 
+  #     workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
+  # - task: CmdLine@2
+  #   displayName: Create appsettings.json
+  #   inputs:
+  #     script: 'cp appsettings.template.json appsettings.json' 
+  #     workingDirectory: 'src/Vahti.Mobile'          
   # - task: DotNetCoreCLI@2
   #   inputs:
   #     command: 'publish'
@@ -154,14 +154,15 @@ jobs:
   #     artifactName: 'apk' 
   - task: CmdLine@2
     inputs:
-      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer"'
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'build'
-      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
-      publishWebProjects: false
-      zipAfterPublish: false
-      arguments: '-f:net7.0-ios -c:Release /p:ArchiveOnBuild=false /p:EnableAssemblyILStripping=false'
+  #    script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer"'
+      script: 'sudo xcode-select -print-path'
+  # - task: DotNetCoreCLI@2
+  #   inputs:
+  #     command: 'build'
+  #     projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+  #     publishWebProjects: false
+  #     zipAfterPublish: false
+  #     arguments: '-f:net7.0-ios -c:Release /p:ArchiveOnBuild=false /p:EnableAssemblyILStripping=false'
 
   
 
