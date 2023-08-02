@@ -124,6 +124,8 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'publish'
+      publishWebProjects: false
+      zipAfterPublish: false
       projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
       arguments: '-c Release -f net7.0-android'
   - task: DownloadSecureFile@1
