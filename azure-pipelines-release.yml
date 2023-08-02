@@ -1,6 +1,4 @@
-trigger:
-- master
-
+trigger: none
 pr: none
 
 variables:
@@ -11,43 +9,7 @@ jobs:
   displayName: 'Build .NET Core projects'
   pool:
     vmImage: 'ubuntu-latest'
-  steps:
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Collector
-    inputs:
-      command: build
-      projects: 'src/Vahti.Collector/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.DataBroker
-    inputs:
-      command: build
-      projects: 'src/Vahti.DataBroker/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Mqtt
-    inputs:
-      command: build
-      projects: 'src/Vahti.Mqtt/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Shared
-    inputs:
-      command: build
-      projects: 'src/Vahti.Shared/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Server
-    inputs:
-      command: build
-      projects: 'src/Vahti.Server/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Run tests
-    inputs:
-      command: test      
-      projects: '**/*Test/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'
+  steps:  
   - task: DotNetCoreCLI@2
     displayName: Publish Vahti.Server (linux-arm)
     inputs:
