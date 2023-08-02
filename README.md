@@ -20,10 +20,10 @@ Server part (running on Raspberry Pi, for example) gathers data for mobile and w
 ## Features
 ### Mobile application (Vahti.Mobile)
 ![Locations (Dark)](doc/images/locations_dark.png) 
-![Locations](doc/images/locations.png) 
-![History](doc/images/history.png)
-![Details](doc/images/details.png)
-![Options](doc/images/options.png)
+![Locations](doc/images/locations_light.png) 
+![History](doc/images/history_light.png)
+![Details](doc/images/details_light.png)
+![Options](doc/images/options_light.png)
 ![Widget](doc/images/widget.png)
 
 - For Android and iOS
