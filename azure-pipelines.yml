@@ -90,7 +90,6 @@ jobs:
 #     inputs:
 #       pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
 #       artifactName: 'Vahti.Server'
-
 - job: Mobile
   displayName: 'Build mobile apps'
   pool:
