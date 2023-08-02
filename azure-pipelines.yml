@@ -151,7 +151,7 @@ jobs:
   #   displayName: Publish APK
   #   inputs:
   #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  #     artifactName: 'apk'
+  #     artifactName: 'apk' 
   - task: CmdLine@2
     inputs:
       script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app"'
