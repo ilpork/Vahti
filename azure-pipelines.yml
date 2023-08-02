@@ -151,7 +151,7 @@ jobs:
     displayName: Publish APK
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: 'apk'          
+      artifactName: 'apk'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
