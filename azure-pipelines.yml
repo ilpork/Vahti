@@ -154,7 +154,7 @@ jobs:
   #     artifactName: 'apk' 
   - task: CmdLine@2
     inputs:
-      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app"'
+      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer"'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
