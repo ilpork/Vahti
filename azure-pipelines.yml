@@ -95,12 +95,23 @@ jobs:
   displayName: 'Build mobile apps'
   pool:
     vmImage: 'macos-latest'
+    demands: xcode
 
   variables:
     outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
     KeystorePwd: $(KeystorePassword)
 
   steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET sdk'
+    inputs:
+      packageType: sdk
+      version: 7.0.x
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+  - task: CmdLine@2
+    displayName: 'Install Maui Workload'
+    inputs:
+      script: 'dotnet workload install maui'
   - task: NuGetToolInstaller@1
     displayName: Get NuGet tool
 
@@ -112,23 +123,24 @@ jobs:
     displayName: Create google-services.json for Android project
     inputs:
       script: 'cp google-services.template.json google-services.json' 
-      workingDirectory: 'src/Vahti.Mobile/Vahti.Mobile.Android'
+      workingDirectory: 'src/Vahti.Mobile'
   - task: CmdLine@2
     displayName: Create App.config
     inputs:
       script: 'cp App.template.config App.config' 
-      workingDirectory: 'src/Vahti.Mobile/Vahti.Mobile.Forms'      
-  - task: CmdLine@2
-    displayName: XA5104 Workaround
-    inputs:
-      script: '${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.4.7075529"'
+      workingDirectory: 'src/Vahti.Mobile'        
   - task: XamarinAndroid@1
     displayName: Build Android app
     inputs:
-      projectFile: 'src/Vahti.Mobile/Vahti.Mobile.Android/Vahti.Mobile.Android.csproj'
+      projectFile: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
       outputDirectory: '$(outputDirectory)'
       configuration: '$(buildConfiguration)'
       createAppPackage: true
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+      arguments: '-c Release -f net7.0-android'
   - task: DownloadSecureFile@1
     displayName: Download keystore file
     inputs:
@@ -152,18 +164,14 @@ jobs:
     displayName: Publish APK
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: 'apk'      
-  - task: CmdLine@2
+      artifactName: 'apk'          
+  - task: DotNetCoreCLI@2
     inputs:
-      script: '/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_12"'
-  - task: CmdLine@2
-    inputs:
-      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_13.2.1.app/Contents/Developer"'
-  - task: XamariniOS@2
-    displayName: Build iOS app
-    inputs:
-      solutionFile: '**/*iOS.csproj'
-      configuration: 'Release'
-      buildForSimulator: true
-      packageApp: false
+      command: 'build'
+      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+      publishWebProjects: false
+      zipAfterPublish: false
+      arguments: '-f:net7.0-ios -c:Release /p:ArchiveOnBuild=false /p:EnableAssemblyILStripping=false'
+
+  
 
