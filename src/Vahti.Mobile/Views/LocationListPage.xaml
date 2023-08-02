@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vahti.Mobile.Views.LocationListPage"
+             xmlns:fonticons="clr-namespace:Vahti.Mobile.Views.Fonts"             
+             xmlns:selector="clr-namespace:Vahti.Mobile.Views.Templates"
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"
+             xmlns:behaviors="clr-namespace:Vahti.Mobile.Behaviors"
+             xmlns:converters="clr-namespace:Vahti.Mobile.Converters"
+             xmlns:sharedEnum="clr-namespace:Vahti.Shared.Enum;assembly=Vahti.Shared"
+             x:Name="locationListPage"             
+             Title="{Binding Title}"                          
+             >
+        
+    <ContentPage.ToolbarItems>
+        <ToolbarItem                         
+            Command="{Binding RefreshListCommand}" 
+            CommandParameter="{StaticResource True}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                 FontFamily="FontAwesomeSolid"
+                 Color="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+                 Glyph="{x:Static fonticons:FontIcons.FontAwesomeRotateRight}"
+                 Size="18" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior 
+            EventName="Appearing" 
+            Command="{Binding RefreshListCommand}" 
+            CommandParameter="{StaticResource False}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ListPageBackground">Transparent</Color>
+            <Style x:Key="IconLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
+            </Style>            
+            <Style x:Key="BaseLabelStyle" TargetType="Label" >
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ListPageBackground}"/>
+            </Style>
+            <Style x:Key="ItemHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}"/>
+            </Style>
+            <Style x:Key="StatusTextLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="14"/>                
+            </Style>
+            <Style x:Key="StatusIconLabelStyle" TargetType="Label" BasedOn="{StaticResource IconLabelStyle}">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <ResourceDictionary>
+                <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />                
+                <converters:SecondsToLastChargedConverter x:Key="SecondsToLastChargedConverter"/>
+                <converters:MeasurementToDisplayStringConverter x:Key="MeasurementToDisplayStringConverter"/>
+                <DataTemplate x:Key="mowerTemplate">
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        Padding="12,4,12,4" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" >
+                        <Label 
+                            Margin="0,0,0,0" 
+                            FontFamily="FontAwesomeSolid" 
+                            Style="{StaticResource IconLabelStyle}" 
+                            VerticalTextAlignment="Center" 
+                            Text="{x:Static fonticons:FontIcons.FontAwesomeCut}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Value}" Value="0">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeChargingStation}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label 
+                            Margin="4,0,0,0" 
+                            LineBreakMode="NoWrap" 
+                            Style="{StaticResource BaseLabelStyle}" 
+                            VerticalTextAlignment="Center" FontSize="16" 
+                            Text="{Binding Value, Converter={StaticResource SecondsToLastChargedConverter}}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
+                </DataTemplate>
+                <DataTemplate x:Key="defaultTemplate">
+                    <StackLayout Orientation="Horizontal" Padding="12,0,12,4" BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}">
+                        <Label Margin="0,0,0,0" FontFamily="WeatherIconsRegular" Style="{StaticResource IconLabelStyle}" VerticalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Temperature}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsThermometer}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Humidity}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsHumidity}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Pressure}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsBarometer}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.BatteryVoltage}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationX}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsRight}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationY}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsDown}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.AccelerationZ}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.WeatherIconsUpLeft}"/>
+                                    <Setter Property="FontFamily" Value="WeatherIconsRegular"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.Rssi}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeSignal}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.MovementCounter}">
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeArrows}"/>
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
+                                </DataTrigger>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Path=SensorClass}" Value="{x:Static sharedEnum:SensorClass.LastCharged}" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Text" Value="{x:Static fonticons:FontIcons.FontAwesomeBatteryHalf}" />
+                                    <Setter Property="FontFamily" Value="FontAwesomeSolid"/>
+                                </MultiTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label 
+                            Text="{Binding ., Converter={StaticResource MeasurementToDisplayStringConverter}}" 
+                            Margin="8,0,0,0" 
+                            LineBreakMode="NoWrap" 
+                            Style="{StaticResource BaseLabelStyle}" 
+                            VerticalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsVisibleInSummaryView}" Value="False">
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
+                </DataTemplate>
+                <selector:MeasurementDataTemplateSelector x:Key="measurementDataTemplateSelector" 
+                                                     MowerTemplate="{StaticResource mowerTemplate}" 
+                                                     DefaultTemplate="{StaticResource defaultTemplate}" />
+            </ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout 
+        Margin="0,0,0,0" 
+        Padding="8" 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}">
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto" IsVisible="{Binding IsOldData}">
+                <Label 
+                    Text="{x:Static fonticons:FontIcons.FontAwesomeExclamation}" 
+                    Style="{StaticResource StatusTextLabelStyle}" 
+                    FontFamily="FontAwesomeSolid" 
+                    VerticalOptions="Center"
+                    Grid.Column="0"/>
+                <Label 
+                    Text="{Binding LastUpdated}" 
+                    IsVisible="{Binding IsOldData}" 
+                    Style="{StaticResource StatusTextLabelStyle}" 
+                    VerticalTextAlignment="Center"
+                    Grid.Column="1"/>
+            </Grid>
+
+            <RefreshView
+             Command="{Binding RefreshListCommand}"
+             CommandParameter="{StaticResource True}"
+             IsRefreshing="{Binding IsBusy}"
+             RefreshColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSecondary}}"
+            >            
+                <CollectionView
+                
+            x:Name="LocationList"                   
+            IsGrouped="true"                    
+            ItemsSource="{Binding Locations}"
+            VerticalOptions="EndAndExpand"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
+            ItemTemplate="{StaticResource measurementDataTemplateSelector}"
+            SelectedItem="{Binding SelectedMeasurement, Mode=TwoWay}"
+                SelectionMode="Single"
+            SelectionChanged="LocationList_SelectionChanged"
+            SelectionChangedCommand="{Binding SelectItemCommand}"
+                >
+                <!-- Uncomment this when https://github.com/xamarin/Xamarin.Forms/pull/12377 is available
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No data"
+                               Style="{StaticResource StatusTextLabelStyle}"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                -->
+                <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                        <StackLayout Spacing="0">
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                HorizontalOptions="FillAndExpand" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeHeader}, Dark={StaticResource GrayThemeHeader}}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding BindingContext.TapLocationCommand, Source={x:Reference locationListPage} }" 
+                                        CommandParameter="{Binding Name}" 
+                                        NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
+                                <Label 
+                                    VerticalOptions="Center" 
+                                    Text="{Binding Name}" 
+                                    Style="{StaticResource ItemHeaderLabelStyle}" 
+                                    Padding="8,4,0,4"/>
+                                <Label 
+                                    HorizontalOptions="EndAndExpand" 
+                                    VerticalOptions="Center" 
+                                    FontFamily="FontAwesomeSolid" 
+                                    Style="{StaticResource IconLabelStyle}" 
+                                    VerticalTextAlignment="Center" 
+                                    Text="{x:Static fonticons:FontIcons.FontAwesomeChevronRight}" 
+                                    FontSize="18" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}" Padding="0,0,8,0"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="4" BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                        </StackLayout>                        
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+                    <CollectionView.GroupFooterTemplate>
+                        <DataTemplate>
+                        <StackLayout 
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+                            Spacing="0">
+                            <BoxView 
+                                HeightRequest="8" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}"/>
+                            <BoxView 
+                                HeightRequest="10" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"/>
+                            </StackLayout>                        
+                        </DataTemplate>
+                    </CollectionView.GroupFooterTemplate>
+                </CollectionView>            
+            </RefreshView>
+        </StackLayout>      
+</ContentPage>

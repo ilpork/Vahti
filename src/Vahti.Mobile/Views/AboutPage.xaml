@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vahti.Mobile.Views.AboutPage"             
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"        
+             Title="{Binding Title}">
+    <StackLayout 
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
+        VerticalOptions="FillAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="1">
+                <StackLayout 
+                    Orientation="Vertical" 
+                    Padding="24" 
+                    Spacing="8">
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        Margin="0,16,0,0" 
+                        Spacing="12">
+                        <Label 
+                            Text="{i18n:Translate App_Title}" 
+                            FontSize="24" 
+                            TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" />
+                        <Label                             
+                            Text="{Binding Version}" 
+                            FontSize="24" 
+                            TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" />
+                    </StackLayout>                    
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                             
+             xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"             
+             xmlns:converter="clr-namespace:Vahti.Mobile.Converters"   
+             x:Class="Vahti.Mobile.Views.OptionsGeneralPage"
+             x:Name="optionsGeneralPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeBackground}, Dark={StaticResource GrayThemeBackground}}"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Resources>       
+        <converter:IsEmptyStringConverter x:Key="IsEmptyStringConverter"/>
+        <Style x:Key="OptionsLabelStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+        </Style>
+        <Style x:Key="OptionsHeaderStyle" TargetType="Label" >
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"/>
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" Margin="4" Spacing="20" Padding="24">        
+        <StackLayout Orientation="Vertical">            
+            <Label Text="{i18n:Translate Options_ColorThemeLabel}" Style="{DynamicResource OptionsHeaderStyle}" />
+            <!-- Add Frame around the entry as workaround to Entry background color not changing on theme update -->
+            <Frame                
+                BorderColor="Transparent"
+                Padding="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeEntryBackground}, Dark={StaticResource GrayThemeEntryBackground}}">
+                <Picker x:Name="colorThemePicker" 
+                    ItemsSource="{Binding ColorThemes}" 
+                    SelectedIndex="{Binding ColorThemesSelectedIndex}" 
+                    TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"                     
+                    BackgroundColor="Transparent"/>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Vertical">
+                <Label Text="{i18n:Translate Options_GraphPageHeader}" Style="{DynamicResource OptionsHeaderStyle}" />
+            <Grid RowSpacing="0" Padding="4,8,4,8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{i18n:Translate Options_ShowMinMaxValuesLabel}" Style="{DynamicResource OptionsLabelStyle}" Grid.Column="0" VerticalOptions="Center"/>
+                <Switch 
+                    IsToggled="{Binding ShowMinMaxValues}" 
+                    HorizontalOptions="End" 
+                    ThumbColor="{AppThemeBinding Light={StaticResource LightThemeSwitchThumbColor}, Dark={StaticResource GrayThemeSwitchThumbColor}}" 
+                    OnColor="{AppThemeBinding Light={StaticResource LightThemeSecondary}, Dark={StaticResource GrayThemeSecondary}}" 
+                    Grid.Column="1"/>
+            </Grid>            
+        </StackLayout>
+        <StackLayout 
+            Orientation="Vertical"
+            IsVisible="{Binding IsDatabaseConfigurationInAppNeeded}">
+            <Label Text="{i18n:Translate Options_DatabaseOptionsHeader}" Style="{DynamicResource OptionsHeaderStyle}"/>
+            <Label Text="{i18n:Translate Options_CloudDatabaseUrlLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
+            <StackLayout Orientation="Vertical" Spacing="0">
+                <!-- Add Frame around the entry as workaround to Entry background color not changing on theme update -->
+                <Frame                
+                    BorderColor="Transparent"
+                    Padding="0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeEntryBackground}, Dark={StaticResource GrayThemeEntryBackground}}">
+                    <Entry Text="{Binding DatabaseUrl}" 
+                       FontSize="Medium"                        
+                        TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+                        BackgroundColor="Transparent">
+                    </Entry>                    
+                </Frame>
+                <Label Text="{i18n:Translate Options_CloudDatabaseUrlMissingLabel}" FontSize="Small" TextColor="Red" IsVisible="{Binding DatabaseUrl, Converter={StaticResource IsEmptyStringConverter}}"/>
+            </StackLayout>
+            <Label Text="{i18n:Translate Options_CloudDatabaseSecretLabel}" Style="{DynamicResource OptionsLabelStyle}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <!-- Add Frame around the entry as workaround to Entry background color not changing on theme update -->
+                <Frame                
+                    BorderColor="Transparent"
+                    Padding="0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeEntryBackground}, Dark={StaticResource GrayThemeEntryBackground}}">
+                    <Entry x:Name="entryDatabaseSecret" 
+                        Text="{Binding DatabaseSecret}" 
+                        FontSize="Medium"                         
+                        TextColor="{DynamicResource ThemeOnSurface}" 
+                        BackgroundColor="Transparent"
+                        Grid.Column="0">
+                    </Entry>
+                </Frame>                
+                <Label 
+                    x:Name="labelEye" 
+                    FontFamily="FontAwesomeSolid" 
+                    TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" 
+                    Grid.Column="1" 
+                    VerticalOptions="Center"
+                    Margin="8,0,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EyeLabel_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

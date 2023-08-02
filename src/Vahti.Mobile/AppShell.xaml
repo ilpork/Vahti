@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:local="clr-namespace:Vahti.Mobile.Views"
+       xmlns:i18n="clr-namespace:Vahti.Mobile.Localization"       
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource LightThemeFlyoutBackgroundColor}, Dark={StaticResource GrayThemeFlyoutBackgroundColor}}"
+       Title="Vahti"       
+       x:Class="Vahti.Mobile.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemePrimaryDark}, Dark={StaticResource GrayThemePrimaryDark}}" />
+                <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}" />
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource LightThemeOnPrimary}, Dark={StaticResource GrayThemeOnPrimary}}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light={StaticResource LightThemePrimary}, Dark={StaticResource GrayThemePrimary}}"/>
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource LightThemeUnselectedTabText}, Dark={StaticResource GrayThemeUnselectedTabText}}"/>                                     
+            </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+            <Style 
+                Class="FlyoutItemLabelStyle" 
+                TargetType="Label">
+                <Setter 
+                    Property="TextColor" 
+                    Value="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <Grid 
+            HeightRequest="200" 
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}">            
+            <Label Text="Vahti"
+                   TextColor="{AppThemeBinding Light={StaticResource LightThemeOnSurface}, Dark={StaticResource GrayThemeOnSurface}}"
+                   FontSize="48"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+    <FlyoutItem 
+        FlyoutIcon="{AppThemeBinding Dark=outline_format_list_bulleted_white_24, Light=outline_format_list_bulleted_black_24 }" 
+        Title="{i18n:Translate App_TabSummaryTitle}" 
+        Style="{StaticResource BaseStyle}">
+        <ShellContent Route="summary"
+                      ContentTemplate="{DataTemplate local:LocationListPage}" />
+    </FlyoutItem>    
+    <FlyoutItem         
+        FlyoutIcon="{AppThemeBinding Dark=outline_settings_white_24, Light=outline_settings_black_24 }" 
+        Title="{i18n:Translate Options_Title}"
+        Style="{StaticResource BaseStyle}">
+        <Tab Title="{i18n:Translate Options_Title}"              
+             >
+            <ShellContent Route="optionsGeneral"                          
+                          Title="{i18n:Translate Options_General_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsGeneralPage}" />
+            <ShellContent Route="optionsSummary" 
+                          Title="{i18n:Translate Options_Summary_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsSummaryPage}" />
+            <ShellContent Route="optionsWidget" 
+                          Title="{i18n:Translate Options_Widget_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsWidgetPage}" />
+            <ShellContent Route="optionsSorting" 
+                          Title="{i18n:Translate Options_Sorting_Title}"
+                      ContentTemplate="{DataTemplate local:OptionsSortingPage}" />
+        </Tab>        
+    </FlyoutItem>
+    <FlyoutItem 
+        FlyoutIcon="{AppThemeBinding Dark=outline_info_white_24, Light=outline_info_black_24 }" 
+        Title="{i18n:Translate About_Title}"
+        Style="{StaticResource BaseStyle}">
+        <ShellContent Route="about"
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+</Shell>

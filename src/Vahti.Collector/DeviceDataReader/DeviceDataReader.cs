@@ -80,8 +80,8 @@ namespace Vahti.Collector.DeviceDataReader
         }
 
         /// <summary>
-        /// Read values from DHT22 sensor. It seems that the Dht22 support in Iot.Device.Bindings does not work very well, 
-        /// but this can be considered as example on how to easily add support for additional devices
+        /// Read values from DHT22 sensor. 
+        /// Dht22 support in Iot.Device.Bindings did not work very well when I tried it in the past with old package version, but this code can be considered as example on how to easily add support for additional devices
         /// </summary>        
         private IList<MeasurementData> GetDht22Measurements(SensorDevice sensorDevice)
         {
@@ -91,10 +91,10 @@ namespace Vahti.Collector.DeviceDataReader
 
             using (var dht22 = new Dht22(pinNumber, PinNumberingScheme.Logical))
             {
-                if (dht22.IsLastReadSuccessful)
+                if (dht22.TryReadTemperature(out var temp) && dht22.TryReadHumidity(out var humidity))
                 {
-                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
-                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = temp.DegreesCelsius.ToString(_numberFormatInfo) });
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = humidity.Percent.ToString(_numberFormatInfo) });
                 }
                 else
                 {

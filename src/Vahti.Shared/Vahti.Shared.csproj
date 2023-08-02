@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Configurations>Debug;Release;DebugMock</Configurations>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,16 +12,24 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Include="DataProvider\MockData\HistoryData.json" Condition=" '$(Configuration)' == 'DebugMock' " />
-    <EmbeddedResource Include="DataProvider\MockData\Locations.json" Condition=" '$(Configuration)' == 'DebugMock' " />
-    <EmbeddedResource Include="DataProvider\MockData\MobileDevices.json" Condition=" '$(Configuration)' == 'DebugMock' " />
-    <EmbeddedResource Include="DataProvider\MockData\SensorDevices.json" Condition=" '$(Configuration)' == 'DebugMock' " />
-    <EmbeddedResource Include="DataProvider\MockData\SensorDeviceTypes.json" Condition=" '$(Configuration)' == 'DebugMock' " />
+    <None Remove="DataProvider\MockData\HistoryData.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <None Remove="DataProvider\MockData\Locations.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <None Remove="DataProvider\MockData\MobileDevices.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <None Remove="DataProvider\MockData\SensorDevices.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <None Remove="DataProvider\MockData\SensorDeviceTypes.json" Condition="'$(Configuration)'=='DebugMock'" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="DataProvider\MockData\HistoryData.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <EmbeddedResource Include="DataProvider\MockData\Locations.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <EmbeddedResource Include="DataProvider\MockData\MobileDevices.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <EmbeddedResource Include="DataProvider\MockData\SensorDevices.json" Condition="'$(Configuration)'=='DebugMock'" />
+    <EmbeddedResource Include="DataProvider\MockData\SensorDeviceTypes.json" Condition="'$(Configuration)'=='DebugMock'" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup>

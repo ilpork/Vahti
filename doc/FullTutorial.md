@@ -3,8 +3,8 @@ Tutorial is assumes that you have a Raspberry Pi, run all needed services on tha
 
 The tutorial contains a lot of steps, but the aim is to help those who are not so familiar with setting up systems like this.
 
-### Install Visual Studio 2019 (Community edition is fine) with mobile development options needed 
-1. Install Visual Studio 2019 community https://visualstudio.microsoft.com/vs/community/
+### Install Visual Studio 2022 (Community edition is fine) with mobile development options needed 
+1. Install Visual Studio 2022 community https://visualstudio.microsoft.com/vs/community/
 2. In Visual Studio installer select "Mobile development with .NET" and ".NET Core cross-platform development". In addition, select also Git options from "individual components" tab
 3. When installed, start Visual Studio
 4. Select "Clone or check out code"
@@ -26,8 +26,8 @@ The tutorial contains a lot of steps, but the aim is to help those who are not s
 ### Create Google Firebase realtime database
 Read [Create Firebase database](CreateFirebaseDatabase.md) to get information on how to create Firebase database and where data is stored.
 
-### Update mobile projects
-1. Set Vahti.Mobile.Android project as start-up project in toolbar (or via project context menu)
+### Build mobile projects
+1. Set Vahti.Mobile project as start-up project in toolbar (or via project context menu)
 2. Put your mobile device in developer mode: https://developer.android.com/studio/debug/dev-options 
 3. Connect your mobile device to PC with USB cable
 4. You mobile device should now appear as selectable device in toolbar
