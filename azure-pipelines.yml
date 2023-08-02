@@ -121,37 +121,40 @@ jobs:
     inputs:
       script: 'cp appsettings.template.json appsettings.json' 
       workingDirectory: 'src/Vahti.Mobile'          
-  - task: DotNetCoreCLI@2
+  # - task: DotNetCoreCLI@2
+  #   inputs:
+  #     command: 'publish'
+  #     publishWebProjects: false
+  #     zipAfterPublish: false
+  #     projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+  #     arguments: '-c Release -f net7.0-android'
+  # - task: DownloadSecureFile@1
+  #   displayName: Download keystore file
+  #   inputs:
+  #     secureFile: 'ilpork.keystore'
+  # - task: AndroidSigning@3
+  #   displayName: Sign APK
+  #   inputs:
+  #     apkFiles: '**/*.apk'
+  #     apksignerKeystoreFile: 'ilpork.keystore'
+  #     apksignerKeystorePassword: $(keystorePwd)
+  #     apksignerKeystoreAlias: 'ilpork'
+  #     apksignerKeyPassword: $(keystorePwd)
+  # - task: CopyFiles@2
+  #   displayName: Copy APK files
+  #   inputs:
+  #     SourceFolder: $(Build.SourcesDirectory)
+  #     contents: '**/*.apk'
+  #     targetFolder: '$(build.artifactStagingDirectory)'
+  #     overWrite: true
+  # - task: PublishBuildArtifacts@1
+  #   displayName: Publish APK
+  #   inputs:
+  #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  #     artifactName: 'apk'
+  - task: CmdLine@2
     inputs:
-      command: 'publish'
-      publishWebProjects: false
-      zipAfterPublish: false
-      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
-      arguments: '-c Release -f net7.0-android'
-  - task: DownloadSecureFile@1
-    displayName: Download keystore file
-    inputs:
-      secureFile: 'ilpork.keystore'
-  - task: AndroidSigning@3
-    displayName: Sign APK
-    inputs:
-      apkFiles: '**/*.apk'
-      apksignerKeystoreFile: 'ilpork.keystore'
-      apksignerKeystorePassword: $(keystorePwd)
-      apksignerKeystoreAlias: 'ilpork'
-      apksignerKeyPassword: $(keystorePwd)
-  - task: CopyFiles@2
-    displayName: Copy APK files
-    inputs:
-      SourceFolder: $(Build.SourcesDirectory)
-      contents: '**/*.apk'
-      targetFolder: '$(build.artifactStagingDirectory)'
-      overWrite: true
-  - task: PublishBuildArtifacts@1
-    displayName: Publish APK
-    inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactName: 'apk'
+      script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
