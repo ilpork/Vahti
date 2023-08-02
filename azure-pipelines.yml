@@ -5,157 +5,159 @@ variables:
   buildConfiguration: 'Release'
 
 jobs:
-# - job: NetCore
-#   displayName: 'Build .NET Core projects'
-#   pool:
-#     vmImage: 'ubuntu-latest'
-#   steps:
-#   - task: DotNetCoreCLI@2
-#     displayName: Build Vahti.Collector
-#     inputs:
-#       command: build
-#       projects: 'src/Vahti.Collector/**/*.csproj'
-#       arguments: '--configuration Release'
-#   - task: DotNetCoreCLI@2
-#     displayName: Build Vahti.DataBroker
-#     inputs:
-#       command: build
-#       projects: 'src/Vahti.DataBroker/**/*.csproj'
-#       arguments: '--configuration Release'
-#   - task: DotNetCoreCLI@2
-#     displayName: Build Vahti.Mqtt
-#     inputs:
-#       command: build
-#       projects: 'src/Vahti.Mqtt/**/*.csproj'
-#       arguments: '--configuration Release'
-#   - task: DotNetCoreCLI@2
-#     displayName: Build Vahti.Shared
-#     inputs:
-#       command: build
-#       projects: 'src/Vahti.Shared/**/*.csproj'
-#       arguments: '--configuration Release'
-#   - task: DotNetCoreCLI@2
-#     displayName: Build Vahti.Server
-#     inputs:
-#       command: build
-#       projects: 'src/Vahti.Server/**/*.csproj'
-#       arguments: '--configuration Release'
-#   - task: DotNetCoreCLI@2
-#     displayName: Run tests
-#     inputs:
-#       command: test      
-#       projects: '**/*Test/*.csproj'
-#       arguments: '--configuration $(buildConfiguration)'
-#   - task: DotNetCoreCLI@2
-#     displayName: Publish Vahti.Server (linux-arm)
-#     inputs:
-#       command: publish
-#       publishWebProjects: false
-#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
-#       arguments: '--configuration $(BuildConfiguration) -r linux-arm --output $(Build.ArtifactStagingDirectory)'
-#       zipAfterPublish: true
-#   - task: CmdLine@2
-#     displayName: Rename Zip
-#     inputs:
-#       script: 'mv Vahti.Server.zip Vahti.Server-linux-arm.zip' 
-#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-#   - task: DotNetCoreCLI@2
-#     displayName: Publish Vahti.Server (linux-x64)
-#     inputs:
-#       command: publish
-#       publishWebProjects: false
-#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
-#       arguments: '--configuration $(BuildConfiguration) -r linux-x64 --output $(Build.ArtifactStagingDirectory)'
-#       zipAfterPublish: true
-#   - task: CmdLine@2
-#     displayName: Rename Zip
-#     inputs:
-#       script: 'mv Vahti.Server.zip Vahti.Server-linux-x64.zip' 
-#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-#   - task: DotNetCoreCLI@2
-#     displayName: Publish Vahti.Server (win10-x64)
-#     inputs:
-#       command: publish
-#       publishWebProjects: false
-#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
-#       arguments: '--configuration $(BuildConfiguration) -r win10-x64 --output $(Build.ArtifactStagingDirectory)'
-#       zipAfterPublish: true
-#   - task: CmdLine@2
-#     displayName: Rename Zip
-#     inputs:
-#       script: 'mv Vahti.Server.zip Vahti.Server-win10-x64.zip' 
-#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-#   - task: PublishBuildArtifacts@1
-#     displayName: Publish Vahti.Server build artifacts
-#     inputs:
-#       pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-#       artifactName: 'Vahti.Server'
+- job: NetCore
+  displayName: 'Build .NET Core projects'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Collector
+    inputs:
+      command: build
+      projects: 'src/Vahti.Collector/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.DataBroker
+    inputs:
+      command: build
+      projects: 'src/Vahti.DataBroker/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Mqtt
+    inputs:
+      command: build
+      projects: 'src/Vahti.Mqtt/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Shared
+    inputs:
+      command: build
+      projects: 'src/Vahti.Shared/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Server
+    inputs:
+      command: build
+      projects: 'src/Vahti.Server/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Run tests
+    inputs:
+      command: test      
+      projects: '**/*Test/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+  - task: DotNetCoreCLI@2
+    displayName: Publish Vahti.Server (linux-arm)
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: 'src/Vahti.Server/Vahti.Server.csproj'
+      arguments: '--configuration $(BuildConfiguration) -r linux-arm --output $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: true
+  - task: CmdLine@2
+    displayName: Rename Zip
+    inputs:
+      script: 'mv Vahti.Server.zip Vahti.Server-linux-arm.zip' 
+      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+  - task: DotNetCoreCLI@2
+    displayName: Publish Vahti.Server (linux-x64)
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: 'src/Vahti.Server/Vahti.Server.csproj'
+      arguments: '--configuration $(BuildConfiguration) -r linux-x64 --output $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: true
+  - task: CmdLine@2
+    displayName: Rename Zip
+    inputs:
+      script: 'mv Vahti.Server.zip Vahti.Server-linux-x64.zip' 
+      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+  - task: DotNetCoreCLI@2
+    displayName: Publish Vahti.Server (win10-x64)
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: 'src/Vahti.Server/Vahti.Server.csproj'
+      arguments: '--configuration $(BuildConfiguration) -r win10-x64 --output $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: true
+  - task: CmdLine@2
+    displayName: Rename Zip
+    inputs:
+      script: 'mv Vahti.Server.zip Vahti.Server-win10-x64.zip' 
+      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Vahti.Server build artifacts
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+      artifactName: 'Vahti.Server'
+
 - job: Mobile
   displayName: 'Build mobile apps'
   pool:
     vmImage: 'macos-latest'
     demands: xcode
-
   variables:
     outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
     KeystorePwd: $(KeystorePassword)
-
   steps:
-  # - task: UseDotNet@2
-  #   displayName: 'Install .NET sdk'
-  #   inputs:
-  #     packageType: sdk
-  #     version: 7.0.x
-  #     installationPath: $(Agent.ToolsDirectory)/dotnet
-  # - task: CmdLine@2
-  #   displayName: 'Install Maui Workload'
-  #   inputs:
-  #     script: 'dotnet workload install maui'  
-  # - task: CmdLine@2
-  #   displayName: Create google-services.json for Android project
-  #   inputs:
-  #     script: 'cp google-services.template.json google-services.json' 
-  #     workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
-  # - task: CmdLine@2
-  #   displayName: Create appsettings.json
-  #   inputs:
-  #     script: 'cp appsettings.template.json appsettings.json' 
-  #     workingDirectory: 'src/Vahti.Mobile'          
-  # - task: DotNetCoreCLI@2
-  #   inputs:
-  #     command: 'publish'
-  #     publishWebProjects: false
-  #     zipAfterPublish: false
-  #     projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
-  #     arguments: '-c Release -f net7.0-android'
-  # - task: DownloadSecureFile@1
-  #   displayName: Download keystore file
-  #   inputs:
-  #     secureFile: 'ilpork.keystore'
-  # - task: AndroidSigning@3
-  #   displayName: Sign APK
-  #   inputs:
-  #     apkFiles: '**/*.apk'
-  #     apksignerKeystoreFile: 'ilpork.keystore'
-  #     apksignerKeystorePassword: $(keystorePwd)
-  #     apksignerKeystoreAlias: 'ilpork'
-  #     apksignerKeyPassword: $(keystorePwd)
-  # - task: CopyFiles@2
-  #   displayName: Copy APK files
-  #   inputs:
-  #     SourceFolder: $(Build.SourcesDirectory)
-  #     contents: '**/*.apk'
-  #     targetFolder: '$(build.artifactStagingDirectory)'
-  #     overWrite: true
-  # - task: PublishBuildArtifacts@1
-  #   displayName: Publish APK
-  #   inputs:
-  #     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  #     artifactName: 'apk' 
-  - task: CmdLine@2
+  - task: UseDotNet@2
+    displayName: 'Install .NET SDK'
     inputs:
-  #    script: '/bin/bash -c "sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer"'
-      script: 'sudo xcode-select -print-path'
+      packageType: sdk
+      version: 7.0.x
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+  - task: CmdLine@2
+    displayName: 'Install MAUI workload'
+    inputs:
+      script: 'dotnet workload install maui-android maui-ios'  
+  - task: CmdLine@2
+    displayName: Create google-services.json for Android project
+    inputs:
+      script: 'cp google-services.template.json google-services.json' 
+      workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
+  - task: CmdLine@2
+    displayName: Create appsettings.json
+    inputs:
+      script: 'cp appsettings.template.json appsettings.json' 
+      workingDirectory: 'src/Vahti.Mobile'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      zipAfterPublish: false
+      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+      arguments: '-c Release -f net7.0-android'
+  - task: DownloadSecureFile@1
+    displayName: Download keystore file
+    inputs:
+      secureFile: 'ilpork.keystore'
+  - task: AndroidSigning@3
+    displayName: Sign APK
+    inputs:
+      apkFiles: '**/*.apk'
+      apksignerKeystoreFile: 'ilpork.keystore'
+      apksignerKeystorePassword: $(keystorePwd)
+      apksignerKeystoreAlias: 'ilpork'
+      apksignerKeyPassword: $(keystorePwd)
+  - task: CopyFiles@2
+    displayName: Copy APK files
+    inputs:
+      SourceFolder: $(Build.SourcesDirectory)
+      contents: '**/*.apk'
+      targetFolder: '$(build.artifactStagingDirectory)'
+      overWrite: true
+  - task: PublishBuildArtifacts@1
+    displayName: Publish APK
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'apk'
+  
+  # Select Xcode version if image default version is not OK for the iOS build
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: 'sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer'  
+  
+  # "macos-latest" image does not have the needed Xcode 14.3 yet, so iOS build to be enabled later
   # - task: DotNetCoreCLI@2
   #   inputs:
   #     command: 'build'
@@ -163,6 +165,3 @@ jobs:
   #     publishWebProjects: false
   #     zipAfterPublish: false
   #     arguments: '-f:net7.0-ios -c:Release /p:ArchiveOnBuild=false /p:EnableAssemblyILStripping=false'
-
-  
-
