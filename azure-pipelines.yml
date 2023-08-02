@@ -120,14 +120,7 @@ jobs:
     displayName: Create appsettings.json
     inputs:
       script: 'cp appsettings.template.json appsettings.json' 
-      workingDirectory: 'src/Vahti.Mobile'        
-  - task: XamarinAndroid@1
-    displayName: Build Android app
-    inputs:
-      projectFile: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
-      outputDirectory: '$(outputDirectory)'
-      configuration: '$(buildConfiguration)'
-      createAppPackage: true
+      workingDirectory: 'src/Vahti.Mobile'          
   - task: DotNetCoreCLI@2
     inputs:
       command: 'publish'
