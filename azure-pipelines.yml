@@ -5,91 +5,91 @@ variables:
   buildConfiguration: 'Release'
 
 jobs:
-- job: NetCore
-  displayName: 'Build .NET Core projects'
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Collector
-    inputs:
-      command: build
-      projects: 'src/Vahti.Collector/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.DataBroker
-    inputs:
-      command: build
-      projects: 'src/Vahti.DataBroker/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Mqtt
-    inputs:
-      command: build
-      projects: 'src/Vahti.Mqtt/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Shared
-    inputs:
-      command: build
-      projects: 'src/Vahti.Shared/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Build Vahti.Server
-    inputs:
-      command: build
-      projects: 'src/Vahti.Server/**/*.csproj'
-      arguments: '--configuration Release'
-  - task: DotNetCoreCLI@2
-    displayName: Run tests
-    inputs:
-      command: test      
-      projects: '**/*Test/*.csproj'
-      arguments: '--configuration $(buildConfiguration)'
-  - task: DotNetCoreCLI@2
-    displayName: Publish Vahti.Server (linux-arm)
-    inputs:
-      command: publish
-      publishWebProjects: false
-      projects: 'src/Vahti.Server/Vahti.Server.csproj'
-      arguments: '--configuration $(BuildConfiguration) -r linux-arm --output $(Build.ArtifactStagingDirectory)'
-      zipAfterPublish: true
-  - task: CmdLine@2
-    displayName: Rename Zip
-    inputs:
-      script: 'mv Vahti.Server.zip Vahti.Server-linux-arm.zip' 
-      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-  - task: DotNetCoreCLI@2
-    displayName: Publish Vahti.Server (linux-x64)
-    inputs:
-      command: publish
-      publishWebProjects: false
-      projects: 'src/Vahti.Server/Vahti.Server.csproj'
-      arguments: '--configuration $(BuildConfiguration) -r linux-x64 --output $(Build.ArtifactStagingDirectory)'
-      zipAfterPublish: true
-  - task: CmdLine@2
-    displayName: Rename Zip
-    inputs:
-      script: 'mv Vahti.Server.zip Vahti.Server-linux-x64.zip' 
-      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-  - task: DotNetCoreCLI@2
-    displayName: Publish Vahti.Server (win10-x64)
-    inputs:
-      command: publish
-      publishWebProjects: false
-      projects: 'src/Vahti.Server/Vahti.Server.csproj'
-      arguments: '--configuration $(BuildConfiguration) -r win10-x64 --output $(Build.ArtifactStagingDirectory)'
-      zipAfterPublish: true
-  - task: CmdLine@2
-    displayName: Rename Zip
-    inputs:
-      script: 'mv Vahti.Server.zip Vahti.Server-win10-x64.zip' 
-      workingDirectory: '$(Build.ArtifactStagingDirectory)' 
-  - task: PublishBuildArtifacts@1
-    displayName: Publish Vahti.Server build artifacts
-    inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-      artifactName: 'Vahti.Server'
+# - job: NetCore
+#   displayName: 'Build .NET Core projects'
+#   pool:
+#     vmImage: 'ubuntu-latest'
+#   steps:
+#   - task: DotNetCoreCLI@2
+#     displayName: Build Vahti.Collector
+#     inputs:
+#       command: build
+#       projects: 'src/Vahti.Collector/**/*.csproj'
+#       arguments: '--configuration Release'
+#   - task: DotNetCoreCLI@2
+#     displayName: Build Vahti.DataBroker
+#     inputs:
+#       command: build
+#       projects: 'src/Vahti.DataBroker/**/*.csproj'
+#       arguments: '--configuration Release'
+#   - task: DotNetCoreCLI@2
+#     displayName: Build Vahti.Mqtt
+#     inputs:
+#       command: build
+#       projects: 'src/Vahti.Mqtt/**/*.csproj'
+#       arguments: '--configuration Release'
+#   - task: DotNetCoreCLI@2
+#     displayName: Build Vahti.Shared
+#     inputs:
+#       command: build
+#       projects: 'src/Vahti.Shared/**/*.csproj'
+#       arguments: '--configuration Release'
+#   - task: DotNetCoreCLI@2
+#     displayName: Build Vahti.Server
+#     inputs:
+#       command: build
+#       projects: 'src/Vahti.Server/**/*.csproj'
+#       arguments: '--configuration Release'
+#   - task: DotNetCoreCLI@2
+#     displayName: Run tests
+#     inputs:
+#       command: test      
+#       projects: '**/*Test/*.csproj'
+#       arguments: '--configuration $(buildConfiguration)'
+#   - task: DotNetCoreCLI@2
+#     displayName: Publish Vahti.Server (linux-arm)
+#     inputs:
+#       command: publish
+#       publishWebProjects: false
+#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
+#       arguments: '--configuration $(BuildConfiguration) -r linux-arm --output $(Build.ArtifactStagingDirectory)'
+#       zipAfterPublish: true
+#   - task: CmdLine@2
+#     displayName: Rename Zip
+#     inputs:
+#       script: 'mv Vahti.Server.zip Vahti.Server-linux-arm.zip' 
+#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+#   - task: DotNetCoreCLI@2
+#     displayName: Publish Vahti.Server (linux-x64)
+#     inputs:
+#       command: publish
+#       publishWebProjects: false
+#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
+#       arguments: '--configuration $(BuildConfiguration) -r linux-x64 --output $(Build.ArtifactStagingDirectory)'
+#       zipAfterPublish: true
+#   - task: CmdLine@2
+#     displayName: Rename Zip
+#     inputs:
+#       script: 'mv Vahti.Server.zip Vahti.Server-linux-x64.zip' 
+#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+#   - task: DotNetCoreCLI@2
+#     displayName: Publish Vahti.Server (win10-x64)
+#     inputs:
+#       command: publish
+#       publishWebProjects: false
+#       projects: 'src/Vahti.Server/Vahti.Server.csproj'
+#       arguments: '--configuration $(BuildConfiguration) -r win10-x64 --output $(Build.ArtifactStagingDirectory)'
+#       zipAfterPublish: true
+#   - task: CmdLine@2
+#     displayName: Rename Zip
+#     inputs:
+#       script: 'mv Vahti.Server.zip Vahti.Server-win10-x64.zip' 
+#       workingDirectory: '$(Build.ArtifactStagingDirectory)' 
+#   - task: PublishBuildArtifacts@1
+#     displayName: Publish Vahti.Server build artifacts
+#     inputs:
+#       pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+#       artifactName: 'Vahti.Server'
 
 - job: Mobile
   displayName: 'Build mobile apps'
@@ -116,11 +116,11 @@ jobs:
     displayName: Create google-services.json for Android project
     inputs:
       script: 'cp google-services.template.json google-services.json' 
-      workingDirectory: 'src/Vahti.Mobile'
+      workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
   - task: CmdLine@2
-    displayName: Create App.config
+    displayName: Create appsettings.json
     inputs:
-      script: 'cp App.template.config App.config' 
+      script: 'cp appsettings.template.json appsettings.json' 
       workingDirectory: 'src/Vahti.Mobile'        
   - task: XamarinAndroid@1
     displayName: Build Android app
