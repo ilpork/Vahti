@@ -391,3 +391,4 @@ yarn-error.log*
 .eslintcache
 /src/Vahti.Server/Properties/launchSettings.json
 /src/Vahti.Mobile/Vahti.Mobile.Forms/Properties/launchSettings.json
+/src/Vahti.Mobile/Platforms/Android/google-services.json
