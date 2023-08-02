@@ -111,14 +111,7 @@ jobs:
   - task: CmdLine@2
     displayName: 'Install Maui Workload'
     inputs:
-      script: 'dotnet workload install maui'
-  - task: NuGetToolInstaller@1
-    displayName: Get NuGet tool
-
-  - task: NuGetCommand@2
-    displayName: Restore NuGet packages
-    inputs:
-      restoreSolution: '**/*.sln'
+      script: 'dotnet workload install maui'  
   - task: CmdLine@2
     displayName: Create google-services.json for Android project
     inputs:
@@ -138,7 +131,7 @@ jobs:
       createAppPackage: true
   - task: DotNetCoreCLI@2
     inputs:
-      command: 'build'
+      command: 'publish'
       projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
       arguments: '-c Release -f net7.0-android'
   - task: DownloadSecureFile@1
