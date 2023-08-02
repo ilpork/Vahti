@@ -1,6 +1,8 @@
 trigger: none
 pr: none
 
+pr: none
+
 variables:
   buildConfiguration: 'Release'
 
