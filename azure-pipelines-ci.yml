@@ -1,0 +1,98 @@
+trigger:
+- master
+
+variables:
+  buildConfiguration: 'Release'
+
+jobs:
+- job: NetCore
+  displayName: 'Build .NET projects and run tests'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Collector
+    inputs:
+      command: build
+      projects: 'src/Vahti.Collector/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.DataBroker
+    inputs:
+      command: build
+      projects: 'src/Vahti.DataBroker/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Mqtt
+    inputs:
+      command: build
+      projects: 'src/Vahti.Mqtt/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Shared
+    inputs:
+      command: build
+      projects: 'src/Vahti.Shared/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Build Vahti.Server
+    inputs:
+      command: build
+      projects: 'src/Vahti.Server/**/*.csproj'
+      arguments: '--configuration Release'
+  - task: DotNetCoreCLI@2
+    displayName: Run tests
+    inputs:
+      command: test      
+      projects: '**/*Test/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+  
+- job: Mobile
+  displayName: 'Build mobile apps'
+  pool:
+    vmImage: 'macos-latest'
+    demands: xcode
+  variables:
+    outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+    KeystorePwd: $(KeystorePassword)
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET SDK'
+    inputs:
+      packageType: sdk
+      version: 7.0.x
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+  - task: CmdLine@2
+    displayName: 'Install MAUI workload'
+    inputs:
+      script: 'dotnet workload install maui-android maui-ios'  
+  - task: CmdLine@2
+    displayName: Create google-services.json for Android project
+    inputs:
+      script: 'cp google-services.template.json google-services.json' 
+      workingDirectory: 'src/Vahti.Mobile/Platforms/Android'
+  - task: CmdLine@2
+    displayName: Create appsettings.json
+    inputs:
+      script: 'cp appsettings.template.json appsettings.json' 
+      workingDirectory: 'src/Vahti.Mobile'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      publishWebProjects: false
+      zipAfterPublish: false
+      projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+      arguments: '-c Release -f net7.0-android'  
+  # Select Xcode version if image default version is not OK for the iOS build
+  # - task: CmdLine@2
+  #   inputs:
+  #     script: 'sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer'  
+  
+  # "macos-latest" image does not have the needed Xcode 14.3 yet, so iOS build to be enabled later
+  # - task: DotNetCoreCLI@2
+  #   inputs:
+  #     command: 'build'
+  #     projects: 'src/Vahti.Mobile/Vahti.Mobile.csproj'
+  #     publishWebProjects: false
+  #     zipAfterPublish: false
+  #     arguments: '-f:net7.0-ios -c:Release /p:ArchiveOnBuild=false /p:EnableAssemblyILStripping=false'
