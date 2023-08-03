@@ -7,6 +7,8 @@ Starting to use Vahti requires setting up different kind of things depending on 
 - [Robotic lawn mower tutorial](RoboticLawnMowerTutorial.md) shows how to use RuuviTag to check that robotic lawn mower has returned to charging station
 - [Web application tutorial](WebAppTutorial.md) shows how to set up the web application to use it with or without the mobile app
 
+If you have problems, check the [Frequently Asked Questions](FAQ.md)
+
 Configuration file options have been described in [Configuration](Configuration.md). Latest released binaries can be found from [Releases page](https://github.com/ilpork/vahti/releases/latest/).
 
 If you want to have other devices to publish their data using MQTT via Vahti, check [Add other data sources](AddOtherDataSources.md).
