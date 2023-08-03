@@ -56,8 +56,9 @@ namespace Vahti.Mobile.Droid
             var settings = configuration.GetRequiredSection("Settings").Get<AppSettings>();
             var connectionString = settings.AzureListConnectionString;
             var notificationHubName = settings.AzureNotificationHubName;
-            NotificationHub.Start(Application, notificationHubName, connectionString);
-
+            
+            if (notificationHubName != null && connectionString != null)
+                NotificationHub.Start(Application, notificationHubName, connectionString);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
