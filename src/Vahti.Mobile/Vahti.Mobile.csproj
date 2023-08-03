@@ -100,7 +100,9 @@
 	  <DefineConstants>$(DefineConstants);DEBUGMOCK</DefineConstants>
 	  <NoWarn>1701;1702;CA1416</NoWarn>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+	</ItemGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
