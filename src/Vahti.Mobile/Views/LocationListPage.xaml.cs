@@ -22,7 +22,7 @@ namespace Vahti.Mobile.Views
         {
             if (this == e.CurrentPage)
             {
-                _viewModel.RefreshListCommand.Execute(false);
+                _viewModel.RefreshListCommand.Execute(true);
             }
         }
 
