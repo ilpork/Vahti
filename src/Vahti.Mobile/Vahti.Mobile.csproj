@@ -162,11 +162,12 @@
 		<PackageReference Include="Xamarin.GooglePlayServices.Base">
 		  <Version>118.2.0.2</Version>
 		</PackageReference>
-	</ItemGroup>	  
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' == 'Windows_NT'">
-		<Exec Command="IF NOT EXIST &quot;$(ProjectDir)appsettings.json&quot; (copy &quot;$(ProjectDir)appsettings.template.json&quot; &quot;$(ProjectDir)appsettings.json&quot; /Y)&#xD;&#xA;IF NOT EXIST &quot;$(ProjectDir)Platforms\Android\google-services.json&quot; (copy &quot;$(ProjectDir)Platforms\Android\google-services.template.json&quot; &quot;$(ProjectDir)Platforms\Android\google-services.json&quot; /Y)" />
+	</ItemGroup>
+	<Target Name="InitializeSettingsFileWin" BeforeTargets="BeforeBuild" Condition="'$(OS)' == 'Windows_NT'">
+		<Exec Command="IF NOT EXIST &quot;$(ProjectDir)appsettings.json&quot; (copy &quot;$(ProjectDir)appsettings.template.json&quot; &quot;$(ProjectDir)appsettings.json&quot; /Y)&#xD;&#xA;" />
+		<Exec Command="IF NOT EXIST &quot;$(ProjectDir)Platforms\Android\google-services.json&quot; (copy &quot;$(ProjectDir)Platforms\Android\google-services.template.json&quot; &quot;$(ProjectDir)Platforms\Android\google-services.json&quot; /Y)" />
 	</Target>
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(OS)' != 'Windows_NT'">
+	<Target Name="InitializeSettingsFileOther" BeforeTargets="BeforeBuild" Condition="'$(OS)' != 'Windows_NT'">
 		<Exec Command="rsync --ignore-existing &quot;$(ProjectDir)appsettings.template.json&quot; &quot;$(ProjectDir)appsettings.json&quot; &#xD;&#xA; rsync --ignore-existing &quot;$(ProjectDir)Platforms\Android\google-services.template.json&quot; &quot;$(ProjectDir)Platforms\Android\google-services.json&quot;" />
 	</Target>
 </Project>
