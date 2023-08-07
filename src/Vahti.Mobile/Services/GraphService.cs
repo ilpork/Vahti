@@ -214,11 +214,12 @@ namespace Vahti.Mobile.Services
             {
                 new Axis
                 {
-                    TextSize = 28,
+                    TextSize = 28,                    
                     Labeler = value => new DateTime((long) value).ToString("ddd HH:mm"),
                     LabelsPaint = new SolidColorPaint(textColor),
                     UnitWidth = TimeSpan.FromHours(1).Ticks,
-                    MinStep = TimeSpan.FromHours(1).Ticks,
+                    MinStep = TimeSpan.FromHours(24).Ticks,
+                    ForceStepToMin = true,
                     ShowSeparatorLines = true,
                     SeparatorsPaint = new SolidColorPaint()
                     {
