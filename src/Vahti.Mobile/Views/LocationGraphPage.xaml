@@ -26,7 +26,8 @@
         <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshGraphCommand}" CommandParameter="{StaticResource False}" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" Margin="8" Padding="16,12,16,12">
+        <StackLayout             
+            Padding="8,8,8,8">
             <RefreshView
                 Command="{Binding RefreshGraphCommand}"
                 CommandParameter="{StaticResource True}"
@@ -38,8 +39,10 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightThemeSurface}, Dark={StaticResource GrayThemeSurface}}" 
                                 RowDefinitions="auto,auto"
-                                Margin="0,0,0,16">                                
+                                Padding="0,8,0,0"
+                                Margin="0,0,0,8">                                
                                 <Label 
                                     Grid.Row="0"
                                     HorizontalOptions="Center"
