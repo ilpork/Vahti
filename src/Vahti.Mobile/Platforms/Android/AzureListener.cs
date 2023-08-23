@@ -16,9 +16,24 @@ namespace Vahti.Mobile.Droid
             var notificationBuilder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID);            
             int drawableResourceId = context.Resources.GetIdentifier("ic_stat_lighthouse", "drawable", context.PackageName);
 
-            notificationBuilder.SetContentTitle(message.Title)
+            string title;
+            string messageBody;
+
+            // Payload sent by Vahti.DataBroker
+            if (message.Data != null && message.Data.ContainsKey("Title") && message.Data.ContainsKey("Message"))
+            {
+                title = message.Data["Title"];
+                messageBody = message.Data["Message"];
+            }
+            else
+            {
+                title = message.Title;
+                messageBody = message.Body;
+            }
+
+            notificationBuilder.SetContentTitle(title)
                         .SetSmallIcon(drawableResourceId)
-                        .SetContentText(message.Body)
+                        .SetContentText(messageBody)
                         .SetAutoCancel(true)
                         .SetShowWhen(false)
                         .SetContentIntent(pendingIntent);
