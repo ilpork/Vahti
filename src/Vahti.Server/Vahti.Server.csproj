@@ -1,37 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Configurations>Debug;Release</Configurations>
-	<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Configurations>Debug;Release</Configurations>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BleReader.Net" Version="1.0.0" />
-    <PackageReference Include="HashtagChris.DotNetBlueZ" Version="1.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BleReader.Net" Version="1.0.0" />
+		<PackageReference Include="HashtagChris.DotNetBlueZ" Version="1.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Vahti.Collector\Vahti.Collector.csproj" />
-    <ProjectReference Include="..\Vahti.DataBroker\Vahti.DataBroker.csproj" />
-    <ProjectReference Include="..\Vahti.Mqtt\Vahti.Mqtt.csproj" />
-    <ProjectReference Include="..\Vahti.Shared\Vahti.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Vahti.Collector\Vahti.Collector.csproj" />
+		<ProjectReference Include="..\Vahti.DataBroker\Vahti.DataBroker.csproj" />
+		<ProjectReference Include="..\Vahti.Mqtt\Vahti.Mqtt.csproj" />
+		<ProjectReference Include="..\Vahti.Shared\Vahti.Shared.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="config.template.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="config.template.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="config.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

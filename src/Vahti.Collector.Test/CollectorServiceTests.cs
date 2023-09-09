@@ -169,7 +169,7 @@ namespace Vahti.Collector.Test
 #pragma warning restore CS4014
 
             await Task.Delay(300);
-            await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientConnectResult()));
+            await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientAuthenticateResult()));
             cts.Cancel();
 
             // Assert
@@ -220,7 +220,7 @@ namespace Vahti.Collector.Test
 #pragma warning restore CS4014
 
             await Task.Delay(300);
-            await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientConnectResult()));
+            await btGwService.HandleConnectedAsync(new MqttClientConnectedEventArgs(new MqttClientAuthenticateResult()));
             cts.Cancel();
 
             // Assert

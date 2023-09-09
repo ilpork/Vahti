@@ -18,13 +18,13 @@ namespace Vahti.Collector.DeviceDataReader
     public class DeviceDataReader : IDeviceDataReader
     {
         private readonly NumberFormatInfo _numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
-        private readonly IBleReader _bleReader;        
-        private readonly ILogger<DeviceDataReader> _logger;        
-        
+        private readonly IBleReader _bleReader;
+        private readonly ILogger<DeviceDataReader> _logger;
+
         public DeviceDataReader(ILogger<DeviceDataReader> logger, IBleReader bleReader)
         {
-            _bleReader = bleReader;            
-            _logger = logger;            
+            _bleReader = bleReader;
+            _logger = logger;
         }
 
         public async Task<IList<MeasurementData>> ReadDeviceDataAsync(SensorDevice sensorDevice)
@@ -56,7 +56,7 @@ namespace Vahti.Collector.DeviceDataReader
 
             if (ruuviData == null)
             {
-                _logger.LogWarning($"{DateTime.Now}: Could not read manufacturer data from '{sensorDevice.Id}' at '{sensorDevice.Address}'");                
+                _logger.LogWarning($"{DateTime.Now}: Could not read manufacturer data from '{sensorDevice.Id}' at '{sensorDevice.Address}'");
             }
             else
             {
@@ -74,14 +74,14 @@ namespace Vahti.Collector.DeviceDataReader
                     measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "batteryVoltage", Value = ruuviData.BatteryVoltage.Value.ToString(_numberFormatInfo) });
                 if (ruuviData.MovementCounter != null)
                     measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "movementCounter", Value = ruuviData.MovementCounter.Value.ToString(_numberFormatInfo) });
-            }            
+            }
 
             return measurements;
         }
 
         /// <summary>
-        /// Read values from DHT22 sensor. 
-        /// Dht22 support in Iot.Device.Bindings did not work very well when I tried it in the past with old package version, but this code can be considered as example on how to easily add support for additional devices
+        /// Read values from DHT22 sensor. It seems that the Dht22 support in Iot.Device.Bindings does not work very well, 
+        /// but this can be considered as example on how to easily add support for additional devices
         /// </summary>        
         private IList<MeasurementData> GetDht22Measurements(SensorDevice sensorDevice)
         {
@@ -91,10 +91,10 @@ namespace Vahti.Collector.DeviceDataReader
 
             using (var dht22 = new Dht22(pinNumber, PinNumberingScheme.Logical))
             {
-                if (dht22.TryReadTemperature(out var temp) && dht22.TryReadHumidity(out var humidity))
+                if (dht22.IsLastReadSuccessful)
                 {
-                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = temp.DegreesCelsius.ToString(_numberFormatInfo) });
-                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = humidity.Percent.ToString(_numberFormatInfo) });
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "temperature", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
+                    measurements.Add(new MeasurementData() { SensorDeviceId = sensorDevice.Id, SensorId = "humidity", Value = dht22.Temperature.Celsius.ToString(_numberFormatInfo) });
                 }
                 else
                 {
